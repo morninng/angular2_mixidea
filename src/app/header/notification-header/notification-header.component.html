@@ -1,0 +1,21 @@
+<div id="notification_header">
+  <a href="#" class="dropdown-toggle " data-toggle="dropdown">
+    <span *ngIf="notification_arr.length ==0">
+      ss
+    </span>
+    <span *ngIf="notification_arr.length >0">
+      <img src="./assets/images/earth.png">
+      <span class="label label-danger notif_num">{{notification_arr.length}}</span>
+    </span>
+  </a>
+  <ul class="dropdown-menu">
+    <li class="header"> you have {{notification_arr.length}} notification</li>
+    <li>
+      <div>aaa
+      </div>
+    </li>
+    <li class="footer">
+      view all
+    </li>
+  </ul>
+</div>

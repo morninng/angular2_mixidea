@@ -1,0 +1,31 @@
+$header_height: 55px;
+
+.my_main-header{
+	border-bottom: medium solid #D3D3D3;
+	height:$header_height;
+	margin-bottom:3px;
+    background-color:white;
+}
+
+header {
+    .my_logo {
+    	text-align:left !important;
+		padding:0px !important;
+        float:left;
+        margin-right:20px;
+        img{
+            width:50px;
+            height:50px;
+            margin:0px;
+        }
+    }
+
+    .my_login_button{
+        margin-right:10px;
+    }
+
+    .my_user_img{
+        border-radius:0% !important;
+    }
+
+}

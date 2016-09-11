@@ -1,0 +1,29 @@
+
+$header_height: 55px;
+$img_margin : 10px;
+$img_height: $header_height - $img_margin * 2;
+$img_width:  $header_height - $img_margin * 2;
+
+#notification_header{
+    height: $header_height;
+    width: $header_height;
+    text-align:center;
+
+    img{
+        margin-top:$img_margin;
+        margin-bottom:$img_margin;
+        width:$img_height;
+        height:$img_width;
+    }
+
+    .notif_num{
+        position:absolute;
+        top:9px;
+        right:7px;
+        text-align:center;
+        font-size:11px;
+        padding: 2px 3px;
+        line-height: .9;
+    }
+
+}

@@ -1,0 +1,40 @@
+  <header class="main-header my_main-header">
+
+    <a href="index2.html" class=" my_logo">
+      <img height="100%" src="./assets/images/mixidea_logo.png">
+    </a>
+
+
+    <nav class="navbar navbar-static-top">
+
+      <span *ngIf="user_auth.user.loggedIn">
+        <div class="navbar-custom-menu">
+          <ul class="nav navbar-nav">
+
+
+            <li class="dropdown notifications-menu">
+              <app-notification-header></app-notification-header>
+            </li>
+
+
+
+
+            <li class=" user user-menu">
+              <a href="#">
+                <img src="{{user_auth.user.profile_pict}}" class="user-image my_user_img" alt="User Image">
+                <span class="hidden-xs">{{user_auth.user.first_name}} {{user_auth.user.last_name}} </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </span>
+
+
+      <span *ngIf="!user_auth.user.loggedIn">
+        <div class="navbar-custom-menu my_login_button" >
+          <button (click)="login()" class="btn btn-block btn-success btn-lg">login</button>
+        </div>
+      </span>
+
+    </nav>
+  </header>
