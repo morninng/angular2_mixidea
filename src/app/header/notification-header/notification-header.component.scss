@@ -3,17 +3,36 @@ $header_height: 55px;
 $img_margin : 10px;
 $img_height: $header_height - $img_margin * 2;
 $img_width:  $header_height - $img_margin * 2;
+$a_width:  $header_height - 4;
+$a_height: $header_height;
 
 #notification_header{
     height: $header_height;
     width: $header_height;
     text-align:center;
 
+    >a{
+        width:$a_width !important;
+        height:$a_height !important;
+        display:block;
+        span{
+            pointer-events: none;
+        }
+        img{
+            pointer-events: none;
+        }
+    }
+
+    &:hover{
+        background-color:#DCDCDC;
+    }
+
     img{
         margin-top:$img_margin;
         margin-bottom:$img_margin;
         width:$img_height;
         height:$img_width;
+        
     }
 
     .notif_num{
@@ -21,7 +40,7 @@ $img_width:  $header_height - $img_margin * 2;
         top:9px;
         right:7px;
         text-align:center;
-        font-size:11px;
+        font-size:13px;
         padding: 2px 3px;
         line-height: .9;
     }

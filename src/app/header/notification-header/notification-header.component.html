@@ -1,12 +1,17 @@
-<div id="notification_header">
-  <a href="#" class="dropdown-toggle " data-toggle="dropdown">
-    <span *ngIf="notification_arr.length ==0">
-      ss
+<div id="notification_header" class="dropdown notifications-menu" [ngClass]="{open: is_open}">
+  <a href="#" class="dropdown-toggle " data-toggle="dropdown" (click)="toggle_window()" >
+    <span *ngIf="is_open">
+      <img src="./assets/images/earth_blue.png">
     </span>
-    <span *ngIf="notification_arr.length >0">
+    
+    <span *ngIf="!is_open">
       <img src="./assets/images/earth.png">
+    </span>
+
+    <span *ngIf="notification_arr.length >0">
       <span class="label label-danger notif_num">{{notification_arr.length}}</span>
     </span>
+
   </a>
   <ul class="dropdown-menu">
     <li class="header"> you have {{notification_arr.length}} notification</li>
@@ -14,7 +19,8 @@
       <div>aaa
       </div>
     </li>
-    <li class="footer">
+
+    <li class="footer" *ngIf="notification_arr.length > 10">
       view all
     </li>
   </ul>
