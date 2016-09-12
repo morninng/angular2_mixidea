@@ -1,40 +1,56 @@
-  <header class="main-header my_main-header">
+<header class="main-header my_main-header">
 
-    <a href="index2.html" class=" my_logo">
-      <img height="100%" src="./assets/images/mixidea_logo.png">
-    </a>
-
-
-    <nav class="navbar navbar-static-top">
-
-      <span *ngIf="user_auth.user.loggedIn">
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
+  <a href="index2.html" class=" my_logo">
+    <img height="100%" src="./assets/images/mixidea_logo.png">
+  </a>
 
 
-            <li >
-              <app-notification-header></app-notification-header>
-            </li>
+  <nav class="navbar navbar-static-top">
+
+    <span *ngIf="user_auth.user.loggedIn">
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
 
 
+          <li >
+            <app-notification-header></app-notification-header>
+          </li>
+
+          <li class=" user user-menu">
+            <a href="#">
+              <img src="{{user_auth.user.profile_pict}}" class="user-image my_user_img" alt="User Image">
+              <span class="hidden-xs">{{user_auth.user.first_name}} {{user_auth.user.last_name}} </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </span>
 
 
-            <li class=" user user-menu">
-              <a href="#">
-                <img src="{{user_auth.user.profile_pict}}" class="user-image my_user_img" alt="User Image">
-                <span class="hidden-xs">{{user_auth.user.first_name}} {{user_auth.user.last_name}} </span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </span>
-
-
-      <span *ngIf="!user_auth.user.loggedIn">
+    <span *ngIf="!user_auth.user.loggedIn">
         <div class="navbar-custom-menu my_login_button" >
           <button (click)="login()" class="btn btn-block btn-success btn-lg">login</button>
         </div>
       </span>
 
-    </nav>
-  </header>
+  </nav>
+
+</header>
+
+
+<div bsModal #child_modal="bs-modal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hide_login_modal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">Large modal</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+    </div>
+  </div>
+</div>
+
