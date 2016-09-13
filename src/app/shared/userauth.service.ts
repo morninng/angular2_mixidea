@@ -14,8 +14,6 @@ export class UserauthService {
       console.log(auth);
     })
 ///////////////////////
-
-
    }
 
 
