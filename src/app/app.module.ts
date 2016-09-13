@@ -4,14 +4,21 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AngularFireModule } from 'angularfire2';
+import { AngularFireModule, AuthProviders, AuthMethods, } from 'angularfire2';
 
-export const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyBp_ZDqoPygbPs7jMclrBSJ3a99t1Yvr1k",
     authDomain: "mixidea-91a20.firebaseapp.com",
     databaseURL: "https://mixidea-91a20.firebaseio.com",
-    storageBucket: "",
+    storageBucket: ""
   };
+
+const firebaseAuthConfig = {
+    provider: AuthProviders.Facebook,
+    method: AuthMethods.Popup
+  }
+
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -34,7 +41,7 @@ import {  ViewContainerRef } from '@angular/core';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     ModalModule,
     AlertModule,
     DatepickerModule
