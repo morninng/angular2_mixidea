@@ -1,40 +1,58 @@
 
 
 
-<header class="main-header my_main-header">
+<header id="mixidea_header">
+<div class="header_container">
 
-  <a href="index2.html" class=" my_logo">
-    <img height="100%" src="./assets/images/mixidea_logo.png">
+
+  <a href="index2.html" class="mixidea_logo">
+    <img src="./assets/images/mixidea_logo_mini.png">
   </a>
 
-  <nav class="navbar navbar-static-top">
+  <nav class="mixidea_nav">
 
-    <span *ngIf="own_user.loggedIn">
-      <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
+     <div class="header_left">
+       <ul class="header_left_main_nav">
+        <li>
+          <a class="my_nav_link header_left_main_pri" routerLink="/eventlist" routerLinkActive="active">Event List</a>
+        </li>
+        <li>
+          <a class="my_nav_link header_left_main_pri" routerLink="/articlelist" routerLinkActive="active">Article List</a>
+        </li>
+        <li>
+          <a class="my_nav_link header_left_main_pri" routerLink="#" routerLinkActive="active">My Page</a>
+        </li>
+       </ul>
+     </div>
 
-          <li>
-            <app-notification-header></app-notification-header>
-          </li>
 
+    <div class="header_right">
+      <span *ngIf="own_user.loggedIn">
+          <ul>
 
-          <li class=" user user-menu">
-            <a href="#">
-              <img src="{{own_user.pict_src}}" class="user-image my_user_img" alt="User Image">
-              <span class="hidden-xs">{{own_user.short_name}} </span>
-            </a>
-          </li>
+            <li class="user_menu">
+              <a href="#">
+                <img src="{{own_user.pict_src}}" alt="User Image">
+                <span class="hidden-xs user_name">{{own_user.short_name}} </span>
+              </a>
+            </li>
 
-        </ul>
-      </div>
-    </span>
-    <span *ngIf="!own_user.loggedIn">
-      <div class="navbar-custom-menu my_login_button" >
-        <button (click)="show_login_modal()" class="btn btn-block btn-success btn-lg">login</button>
-      </div>
-    </span>
+            <li>
+              <app-notification-header></app-notification-header>
+            </li>
+
+          </ul>
+      </span>
+
+      <span *ngIf="!own_user.loggedIn">
+        <div class="header_right_login" >
+          <button (click)="show_login_modal()" class="btn btn-success">login</button>
+        </div>
+      </span>
+    </div>
   </nav>
 
+</div>
 </header>
 
 
@@ -60,4 +78,3 @@
     </div>
   </div>
 </div>
-

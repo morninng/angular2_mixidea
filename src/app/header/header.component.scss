@@ -1,13 +1,285 @@
 $header_height: 55px;
+$left_icon_width: 55px;
 
+$small:  "only screen and (max-width:640px)";
+$middle: "only screen and (min-width:641px) and (max-width:959px)";
+$large:  "only screen and (min-width:960px)";
+
+$own_small:  "only screen and (max-width:799px)";
+$own_large: "only screen and (min-width:800px)";
+
+/*
 .my_main-header{
 	border-bottom: medium solid #D3D3D3;
 	height:$header_height;
 	margin-bottom:3px;
     background-color:white;
 }
+*/
+
+// the parameter which is not custom is copy from admin lte
+
+
+#mixidea_header {
+	position: fixed;
+	top:0;
+	left:0;
+	z-index:999;
+	background-color:white;
+	height:$header_height;
+
+	width:100%;
+	border-bottom: medium solid #D3D3D3;
+	margin-bottom:3px;
+
+	.header_container{
+		margin-left:auto;
+		margin-right:auto;
+		max-width:1280px;
+        display: flex;
+
+        .mixidea_logo {
+            float:left;
+            text-align:left;
+            padding:0px;
+            margin-right:20px;
+            img{
+                width:35px;
+                height:35px;
+                margin:7px;
+            }
+        }
+
+        .mixidea_nav{
+            flex: 1;
+            height:3px;
+            position:relative
+        }
+
+	}
+
+
+
+
+	.header_left {
+		float:left;
+		@media #{$own_large} {
+			width:65%;
+		}
+		@media #{$own_small} {
+			width:60px;
+		}
+		.header_left_main_nav{
+			margin:0px;
+			padding:0px;
+			list-style-type:none;
+
+			li{
+				float:left;
+				@media #{$own_large} {
+                    .my_nav_link{
+                        font-size:medium; //custom
+						display: block;
+                        &:hover{
+                            background-color:#E0FFFF;
+                        }
+                    }
+					a{
+						padding: 13px 10px;
+						display: block;
+						color: #000;
+						text-transform: uppercase;
+						letter-spacing: 0.5px;
+						font-size: 14px;
+						height: 46px;
+
+					}
+                    .active{
+                        background-color:#AFEEEE;
+                    }
+				}
+				@media #{$own_small} {
+					.header_left_main_pri{
+						display:none;
+					}
+				}
+			}
+		}
+    }
+
+	.header_right{
+		float:right;
+
+		@media #{$own_large} {
+			width:35%;
+            padding-right:20px;
+		}
+
+		@media #{$own_small} {
+			width:80%;
+		}
+
+		ul{
+			float:right;
+			margin-right:0px;
+			list-style-type:none;
+			li {
+				float:left;
+				a{
+					display:block;
+					padding:10px 5px;
+					height: 46px;
+				}
+			}
+		}
+	}
+
+
+	.header_right_login{
+
+		@media #{$own_large} {
+			margin-top:3px;
+			text-align:center;
+		}
+
+		@media #{$own_small} {
+			float:right;
+			margin-top:5px;
+			margin-right:20px;
+		}
+	}
+
+    .user_menu{
+        img{
+            width:30px;
+            height:30px;
+            margin:0px;
+            margin-right:5px;
+        }
+
+        .user_name{
+            font-size:medium;
+            color:black;
+        }
+    }
+
+
+
+
+}
+
+#mixidea_header:after{
+  content: ""; 
+  display: block; 
+  height: 0; 
+  font-size:0;	
+  clear: both; 
+  visibility:hidden;
+}
+
+
+
+
+/*
+.my_main-header{
+  position: relative;
+  height:$header_height; //custom
+  margin-bottom:3px; //custom
+  border-bottom: medium solid #D3D3D3; //custom
+  background-color:white; //custom
+
+  .navbar-left{
+      float:left;
+  }
+
+  .my_logo {
+    float:left;
+    text-align:left;
+    padding:0px;
+    margin-right:20px;
+    img{
+        width:50px;
+        height:50px;
+        margin:0px;
+    }
+  }
+
+  .my_nav_links{
+      list-style:none;
+      li {
+          float:left;
+          position: relative;
+          display: block;
+      }
+  }
+  .my_nav_link{
+    font-size:medium; //custom
+    margin: 10px 15px;
+  }
+
+  .my_active{
+    background-color:yellow; //custom
+  }
+
+  .my_navbar-nav{
+    float:left;
+    margin-left:0px;
+
+    >li{
+        float:left !important;
+    }
+  }
+
+  .my_navbar-custom-menu{
+      float: right;
+      a{
+          background: transparent;
+      }
+  }
+
+  .my_login_button{
+    margin-right:10px;
+  }
+
+  .my_user_img{
+    border-radius:0% ;
+    float: left;
+    width:30px;
+    height:30px;
+    margin-right:10px;
+    margin-top:-2px;
+  }
+
+}
+
+
+*/
+
+/*
+
 
 header {
+
+    .my_navbar-nav{
+        float:left !important;
+        margin-left:0px !important;
+
+        >li{
+            float:left !important;
+        }
+    }
+
+    .my_navbar{
+        margin-left:70px;
+    }
+
+    .active{
+        background-color:yellow
+    }
+    .nav_link{
+        font-size:medium;
+    }
+
     .my_logo {
     	text-align:left !important;
 		padding:0px !important;
@@ -26,6 +298,13 @@ header {
 
     .my_user_img{
         border-radius:0% !important;
+        float: left;
+        width:30px;
+        height:30px;
+        margin-right:10px;
+        margin-top:-2px;
     }
 
 }
+
+*/

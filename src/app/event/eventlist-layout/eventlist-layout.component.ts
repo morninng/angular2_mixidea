@@ -10,6 +10,7 @@ export class EventlistLayoutComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("event list component initialized");
   }
 
 }

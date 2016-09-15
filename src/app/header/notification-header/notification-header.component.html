@@ -1,9 +1,9 @@
-<div id="notification_header" class="dropdown notifications-menu" [ngClass]="{open: is_open}">
-  <a href="#" class="dropdown-toggle " data-toggle="dropdown" (click)="toggle_window()" >
+<div id="notification_header">
+  <a (click)="toggle_window()">
     <span *ngIf="is_open">
       <img src="./assets/images/earth_blue.png">
     </span>
-    
+
     <span *ngIf="!is_open">
       <img src="./assets/images/earth.png">
     </span>
@@ -13,15 +13,17 @@
     </span>
 
   </a>
-  <ul class="dropdown-menu">
-    <li class="header"> you have {{notification_arr.length}} notification</li>
-    <li>
-      <div>aaa
-      </div>
-    </li>
 
-    <li class="footer" *ngIf="notification_arr.length > 10">
-      view all
-    </li>
-  </ul>
+  <div *ngIf="is_open" class="my_dropdown_menu">
+    <ul class="notification_dropdown_context">
+      <li class="header"> you have {{notification_arr.length}} notification</li>
+      <li>
+        <div>aaa
+        </div>
+      </li>
+      <li class="footer" *ngIf="notification_arr.length > 10">
+        view all
+      </li>
+    </ul>
+  </div>
 </div>

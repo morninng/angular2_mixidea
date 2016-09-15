@@ -7,6 +7,78 @@ $a_width:  $header_height - 4;
 $a_height: $header_height;
 
 #notification_header{
+
+    position: relative;
+    height: $header_height;
+    width: $header_height;
+    text-align:center;
+    overflow:visible;
+
+    .my_dropdown_menu{
+ 
+        width: 280px;
+        background-color:gray;
+        //Remove padding and margins
+        padding: 0 0 0 0;
+        margin: 0;
+        top: 100%;
+
+        position: absolute;
+        right: 0;
+        left: auto;
+    }
+
+    .notification_dropdown_context{
+        color:black;
+        list-style:none;
+       > li {
+        position: relative;
+        }
+    }
+
+
+
+    >a{
+        width:$a_width;
+        height:$a_height;
+        display:block;
+        span{
+            pointer-events: none;
+        }
+        img{
+            pointer-events: none;
+        }
+    }
+
+    &:hover{
+        background-color:#DCDCDC;
+    }
+
+    img{
+        margin-top:$img_margin;
+        margin-bottom:$img_margin;
+        width:$img_height;
+        height:$img_width;
+        
+    }
+
+    .notif_num{
+        position:absolute;
+        top:9px;
+        right:7px;
+        text-align:center;
+        font-size:13px;
+        padding: 2px 3px;
+        line-height: .9;
+    }
+
+
+}
+
+/*
+
+
+#notification_header{
     height: $header_height;
     width: $header_height;
     text-align:center;
@@ -44,5 +116,6 @@ $a_height: $header_height;
         padding: 2px 3px;
         line-height: .9;
     }
-
 }
+
+*/

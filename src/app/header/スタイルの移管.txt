@@ -1,0 +1,26 @@
+
+AdminLTEで移管する、スタイルをリストアップ
+
+ - main-header
+ - logo
+
+
+ - navbar-static-top 使われてない
+ - navbar-left
+   - navbar
+   - nav
+   - navbar-nav
+   - nav_link
+
+ - navbar-custom-menu
+    -- nav
+    -- navbar-nav
+
+
+
+ - notification_header
+   - dropdown
+   - notifications-menu
+   - dropdown-menu
+     - header
+     - footer
