@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFire , FirebaseObjectObservable} from 'angularfire2';
 import {User, User_Search} from './../interface/user'
-import {BehaviorSubject } from 'rxjs/Rx'
+import {BehaviorSubject, Subject } from 'rxjs/Rx'
 
 @Injectable()
 export class UserauthService {
@@ -21,10 +21,19 @@ export class UserauthService {
   own_user: User = { loggedIn:false,full_name:"",short_name:"",pict_src:""};
   own_user_subject$ = new BehaviorSubject(this.own_user);
 
+  open_login_modal$ = new Subject();
+
+
   ext_data = {
     lang_type: null,
     api_securekey : null
   }
+
+  open_login_modal = ()=>{
+    this.open_login_modal$.next(true);
+  }
+
+
 
   login = ()=>{
 
@@ -51,6 +60,8 @@ export class UserauthService {
       const name3 = split_name_arr[2];
       const own_searach_user : User_Search = { name1, name2, name3};
       console.log(own_searach_user);
+
+      this.open_login_modal$.next(false);
     });
   }
 

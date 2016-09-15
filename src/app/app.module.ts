@@ -38,6 +38,7 @@ import { HorizontalEventtypePcComponent } from './event/horizontal-eventtype-pc/
 import { HorizontalEventtypeMobileComponent } from './event/horizontal-eventtype-mobile/horizontal-eventtype-mobile.component';
 import { AdvertisingColumnComponent } from './event/advertising-column/advertising-column.component';
 import { ArticlelistLayoutComponent } from './article/articlelist-layout/articlelist-layout.component';
+import { LoginModalComponent } from './modal/login-modal/login-modal.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { ArticlelistLayoutComponent } from './article/articlelist-layout/article
     HorizontalEventtypePcComponent,
     HorizontalEventtypeMobileComponent,
     AdvertisingColumnComponent,
-    ArticlelistLayoutComponent
+    ArticlelistLayoutComponent,
+    LoginModalComponent
   ],
   imports: [
     BrowserModule,

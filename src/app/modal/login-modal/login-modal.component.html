@@ -1,0 +1,23 @@
+
+
+<div bsModal #child_modal="bs-modal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLoginModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="hide_login_modal()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title">You can login Mixidea through Facebook</h4>
+      </div>
+      <div class="modal-body">
+
+        <div  align="center" style="width:100%">
+          <a (click)="login_fb()">
+            <img id="fb_logo"  src="./assets/images/fb_logo.jpg">
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
