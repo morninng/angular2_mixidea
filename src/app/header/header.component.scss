@@ -19,6 +19,9 @@ $own_large: "only screen and (min-width:800px)";
 
 // the parameter which is not custom is copy from admin lte
 
+#behind_header_blank{
+    height:$header_height;
+}
 
 #mixidea_header {
 	position: fixed;
@@ -121,10 +124,14 @@ $own_large: "only screen and (min-width:800px)";
 
 		ul{
 			float:right;
+            width:100%;
+            max-width:360px;
+            padding-left:0px;
 			margin-right:0px;
 			list-style-type:none;
+            display: flex;
+            justify-content: space-around;
 			li {
-				float:left;
 				a{
 					display:block;
 					padding:10px 5px;

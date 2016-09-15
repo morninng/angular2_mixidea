@@ -1,3 +1,29 @@
-<p>
-  message-header works!
-</p>
+<div id="message_header">
+  <a (click)="toggle_window()">
+    <span *ngIf="is_open">
+      <img src="./assets/images/message_blue_mini.png">
+    </span>
+
+    <span *ngIf="!is_open">
+      <img src="./assets/images/message_mini.png">
+    </span>
+
+    <span *ngIf="message_arr.length >0">
+      <span class="label label-danger message_num">{{message_arr.length}}</span>
+    </span>
+
+  </a>
+
+  <div *ngIf="is_open" class="my_dropdown_menu">
+    <ul class="message_dropdown_context">
+      <li class="header"> you have {{message_arr.length}} notification</li>
+      <li>
+        <div>aaa
+        </div>
+      </li>
+      <li class="footer" *ngIf="message_arr.length > 10">
+        view all
+      </li>
+    </ul>
+  </div>
+</div>
