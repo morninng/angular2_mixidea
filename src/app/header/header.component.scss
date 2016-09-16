@@ -186,10 +186,8 @@ $below_header_height: 35px;
 
 
 #below_header_links{
-
     background-color:#E6E6FA;
     height:$below_header_height;
-
     @media #{$own_large} {
         display:none;
     }
@@ -199,7 +197,6 @@ $below_header_height: 35px;
     .menu_icon{
         text-align:center;
     }
-
 
     .header_links{
         flex:1;
@@ -216,7 +213,7 @@ $below_header_height: 35px;
                 &:hover{
                     background-color:#E0FFFF;
                 }
-
+                
             }
             .active{
                 background-color:#AFEEEE;
@@ -225,11 +222,9 @@ $below_header_height: 35px;
         .below_header_link{
             color:black;
         }
-
     }
-
-    
 }
+
 
 
 

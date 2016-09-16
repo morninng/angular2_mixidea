@@ -20,16 +20,16 @@ const firebaseAuthConfig = {
     provider: AuthProviders.Facebook,
     method: AuthMethods.Popup
   }
-
-
-
+  
+  
+  
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { UserauthService} from './shared/userauth.service';
 import { NotificationHeaderComponent } from './header/notification-header/notification-header.component';
 import { MessageHeaderComponent } from './header/message-header/message-header.component';
 
-import { AlertModule, DatepickerModule, ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 import {  ViewContainerRef } from '@angular/core';
 import { EventlistLayoutComponent } from './event/eventlist-layout/eventlist-layout.component';
@@ -39,6 +39,7 @@ import { HorizontalEventtypeMobileComponent } from './event/horizontal-eventtype
 import { AdvertisingColumnComponent } from './event/advertising-column/advertising-column.component';
 import { ArticlelistLayoutComponent } from './article/articlelist-layout/articlelist-layout.component';
 import { LoginModalComponent } from './modal/login-modal/login-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -60,13 +61,9 @@ import { LoginModalComponent } from './modal/login-modal/login-modal.component';
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     ModalModule,
-    AlertModule,
-    DatepickerModule,
     routing
   ],
-  providers: [UserauthService, ViewContainerRef, appRoutingProviders],
+  providers: [UserauthService,appRoutingProviders],
   bootstrap: [AppComponent]
 })
-
 export class AppModule { }
-
