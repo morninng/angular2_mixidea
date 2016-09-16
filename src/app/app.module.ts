@@ -39,6 +39,7 @@ import { HorizontalEventtypeMobileComponent } from './event/horizontal-eventtype
 import { AdvertisingColumnComponent } from './event/advertising-column/advertising-column.component';
 import { ArticlelistLayoutComponent } from './article/articlelist-layout/articlelist-layout.component';
 import { LoginModalComponent } from './modal/login-modal/login-modal.component';
+import { MobileLeftMenuComponent } from './header/mobile-left-menu/mobile-left-menu.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { LoginModalComponent } from './modal/login-modal/login-modal.component';
     HorizontalEventtypeMobileComponent,
     AdvertisingColumnComponent,
     ArticlelistLayoutComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    MobileLeftMenuComponent
   ],
   imports: [
     BrowserModule,

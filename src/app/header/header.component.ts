@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   notification_arr = [];
   message_arr = [];
+  mobile_menu_oepn = false;
 
   own_user :User =  { loggedIn:false,full_name:"",short_name:"",pict_src:""};
 
@@ -30,6 +31,12 @@ export class HeaderComponent implements OnInit {
 
   show_login_modal(){
     this.user_auth.open_login_modal();
+  }
+
+
+  open_mobile_navigation(){
+    console.log("open_mobile_navigation");
+    this.mobile_menu_oepn = !this.mobile_menu_oepn;
   }
 
 }

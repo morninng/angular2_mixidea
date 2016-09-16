@@ -65,7 +65,7 @@
 
   <div class="menu_icon">
     <button type="button" class="btn btn-default" aria-label="Left Align">
-      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" onclick="open_mobile_navigation"></span>
+      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" (click)="open_mobile_navigation()"></span>
     </button>
   </div>
 
@@ -78,4 +78,10 @@
   </div>
 </div>
 
-<div id="mobile_left_menu"></div>
+<div id="mobile_left_menu">
+
+  <app-mobile-left-menu [mobile_menu_oepn]="mobile_menu_oepn"></app-mobile-left-menu>
+
+</div>
+
+

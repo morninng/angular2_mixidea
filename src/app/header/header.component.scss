@@ -225,6 +225,16 @@ $below_header_height: 35px;
     }
 }
 
+#mobile_left_menu{
+    @media #{$own_large} {
+        display:none;
+    }
+    @media #{$own_small}{
+        display:block;
+        index:200px
+    }    
+}
+
 
 
 

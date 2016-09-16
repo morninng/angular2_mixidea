@@ -29,7 +29,7 @@ export class NotificationHeaderComponent implements OnInit {
     if (!this._eref.nativeElement.contains(event.target)){
       this.is_open = false;
     }
-
   }
+
 
 }
