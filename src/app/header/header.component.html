@@ -14,13 +14,13 @@
      <div class="header_left">
        <ul class="header_left_main_nav">
         <li>
-          <a class="my_nav_link header_left_main_pri" routerLink="/eventlist" routerLinkActive="active">Event List</a>
+          <a class="my_nav_link header_link_large" routerLink="/eventlist" routerLinkActive="active">Event List</a>
         </li>
         <li>
-          <a class="my_nav_link header_left_main_pri" routerLink="/articlelist" routerLinkActive="active">Article List</a>
+          <a class="my_nav_link header_link_large" routerLink="/articlelist" routerLinkActive="active">Article List</a>
         </li>
         <li>
-          <a class="my_nav_link header_left_main_pri" routerLink="#" routerLinkActive="active">My Page</a>
+          <a class="my_nav_link header_link_large" routerLink="#" routerLinkActive="active">My Page</a>
         </li>
        </ul>
      </div>
@@ -60,3 +60,20 @@
 </header>
 
 <div id="behind_header_blank"></div>
+
+<div id="below_header_links">
+
+  <div class="menu_icon">
+    <button type="button" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true" onclick="open_mobile_navigation"></span>
+    </button>
+  </div>
+
+  <div class="header_links">
+    <ul>
+    <li class="below_header_link" routerLink="/eventlist" routerLinkActive="active">Event</li>
+    <li class="below_header_link" routerLink="/articlelist" routerLinkActive="active">Article</li>
+    <li class="below_header_link" routerLink="#" routerLinkActive="active">My Page</li>
+    </ul>
+  </div>
+</div>
