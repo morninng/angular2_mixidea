@@ -1,14 +1,26 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,
+   trigger, state, style, transition, animate } from '@angular/core';
 
 @Component({
   selector: 'app-mobile-left-menu',
   templateUrl: './mobile-left-menu.component.html',
-  styleUrls: ['./mobile-left-menu.component.scss']
+  styleUrls: ['./mobile-left-menu.component.scss'],
+  animations: [
+    trigger("test_animate_state",[
+      state("active", style({width:"0px", backgroundColor:"#ff0000"})),
+      state("inactive",style({width:"100px", backgroundColor:"#0000ff"})),
+      transition("inactive=>active", animate("500ms ease-in")),
+      transition("active=>inactive", animate("500ms ease-out"))
+    ])
+
+  ]  
 })
+
 export class MobileLeftMenuComponent implements OnInit {
 
 
   show_mobile_menu = false;
+  is_open = "inactive";
 
   constructor() { }
 
@@ -20,6 +32,12 @@ export class MobileLeftMenuComponent implements OnInit {
   @Input()
   set mobile_menu_oepn(mobile_menu_oepn: boolean) {
     this.show_mobile_menu = mobile_menu_oepn;
+    if(mobile_menu_oepn){
+      this.is_open = "active";
+    }else{
+      this.is_open = "inactive";
+    }
+    console.log(this.is_open );
 
   }
 
