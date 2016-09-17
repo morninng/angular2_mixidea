@@ -77,10 +77,13 @@
     </ul>
   </div>
 </div>
-<br><br><br><br><br>
-<div id="mobile_left_menu">
 
+<div id="mobile_left_menu">
+ <!--
   <app-mobile-left-menu [mobile_menu_oepn]="mobile_menu_oepn"></app-mobile-left-menu>
+-->
+  <app-mobile-left-menu *ngIf="mobile_menu_oepn"></app-mobile-left-menu>
+
 
 </div>
 
