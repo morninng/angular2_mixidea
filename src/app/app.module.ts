@@ -31,16 +31,13 @@ import { MessageHeaderComponent } from './header/message-header/message-header.c
 
 import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 
-import {  ViewContainerRef } from '@angular/core';
-import { EventlistLayoutComponent } from './event/eventlist-layout/eventlist-layout.component';
-import { VerticalEventchoiceComponent } from './event/vertical-eventchoice/vertical-eventchoice.component';
-import { HorizontalEventtypePcComponent } from './event/horizontal-eventtype-pc/horizontal-eventtype-pc.component';
-import { HorizontalEventtypeMobileComponent } from './event/horizontal-eventtype-mobile/horizontal-eventtype-mobile.component';
-import { AdvertisingColumnComponent } from './event/advertising-column/advertising-column.component';
+
+
 import { ArticlelistLayoutComponent } from './article/articlelist-layout/articlelist-layout.component';
 import { LoginModalComponent } from './modal/login-modal/login-modal.component';
 import { MobileLeftMenuComponent } from './header/mobile-left-menu/mobile-left-menu.component';
 
+import {EventModule} from './event/event.module.ts'
 
 @NgModule({
   declarations: [
@@ -48,11 +45,6 @@ import { MobileLeftMenuComponent } from './header/mobile-left-menu/mobile-left-m
     HeaderComponent,
     NotificationHeaderComponent,
     MessageHeaderComponent,
-    EventlistLayoutComponent,
-    VerticalEventchoiceComponent,
-    HorizontalEventtypePcComponent,
-    HorizontalEventtypeMobileComponent,
-    AdvertisingColumnComponent,
     ArticlelistLayoutComponent,
     LoginModalComponent,
     MobileLeftMenuComponent
@@ -63,7 +55,8 @@ import { MobileLeftMenuComponent } from './header/mobile-left-menu/mobile-left-m
     HttpModule,
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     ModalModule,
-    routing
+    routing,
+    EventModule
   ],
   providers: [UserauthService,appRoutingProviders],
   bootstrap: [AppComponent]
