@@ -4,6 +4,17 @@
 4<br>
 5<br>
 6<br>
+
+  <ul>
+    <li *ngFor="let event of event_list">
+      {{event.name}} - {{event.context}}
+    </li>
+  </ul>
+
+<div *ngIf="own_user.loggedIn">
+  {{own_user.full_name}}
+</div>
+
 <p>
   eventlist-layout works!
 </p>

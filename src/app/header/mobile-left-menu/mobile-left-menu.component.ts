@@ -32,17 +32,4 @@ export class MobileLeftMenuComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
-/*
-  @Input()
-  set mobile_menu_oepn(mobile_menu_oepn: boolean) {
-    this.show_mobile_menu = mobile_menu_oepn;
-    if(mobile_menu_oepn){
-      this.is_open = "active";
-    }else{
-      this.is_open = "inactive";
-    }
-    console.log(this.is_open );
-  }
-*/
-
 }

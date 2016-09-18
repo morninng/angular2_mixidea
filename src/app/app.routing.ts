@@ -13,6 +13,14 @@ const appRoutes: Routes = [
   {
     path: 'articlelist',
     component: ArticlelistLayoutComponent
+  },
+  {
+    path: '',
+    component: ArticlelistLayoutComponent
+  },
+  {
+    path: '**',
+    component: ArticlelistLayoutComponent
   }
 ];
 

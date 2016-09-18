@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.user_auth.own_user_subject$.subscribe(
       (user_data : User)=>{
+        console.log("own user subject is called in header component")
         this.own_user = user_data;
       }
     )
