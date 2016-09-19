@@ -34,7 +34,6 @@ export class HeaderComponent implements OnInit {
     this.user_auth.open_login_modal();
   }
 
-
   open_mobile_navigation(){
     console.log("open_mobile_navigation");
     this.mobile_menu_oepn = !this.mobile_menu_oepn;

@@ -19,15 +19,8 @@ export class EventlistLayoutComponent implements OnInit {
     {name:"aaa", context:"fff"},
   ]
 
-
   ngOnInit() {
     console.log("event list component initialized");
-      this.user_auth.own_user_subject$.subscribe(
-      (user_data : User)=>{
-        console.log("own user subject is called in eventlist component")
-        this.own_user = user_data;
-      }
-    )
 
   }
 

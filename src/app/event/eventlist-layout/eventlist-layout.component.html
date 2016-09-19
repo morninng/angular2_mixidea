@@ -11,10 +11,13 @@
     </li>
   </ul>
 
-<div *ngIf="own_user.loggedIn">
-  {{own_user.full_name}}
-</div>
+--subject
 
+
+<div *ngIf="(user_auth.own_user_subject$ | async).loggedIn">
+  {{(user_auth.own_user_subject$ | async).full_name}}
+
+</div>
 <p>
   eventlist-layout works!
 </p>
