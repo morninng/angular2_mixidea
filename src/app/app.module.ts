@@ -4,28 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AngularFireModule, AuthProviders, AuthMethods, } from 'angularfire2';
-
 import { routing, appRoutingProviders } from './app.routing';
 
 
-const firebaseConfig = {
-    apiKey: "AIzaSyBp_ZDqoPygbPs7jMclrBSJ3a99t1Yvr1k",
-    authDomain: "mixidea-91a20.firebaseapp.com",
-    databaseURL: "https://mixidea-91a20.firebaseio.com",
-    storageBucket: ""
-  };
-
-const firebaseAuthConfig = {
-    provider: AuthProviders.Facebook,
-    method: AuthMethods.Popup
-  }
-  
   
   
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-import { UserauthService} from './shared/userauth.service';
 import { NotificationHeaderComponent } from './header/notification-header/notification-header.component';
 import { MessageHeaderComponent } from './header/message-header/message-header.component';
 
@@ -37,28 +22,33 @@ import { ArticlelistLayoutComponent } from './article/articlelist-layout/article
 import { LoginModalComponent } from './modal/login-modal/login-modal.component';
 import { MobileLeftMenuComponent } from './header/mobile-left-menu/mobile-left-menu.component';
 
-import {EventModule} from './event/event.module.ts'
+import {EventModule} from './event/event.module.ts';
+
+
+import {SharedModule} from './shared/shared.module';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
+    MobileLeftMenuComponent,
     NotificationHeaderComponent,
     MessageHeaderComponent,
     ArticlelistLayoutComponent,
     LoginModalComponent,
-    MobileLeftMenuComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
     ModalModule,
     routing,
-    EventModule
+    EventModule,
+    SharedModule.forRoot()
   ],
-  providers: [UserauthService,appRoutingProviders],
+  providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

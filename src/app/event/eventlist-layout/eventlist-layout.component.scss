@@ -1,0 +1,72 @@
+$header_height: 55px;
+$left_icon_width: 55px;
+
+$small:  "only screen and (max-width:640px)";
+$middle: "only screen and (min-width:641px) and (max-width:959px)";
+$large:  "only screen and (min-width:960px)";
+
+$own_small:  "only screen and (max-width:639px)";
+$own_large: "only screen and (min-width:640px)";
+
+
+$pc_right_column_width: 200px;
+$pc_center_column_width: 600px;
+$pc_left_column_width: 300px;
+
+$pc_width:$pc_right_column_width + $pc_center_column_width + $pc_left_column_width;
+
+
+
+    
+.pc_event_container{
+
+    @media #{$own_large} {
+        width:$pc_width;
+        overflow-x: scroll;
+    }
+    @media #{$own_small} {
+        display:none
+    }
+}
+
+.mobile_event_container{
+
+
+    @media #{$own_large} {
+        display:none
+    }
+    @media #{$own_small} {
+        width:100%;
+    }
+}
+
+
+
+.event_left{
+    @media #{$own_large} {
+        width:$pc_left_column_width;
+        display:table-cell;
+    }
+    @media #{$own_small} {
+        display:none
+    }
+}
+.event_center{
+    @media #{$own_large} {
+        min-width:600px;
+        display:table-cell;
+    }
+    @media #{$own_small}{
+        width:100%;
+    }
+}
+
+.event_right{
+    @media #{$own_large} {
+        width:300px;
+        display:table-cell;
+    }
+    @media #{$own_small} {
+        display:none
+    }
+}

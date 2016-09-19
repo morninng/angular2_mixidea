@@ -7,6 +7,7 @@ import {BehaviorSubject, Subject } from 'rxjs/Rx'
 export class UserauthService {
 
   constructor(public af: AngularFire) {
+    console.log("user auth service initialized")
 
 /* this code is still not working, but it will come soon.*/ 
     af.auth.subscribe((auth) => {

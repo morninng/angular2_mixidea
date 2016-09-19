@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { AdvertisingColumnComponent } from './advertising-column.component';
+import { LeftColumnMenuPcComponent } from './left-column-menu-pc.component';
 
-describe('Component: AdvertisingColumn', () => {
+describe('Component: LeftColumnMenuPc', () => {
   it('should create an instance', () => {
-    let component = new AdvertisingColumnComponent();
+    let component = new LeftColumnMenuPcComponent();
     expect(component).toBeTruthy();
   });
 });

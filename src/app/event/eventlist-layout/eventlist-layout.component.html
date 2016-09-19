@@ -1,62 +1,36 @@
-1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>
-
-  <ul>
-    <li *ngFor="let event of event_list">
-      {{event.name}} - {{event.context}}
-    </li>
-  </ul>
-
---subject
 
 
-<div *ngIf="(user_auth.own_user_subject$ | async).loggedIn">
-  {{(user_auth.own_user_subject$ | async).full_name}}
-
+<div id="event_list_top" class="container">
+	<div class="col-xs-8 col-sm-9 col-md-10 col-lg-11">
+	</div>
+	<div class="col-xs-4 col-sm-3 col-md-2 col-lg-1">
+		<input type="button" ng-click="open_create_event()" class="btn btn-primary" value = "create event">
+	</div>
 </div>
-<p>
-  eventlist-layout works!
-</p>
-1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>
 
+
+
+
+<div class="pc_event_container">
+	<div class="event_left">
+    <app-left-column-menu-pc></app-left-column-menu-pc>
+  </div>
+
+	<div class="event_center"  >
+    <app-eventlist></app-eventlist>
+  </div>
+	<div class="event_right" >
+    <app-right-column-ad></app-right-column-ad>
+  </div>
+</div>
+
+
+<div class="mobile_event_container">
+
+	<div class="event_center" >
+    <app-eventlist></app-eventlist>
+  </div>
+  
+</div>
 
 

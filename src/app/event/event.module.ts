@@ -1,25 +1,23 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 
+import {EventRouting} from './event.routing';
 import { EventlistLayoutComponent } from './eventlist-layout/eventlist-layout.component';
-import { VerticalEventchoiceComponent } from './vertical-eventchoice/vertical-eventchoice.component';
-import { HorizontalEventtypePcComponent } from './horizontal-eventtype-pc/horizontal-eventtype-pc.component';
-import { HorizontalEventtypeMobileComponent } from './horizontal-eventtype-mobile/horizontal-eventtype-mobile.component';
-import { AdvertisingColumnComponent } from './advertising-column/advertising-column.component';
+import { EventlistComponent } from './eventlist/eventlist.component'
 
-import {EventRouting} from './event.routing'
+
+import {SharedModule} from './../shared/shared.module';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    EventRouting
+    EventRouting,
+    SharedModule.forRoot()
   ],
   declarations: [
     EventlistLayoutComponent,
-    VerticalEventchoiceComponent,
-    HorizontalEventtypePcComponent,
-    HorizontalEventtypeMobileComponent,
-    AdvertisingColumnComponent,
+    EventlistComponent,
   ],
   providers: []
 })
