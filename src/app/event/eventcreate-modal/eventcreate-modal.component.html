@@ -1,24 +1,44 @@
 
-
-
-
 <div bsModal #event_create_modal="bs-modal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="EventCreateModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
 
-
-        <h4 class="modal-title">aaaa</h4>
-
-
+        <h4 class="modal-title">Create Debate Event</h4>
 
       </div>
       <div class="modal-body">
+        <div class="input_area" [hidden]="submitted">
+          <form #event_form="ngForm"  (ngSubmit)="onSubmit()" autocomplete="off" novalidate>
 
 
-        uuuuuuuuuuuuuuuuu
+            <input name="title" type="text" placeholder="event title" [(ngModel)]="event_obj.title" required  >
+
+            <div class="debug">
+              <p>form_value</p>
+              {{event_obj | json}}
+            </div>
+
+            <p>
+              <input class="btn btn-block btn-success" [disabled]="!event_form.valid" type="submit" value="submit" >
+            </p>
+          </form>
+
+        </div>
+        <div class="confirm_area" [hidden]="!submitted">
+          <div>
+            title: {{event_obj.title}}
+
+          </div>
 
 
+
+            <p>
+              <input  type="button" (click)="fix_data()" value="fix" >
+              <input  type="button" (click)="save_data()" value="save" >
+            </p>
+
+        </div>
       </div>
     </div>
   </div>

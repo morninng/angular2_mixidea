@@ -1,5 +1,6 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
+import {FormsModule} from '@angular/forms';
 
 import {EventRouting} from './event.routing';
 import { EventlistLayoutComponent } from './eventlist-layout/eventlist-layout.component';
@@ -18,6 +19,7 @@ import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
     CommonModule,
     EventRouting,
     ModalModule,
+    FormsModule,
     SharedModule.forRoot()
   ],
   declarations: [
