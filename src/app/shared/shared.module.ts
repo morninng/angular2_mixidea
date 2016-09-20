@@ -33,7 +33,8 @@ const firebaseAuthConfig = {
   declarations: [
     LeftColumnMenuMobileComponent,
     LeftColumnMenuPcComponent,
-    RightColumnAdComponent],
+    RightColumnAdComponent,
+    ],
   exports:  [LeftColumnMenuMobileComponent,
    LeftColumnMenuPcComponent,
     RightColumnAdComponent
