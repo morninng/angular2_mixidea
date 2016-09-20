@@ -11,7 +11,7 @@ import {SharedModule} from './../shared/shared.module';
 import { EventcreateModalComponent } from './eventcreate-modal/eventcreate-modal.component';
 
 
-import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { ModalModule,DatepickerModule, TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 
 @NgModule({
@@ -19,6 +19,8 @@ import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
     CommonModule,
     EventRouting,
     ModalModule,
+    DatepickerModule,
+    TimepickerModule,
     FormsModule,
     SharedModule.forRoot()
   ],

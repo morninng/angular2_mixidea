@@ -1,7 +1,8 @@
 import { Component, OnInit , ViewChild, Input} from '@angular/core';
 
 import { ModalDirective } from './../../../../node_modules/ng2-bootstrap/components/modal/modal.component';
-
+import {DatepickerModule} from './../../../../node_modules/ng2-bootstrap/components/datepicker';
+import {TimepickerModule} from './../../../../node_modules/ng2-bootstrap/components/timepicker';
 import {Event} from './../event'
 import {FormsModule} from '@angular/forms';
 

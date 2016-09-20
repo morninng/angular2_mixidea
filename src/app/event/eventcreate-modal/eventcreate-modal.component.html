@@ -1,6 +1,6 @@
 
 <div bsModal #event_create_modal="bs-modal"  class="modal fade" tabindex="-1" role="dialog" aria-labelledby="EventCreateModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
 
@@ -12,7 +12,14 @@
           <form #event_form="ngForm"  (ngSubmit)="onSubmit()" autocomplete="off" novalidate>
 
 
+            title of the event
             <input name="title" type="text" placeholder="event title" [(ngModel)]="event_obj.title" required  >
+            date of the event
+            <datepicker name="date" [(ngModel)]="event_obj.event_date" [minDate]="event_obj.minDate" [showWeeks]="true"></datepicker>
+
+            <timepicker name="time" [(ngModel)]="event_obj.event_time" [hourStep]="1"  [minuteStep]="15" ></timepicker>
+
+
 
             <div class="debug">
               <p>form_value</p>
