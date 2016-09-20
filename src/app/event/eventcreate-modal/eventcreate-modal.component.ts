@@ -30,6 +30,7 @@ export class EventcreateModalComponent implements OnInit {
 
   onSubmit(){
     this.submitted = true;
+    this.event_obj.compute_date_time()
   }
 
   close_modal(){

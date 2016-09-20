@@ -11,15 +11,36 @@
         <div class="input_area" [hidden]="submitted">
           <form #event_form="ngForm"  (ngSubmit)="onSubmit()" autocomplete="off" novalidate>
 
+            <div class="event_data_container">
 
-            title of the event
-            <input name="title" type="text" placeholder="event title" [(ngModel)]="event_obj.title" required  >
-            date of the event
-            <datepicker name="date" [(ngModel)]="event_obj.event_date" [minDate]="event_obj.minDate" [showWeeks]="true"></datepicker>
+              <div class="event_data_row">
+                <div class="event_data_name">
+                    title
+                </div>
+                <div class="event_data_input">
+                  <input name="title" class="title_input" type="text" placeholder="event title" [(ngModel)]="event_obj.title" required  >
+                </div>
+              </div>
 
-            <timepicker name="time" [(ngModel)]="event_obj.event_time" [hourStep]="1"  [minuteStep]="15" ></timepicker>
+              <div class="event_data_row">
+                <div class="event_data_name">
+                  date
+                </div>
+                <div class="event_data_input">
+                  <datepicker name="date" [(ngModel)]="event_obj.event_date" [minDate]="event_obj.minDate" [showWeeks]="true"></datepicker>
+                </div>
+              </div>
 
+              <div class="event_data_row">
+                <div class="event_data_name">
+                  time
+                </div>
+                <div class="event_data_input">
+                  <timepicker name="time" [(ngModel)]="event_obj.event_time" [hourStep]="1"  [minuteStep]="15" ></timepicker>
+                </div>
+              </div>
 
+            </div>
 
             <div class="debug">
               <p>form_value</p>
@@ -33,13 +54,47 @@
 
         </div>
         <div class="confirm_area" [hidden]="!submitted">
-          <div>
-            title: {{event_obj.title}}
-
-          </div>
 
 
 
+            <div class="event_data_container">
+              <div class="event_data_row">
+                <div class="event_data_name">
+                    title
+                </div>
+                <div class="event_data_input">
+                  {{event_obj.title}}
+                </div>
+              </div>
+
+              <div class="event_data_row">
+                <div class="event_data_name">
+                  date and time
+                </div>
+                <div class="event_data_input">
+                  {{event_obj.event_date_time }}
+                </div>
+              </div>
+
+<!--
+              <div class="event_data_row">
+                <div class="event_data_name">
+                  date
+                </div>
+                <div class="event_data_input">
+                  {{event_obj.event_date}}
+                </div>
+              </div>
+
+              <div class="event_data_row">
+                <div class="event_data_name">
+                  time
+                </div>
+                <div class="event_data_input">
+                  {{event_obj.event_time}}
+                </div>
+              </div>
+-->
             <p>
               <input  type="button" (click)="fix_data()" value="fix" >
               <input  type="button" (click)="save_data()" value="save" >
