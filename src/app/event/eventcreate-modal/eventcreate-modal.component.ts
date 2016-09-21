@@ -5,6 +5,9 @@ import {DatepickerModule} from './../../../../node_modules/ng2-bootstrap/compone
 import {TimepickerModule} from './../../../../node_modules/ng2-bootstrap/components/timepicker';
 import {Event} from './../event'
 import {FormsModule} from '@angular/forms';
+import {AngularFire} from 'angularfire2';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-eventcreate-modal',
@@ -16,7 +19,7 @@ export class EventcreateModalComponent implements OnInit {
   submitted = false;
   event_obj = new Event();
 
-  constructor() { }
+  constructor(private af: AngularFire, private router: Router) { }
 
   @ViewChild(ModalDirective) event_create_modal:ModalDirective;
 
@@ -42,6 +45,23 @@ export class EventcreateModalComponent implements OnInit {
   }
 
   save_data(){
+    const saved_data = {
+      title: this.event_obj.title
+    };
+    const event_items = this.af.database.list('/event_related/event');
+    const promise = event_items.push(saved_data);
+    promise
+      .then(()=>{
+          alert("saving data success");
+          this.event_create_modal.hide();
+          // goto event page;
+          this.router.navigate(['/articlelist']);
+        })
+      .catch((err)=>{
+        console.log("error to save data to firebase", err)
+        alert("fail to save data ");
+      })
+
   }
 
   finsh_event_creation(){    
