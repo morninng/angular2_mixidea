@@ -1,4 +1,5 @@
 import { Component, OnInit , ViewChild, Input} from '@angular/core';
+import { UserauthService} from './../../shared/userauth.service';
 
 import { ModalDirective } from './../../../../node_modules/ng2-bootstrap/components/modal/modal.component';
 import {DatepickerModule} from './../../../../node_modules/ng2-bootstrap/components/datepicker';
@@ -19,16 +20,22 @@ export class EventcreateModalComponent implements OnInit {
   submitted = false;
   event_obj = new Event();
 
-  constructor(private af: AngularFire, private router: Router) { }
+  constructor(private af: AngularFire, private router: Router, private user_auth : UserauthService) { }
 
   @ViewChild(ModalDirective) event_create_modal:ModalDirective;
 
   ngOnInit() {
   }
 
+
   open_modal(){
-    console.log("open modal");
-    this.event_create_modal.show();
+    if(!this.user_auth.own_user.loggedIn){
+      alert("you need to login to create a game");
+      this.user_auth.open_login_modal();
+    }else{
+      console.log("open modal");
+      this.event_create_modal.show();
+    }
   }
 
   onSubmit(){
@@ -46,7 +53,9 @@ export class EventcreateModalComponent implements OnInit {
 
   save_data(){
     const saved_data = {
-      title: this.event_obj.title
+      title: this.event_obj.title,
+      date_time: this.event_obj.event_date_time.getTime(),
+      created_by: this.user_auth.own_user_id
     };
     const event_items = this.af.database.list('/event_related/event');
     const promise = event_items.push(saved_data);
