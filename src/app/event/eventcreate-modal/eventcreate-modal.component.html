@@ -55,9 +55,8 @@
         </div>
         <div class="confirm_area" [hidden]="!submitted">
 
+           <div class="event_data_container">
 
-
-            <div class="event_data_container">
               <div class="event_data_row">
                 <div class="event_data_name">
                     title
@@ -72,35 +71,16 @@
                   date and time
                 </div>
                 <div class="event_data_input">
-                  {{event_obj.event_date_time }}
+                  {{event_obj.event_date_time | date:'y MMMM dd(EEEE) - hh:mm   - Z' }}
                 </div>
               </div>
 
-<!--
-              <div class="event_data_row">
-                <div class="event_data_name">
-                  date
-                </div>
-                <div class="event_data_input">
-                  {{event_obj.event_date}}
-                </div>
-              </div>
+              <p>
+                <input  type="button" (click)="fix_data()" value="fix" >
+                <input  type="button" (click)="save_data()" value="save" >
+              </p>
 
-              <div class="event_data_row">
-                <div class="event_data_name">
-                  time
-                </div>
-                <div class="event_data_input">
-                  {{event_obj.event_time}}
-                </div>
-              </div>
--->
-            <p>
-              <input  type="button" (click)="fix_data()" value="fix" >
-              <input  type="button" (click)="save_data()" value="save" >
-            </p>
-
-        </div>
+           </div>
       </div>
     </div>
   </div>

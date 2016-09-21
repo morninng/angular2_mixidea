@@ -26,7 +26,6 @@ export class Event {
         const hour = this.event_time.getHours();
         const minutes = this.event_time.getMinutes();
         this.event_date_time = new Date(year, month, day, hour, minutes);
-    
     }
 
 }
