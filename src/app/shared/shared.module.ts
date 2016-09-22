@@ -3,7 +3,6 @@
 
 import { NgModule, ModuleWithProviders }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
-import {LeftColumnMenuMobileComponent} from './left-column-menu-mobile/left-column-menu-mobile.component'
 import {LeftColumnMenuPcComponent} from './left-column-menu-pc/left-column-menu-pc.component';
 import {RightColumnAdComponent} from './right-column-ad/right-column-ad.component'
 
@@ -31,11 +30,10 @@ const firebaseAuthConfig = {
     AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
   ],
   declarations: [
-    LeftColumnMenuMobileComponent,
     LeftColumnMenuPcComponent,
     RightColumnAdComponent,
     ],
-  exports:  [LeftColumnMenuMobileComponent,
+  exports:  [
    LeftColumnMenuPcComponent,
     RightColumnAdComponent
     ]

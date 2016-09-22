@@ -1,6 +1,14 @@
+
+export const ONLINE_DEBATE_LIVEVIDEO = 'ONLINE_DEBATE_LIVEVIDEO';
+export const ONLINE_DEBATE_WRITTEN = 'ONLINE_DEBATE_WRITTEN';
+export const ONLINE_TOURNAMENT_LIVEVIDEO = 'ONLINE_TOURNAMENT_LIVEVIDEO';
+export const ONLINE_TOURNAMENT_WRITTEN = 'ONLINE_TOURNAMENT_WRITTEN';
+
+
 export class Event {
 
     id:string;
+    type:string = ONLINE_DEBATE_WRITTEN;
     description: string;
     title : string
     minDate :Date;

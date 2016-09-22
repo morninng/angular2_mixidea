@@ -10,7 +10,25 @@
 
 <ul>
   <li *ngFor="let item of EventList_observable | async">
-    {{item.title}}
+    {{item.type}} {{item.title}}
+    <span [ngSwitch]="item.type">
+      <span *ngSwitchCase="ONLINE_DEBATE_LIVEVIDEO">
+        live video {{item.title}}
+        <app-eachlist-online-debate-livevideo></app-eachlist-online-debate-livevideo>
+      </span>
+      <span *ngSwitchCase="ONLINE_DEBATE_WRITTEN">
+        debate written {{item.title}}
+        <app-eachlist-online-debate-written></app-eachlist-online-debate-written>
+      </span>
+      <span *ngSwitchCase="ONLINE_TOURNAMENT_LIVEVIDEO">
+        live video tournament {{item.title}}
+        <app-eachlist-online-tournament-livevideo></app-eachlist-online-tournament-livevideo>
+      </span>
+      <span *ngSwitchCase="ONLINE_TOURNAMENT_WRITTEN">
+        written tournament {{item.title}}
+        <app-eachlist-online-tournament-written></app-eachlist-online-tournament-written>
+      </span>
+    </span>
   </li>
 </ul>
 
@@ -19,37 +37,3 @@
 3<br>
 4<br>
 5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>1<br>
-2<br>
-3<br>
-4<br>
-5<br>
-6<br>
-
-
-

@@ -4,7 +4,7 @@ import { UserauthService} from './../../shared/userauth.service';
 import { ModalDirective } from './../../../../node_modules/ng2-bootstrap/components/modal/modal.component';
 import {DatepickerModule} from './../../../../node_modules/ng2-bootstrap/components/datepicker';
 import {TimepickerModule} from './../../../../node_modules/ng2-bootstrap/components/timepicker';
-import {Event} from './../event'
+import {Event, ONLINE_DEBATE_LIVEVIDEO, ONLINE_DEBATE_WRITTEN, ONLINE_TOURNAMENT_LIVEVIDEO, ONLINE_TOURNAMENT_WRITTEN} from './../event'
 import {FormsModule} from '@angular/forms';
 import {AngularFire} from 'angularfire2';
 import { Router } from '@angular/router';
@@ -52,14 +52,36 @@ export class EventcreateModalComponent implements OnInit {
   }
 
   save_data(){
-    const saved_data = {
-      title: this.event_obj.title,
-      date_time_start: this.event_obj.event_date_time_start,
-      date_time_finish: this.event_obj.event_date_time_finish,
-      created_by: this.user_auth.own_user_id
-    };
+
+    let event_save_data = null;
+
+    switch(this.event_obj.type){
+     case ONLINE_DEBATE_LIVEVIDEO :
+      //will be implemented
+     break;
+     case  ONLINE_DEBATE_WRITTEN :
+      event_save_data = {
+        type: this.event_obj.type,
+        title: this.event_obj.title,
+        date_time_start: this.event_obj.event_date_time_start,
+        date_time_finish: this.event_obj.event_date_time_finish,
+        duration: this.event_obj.duration,
+        created_by: this.user_auth.own_user_id
+      };
+     break;
+     case  ONLINE_TOURNAMENT_LIVEVIDEO :
+      //will be implemented
+     break;
+     case ONLINE_TOURNAMENT_WRITTEN :
+      //will be implemented
+     break;
+     default:
+      return;
+    }
+
+
     const event_items = this.af.database.list('/event_related/event');
-    const promise = event_items.push(saved_data);
+    const promise = event_items.push(event_save_data);
     promise
       .then(()=>{
           alert("saving data success");

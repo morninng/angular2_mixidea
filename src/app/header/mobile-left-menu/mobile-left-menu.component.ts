@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,
+import { Component, OnInit, Input,OnDestroy,
    trigger, state, style, transition, animate } from '@angular/core';
 
 @Component({
@@ -26,10 +26,15 @@ import { Component, OnInit, Input,
   ]
 })
 
-export class MobileLeftMenuComponent implements OnInit {
+export class MobileLeftMenuComponent implements OnInit,OnDestroy {
   show_mobile_menu = false;
   is_open = "inactive";
-  constructor() { }
+  constructor() {
+    console.log("mobile left menu is called");
+   }
   ngOnInit() {
+  }
+  ngOnDestroy(){
+    console.log("mobile left menu is destroyed.")
   }
 }

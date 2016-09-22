@@ -1,13 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import { ONLINE_DEBATE_LIVEVIDEO, ONLINE_DEBATE_WRITTEN, ONLINE_TOURNAMENT_LIVEVIDEO, ONLINE_TOURNAMENT_WRITTEN}
+   from './../../event'
+
 
 @Component({
   selector: 'app-eventlist',
   templateUrl: './eventlist.component.html',
   styleUrls: ['./eventlist.component.scss']
 })
-export class EventlistComponent implements OnInit {
+export class EventlistComponent implements OnInit, OnDestroy {
 
+  ONLINE_DEBATE_LIVEVIDEO = ONLINE_DEBATE_LIVEVIDEO;
+  ONLINE_DEBATE_WRITTEN = ONLINE_DEBATE_WRITTEN;
+  ONLINE_TOURNAMENT_LIVEVIDEO = ONLINE_TOURNAMENT_LIVEVIDEO;
+  ONLINE_TOURNAMENT_WRITTEN = ONLINE_TOURNAMENT_WRITTEN;
 
   EventList_observable : FirebaseListObservable<any[]>;
   eventlist_subscription
@@ -29,6 +36,11 @@ export class EventlistComponent implements OnInit {
     this.eventlist_subscription 
      = this.EventList_observable.subscribe()
 
+  }
+
+  ngOnDestroy(){
+    console.log("eventlist unsubscribe")
+    this.eventlist_subscription.unsubscribe();
   }
 
 

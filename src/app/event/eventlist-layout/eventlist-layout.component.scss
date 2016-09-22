@@ -17,23 +17,14 @@ $pc_width:$pc_right_column_width + $pc_center_column_width + $pc_left_column_wid
 
 
 
-    
-.pc_event_container{
+
+
+
+.event_container{
 
     @media #{$own_large} {
         width:$pc_width;
         overflow-x: scroll;
-    }
-    @media #{$own_small} {
-        display:none
-    }
-}
-
-.mobile_event_container{
-
-
-    @media #{$own_large} {
-        display:none
     }
     @media #{$own_small} {
         width:100%;
