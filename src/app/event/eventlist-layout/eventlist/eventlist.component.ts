@@ -24,7 +24,8 @@ export class EventlistComponent implements OnInit, OnDestroy {
   ngOnInit() {
 
     const current_time = new Date().getTime();
-
+    console.log("eventlist subscription start");
+    
     this.EventList_observable = 
       this.af.database.list('/event_related/event', {
         query: {
@@ -43,6 +44,10 @@ export class EventlistComponent implements OnInit, OnDestroy {
     this.eventlist_subscription.unsubscribe();
   }
 
+  event_selected(e){
+    console.log(e);
+
+  }
 
 }
 

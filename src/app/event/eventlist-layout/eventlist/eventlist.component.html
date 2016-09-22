@@ -8,24 +8,19 @@
 5<br>
 6<br>
 
-<ul>
+<ul class="eventlist_container">
   <li *ngFor="let item of EventList_observable | async">
-    {{item.type}} {{item.title}}
     <span [ngSwitch]="item.type">
       <span *ngSwitchCase="ONLINE_DEBATE_LIVEVIDEO">
-        live video {{item.title}}
-        <app-eachlist-online-debate-livevideo></app-eachlist-online-debate-livevideo>
+        <app-eachlist-online-debate-livevideo ></app-eachlist-online-debate-livevideo>
       </span>
       <span *ngSwitchCase="ONLINE_DEBATE_WRITTEN">
-        debate written {{item.title}}
-        <app-eachlist-online-debate-written></app-eachlist-online-debate-written>
+        <app-eachlist-online-debate-written [each_event]=item (event_selected)="event_selected($event)" ></app-eachlist-online-debate-written>
       </span>
       <span *ngSwitchCase="ONLINE_TOURNAMENT_LIVEVIDEO">
-        live video tournament {{item.title}}
         <app-eachlist-online-tournament-livevideo></app-eachlist-online-tournament-livevideo>
       </span>
       <span *ngSwitchCase="ONLINE_TOURNAMENT_WRITTEN">
-        written tournament {{item.title}}
         <app-eachlist-online-tournament-written></app-eachlist-online-tournament-written>
       </span>
     </span>

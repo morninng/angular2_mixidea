@@ -21,7 +21,6 @@ $pc_width:$pc_right_column_width + $pc_center_column_width + $pc_left_column_wid
 
 
 .event_container{
-
     @media #{$own_large} {
         width:$pc_width;
         overflow-x: scroll;
