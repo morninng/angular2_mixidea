@@ -18,6 +18,7 @@ import { EachlistOnlineTournamentLivevideoComponent } from './eventlist-layout/e
 import { EachlistOnlineTournamentWrittenComponent } from './eventlist-layout/eventlist/eachlist-online-tournament-written/eachlist-online-tournament-written.component';
 import { EventcontextLayoutOnlinedebateLivevideoComponent } from './event_context/eventcontext-layout-onlinedebate-livevideo/eventcontext-layout-onlinedebate-livevideo.component';
 import { EventcontextLayoutOnlinedebateWrittenComponent } from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
+import { EventcontextOnlinedebateWrittenComponent } from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-onlinedebate-written/eventcontext-onlinedebate-written.component';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { EventcontextLayoutOnlinedebateWrittenComponent } from './event_context/
     EachlistOnlineTournamentWrittenComponent,
     EventcontextLayoutOnlinedebateLivevideoComponent,
     EventcontextLayoutOnlinedebateWrittenComponent,
+    EventcontextOnlinedebateWrittenComponent,
   ],
   providers: []
 })
