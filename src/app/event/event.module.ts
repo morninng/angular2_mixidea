@@ -4,7 +4,7 @@ import {FormsModule} from '@angular/forms';
 
 import {EventRouting} from './event.routing';
 import { EventlistLayoutComponent } from './eventlist-layout/eventlist-layout.component';
-import { EventlistComponent } from './eventlist/eventlist.component'
+import { EventlistComponent } from './eventlist-layout/eventlist/eventlist.component'
 
 
 import {SharedModule} from './../shared/shared.module';
@@ -12,6 +12,10 @@ import { EventcreateModalComponent } from './eventcreate-modal/eventcreate-modal
 
 
 import { ModalModule,DatepickerModule, TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
+import { EachlistOnlineDebateLivevideoComponent } from './eventlist-layout/eventlist/eachlist-online-debate-livevideo/eachlist-online-debate-livevideo.component';
+import { EachlistOnlineDebateWrittenComponent } from './eventlist-layout/eventlist/eachlist-online-debate-written/eachlist-online-debate-written.component';
+import { EachlistOnlineTournamentLivevideoComponent } from './eventlist-layout/eventlist/eachlist-online-tournament-livevideo/eachlist-online-tournament-livevideo.component';
+import { EachlistOnlineTournamentWrittenComponent } from './eventlist-layout/eventlist/eachlist-online-tournament-written/eachlist-online-tournament-written.component';
 
 
 @NgModule({
@@ -28,6 +32,10 @@ import { ModalModule,DatepickerModule, TimepickerModule } from 'ng2-bootstrap/ng
     EventlistLayoutComponent,
     EventlistComponent,
     EventcreateModalComponent,
+    EachlistOnlineDebateLivevideoComponent,
+    EachlistOnlineDebateWrittenComponent,
+    EachlistOnlineTournamentLivevideoComponent,
+    EachlistOnlineTournamentWrittenComponent,
   ],
   providers: []
 })

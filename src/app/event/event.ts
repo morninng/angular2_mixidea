@@ -8,6 +8,9 @@ export class Event {
     event_time : Date;
     duration : number;
     event_date_time : Date;
+    event_date_time_start : number;
+    event_date_time_finish : number;
+    
 
     constructor(
     ){
@@ -26,6 +29,8 @@ export class Event {
         const hour = this.event_time.getHours();
         const minutes = this.event_time.getMinutes();
         this.event_date_time = new Date(year, month, day, hour, minutes);
+        this.event_date_time_start = this.event_date_time.getTime();
+        this.event_date_time_finish =  this.event_date_time_start + this.duration * 1000 * 60 * 60;
     }
 
 }

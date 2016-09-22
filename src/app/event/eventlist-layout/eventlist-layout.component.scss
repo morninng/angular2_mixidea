@@ -9,9 +9,9 @@ $own_small:  "only screen and (max-width:639px)";
 $own_large: "only screen and (min-width:640px)";
 
 
-$pc_right_column_width: 200px;
+$pc_right_column_width: 300px;
 $pc_center_column_width: 600px;
-$pc_left_column_width: 300px;
+$pc_left_column_width: 200px;
 
 $pc_width:$pc_right_column_width + $pc_center_column_width + $pc_left_column_width;
 
@@ -52,6 +52,7 @@ $pc_width:$pc_right_column_width + $pc_center_column_width + $pc_left_column_wid
     }
 }
 .event_center{
+    padding-left:10px;
     @media #{$own_large} {
         min-width:600px;
         display:table-cell;

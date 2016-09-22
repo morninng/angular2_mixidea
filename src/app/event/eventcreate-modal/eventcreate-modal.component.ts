@@ -54,7 +54,8 @@ export class EventcreateModalComponent implements OnInit {
   save_data(){
     const saved_data = {
       title: this.event_obj.title,
-      date_time: this.event_obj.event_date_time.getTime(),
+      date_time_start: this.event_obj.event_date_time_start,
+      date_time_finish: this.event_obj.event_date_time_finish,
       created_by: this.user_auth.own_user_id
     };
     const event_items = this.af.database.list('/event_related/event');
