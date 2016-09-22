@@ -44,7 +44,7 @@ $pc_width:$pc_right_column_width + $pc_center_column_width + $pc_left_column_wid
 .event_center{
     padding-left:10px;
     @media #{$own_large} {
-        min-width:600px;
+        width:$pc_center_column_width;
         display:table-cell;
     }
     @media #{$own_small}{
@@ -54,7 +54,7 @@ $pc_width:$pc_right_column_width + $pc_center_column_width + $pc_left_column_wid
 
 .event_right{
     @media #{$own_large} {
-        width:300px;
+        width:$pc_right_column_width;
         display:table-cell;
     }
     @media #{$own_small} {

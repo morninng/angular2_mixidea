@@ -23,7 +23,6 @@ $pc_width:  $pc_center_column_width + $pc_left_column_width;
 .eventcontext_container{
     @media #{$own_large} {
         width:$pc_width;
-        display:table-row;
         overflow-x: scroll;
     }
     @media #{$own_small} {

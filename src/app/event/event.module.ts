@@ -16,6 +16,8 @@ import { EachlistOnlineDebateLivevideoComponent } from './eventlist-layout/event
 import { EachlistOnlineDebateWrittenComponent } from './eventlist-layout/eventlist/eachlist-online-debate-written/eachlist-online-debate-written.component';
 import { EachlistOnlineTournamentLivevideoComponent } from './eventlist-layout/eventlist/eachlist-online-tournament-livevideo/eachlist-online-tournament-livevideo.component';
 import { EachlistOnlineTournamentWrittenComponent } from './eventlist-layout/eventlist/eachlist-online-tournament-written/eachlist-online-tournament-written.component';
+import { EventcontextLayoutOnlinedebateLivevideoComponent } from './event_context/eventcontext-layout-onlinedebate-livevideo/eventcontext-layout-onlinedebate-livevideo.component';
+import { EventcontextLayoutOnlinedebateWrittenComponent } from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { EachlistOnlineTournamentWrittenComponent } from './eventlist-layout/eve
     EachlistOnlineDebateWrittenComponent,
     EachlistOnlineTournamentLivevideoComponent,
     EachlistOnlineTournamentWrittenComponent,
+    EventcontextLayoutOnlinedebateLivevideoComponent,
+    EventcontextLayoutOnlinedebateWrittenComponent,
   ],
   providers: []
 })

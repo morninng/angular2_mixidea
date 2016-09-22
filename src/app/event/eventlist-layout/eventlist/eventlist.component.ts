@@ -3,6 +3,7 @@ import {AngularFire, FirebaseListObservable} from 'angularfire2';
 import { ONLINE_DEBATE_LIVEVIDEO, ONLINE_DEBATE_WRITTEN, ONLINE_TOURNAMENT_LIVEVIDEO, ONLINE_TOURNAMENT_WRITTEN}
    from './../../event'
 
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-eventlist',
@@ -19,13 +20,12 @@ export class EventlistComponent implements OnInit, OnDestroy {
   EventList_observable : FirebaseListObservable<any[]>;
   eventlist_subscription
   
-  constructor( private af: AngularFire) { }
+  constructor( private af: AngularFire, private router: Router) { }
 
   ngOnInit() {
 
     const current_time = new Date().getTime();
-    console.log("eventlist subscription start");
-    
+    console.log("eventlist subscription start");  
     this.EventList_observable = 
       this.af.database.list('/event_related/event', {
         query: {
@@ -46,7 +46,7 @@ export class EventlistComponent implements OnInit, OnDestroy {
 
   event_selected(e){
     console.log(e);
-
+    this.router.navigate(['eventcontext/onlinedebate_written', e.id])
   }
 
 }
