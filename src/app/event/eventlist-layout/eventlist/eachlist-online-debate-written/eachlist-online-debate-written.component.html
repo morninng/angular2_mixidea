@@ -1,6 +1,8 @@
 <div class="each_event_container">
-  <p class="each_event_title" (click)="select_event()">{{each_event.title}}</p>
-  <div class="each_event_context" (click)="select_event()">
+  <p class="each_event_title">
+    <a  (click)="select_event()">{{each_event.title}}</a>
+  </p>
+  <div class="each_event_context">
     time: {{ start_time  | date:'y MMMM dd(EEEE) - hh:mm   - Z'}}<br>
     duration: {{each_event.duration}}
   </div>
