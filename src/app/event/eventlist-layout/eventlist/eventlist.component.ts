@@ -39,14 +39,14 @@ export class EventlistComponent implements OnInit, OnDestroy {
 
   }
 
-  ngOnDestroy(){
-    console.log("eventlist unsubscribe")
-    this.eventlist_subscription.unsubscribe();
-  }
-
   event_selected(e){
     console.log(e);
     this.router.navigate(['eventcontext/onlinedebate_written', e.id])
+  }
+
+  ngOnDestroy(){
+    console.log("eventlist unsubscribe")
+    this.eventlist_subscription.unsubscribe();
   }
 
 }

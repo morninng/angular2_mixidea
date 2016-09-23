@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
@@ -7,7 +7,7 @@ import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
   templateUrl: './eventcontext-onlinedebate-written.component.html',
   styleUrls: ['./eventcontext-onlinedebate-written.component.scss']
 })
-export class EventcontextOnlinedebateWrittenComponent implements OnInit {
+export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestroy {
 
   evnet_id : string;
   event_obj_observable : FirebaseObjectObservable<any>;
@@ -26,8 +26,6 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit {
   }
 
   add_arg_prop(){
-    console.log("add arg prop");
-    
     let navigationExtras: NavigationExtras = {
       queryParams: {team_name:"proposition"}
     }
@@ -40,8 +38,11 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit {
       queryParams: {team_name:"opposition"}
     }
     this.router.navigate(['/writerecord_argument',this.evnet_id], navigationExtras);
-
   }
 
+  ngOnDestroy(){
+    this.event_obj_subscription.unsubscribe();
+  }
+  
 
 }
