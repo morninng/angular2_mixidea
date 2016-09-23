@@ -19,6 +19,8 @@ import { EachlistOnlineTournamentWrittenComponent } from './eventlist-layout/eve
 import { EventcontextLayoutOnlinedebateLivevideoComponent } from './event_context/eventcontext-layout-onlinedebate-livevideo/eventcontext-layout-onlinedebate-livevideo.component';
 import { EventcontextLayoutOnlinedebateWrittenComponent } from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
 import { EventcontextOnlinedebateWrittenComponent } from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-onlinedebate-written/eventcontext-onlinedebate-written.component';
+import { WriterRecordArgLayoutComponent } from './writer-record-arg-layout/writer-record-arg-layout.component';
+import { WriteRecordArgComponent } from './writer-record-arg-layout/write-record-arg/write-record-arg.component';
 
 
 @NgModule({
@@ -42,6 +44,8 @@ import { EventcontextOnlinedebateWrittenComponent } from './event_context/eventc
     EventcontextLayoutOnlinedebateLivevideoComponent,
     EventcontextLayoutOnlinedebateWrittenComponent,
     EventcontextOnlinedebateWrittenComponent,
+    WriterRecordArgLayoutComponent,
+    WriteRecordArgComponent,
   ],
   providers: []
 })

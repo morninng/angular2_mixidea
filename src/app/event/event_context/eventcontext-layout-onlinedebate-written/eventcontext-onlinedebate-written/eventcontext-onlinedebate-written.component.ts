@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
 
 @Component({
@@ -24,5 +24,24 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit {
        = this.event_obj_observable.subscribe();
 
   }
+
+  add_arg_prop(){
+    console.log("add arg prop");
+    
+    let navigationExtras: NavigationExtras = {
+      queryParams: {team_name:"proposition"}
+    }
+    this.router.navigate(['/writerecord_argument',this.evnet_id], navigationExtras);
+  }
+
+  add_arg_opp(){
+    
+    let navigationExtras: NavigationExtras = {
+      queryParams: {team_name:"opposition"}
+    }
+    this.router.navigate(['/writerecord_argument',this.evnet_id], navigationExtras);
+
+  }
+
 
 }
