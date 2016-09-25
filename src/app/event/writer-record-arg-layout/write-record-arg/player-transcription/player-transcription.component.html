@@ -1,0 +1,21 @@
+
+  player-transcription 
+
+<span id="audio_player"></span>
+
+<ul>
+  <li *ngFor="let transcript of transcript_sentence_arr | async">
+    <span *ngIf="!transcript.edit">
+      <span [ngClass]="{'red_font': transcript.playing}">
+      {{transcript.sentence}}
+      </span>
+        <input type="button" value="edit sentence" (click)="edit_each_sentence(transcript.id)">
+    </span>
+    <span *ngIf="transcript.edit">
+      <span [ngClass]="{'red_font': transcript.playing}">
+        <input [value]="transcript.sentence" #new_sentence >
+      </span>
+      <input type="button" value="update" (click)="update_each_sentence(transcript.id, new_sentence.value)">
+    </span>
+  </li>
+</ul>

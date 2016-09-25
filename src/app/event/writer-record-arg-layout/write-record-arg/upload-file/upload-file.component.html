@@ -1,0 +1,20 @@
+<p>
+  upload-file works!
+</p>
+
+<div  *ngIf="show_upload_button">
+  <input type="button" value="upload_file" (click)="upload_file()">
+</div>
+
+<span *ngIf="under_encoding">
+  under encoding
+  <img src="./assets/images/horizontal_loader.gif">
+</span>
+<span *ngIf="under_uploading">
+  under uploading
+  <img src="./assets/images/google-loading-icon.gif">
+</span>
+
+
+<span id="uploaded_audio"></span>
+

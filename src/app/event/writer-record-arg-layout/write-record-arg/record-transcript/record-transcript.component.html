@@ -1,0 +1,11 @@
+<p>
+  record-transcript worksssssssssssssss!
+</p>
+
+<span *ngIf="audio_enabled">
+
+  <button type="button" class="btn" [ngClass]="{'btn-primary': recordable, 'btn-default':!recordable, 'disabled':!recordable }"  (click)="startRecording()">record</button>
+  <button type="button" class="btn" [ngClass]="{'btn-primary': under_recording, 'btn-default':recordable, 'disabled':!under_recording }" (click)="stopRecording()">stop</button>
+
+</span>
+

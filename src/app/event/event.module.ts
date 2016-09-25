@@ -21,6 +21,15 @@ import { EventcontextLayoutOnlinedebateWrittenComponent } from './event_context/
 import { EventcontextOnlinedebateWrittenComponent } from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-onlinedebate-written/eventcontext-onlinedebate-written.component';
 import { WriterRecordArgLayoutComponent } from './writer-record-arg-layout/writer-record-arg-layout.component';
 import { WriteRecordArgComponent } from './writer-record-arg-layout/write-record-arg/write-record-arg.component';
+import { PlayerTranscriptionComponent } from './writer-record-arg-layout/write-record-arg/player-transcription/player-transcription.component';
+import { RecordTranscriptComponent } from './writer-record-arg-layout/write-record-arg/record-transcript/record-transcript.component';
+import { UploadFileComponent } from './writer-record-arg-layout/write-record-arg/upload-file/upload-file.component';
+
+
+import {RecordWavService} from './writer-record-arg-layout/write-record-arg/service/record-wav.service';
+import {SpeechRecognitionService} from './writer-record-arg-layout/write-record-arg/service/speech-recognition.service';
+import {EncodeToMp3Service} from './writer-record-arg-layout/write-record-arg/service/encode-to-mp3.service';
+import {UploadToFirebaseService} from './writer-record-arg-layout/write-record-arg/service/upload-to-firebase.service'
 
 
 @NgModule({
@@ -46,7 +55,10 @@ import { WriteRecordArgComponent } from './writer-record-arg-layout/write-record
     EventcontextOnlinedebateWrittenComponent,
     WriterRecordArgLayoutComponent,
     WriteRecordArgComponent,
+    PlayerTranscriptionComponent,
+    RecordTranscriptComponent,
+    UploadFileComponent,
   ],
-  providers: []
+  providers: [RecordWavService,SpeechRecognitionService,EncodeToMp3Service,UploadToFirebaseService ]
 })
 export class EventModule {}

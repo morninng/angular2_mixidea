@@ -22,7 +22,6 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
     this.event_obj_observable = this.af.database.object('/event_related/event/' + this.evnet_id);
     this.event_obj_subscription
        = this.event_obj_observable.subscribe();
-
   }
 
   add_arg_prop(){
