@@ -72,10 +72,20 @@ export class UploadToFirebaseService {
 
     const reference = "event_related/written_debate/" + event_id +
               "/arg_each_content/" + arg_each_content_id;
-    const transcript_db_item = this.af.database.object(reference);
-    const promise = transcript_db_item.update({writer:user_id, type: type});
+    const basicinfo_db_item = this.af.database.object(reference);
+    const promise = basicinfo_db_item.update({writer:user_id, type: type});
     promise.then(()=>{
       console.log("setting basic info has been succeeded");
+    })
+  }
+  upload_argument(event_id, arg_each_content_id, arg_each_content){
+
+    const reference = "event_related/written_debate/" + event_id +
+              "/arg_each_content/" + arg_each_content_id;
+    const arg_each_content_db_item = this.af.database.object(reference);
+    const promise = arg_each_content_db_item.update({content: arg_each_content});
+    promise.then(()=>{
+      console.log("uploading argument succeeded")
     })
 
   }

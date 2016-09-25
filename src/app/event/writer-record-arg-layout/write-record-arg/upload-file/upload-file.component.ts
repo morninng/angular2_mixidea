@@ -4,7 +4,6 @@ import {EncodeToMp3Service} from './../service/encode-to-mp3.service'
 import {UploadToFirebaseService} from './../service/upload-to-firebase.service'
 import { Store } from '@ngrx/store';
 
-import {generate_id} from './../../../../util_func';
 import { UserauthService} from './../../../../shared/userauth.service';
 
 @Component({
@@ -21,6 +20,7 @@ export class UploadFileComponent implements OnInit {
   
   @Input() event_id: string;
   @Input() team_name: string;
+  @Input() arg_each_content_id: string;
 
   constructor(private record_wav: RecordWavService,
               private encode_to_mp3: EncodeToMp3Service,
@@ -62,14 +62,13 @@ export class UploadFileComponent implements OnInit {
 
   upload_file(){
 
-    const arg_each_content_id = generate_id();
 
 //uploading the file.
     if(this.audio_blob){
       this.show_upload_button = false;
       this.under_encoding = true;
       this.encode_to_mp3.encode_wav_to_mp3(this.audio_blob);
-      this.upload_firebase.upload_file_after_encoding(this.event_id,arg_each_content_id, this.team_name);
+      this.upload_firebase.upload_file_after_encoding(this.event_id,this.arg_each_content_id, this.team_name);
     }
 
 //uploading the transcription 
@@ -81,13 +80,13 @@ export class UploadFileComponent implements OnInit {
               return {content:transcript.sentence, end_time:transcript.end_time} 
             }
           );
-      this.upload_firebase.upload_transcription(this.event_id,arg_each_content_id, upload_transcript_arr)
+      this.upload_firebase.upload_transcription(this.event_id,this.arg_each_content_id, upload_transcript_arr)
     })
 
 //setting the basic info.
     const user_id = this.user_auth.own_user_id;
     const type = "arg";  // this is the temporal value. it must be fixed;
-    this.upload_firebase.set_basic_info(this.event_id, arg_each_content_id, user_id, type);
+    this.upload_firebase.set_basic_info(this.event_id, this.arg_each_content_id, user_id, type);
 
   }
 
@@ -98,10 +97,6 @@ export class UploadFileComponent implements OnInit {
 /////////////////// only for test////////////////////
   upload_transcript(){
 
-    const arg_each_content_id = generate_id();
-
-
-
 //uploading the transcription 
     const transcript_sentence_arr = this.store.select('transcript');
     transcript_sentence_arr.take(1).subscribe((state:any[])=>{
@@ -111,13 +106,13 @@ export class UploadFileComponent implements OnInit {
               return {content:transcript.sentence, end_time:transcript.end_time} 
             }
           );
-      this.upload_firebase.upload_transcription(this.event_id,arg_each_content_id, upload_transcript_arr)
+      this.upload_firebase.upload_transcription(this.event_id,this.arg_each_content_id, upload_transcript_arr)
     })
 
 //setting the basic info.
     const user_id = this.user_auth.own_user_id;
     const type = "arg";  // this is the temporal value. it must be fixed;
-    this.upload_firebase.set_basic_info(this.event_id, arg_each_content_id, user_id, type);
+    this.upload_firebase.set_basic_info(this.event_id, this.arg_each_content_id, user_id, type);
 
 
   }

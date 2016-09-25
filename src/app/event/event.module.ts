@@ -29,7 +29,8 @@ import { UploadFileComponent } from './writer-record-arg-layout/write-record-arg
 import {RecordWavService} from './writer-record-arg-layout/write-record-arg/service/record-wav.service';
 import {SpeechRecognitionService} from './writer-record-arg-layout/write-record-arg/service/speech-recognition.service';
 import {EncodeToMp3Service} from './writer-record-arg-layout/write-record-arg/service/encode-to-mp3.service';
-import {UploadToFirebaseService} from './writer-record-arg-layout/write-record-arg/service/upload-to-firebase.service'
+import {UploadToFirebaseService} from './writer-record-arg-layout/write-record-arg/service/upload-to-firebase.service';
+import { WriteArgumentComponent } from './writer-record-arg-layout/write-record-arg/write-argument/write-argument.component'
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import {UploadToFirebaseService} from './writer-record-arg-layout/write-record-a
     PlayerTranscriptionComponent,
     RecordTranscriptComponent,
     UploadFileComponent,
+    WriteArgumentComponent,
   ],
   providers: [RecordWavService,SpeechRecognitionService,EncodeToMp3Service,UploadToFirebaseService ]
 })

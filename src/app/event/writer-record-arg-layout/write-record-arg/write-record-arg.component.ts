@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params  }     from '@angular/router';
 import 'rxjs/add/operator/combineLatest'; 
+import {generate_id} from './../../../util_func';
 
 
 @Component({
@@ -12,11 +13,16 @@ export class WriteRecordArgComponent implements OnInit {
 
   router_param_subscription : any;
   event_id :string;
+  arg_each_content_id : string;
   team_name :string;
+
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.arg_each_content_id = generate_id();
+
     const source = this.route.params.combineLatest(this.route.queryParams, (param: Params, query)=>{
       return {param, query}
     })
