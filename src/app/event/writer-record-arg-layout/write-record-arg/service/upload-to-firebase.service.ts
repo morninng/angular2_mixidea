@@ -55,8 +55,28 @@ export class UploadToFirebaseService {
 
   }
 
-  upload_transcription(){
 
+  upload_transcription(event_id, arg_each_content_id,transcript_arr){
+    
+    const reference = "event_related/written_debate/" + event_id +
+              "/arg_each_content/" + arg_each_content_id;
+    const transcript_db_item = this.af.database.object(reference);
+    const promise = transcript_db_item.update({transcript:transcript_arr});
+    promise.then(()=>{
+      console.log("uploading transcription has been succeeded")
+    })
+  }
+
+
+  set_basic_info(event_id, arg_each_content_id,user_id, type){
+
+    const reference = "event_related/written_debate/" + event_id +
+              "/arg_each_content/" + arg_each_content_id;
+    const transcript_db_item = this.af.database.object(reference);
+    const promise = transcript_db_item.update({writer:user_id, type: type});
+    promise.then(()=>{
+      console.log("setting basic info has been succeeded");
+    })
 
   }
 
