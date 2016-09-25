@@ -5,16 +5,7 @@ import {ADD_SENTENCE,
         EDIT_ITEM_STATUS,
         PLAY_AUDIO } from "./transcription-reducer";
 
-
-const generate_id = function(){
-    function s4() {
-      return Math.floor((1 + Math.random()) * 0x10000)
-        .toString(16)
-        .substring(1);
-    }
-    return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
-      s4() + '-' + s4() + s4() + s4();
-}
+import {generate_id} from './../util_func';
 
 
 export const ActionCreator = {
