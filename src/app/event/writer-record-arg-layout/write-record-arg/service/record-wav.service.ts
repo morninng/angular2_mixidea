@@ -2,51 +2,40 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Rx';
 
 
+declare var window:any;
 declare var Recorder:any;
+
 
 @Injectable()
 export class RecordWavService {
 
   audio_source$ = new Subject<any>();
 
-  recorder : any;
-  enc_worker : any;
   recorder_worker: any;
-  recording : boolean;
-  node : any;
-  audio_queue : any;
+  recording : boolean = false;
+  script_node :any;
+  numChannels = 1;
+  audioCtx : any;
+  mediastream_sourcenode : any;
 
 
-  constructor() { 
-    console.log("record wav service");
-  }
+  constructor() {}
 
 
-  update_setting(source : any, cfg : any){
+  initialize_audio_context(mediastream_sourcenode){
 
-    console.log(cfg);
-    const config = cfg || {};
-    const bufferLen = config.bufferLen || 4096;
-    const numChannels = config.numChannels || 2;
-    const context = source.context;
-    this.recorder_worker = new Worker('js/recorderWorker.js');
-    this.recorder_worker.postMessage({
-      command: 'init',
-      config: {
-        sampleRate: context.sampleRate,
-        numChannels: numChannels
-      }
-    });
-    this.recording = false;
+    this.mediastream_sourcenode = mediastream_sourcenode;
+    this.audioCtx = this.mediastream_sourcenode.context;
 
-    this.node = (context.createScriptProcessor || context.createJavaScriptNode).call(context, bufferLen, numChannels, numChannels);
+   this.script_node = (this.audioCtx.createScriptProcessor || this.audioCtx.createJavaScriptNode)
+                          .call(this.audioCtx, 4096, this.numChannels, this.numChannels);     
 
-    this.node.onaudioprocess = (e)=>{
+    this.script_node.onaudioprocess = (e)=>{
       if (!this.recording){
         return;
       }
       var buffer = [];
-      for (var channel = 0; channel < numChannels; channel++){
+      for (var channel = 0; channel < this.numChannels; channel++){
           buffer.push(e.inputBuffer.getChannelData(channel));
       }
       this.recorder_worker.postMessage({
@@ -54,24 +43,38 @@ export class RecordWavService {
         buffer: buffer
       });
     }
-    source.connect(this.node);
-    this.node.connect(context.destination);
+  }
 
-    this.recorder_worker.onmessage = (e)=>{
+  initialize_worker(){
+
+    this.recorder_worker = new Worker('js/recorderWorker.js');
+
+    var sampleRate = this.audioCtx.sampleRate;
+    this.recorder_worker.postMessage({
+      command: 'init',
+      config: {
+        sampleRate: sampleRate,
+        numChannels: this.numChannels
+      }
+    });
+
+   this.recorder_worker.onmessage = (e)=>{
       console.log("recorder worker onmessage", e);
       switch(e.data.command){
         case 'record_done':
           console.log("record done in recorder wav service");
-          let audio_blob = e.data.audio_blob;
+          const audio_blob = e.data.audio_blob;
           this.audio_source$.next(audio_blob);
-          this.recorder_worker.postMessage({ command: 'clear' });
+          this.finalize();
         break;
       }
     }
   }
-
+  
   start_record(){
-    console.log("start record is called in recorder-wav service");
+    this.initialize_worker();
+    this.mediastream_sourcenode.connect(this.script_node);
+    this.script_node.connect(this.audioCtx.destination);
     this.recording = true;
   }
 
@@ -80,6 +83,8 @@ export class RecordWavService {
     this.recorder_worker.postMessage({
       command: 'exportWAV', type: "audio/wav"
     });
+    this.mediastream_sourcenode.disconnect(this.script_node);
+    this.script_node.disconnect(this.audioCtx.destination);
   }
 
   clear(){
@@ -88,6 +93,15 @@ export class RecordWavService {
   
   exportWAV(cb, type){
       this.recorder_worker.postMessage({command: 'exportWAV',type: type});
+  }
+
+  finalize(){
+    this.recording = false;
+    if(this.recorder_worker){
+      this.recorder_worker.postMessage({ command: 'clear' });
+      this.recorder_worker.terminate();
+      this.recorder_worker = null;
+    }
   }
 
 

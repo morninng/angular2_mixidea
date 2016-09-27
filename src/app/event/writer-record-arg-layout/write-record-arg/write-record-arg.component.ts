@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params  }     from '@angular/router';
 import 'rxjs/add/operator/combineLatest'; 
 import {generate_id} from './../../../util_func';
-
+import {PlayerTranscriptionComponent} from './player-transcription/player-transcription.component'
+import {RecordTranscriptComponent} from './record-transcript/record-transcript.component'
+import {UploadFileComponent} from './upload-file/upload-file.component';
 
 @Component({
   selector: 'app-write-record-arg',
@@ -16,6 +18,17 @@ export class WriteRecordArgComponent implements OnInit {
   arg_each_content_id : string;
   team_name :string;
 
+
+  @ViewChild(PlayerTranscriptionComponent) 
+  private player_transcript: PlayerTranscriptionComponent;
+
+
+  @ViewChild(RecordTranscriptComponent) 
+  private record_transcript: RecordTranscriptComponent;
+
+
+  @ViewChild(UploadFileComponent) 
+  private upload_file: UploadFileComponent;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -35,6 +48,13 @@ export class WriteRecordArgComponent implements OnInit {
         this.team_name = obj.query["team_name"];
       }
     )
+  }
+
+  clear_all(){
+    console.log("clear all from parent component");
+    this.player_transcript.clear_player_and_transcription();
+    this.record_transcript.reset_record();
+    this.upload_file.reset_encode_upload();
   }
 
 

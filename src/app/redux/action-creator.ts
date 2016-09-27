@@ -1,9 +1,9 @@
 import {ADD_SENTENCE,
         UPDATE_SENTENCE,
-        RESET_SENTENCE,
         UPDATE_TIME,
         EDIT_ITEM_STATUS,
-        PLAY_AUDIO } from "./transcription-reducer";
+        PLAY_AUDIO,
+        CLEAR_ALL_TRANSCRIPTION } from "./transcription-reducer";
 
 import {generate_id} from './../util_func';
 
@@ -63,6 +63,15 @@ export const ActionCreator = {
             }
         }
         return action_obj;
+    },
+
+    transcription_clearAll : function(){
+        const action_obj = {
+            type:CLEAR_ALL_TRANSCRIPTION
+        }
+        return action_obj;
     }
+
+
 
 }

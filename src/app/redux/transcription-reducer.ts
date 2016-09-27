@@ -4,10 +4,10 @@ import { ActionReducer, Action } from '@ngrx/store';
 
 export const ADD_SENTENCE = 'ADD_SENTENCE';
 export const UPDATE_SENTENCE = 'UPDATE_SENTENCE';
-export const RESET_SENTENCE = 'RESET_SENTENCE';
 export const UPDATE_TIME = 'UPDATE_TIME';
 export const EDIT_ITEM_STATUS = 'EDIT_ITEM_STATUS';
 export const PLAY_AUDIO = 'PLAY_AUDIO';
+export const CLEAR_ALL_TRANSCRIPTION = 'CLEAR_ALL_TRANSCRIPTION';
 
 export const TranscriptionReducer: ActionReducer<any> = (state = [], action: Action) => {
 
@@ -53,7 +53,7 @@ export const TranscriptionReducer: ActionReducer<any> = (state = [], action: Act
                 return each_state
             })
 
-        case RESET_SENTENCE:
+        case CLEAR_ALL_TRANSCRIPTION:
             state = []
             return state;
 

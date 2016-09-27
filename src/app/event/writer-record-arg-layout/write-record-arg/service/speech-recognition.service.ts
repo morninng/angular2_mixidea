@@ -58,7 +58,6 @@ export class SpeechRecognitionService {
             console.log(this.recognition);
             this.recognition.stop();
         },1000);
-
     }
 
     put_dummy_transcript_data(){

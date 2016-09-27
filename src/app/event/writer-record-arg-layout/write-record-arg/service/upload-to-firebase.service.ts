@@ -24,14 +24,16 @@ export class UploadToFirebaseService {
   }
 
   upload_file_after_encoding(event_id, arg_each_content_id, team_name){
-    this.encode_to_mp3.encode_done$.subscribe(
+    const storage = firebase.storage();
+    const storage_ref = storage.ref();
+    var file_name = generate_random_string();
+
+    this.encode_to_mp3.encode_done$.take(1).subscribe(
       (mp3_uint_arr)=>{
-        console.log("aaa");
-        const storage = firebase.storage();
-        const storage_ref = storage.ref();
-        var file_name = generate_random_string();
-        const audio_storage_ref = storage_ref.child("audio/written_debate/" + event_id + file_name + ".mp3");
+        console.log("encode_to_mps callback is called");
+        const audio_storage_ref = storage_ref.child("audio/written_debate/" + event_id + "/" + file_name + ".mp3");
         this.under_file_upload_subject.next(true);
+
         audio_storage_ref.put(mp3_uint_arr).then((snapshot)=>{
           this.under_file_upload_subject.next(false);
           return audio_storage_ref.getDownloadURL();
@@ -40,7 +42,6 @@ export class UploadToFirebaseService {
           console.log(firebase_url)
           const reference = "event_related/written_debate/" + event_id +
               "/arg_each_content/" + arg_each_content_id;
-
           const audio_db_item = this.af.database.object(reference);
           const promise = audio_db_item.update({audio_url:firebase_url})
           return promise;
@@ -51,7 +52,29 @@ export class UploadToFirebaseService {
     )
   }
 
-  upload_file_without_encoding(){
+  upload_file_without_encoding(event_id, arg_each_content_id,audio_blob){
+
+    const storage = firebase.storage();
+    const storage_ref = storage.ref();
+    var file_name = generate_random_string();
+    const audio_storage_ref = storage_ref.child("audio/written_debate/" + event_id+ "/" + file_name + ".wav");
+    this.under_file_upload_subject.next(true);
+    
+    audio_storage_ref.put(audio_blob).then((snapshot)=>{
+      this.under_file_upload_subject.next(false);
+      return audio_storage_ref.getDownloadURL();
+    }).then((firebase_url)=>{
+      console.log("uploading file is finished");
+      console.log(firebase_url)
+      const reference = "event_related/written_debate/" + event_id +
+          "/arg_each_content/" + arg_each_content_id;
+
+      const audio_db_item = this.af.database.object(reference);
+      const promise = audio_db_item.update({audio_url:firebase_url})
+      return promise;
+    }).then(()=>{
+      console.log("setting firebase url in the database has been finished")
+    })
 
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit,NgZone,ElementRef, Input } from '@angular/core';
+import { Component, OnInit,NgZone,ElementRef, Input, OnDestroy } from '@angular/core';
 import {RecordWavService} from './../service/record-wav.service';
 import {EncodeToMp3Service} from './../service/encode-to-mp3.service'
 import {UploadToFirebaseService} from './../service/upload-to-firebase.service'
@@ -11,7 +11,7 @@ import { UserauthService} from './../../../../shared/userauth.service';
   templateUrl: './upload-file.component.html',
   styleUrls: ['./upload-file.component.scss']
 })
-export class UploadFileComponent implements OnInit {
+export class UploadFileComponent implements OnInit, OnDestroy {
 
   audio_blob;
   under_encoding = false;
@@ -62,8 +62,13 @@ export class UploadFileComponent implements OnInit {
 
   upload_file(){
 
+    if(!this.user_auth.own_user.loggedIn){
+      alert("you need to login to create a game");
+      this.user_auth.open_login_modal();
+      return;
+    }
 
-//uploading the file.
+//uploading the file after encoding
     if(this.audio_blob){
       this.show_upload_button = false;
       this.under_encoding = true;
@@ -91,6 +96,13 @@ export class UploadFileComponent implements OnInit {
   }
 
 
+  upload_file_without_encode(){
+
+    if(this.audio_blob){
+      this.upload_firebase.upload_file_without_encoding(this.event_id, this.arg_each_content_id,this.audio_blob)
+    }
+
+  }
 
 
 
@@ -113,10 +125,15 @@ export class UploadFileComponent implements OnInit {
     const user_id = this.user_auth.own_user_id;
     const type = "arg";  // this is the temporal value. it must be fixed;
     this.upload_firebase.set_basic_info(this.event_id, this.arg_each_content_id, user_id, type);
-
-
   }
 
+  reset_encode_upload(){
+    this.encode_to_mp3.finalize();
+  }
+
+  ngOnDestroy(){
+    this.encode_to_mp3.finalize();
+  }
 
 
 

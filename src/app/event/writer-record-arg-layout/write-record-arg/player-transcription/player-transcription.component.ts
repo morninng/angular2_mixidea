@@ -1,9 +1,12 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, AfterViewInit } from '@angular/core';
 import {RecordWavService} from './../service/record-wav.service';
 import {SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import {ActionCreator} from './../../../../redux/action-creator';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
+
+
+declare var window:any;
 
 @Component({
   selector: 'app-player-transcription',
@@ -11,13 +14,16 @@ import { Observable } from 'rxjs/Rx';
   styleUrls: ['./player-transcription.component.scss']
 })
 
-export class PlayerTranscriptionComponent implements OnInit {
+export class PlayerTranscriptionComponent implements OnInit, AfterViewInit {
 
 
   audio_blob;
   transcript_sentence_arr : Observable<any>;
   prev_updated_time = 0;
+  audio_element;
+  audio_container_element;
 
+  record_wav_subscription;
 
   constructor(private record_wav: RecordWavService,
               private _ngZone: NgZone,
@@ -27,7 +33,7 @@ export class PlayerTranscriptionComponent implements OnInit {
 
   ngOnInit() {
     // http://www.gcgate.jp/engineerblog/2014/03/28/874/
-    this.record_wav.audio_source$.subscribe(
+    this.record_wav_subscription = this.record_wav.audio_source$.subscribe(
       (audio_blob)=>{
         this.audio_blob = audio_blob;
         this._ngZone.run(()=>{
@@ -38,28 +44,33 @@ export class PlayerTranscriptionComponent implements OnInit {
     )
   }
 
+  ngAfterViewInit(){
+    this.audio_container_element = document.getElementById("audio_player");
+  }
+  
+
+
   show_transcription(){
     this.transcript_sentence_arr = this.store.select('transcript');
   }
 
   create_audio(audio_blob){
+    window.URL = window.URL || window.webkitURL;
     let audio_src = window.URL.createObjectURL(audio_blob);
-    console.log("audio src");
-    console.log(audio_src);
+    console.log("audio src", audio_src);
 
     const santized_audio_src = this.sanitizer.bypassSecurityTrustResourceUrl( audio_src);
     console.log("santized url");
     console.log(santized_audio_src);
 
-    const audio_element = new Audio();
-    audio_element.controls = true;
-    audio_element.src = audio_src;
-    audio_element.addEventListener("play", ()=>{ this.Audio_Time_update("play", audio_element.currentTime)});
-    audio_element.addEventListener("seeked", ()=>{ this.Audio_Time_update("seek", audio_element.currentTime)});
-    audio_element.addEventListener("timeupdate", ()=>{ this.Audio_Time_update("time_update", audio_element.currentTime)});
-    const audio_container_element = document.getElementById("audio_player");
-    audio_container_element.insertBefore(audio_element, null);
+    this.audio_element = new Audio();
+    this.audio_element.controls = true;
+    this.audio_element.src = audio_src;
+    this.audio_element.addEventListener("play", ()=>{ this.Audio_Time_update("play", this.audio_element.currentTime)});
+    this.audio_element.addEventListener("seeked", ()=>{ this.Audio_Time_update("seek", this.audio_element.currentTime)});
+    this.audio_element.addEventListener("timeupdate", ()=>{ this.Audio_Time_update("time_update", this.audio_element.currentTime)});
 
+    this.audio_container_element.insertBefore(this.audio_element, null);
   }
 
 
@@ -95,6 +106,19 @@ export class PlayerTranscriptionComponent implements OnInit {
   }
 
 
+  clear_player_and_transcription(){
+    this.audio_container_element.textContent = null;
+    this.audio_element = null;
+
+    const obj = ActionCreator.transcription_clearAll();
+    this.store.dispatch(obj);
+  }
+
+  ngOnDestroy(){
+    this.record_wav_subscription.unsubscribe();
+    const obj = ActionCreator.transcription_clearAll();
+    this.store.dispatch(obj);
+  }
 
 
 }

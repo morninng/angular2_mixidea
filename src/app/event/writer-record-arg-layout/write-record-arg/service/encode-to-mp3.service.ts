@@ -13,8 +13,6 @@ export class EncodeToMp3Service {
 
   constructor() {}
 
-
-
   encode_wav_to_mp3(wav_blob){
     console.log("wav blob is passed for mp3 conversion");
     this.under_encoding_subject.next(true);
@@ -26,8 +24,8 @@ export class EncodeToMp3Service {
       console.log("wav data");
       console.log(wav_data);
       console.log(this.test);
-      const encoderWorker = new Worker('js/mp3Worker.js');
-      encoderWorker.postMessage({ 
+      this.encoderWorker = new Worker('js/mp3Worker.js');
+      this.encoderWorker.postMessage({ 
         cmd: 'init', 
         config:{
           mode : 3,
@@ -36,9 +34,9 @@ export class EncodeToMp3Service {
           bitrate: wav_data.bitsPerSample
           }
       });
-      encoderWorker.postMessage({ cmd: 'encode', buf: Uint8ArrayToFloat32Array(wav_data.samples) });
-      encoderWorker.postMessage({ cmd: 'finish'});
-      encoderWorker.onmessage = (e)=> {
+      this.encoderWorker.postMessage({ cmd: 'encode', buf: Uint8ArrayToFloat32Array(wav_data.samples) });
+  //    
+      this.encoderWorker.onmessage = (e)=> {
         switch(e.data.cmd ){
           case 'data':
             const audio_mp3_unit8 = new Uint8Array(e.data.buf);
@@ -52,6 +50,13 @@ export class EncodeToMp3Service {
     fileReader.readAsArrayBuffer(wav_blob);
   }
 
+  finalize(){
+    if(this.encoderWorker){
+      this.encoderWorker.postMessage({ cmd: 'finish'});
+      this.encoderWorker.terminate();
+      this.encoderWorker = null;
+    }
+  }
 
 
 
