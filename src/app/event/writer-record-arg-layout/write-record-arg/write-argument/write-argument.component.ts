@@ -27,6 +27,7 @@ export class WriteArgumentComponent implements OnInit {
 
     this.upload_firebase.upload_argument(this.event_id, this.arg_each_content_id, upload_arg_each_content);
 
+   this.upload_firebase.set_argument_status(this.event_id, "dummy_arg_id", this.arg_each_content_id,"arg", "checking",this.team_name);
 
 
   }

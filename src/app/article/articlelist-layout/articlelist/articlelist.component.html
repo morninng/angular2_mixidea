@@ -1,0 +1,10 @@
+<p>
+  articlelist works!
+</p>
+
+
+<ul>
+  <li *ngFor="let item of article_list | async">
+    <a (click)="goto_article(item)">{{item.title}}</a>
+  </li>
+</ul>

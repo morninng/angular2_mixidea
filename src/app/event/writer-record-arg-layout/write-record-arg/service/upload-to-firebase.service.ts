@@ -113,6 +113,37 @@ export class UploadToFirebaseService {
 
   }
 
+
+
+  set_argument_status(event_id, arg_id, arg_each_content_id,type, status = "checking",team_name){
+
+    if(type=="arg"){
+
+      const arg_status_main_reference = "event_related/written_debate/" + event_id + "/arg_status/";
+      const main_obj = {arg_each_content_id, status, team_name};
+      const arg_status_main_db_item = this.af.database.list(arg_status_main_reference);
+      arg_status_main_db_item.push({main:main_obj});
+
+    }else if (type=="refute" || type=="refute_back"){
+
+      const arg_status_subsequent_reference = "event_related/written_debate/" + event_id + "/arg_status/"
+                                             + arg_id + "/subsequent/";
+      const subsequent_obj = {arg_each_content_id, status, team_name };
+      const arg_status_subsequent_db_item = this.af.database.list(arg_status_subsequent_reference);
+      arg_status_subsequent_db_item.push(subsequent_obj);
+
+    }
+
+  }
+
+  approve_argument_status(event_id, arg_id, arg_each_content_id,type = "published", status,team_name){
+
+
+  }
+
+
+
+
 }
 
 

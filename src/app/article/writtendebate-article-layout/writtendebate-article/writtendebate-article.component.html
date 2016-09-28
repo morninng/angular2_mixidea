@@ -1,0 +1,16 @@
+<p>
+  writtendebate-article works...........!
+</p>
+
+  {{test_obj | keysInObject | json}}
+  <br><br>
+  {{(written_debate_data | async | json)}}
+
+<br><br>
+  <span *ngFor="let status of ((written_debate_data | async)?.arg_status | keysInObject)">
+    {{status.value.main.arg_each_content_id}}<br><br>
+  </span>
+---------------------
+
+ <div>
+ </div>

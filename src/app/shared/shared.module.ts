@@ -7,6 +7,7 @@ import {LeftColumnMenuPcComponent} from './left-column-menu-pc/left-column-menu-
 import {RightColumnAdComponent} from './right-column-ad/right-column-ad.component'
 
 import { UserauthService} from './userauth.service';
+import { KeysInObjectPipe } from './../pipes/keys-in-object.pipe';
 
 
 
@@ -32,10 +33,12 @@ const firebaseAuthConfig = {
   declarations: [
     LeftColumnMenuPcComponent,
     RightColumnAdComponent,
+    KeysInObjectPipe
     ],
   exports:  [
    LeftColumnMenuPcComponent,
-    RightColumnAdComponent
+    RightColumnAdComponent,
+    KeysInObjectPipe
     ]
 })
 export class SharedModule {

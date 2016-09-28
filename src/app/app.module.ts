@@ -19,12 +19,11 @@ import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 
 
 
-import { ArticlelistLayoutComponent } from './article/articlelist-layout/articlelist-layout.component';
 import { LoginModalComponent } from './modal/login-modal/login-modal.component';
 import { MobileLeftMenuComponent } from './header/mobile-left-menu/mobile-left-menu.component';
 
-import {EventModule} from './event/event.module.ts';
-
+import {EventModule} from './event/event.module';
+import {ArticleModule} from './article/article.module'
 
 import {SharedModule} from './shared/shared.module';
 
@@ -37,7 +36,6 @@ import {SharedModule} from './shared/shared.module';
     MobileLeftMenuComponent,
     NotificationHeaderComponent,
     MessageHeaderComponent,
-    ArticlelistLayoutComponent,
     LoginModalComponent,
   ],
   imports: [
@@ -47,6 +45,7 @@ import {SharedModule} from './shared/shared.module';
     ModalModule,
     routing,
     EventModule,
+    ArticleModule,
     StoreModule.provideStore({ counter: counterReducer,transcript: TranscriptionReducer }, { counter: 0, transcript: [] }),
     SharedModule.forRoot()
   ],

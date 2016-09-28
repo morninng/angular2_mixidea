@@ -93,6 +93,9 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     const type = "arg";  // this is the temporal value. it must be fixed;
     this.upload_firebase.set_basic_info(this.event_id, this.arg_each_content_id, user_id, type);
 
+// add it on the arg_status
+    this.upload_firebase.set_argument_status(this.event_id, "dummy_arg_id", this.arg_each_content_id,"arg", "checking",this.team_name);
+
   }
 
 
@@ -107,6 +110,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
 
 
 /////////////////// only for test////////////////////
+/*
   upload_transcript(){
 
 //uploading the transcription 
@@ -126,6 +130,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     const type = "arg";  // this is the temporal value. it must be fixed;
     this.upload_firebase.set_basic_info(this.event_id, this.arg_each_content_id, user_id, type);
   }
+*/
 
   reset_encode_upload(){
     this.encode_to_mp3.finalize();

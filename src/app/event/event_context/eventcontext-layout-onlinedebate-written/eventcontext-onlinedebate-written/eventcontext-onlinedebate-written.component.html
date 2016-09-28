@@ -3,18 +3,23 @@
 
 {{(event_obj_observable | async)?.title}}
 
-<div class="participate_declaration">
+  <div class="participate_declaration">
+    <div>
+      join as a proposition
+    </div>
+    <div>
+      join as a opposition
+    </div>
+
+
+  </div>
+
   <div>
-    join as a proposition
+    <input type="button" (click)="add_arg_prop()" value="add new argument for prop">
+    <input type="button" (click)="add_arg_opp()" value="add new argument for opposition">
   </div>
   <div>
-    join as a opposition
+    <input type="button" (click)="publish_to_public()" value="publish to public">
+    
   </div>
-
-
-</div>
-
-  <input type="button" (click)="add_arg_prop()" value="add new argument for prop">
-  <input type="button" (click)="add_arg_opp()" value="add new argument for opposition">
-
 </div>
