@@ -19,8 +19,8 @@ import { EachlistOnlineTournamentWrittenComponent } from './eventlist-layout/eve
 import { EventcontextLayoutOnlinedebateLivevideoComponent } from './event_context/eventcontext-layout-onlinedebate-livevideo/eventcontext-layout-onlinedebate-livevideo.component';
 import { EventcontextLayoutOnlinedebateWrittenComponent } from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
 import { EventcontextOnlinedebateWrittenComponent } from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-onlinedebate-written/eventcontext-onlinedebate-written.component';
-import { WriterRecordArgLayoutComponent } from './writer-record-arg-layout/writer-record-arg-layout.component';
-import { WriteRecordArgComponent } from './writer-record-arg-layout/write-record-arg/write-record-arg.component';
+import { WriterRecordOpinionLayoutComponent } from './writer-record-arg-layout/writer-record-arg-layout.component';
+import { WriteRecordOpinionComponent } from './writer-record-arg-layout/write-record-arg/write-record-arg.component';
 import { PlayerTranscriptionComponent } from './writer-record-arg-layout/write-record-arg/player-transcription/player-transcription.component';
 import { RecordTranscriptComponent } from './writer-record-arg-layout/write-record-arg/record-transcript/record-transcript.component';
 import { UploadFileComponent } from './writer-record-arg-layout/write-record-arg/upload-file/upload-file.component';
@@ -30,7 +30,7 @@ import {RecordWavService} from './writer-record-arg-layout/write-record-arg/serv
 import {SpeechRecognitionService} from './writer-record-arg-layout/write-record-arg/service/speech-recognition.service';
 import {EncodeToMp3Service} from './writer-record-arg-layout/write-record-arg/service/encode-to-mp3.service';
 import {UploadToFirebaseService} from './writer-record-arg-layout/write-record-arg/service/upload-to-firebase.service';
-import { WriteArgumentComponent } from './writer-record-arg-layout/write-record-arg/write-argument/write-argument.component';
+import { WriteOpinionComponent } from './writer-record-arg-layout/write-record-arg/write-argument/write-argument.component';
 import { ClearRecordTranscriptionComponent } from './writer-record-arg-layout/write-record-arg/clear-record-transcription/clear-record-transcription.component'
 
 
@@ -55,12 +55,12 @@ import { ClearRecordTranscriptionComponent } from './writer-record-arg-layout/wr
     EventcontextLayoutOnlinedebateLivevideoComponent,
     EventcontextLayoutOnlinedebateWrittenComponent,
     EventcontextOnlinedebateWrittenComponent,
-    WriterRecordArgLayoutComponent,
-    WriteRecordArgComponent,
+    WriterRecordOpinionLayoutComponent,
+    WriteRecordOpinionComponent,
     PlayerTranscriptionComponent,
     RecordTranscriptComponent,
     UploadFileComponent,
-    WriteArgumentComponent,
+    WriteOpinionComponent,
     ClearRecordTranscriptionComponent,
   ],
   providers: [RecordWavService,SpeechRecognitionService,EncodeToMp3Service,UploadToFirebaseService ]

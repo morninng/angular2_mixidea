@@ -5,12 +5,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './writer-record-arg-layout.component.html',
   styleUrls: ['./writer-record-arg-layout.component.scss']
 })
-export class WriterRecordArgLayoutComponent implements OnInit {
+export class WriterRecordOpinionLayoutComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit() {
-    console.log("WriterRecordArgLayoutComponent");
+    console.log("WriterRecordOpinionLayoutComponent");
   }
 
 }

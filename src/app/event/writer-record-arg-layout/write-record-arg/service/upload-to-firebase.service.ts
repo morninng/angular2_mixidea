@@ -101,21 +101,21 @@ export class UploadToFirebaseService {
       console.log("setting basic info has been succeeded");
     })
   }
-  upload_argument(event_id, arg_each_content_id, arg_each_content){
+  upload_opinion(event_id, arg_each_content_id, arg_each_content){
 
     const reference = "event_related/written_debate/" + event_id +
               "/arg_each_content/" + arg_each_content_id;
     const arg_each_content_db_item = this.af.database.object(reference);
     const promise = arg_each_content_db_item.update({content: arg_each_content});
     promise.then(()=>{
-      console.log("uploading argument succeeded")
+      console.log("uploading opinion succeeded")
     })
 
   }
 
 
 
-  set_argument_status(event_id, arg_id, arg_each_content_id,type, status = "checking",team_name){
+  set_opinion_status(event_id, arg_id, arg_each_content_id,type, status = "checking",team_name){
 
     if(type=="arg"){
 
@@ -136,7 +136,7 @@ export class UploadToFirebaseService {
 
   }
 
-  approve_argument_status(event_id, arg_id, arg_each_content_id,type = "published", status,team_name){
+  approve_opinion_status(event_id, arg_id, arg_each_content_id,type = "published", status,team_name){
 
 
   }

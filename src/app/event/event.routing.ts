@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {EventlistLayoutComponent} from './eventlist-layout/eventlist-layout.component';
 
 import {EventcontextLayoutOnlinedebateWrittenComponent} from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
-import {WriterRecordArgLayoutComponent} from './writer-record-arg-layout/writer-record-arg-layout.component';
+import {WriterRecordOpinionLayoutComponent} from './writer-record-arg-layout/writer-record-arg-layout.component';
 
 const EventRoutes: Routes = [
   {
@@ -21,8 +21,8 @@ const EventRoutes: Routes = [
     ]
   },
   {
-    path:'writerecord_argument/:id',
-    component:WriterRecordArgLayoutComponent
+    path:'writerecord_opinion/:id',
+    component:WriterRecordOpinionLayoutComponent
   }
 ];
 

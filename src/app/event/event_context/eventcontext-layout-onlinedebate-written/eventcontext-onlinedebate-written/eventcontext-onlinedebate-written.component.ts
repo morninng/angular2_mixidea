@@ -34,7 +34,7 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
     let navigationExtras: NavigationExtras = {
       queryParams: {team_name:"proposition"}
     }
-    this.router.navigate(['/writerecord_argument',this.evnet_id], navigationExtras);
+    this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
   }
 
   add_arg_opp(){
@@ -42,7 +42,7 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
     let navigationExtras: NavigationExtras = {
       queryParams: {team_name:"opposition"}
     }
-    this.router.navigate(['/writerecord_argument',this.evnet_id], navigationExtras);
+    this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
   }
 
 

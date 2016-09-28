@@ -11,7 +11,7 @@ import {UploadFileComponent} from './upload-file/upload-file.component';
   templateUrl: './write-record-arg.component.html',
   styleUrls: ['./write-record-arg.component.scss']
 })
-export class WriteRecordArgComponent implements OnInit {
+export class WriteRecordOpinionComponent implements OnInit {
 
   router_param_subscription : any;
   event_id :string;

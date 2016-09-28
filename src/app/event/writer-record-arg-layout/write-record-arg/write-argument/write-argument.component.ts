@@ -6,7 +6,7 @@ import {UploadToFirebaseService} from './../service/upload-to-firebase.service'
   templateUrl: './write-argument.component.html',
   styleUrls: ['./write-argument.component.scss']
 })
-export class WriteArgumentComponent implements OnInit {
+export class WriteOpinionComponent implements OnInit {
 
 
   @Input() event_id: string;
@@ -19,15 +19,15 @@ export class WriteArgumentComponent implements OnInit {
   }
 
 
-  upload_argument(text){
+  upload_opinion(text){
 
     const section_arr = text.split("\n\n");
     const upload_arg_each_content = section_arr.map((value)=>{return {content:value}});
     console.log(upload_arg_each_content)
 
-    this.upload_firebase.upload_argument(this.event_id, this.arg_each_content_id, upload_arg_each_content);
+    this.upload_firebase.upload_opinion(this.event_id, this.arg_each_content_id, upload_arg_each_content);
 
-   this.upload_firebase.set_argument_status(this.event_id, "dummy_arg_id", this.arg_each_content_id,"arg", "checking",this.team_name);
+   this.upload_firebase.set_opinion_status(this.event_id, "dummy_arg_id", this.arg_each_content_id,"arg", "checking",this.team_name);
 
 
   }
