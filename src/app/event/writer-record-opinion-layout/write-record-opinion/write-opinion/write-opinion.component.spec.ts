@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { WriteOpinionComponent } from './write-argument.component';
+import { WriteOpinionComponent } from './write-opinion.component';
 
 describe('Component: WriteOpinion', () => {
   it('should create an instance', () => {

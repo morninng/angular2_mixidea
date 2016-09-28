@@ -7,15 +7,15 @@ import {RecordTranscriptComponent} from './record-transcript/record-transcript.c
 import {UploadFileComponent} from './upload-file/upload-file.component';
 
 @Component({
-  selector: 'app-write-record-arg',
-  templateUrl: './write-record-arg.component.html',
-  styleUrls: ['./write-record-arg.component.scss']
+  selector: 'app-write-record-opinion',
+  templateUrl: './write-record-opinion.component.html',
+  styleUrls: ['./write-record-opinion.component.scss']
 })
 export class WriteRecordOpinionComponent implements OnInit {
 
   router_param_subscription : any;
   event_id :string;
-  arg_each_content_id : string;
+  opinion_id : string;
   team_name :string;
 
 
@@ -34,7 +34,7 @@ export class WriteRecordOpinionComponent implements OnInit {
 
   ngOnInit() {
 
-    this.arg_each_content_id = generate_id();
+    this.opinion_id = generate_id();
 
     const source = this.route.params.combineLatest(this.route.queryParams, (param: Params, query)=>{
       return {param, query}

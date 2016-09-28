@@ -1,11 +1,11 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async } from '@angular/core/testing';
-import { WriteRecordArgComponent } from './write-record-arg.component';
+import { WriteRecordOpinionComponent } from './write-record-opinion.component';
 
-describe('Component: WriteRecordArg', () => {
+describe('Component: WriteRecordOpinion', () => {
   it('should create an instance', () => {
-    let component = new WriteRecordArgComponent();
+    let component = new WriteRecordOpinionComponent();
     expect(component).toBeTruthy();
   });
 });

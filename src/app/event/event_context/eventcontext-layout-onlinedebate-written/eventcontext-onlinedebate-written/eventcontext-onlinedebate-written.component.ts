@@ -30,14 +30,14 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
 
   }
 
-  add_arg_prop(){
+  add_opinion_prop(){
     let navigationExtras: NavigationExtras = {
       queryParams: {team_name:"proposition"}
     }
     this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
   }
 
-  add_arg_opp(){
+  add_opinion_opp(){
     
     let navigationExtras: NavigationExtras = {
       queryParams: {team_name:"opposition"}

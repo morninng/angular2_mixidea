@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-writer-record-arg-layout',
-  templateUrl: './writer-record-arg-layout.component.html',
-  styleUrls: ['./writer-record-arg-layout.component.scss']
+  selector: 'app-writer-record-opinion-layout',
+  templateUrl: './writer-record-opinion-layout.component.html',
+  styleUrls: ['./writer-record-opinion-layout.component.scss']
 })
 export class WriterRecordOpinionLayoutComponent implements OnInit {
 

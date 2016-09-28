@@ -23,7 +23,7 @@ export class UploadToFirebaseService {
     ////////////temporal implementation//////////////////////////////////////////////////////
   }
 
-  upload_file_after_encoding(event_id, arg_each_content_id, team_name){
+  upload_file_after_encoding(event_id, opinion_id, team_name){
     const storage = firebase.storage();
     const storage_ref = storage.ref();
     var file_name = generate_random_string();
@@ -41,7 +41,7 @@ export class UploadToFirebaseService {
           console.log("uploading file is finished");
           console.log(firebase_url)
           const reference = "event_related/written_debate/" + event_id +
-              "/arg_each_content/" + arg_each_content_id;
+              "/opinion/" + opinion_id;
           const audio_db_item = this.af.database.object(reference);
           const promise = audio_db_item.update({audio_url:firebase_url})
           return promise;
@@ -52,7 +52,7 @@ export class UploadToFirebaseService {
     )
   }
 
-  upload_file_without_encoding(event_id, arg_each_content_id,audio_blob){
+  upload_file_without_encoding(event_id, opinion_id,audio_blob){
 
     const storage = firebase.storage();
     const storage_ref = storage.ref();
@@ -67,7 +67,7 @@ export class UploadToFirebaseService {
       console.log("uploading file is finished");
       console.log(firebase_url)
       const reference = "event_related/written_debate/" + event_id +
-          "/arg_each_content/" + arg_each_content_id;
+          "/opinion/" + opinion_id;
 
       const audio_db_item = this.af.database.object(reference);
       const promise = audio_db_item.update({audio_url:firebase_url})
@@ -79,10 +79,10 @@ export class UploadToFirebaseService {
   }
 
 
-  upload_transcription(event_id, arg_each_content_id,transcript_arr){
+  upload_transcription(event_id, opinion_id,transcript_arr){
     
     const reference = "event_related/written_debate/" + event_id +
-              "/arg_each_content/" + arg_each_content_id;
+              "/opinion/" + opinion_id;
     const transcript_db_item = this.af.database.object(reference);
     const promise = transcript_db_item.update({transcript:transcript_arr});
     promise.then(()=>{
@@ -91,22 +91,22 @@ export class UploadToFirebaseService {
   }
 
 
-  set_basic_info(event_id, arg_each_content_id,user_id, type){
+  set_basic_info(event_id, opinion_id,user_id, type){
 
     const reference = "event_related/written_debate/" + event_id +
-              "/arg_each_content/" + arg_each_content_id;
+              "/opinion/" + opinion_id;
     const basicinfo_db_item = this.af.database.object(reference);
     const promise = basicinfo_db_item.update({writer:user_id, type: type});
     promise.then(()=>{
       console.log("setting basic info has been succeeded");
     })
   }
-  upload_opinion(event_id, arg_each_content_id, arg_each_content){
+  upload_opinion(event_id, opinion_id, opinion){
 
     const reference = "event_related/written_debate/" + event_id +
-              "/arg_each_content/" + arg_each_content_id;
-    const arg_each_content_db_item = this.af.database.object(reference);
-    const promise = arg_each_content_db_item.update({content: arg_each_content});
+              "/opinion/" + opinion_id;
+    const opinion_db_item = this.af.database.object(reference);
+    const promise = opinion_db_item.update({content: opinion});
     promise.then(()=>{
       console.log("uploading opinion succeeded")
     })
@@ -115,12 +115,12 @@ export class UploadToFirebaseService {
 
 
 
-  set_opinion_status(event_id, arg_id, arg_each_content_id,type, status = "checking",team_name){
+  set_opinion_status(event_id, arg_id, opinion_id,type, status = "checking",team_name){
 
-    if(type=="arg"){
+    if(type=="main"){
 
       const arg_status_main_reference = "event_related/written_debate/" + event_id + "/arg_status/";
-      const main_obj = {arg_each_content_id, status, team_name};
+      const main_obj = {opinion_id, status, team_name};
       const arg_status_main_db_item = this.af.database.list(arg_status_main_reference);
       arg_status_main_db_item.push({main:main_obj});
 
@@ -128,7 +128,7 @@ export class UploadToFirebaseService {
 
       const arg_status_subsequent_reference = "event_related/written_debate/" + event_id + "/arg_status/"
                                              + arg_id + "/subsequent/";
-      const subsequent_obj = {arg_each_content_id, status, team_name };
+      const subsequent_obj = {opinion_id, status, team_name };
       const arg_status_subsequent_db_item = this.af.database.list(arg_status_subsequent_reference);
       arg_status_subsequent_db_item.push(subsequent_obj);
 
@@ -136,7 +136,7 @@ export class UploadToFirebaseService {
 
   }
 
-  approve_opinion_status(event_id, arg_id, arg_each_content_id,type = "published", status,team_name){
+  approve_opinion_status(event_id, arg_id, opinion_id,type = "published", status,team_name){
 
 
   }

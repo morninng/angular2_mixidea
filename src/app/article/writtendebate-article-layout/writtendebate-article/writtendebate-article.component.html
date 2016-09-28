@@ -7,8 +7,8 @@
   {{(written_debate_data | async | json)}}
 
 <br><br>
-  <span *ngFor="let status of ((written_debate_data | async)?.arg_status | keysInObject)">
-    {{status.value.main.arg_each_content_id}}<br><br>
+  <span *ngFor="let status of ((written_debate_data | async)?.opinion_status | keysInObject)">
+    {{status.value.main.opinion_id}}<br><br>
   </span>
 ---------------------
 

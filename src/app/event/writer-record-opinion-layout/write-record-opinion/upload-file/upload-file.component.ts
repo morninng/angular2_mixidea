@@ -20,7 +20,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   
   @Input() event_id: string;
   @Input() team_name: string;
-  @Input() arg_each_content_id: string;
+  @Input() opinion_id: string;
 
   constructor(private record_wav: RecordWavService,
               private encode_to_mp3: EncodeToMp3Service,
@@ -73,7 +73,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
       this.show_upload_button = false;
       this.under_encoding = true;
       this.encode_to_mp3.encode_wav_to_mp3(this.audio_blob);
-      this.upload_firebase.upload_file_after_encoding(this.event_id,this.arg_each_content_id, this.team_name);
+      this.upload_firebase.upload_file_after_encoding(this.event_id,this.opinion_id, this.team_name);
     }
 
 //uploading the transcription 
@@ -85,16 +85,16 @@ export class UploadFileComponent implements OnInit, OnDestroy {
               return {content:transcript.sentence, end_time:transcript.end_time} 
             }
           );
-      this.upload_firebase.upload_transcription(this.event_id,this.arg_each_content_id, upload_transcript_arr)
+      this.upload_firebase.upload_transcription(this.event_id,this.opinion_id, upload_transcript_arr)
     })
 
 //setting the basic info.
     const user_id = this.user_auth.own_user_id;
-    const type = "arg";  // this is the temporal value. it must be fixed;
-    this.upload_firebase.set_basic_info(this.event_id, this.arg_each_content_id, user_id, type);
+    const type = "main";  // this is the temporal value. it must be fixed;
+    this.upload_firebase.set_basic_info(this.event_id, this.opinion_id, user_id, type);
 
-// add it on the arg_status
-    this.upload_firebase.set_opinion_status(this.event_id, "dummy_arg_id", this.arg_each_content_id,"arg", "checking",this.team_name);
+// add it on the opinion_status
+    this.upload_firebase.set_opinion_status(this.event_id, "dummy_arg_id", this.opinion_id,"arg", "checking",this.team_name);
 
   }
 
@@ -102,7 +102,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   upload_file_without_encode(){
 
     if(this.audio_blob){
-      this.upload_firebase.upload_file_without_encoding(this.event_id, this.arg_each_content_id,this.audio_blob)
+      this.upload_firebase.upload_file_without_encoding(this.event_id, this.opinion_id,this.audio_blob)
     }
 
   }
@@ -122,13 +122,13 @@ export class UploadFileComponent implements OnInit, OnDestroy {
               return {content:transcript.sentence, end_time:transcript.end_time} 
             }
           );
-      this.upload_firebase.upload_transcription(this.event_id,this.arg_each_content_id, upload_transcript_arr)
+      this.upload_firebase.upload_transcription(this.event_id,this.opinion_id, upload_transcript_arr)
     })
 
 //setting the basic info.
     const user_id = this.user_auth.own_user_id;
-    const type = "arg";  // this is the temporal value. it must be fixed;
-    this.upload_firebase.set_basic_info(this.event_id, this.arg_each_content_id, user_id, type);
+    const type = "main";  // this is the temporal value. it must be fixed;
+    this.upload_firebase.set_basic_info(this.event_id, this.opinion_id, user_id, type);
   }
 */
 
