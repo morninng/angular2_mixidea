@@ -1,0 +1,116 @@
+<html>
+<body>
+
+<script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyC5HFhGfCQFG2FiWCvNEMdtg_5FOIOmsqA",
+    authDomain: "security-confirmation.firebaseapp.com",
+    databaseURL: "https://security-confirmation.firebaseio.com",
+    storageBucket: "security-confirmation.appspot.com",
+    messagingSenderId: "688641553648"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+
+
+<input type="button" value="add_event" onClick="add_event()">
+<input type="button" value="remove_event" onClick="remove_event()">
+<input type="button" value="add_participant" onClick="add_participant()">
+<input type="button" value="change date" onClick="change_date()"> 
+
+
+<script>
+function add_event(){
+	console.log("add event");
+	reference = "/event_related/event"
+	obj = {date:"111", title:"aaa",created_by:global_user.uid};
+	firebase.database().ref(reference).push(obj);
+}
+
+function remove_event(){
+	var reference = "/event_related/event/" + global_event_id;
+	firebase.database().ref(reference).remove();
+}
+
+function add_participant(){
+	
+	var reference = "/event_related/event/" + global_event_id + "/participants/" + global_user.uid;
+	firebase.database().ref(reference).set(true);
+}
+function change_date(){
+
+	var reference = "/event_related/event/" + global_event_id + "/date";
+	firebase.database().ref(reference).set("changed date");
+}
+
+
+
+</script>
+
+<br><br><br>
+
+
+<input type="button" value="login" onClick="login()">
+<input type="button" value="logout" onClick="logout()">
+
+<script>
+function login(){
+	console.log("login is clicked");
+	var provider = new firebase.auth.FacebookAuthProvider();
+	firebase.auth().signInWithPopup(provider).then(function(result) {
+	  console.log("login succeed", result);
+	  var user_id = result.user.uid;
+	  var obj = {name: result.user.displayName}
+	  firebase.database().ref('users/' + user_id).set(obj);
+
+	}).catch(function(error) {
+	  console.log("login fail", error);
+	});
+}
+
+function logout(){
+	firebase.auth().signOut().then(function() {
+		console.log("logout");
+	}, function(error) {
+		console.log(error);
+	});
+}
+
+
+var global_user;
+var global_event_id;
+
+firebase.auth().onAuthStateChanged(function(user) {
+  if (user) {
+  	global_user = user
+  	console.log("user is",  user);
+  } else {
+	alert("not logedin");
+	
+  }
+});
+
+
+/*read current event info*/
+
+var eventRef = firebase.database().ref('/event_related/event');
+eventRef.on('value', function(snapshot) {
+	console.log(snapshot.val());
+});
+
+eventRef.on('child_added', function(snapshot) {
+	console.log(snapshot.val());
+	console.log(snapshot.key);
+	global_event_id = snapshot.key;
+});
+
+
+</script>
+
+
+</body>
+</html>

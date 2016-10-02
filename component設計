@@ -1,0 +1,61 @@
+
+■Event-WrittenDebate-component
+ ArgStatusでFor文をまわす。
+ arg-component
+　　　
+
+■Arg-component
+  input: arg_id,event-data, own_team_name
+ ＜全体の表示＞
+  arg-status[arg_id].main.status == approved または
+　　arg-status[arg_id].main.team_name　== own_team_name
+
+ <sign postの表示>
+　　必ず表示
+ <main opinionの表示>
+　　必ず表示
+ <subsequent opinionの表示>
+　次のルールで表示を切り替えし、For文でまわす
+ arg-status[arg_id].subsequent.arrid.status == approved　または
+　
+　 arg-status[arg_id].subsequent.arrid.status == checkingかつ
+ arg-status[arg_id].subsequent.arrid.team_name == own_team_nameかつ
+＜データの受け渡し＞
+ arg-status[arg_id].subsequent.arrid.opinion_idをopinion_idとしてopinion_componentに渡す。
+　opinion[opinin_id]を、opinion_dataとしてopinion_componentに渡す。
+　comment.section_comment[opinion_id]をsection_comment_dataとしてopinion_componentに渡す。
+　
+■opinion_component
+ input: opinion_id, opinion_data, section_comment_data
+  opinion_data.contentのあるなしを判定し、あればcontentを表示
+　　　opinion_data.contentの中のsectionデータでFor文をまわし　section　componentとする
+＜データの受け渡し＞
+　　　opinion_data.content[x]を　section_dataとしてsection　componentに　渡す。
+　　　section_comment_data[x]をsection_commentとして、
+
+■section_component
+　input: section_data, section_comment_data
+
+  section_dataを表示
+  section_commentのコメント数を数えて表示
+　　hoverで、section_comment コンポーネントを表示
+　　→
+■section_comment_component 
+　input: section_comment_data
+   ユーザとコメントの内容を表示
+　　　→これは、edit written debateではなし。
+
+
+ 
+ 
+　　　
+　　
+　
+
+■sentence_comment
+　これは、edit written debateではなし。
+
+
+
+
+
