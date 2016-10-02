@@ -1,7 +1,7 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {EventlistLayoutComponent} from './eventlist-layout/eventlist-layout.component';
+import {EventlistLayoutComponent} from './eventlist/eventlist-layout/eventlist-layout.component';
 
 import {EventcontextLayoutOnlinedebateWrittenComponent} from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
 import {WriteRecordOpinionLayoutComponent} from './write-record-opinion/write-record-opinion-layout/write-record-opinion-layout.component';

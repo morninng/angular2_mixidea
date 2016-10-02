@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {EventcreateModalComponent} from './../eventcreate-modal/eventcreate-modal.component';
+import {EventcreateModalComponent} from './../../eventcreate-modal/eventcreate-modal.component';
 
 @Component({
   selector: 'app-eventlist-layout',
