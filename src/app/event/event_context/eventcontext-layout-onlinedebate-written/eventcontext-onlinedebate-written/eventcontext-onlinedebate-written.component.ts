@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
+import { UserauthService} from './../../../../shared/userauth.service';
 
 import {PublishArticleFromEvent} from "./../../../publish-article-from-event"
 
@@ -18,7 +19,10 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
   event_obj_observable : FirebaseObjectObservable<any>;
   event_obj_subscription;
 
-  constructor(private route: ActivatedRoute, private router: Router,private af: AngularFire) { }
+  constructor(private route: ActivatedRoute,
+               private router: Router,
+               private af: AngularFire,
+                private user_auth : UserauthService) { }
 
   ngOnInit() {
     this.evnet_id = this.route.snapshot.params['id'];
@@ -27,8 +31,31 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
     this.event_obj_observable = this.af.database.object('/event_related/event/' + this.evnet_id);
     this.event_obj_subscription
        = this.event_obj_observable.subscribe();
+  }
+
+  join_as_proposition(){
+    this.join_set_firebase("proposition");
+  }
+
+  join_as_opposition(){
+    this.join_set_firebase("opposition");
+  } 
+
+  private join_set_firebase(in_team){
+
+    if(!this.user_auth.own_user.loggedIn){
+      alert("you need to login to create a game");
+      this.user_auth.open_login_modal();
+      return;
+    }
+    const participate_item = this.af.database.object("/event_related/event/" + this.evnet_id + "/participnts/" + this.user_auth.own_user_id);
+    participate_item.set(true);
+    const prop_item = this.af.database.object("/event_related/written_debate/" + this.evnet_id + "/team/" + in_team + "/" + this.user_auth.own_user_id);
+    prop_item.set(true);
 
   }
+
+
 
   add_opinion_prop(){
     let navigationExtras: NavigationExtras = {
