@@ -1,0 +1,19 @@
+ログインしていなかったら、モーダルを出す。
+
+
+    import { UserauthService} from './../../shared/userauth.service';
+
+
+      constructor( private user_auth : UserauthService) { }
+
+    if(!this.user_auth.own_user.loggedIn){
+      alert("you need to login to create a game");
+      this.user_auth.open_login_modal();
+    
+
+
+firebaseからの取得
+
+
+firebaseへのセーブ
+
