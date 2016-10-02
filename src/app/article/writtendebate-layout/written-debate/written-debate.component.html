@@ -1,3 +1,20 @@
 <p>
   written-debate works!
 </p>
+
+<br><br>
+event_data
+<span >{{event_data | async | json}}</span>
+<br><br>
+written_debate_data
+<span>{{written_debate_data | async | json}}</span>
+<br><br>
+<span *ngFor="let argument of ((written_debate_data | async)?.arg_status | keysInObject)">
+  <br>
+  {{argument | json}}<br><br>
+  argument_id:  {{argument.key}}<br><br>
+  argument_status_value:  {{argument.value | json}}<br><br>
+  partial_opinon: {{(written_debate_data | async)?.opinion[argument.key] | json}}
+
+</span>
+

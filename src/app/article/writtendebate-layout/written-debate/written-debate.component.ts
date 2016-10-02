@@ -26,13 +26,12 @@ export class WrittenDebateComponent implements OnInit {
       this.event_data = this.af.database.object('/event_related/event/' + event_id);
       console.log("event data");
     });
-
+/*
     if(!this.user_auth.own_user.loggedIn){
       alert("you need to login to see event data");
       this.user_auth.open_login_modal();
     }
-    
-
+  */  
   }
  
 }

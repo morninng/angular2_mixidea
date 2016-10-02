@@ -1,7 +1,7 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params  }     from '@angular/router';
 import 'rxjs/add/operator/combineLatest'; 
-import {generate_id} from './../../../util_func';
+import {generate_id, generate_id2} from './../../../util_func';
 import {PlayerTranscriptionComponent} from './player-transcription/player-transcription.component'
 import {RecordTranscriptComponent} from './record-transcript/record-transcript.component'
 import {UploadFileComponent} from './upload-file/upload-file.component';
@@ -15,6 +15,7 @@ export class WriteRecordOpinionComponent implements OnInit {
 
   router_param_subscription : any;
   event_id :string;
+  arg_id : string;
   opinion_id : string;
   team_name :string;
 
@@ -35,6 +36,7 @@ export class WriteRecordOpinionComponent implements OnInit {
   ngOnInit() {
 
     this.opinion_id = generate_id();
+    this.arg_id = generate_id2();
 
     const source = this.route.params.combineLatest(this.route.queryParams, (param: Params, query)=>{
       return {param, query}
