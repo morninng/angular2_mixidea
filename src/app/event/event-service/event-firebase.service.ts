@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {EncodeToMp3Service} from './../service/encode-to-mp3.service'
+import {EncodeToMp3Service} from './encode-to-mp3.service'
 import { BehaviorSubject } from 'rxjs';
-import {generate_random_string} from './../../../../util_func';
+import {generate_random_string} from './../../util_func';
 import {AngularFire} from 'angularfire2';
 
 declare var firebase: any;

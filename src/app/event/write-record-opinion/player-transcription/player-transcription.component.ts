@@ -1,7 +1,7 @@
 import { Component, OnInit, NgZone, AfterViewInit } from '@angular/core';
-import {RecordWavService} from './../service/record-wav.service';
+import {RecordWavService} from './../../event-service/record-wav.service';
 import {SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
-import {ActionCreator} from './../../../../redux/action-creator';
+import {ActionCreator} from './../../../redux/action-creator';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 

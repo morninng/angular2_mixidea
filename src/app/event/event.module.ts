@@ -19,19 +19,19 @@ import { EachlistOnlineTournamentWrittenComponent } from './eventlist-layout/eve
 import { EventcontextLayoutOnlinedebateLivevideoComponent } from './event_context/eventcontext-layout-onlinedebate-livevideo/eventcontext-layout-onlinedebate-livevideo.component';
 import { EventcontextLayoutOnlinedebateWrittenComponent } from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
 import { EventcontextOnlinedebateWrittenComponent } from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-onlinedebate-written/eventcontext-onlinedebate-written.component';
-import { WriteRecordOpinionLayoutComponent } from './write-record-opinion-layout/write-record-opinion-layout.component';
-import { WriteRecordOpinionComponent } from './write-record-opinion-layout/write-record-opinion/write-record-opinion.component';
-import { PlayerTranscriptionComponent } from './write-record-opinion-layout/write-record-opinion/player-transcription/player-transcription.component';
-import { RecordTranscriptComponent } from './write-record-opinion-layout/write-record-opinion/record-transcript/record-transcript.component';
-import { UploadFileComponent } from './write-record-opinion-layout/write-record-opinion/upload-file/upload-file.component';
+import { WriteRecordOpinionLayoutComponent } from './write-record-opinion/write-record-opinion-layout/write-record-opinion-layout.component';
+import { WriteRecordOpinionComponent } from './write-record-opinion/write-record-opinion/write-record-opinion.component';
+import { PlayerTranscriptionComponent } from './write-record-opinion/player-transcription/player-transcription.component';
+import { RecordTranscriptComponent } from './write-record-opinion/record-transcript/record-transcript.component';
+import { UploadFileComponent } from './write-record-opinion/upload-file/upload-file.component';
 
 
-import {RecordWavService} from './write-record-opinion-layout/write-record-opinion/service/record-wav.service';
-import {SpeechRecognitionService} from './write-record-opinion-layout/write-record-opinion/service/speech-recognition.service';
-import {EncodeToMp3Service} from './write-record-opinion-layout/write-record-opinion/service/encode-to-mp3.service';
-import {EventFirebaseService} from './write-record-opinion-layout/write-record-opinion/service/event-firebase.service';
-import { WriteOpinionComponent } from './write-record-opinion-layout/write-record-opinion/write-opinion/write-opinion.component';
-import { ClearRecordTranscriptionComponent } from './write-record-opinion-layout/write-record-opinion/clear-record-transcription/clear-record-transcription.component'
+import {RecordWavService} from './event-service/record-wav.service';
+import {SpeechRecognitionService} from './event-service/speech-recognition.service';
+import {EncodeToMp3Service} from './event-service/encode-to-mp3.service';
+import {EventFirebaseService} from './event-service/event-firebase.service';
+import { WriteOpinionComponent } from './write-record-opinion/write-opinion/write-opinion.component';
+import { ClearRecordTranscriptionComponent } from './write-record-opinion/clear-record-transcription/clear-record-transcription.component'
 
 
 @NgModule({

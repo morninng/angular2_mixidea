@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import {ActionCreator} from './../../../../redux/action-creator';
+import {ActionCreator} from './../../redux/action-creator';
 
 declare var window:any;
 

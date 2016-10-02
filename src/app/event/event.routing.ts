@@ -4,7 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {EventlistLayoutComponent} from './eventlist-layout/eventlist-layout.component';
 
 import {EventcontextLayoutOnlinedebateWrittenComponent} from './event_context/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
-import {WriteRecordOpinionLayoutComponent} from './write-record-opinion-layout/write-record-opinion-layout.component';
+import {WriteRecordOpinionLayoutComponent} from './write-record-opinion/write-record-opinion-layout/write-record-opinion-layout.component';
 
 const EventRoutes: Routes = [
   {

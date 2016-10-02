@@ -1,9 +1,9 @@
 import { Component, OnInit, Output, EventEmitter,NgZone } from '@angular/core';
-import {RecordWavService} from './../service/record-wav.service';
+import {RecordWavService} from './../../event-service/record-wav.service';
 import { Store } from '@ngrx/store';
-import {ActionCreator} from './../../../../redux/action-creator';
-import {EncodeToMp3Service} from './../service/encode-to-mp3.service'
-import {SpeechRecognitionService} from './../service/speech-recognition.service'
+import {ActionCreator} from './../../../redux/action-creator';
+import {EncodeToMp3Service} from './../../event-service/encode-to-mp3.service'
+import {SpeechRecognitionService} from './../../event-service/speech-recognition.service'
 
 
 @Component({
