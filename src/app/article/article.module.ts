@@ -7,8 +7,8 @@ import {SharedModule} from './../shared/shared.module';
 import {ArticleRouting} from './article.routing';
 import {ArticlelistLayoutComponent} from './articlelist-layout/articlelist-layout.component';
 import { ArticlelistComponent } from './articlelist-layout/articlelist/articlelist.component';
-import { WrittendebateArticleLayoutComponent } from './writtendebate-article-layout/writtendebate-article-layout.component';
-import { WrittendebateArticleComponent } from './writtendebate-article-layout/writtendebate-article/writtendebate-article.component';
+import { WrittendebateLayoutComponent } from './writtendebate-layout/writtendebate-layout.component';
+import { WrittenDebateComponent } from './writtendebate-layout/written-debate/written-debate.component';
 
 
 @NgModule({
@@ -21,8 +21,8 @@ import { WrittendebateArticleComponent } from './writtendebate-article-layout/wr
   declarations: [
       ArticlelistLayoutComponent,
       ArticlelistComponent,
-      WrittendebateArticleLayoutComponent,
-      WrittendebateArticleComponent
+      WrittendebateLayoutComponent,
+      WrittenDebateComponent
   ],
   providers: []
 })

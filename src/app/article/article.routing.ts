@@ -1,7 +1,8 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {ArticlelistLayoutComponent} from './articlelist-layout/articlelist-layout.component';
-import {WrittendebateArticleLayoutComponent} from './writtendebate-article-layout/writtendebate-article-layout.component';
+import {WrittendebateLayoutComponent} from './writtendebate-layout/writtendebate-layout.component';
+
 
 const ArticleRoutes: Routes = [
   {
@@ -10,7 +11,7 @@ const ArticleRoutes: Routes = [
   },
   {
     path: 'written_debate_article/:id',
-    component: WrittendebateArticleLayoutComponent
+    component: WrittendebateLayoutComponent
 
   }
 ];
@@ -18,3 +19,5 @@ const ArticleRoutes: Routes = [
 
 export const ArticleRouting: ModuleWithProviders 
               = RouterModule.forChild(ArticleRoutes);
+
+
