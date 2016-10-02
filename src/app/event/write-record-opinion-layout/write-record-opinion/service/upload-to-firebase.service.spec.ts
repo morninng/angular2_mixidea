@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { UploadToFirebaseService } from './upload-to-firebase.service';
+import { EventFirebaseService } from './upload-to-firebase.service';
 
 describe('Service: UploadToFirebase', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UploadToFirebaseService]
+      providers: [EventFirebaseService]
     });
   });
 
-  it('should ...', inject([UploadToFirebaseService], (service: UploadToFirebaseService) => {
+  it('should ...', inject([EventFirebaseService], (service: EventFirebaseService) => {
     expect(service).toBeTruthy();
   }));
 });

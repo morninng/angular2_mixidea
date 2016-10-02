@@ -7,7 +7,7 @@ import {AngularFire} from 'angularfire2';
 declare var firebase: any;
 
 @Injectable()
-export class UploadToFirebaseService {
+export class EventFirebaseService {
 
   under_file_upload_subject = new BehaviorSubject(false);
 

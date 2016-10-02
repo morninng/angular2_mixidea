@@ -29,7 +29,7 @@ import { UploadFileComponent } from './write-record-opinion-layout/write-record-
 import {RecordWavService} from './write-record-opinion-layout/write-record-opinion/service/record-wav.service';
 import {SpeechRecognitionService} from './write-record-opinion-layout/write-record-opinion/service/speech-recognition.service';
 import {EncodeToMp3Service} from './write-record-opinion-layout/write-record-opinion/service/encode-to-mp3.service';
-import {UploadToFirebaseService} from './write-record-opinion-layout/write-record-opinion/service/upload-to-firebase.service';
+import {EventFirebaseService} from './write-record-opinion-layout/write-record-opinion/service/upload-to-firebase.service';
 import { WriteOpinionComponent } from './write-record-opinion-layout/write-record-opinion/write-opinion/write-opinion.component';
 import { ClearRecordTranscriptionComponent } from './write-record-opinion-layout/write-record-opinion/clear-record-transcription/clear-record-transcription.component'
 
@@ -63,6 +63,6 @@ import { ClearRecordTranscriptionComponent } from './write-record-opinion-layout
     WriteOpinionComponent,
     ClearRecordTranscriptionComponent,
   ],
-  providers: [RecordWavService,SpeechRecognitionService,EncodeToMp3Service,UploadToFirebaseService ]
+  providers: [RecordWavService,SpeechRecognitionService,EncodeToMp3Service,EventFirebaseService ]
 })
 export class EventModule {}
