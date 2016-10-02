@@ -19,7 +19,7 @@ export class UserauthService {
 
 
   own_user_id: string;
-  own_user: User = { loggedIn:false,full_name:"",short_name:"",pict_src:""};
+  own_user: User = { loggedIn:false,full_name:"",short_name:"",pict_src:"", };
   own_user_subject$ = new BehaviorSubject(this.own_user);
 
   open_login_modal$ = new Subject();
@@ -44,10 +44,11 @@ export class UserauthService {
 
       const full_name = result.auth.displayName;
       const split_name_arr = full_name.split(" ");
-
+      const own_user_id = result.uid;
       this.own_user_id = result.uid;
 
       this.own_user ={
+          id: own_user_id,
           loggedIn : true,
           full_name : full_name, 
           short_name: split_name_arr[0],

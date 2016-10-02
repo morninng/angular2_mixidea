@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-argument',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArgumentComponent implements OnInit {
 
+  @Input() argument_id: string;
+  @Input() own_team: string;
+
   constructor() { }
 
   ngOnInit() {
+    console.log("argument id", this.argument_id);
   }
 
 }

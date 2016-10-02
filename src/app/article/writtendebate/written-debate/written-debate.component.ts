@@ -4,7 +4,6 @@ import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
 import { UserauthService} from './../../../shared/userauth.service';
 
 
-
 @Component({
   selector: 'app-written-debate',
   templateUrl: './written-debate.component.html',
@@ -12,17 +11,43 @@ import { UserauthService} from './../../../shared/userauth.service';
 })
 export class WrittenDebateComponent implements OnInit {
 
-  written_debate_data: FirebaseObjectObservable<any>;
+
+  written_debate_data;
   event_data: FirebaseObjectObservable<any>;
+  combined_src_subscription = null;
+  own_team: string = "audience";
+
   constructor(private route: ActivatedRoute, private af: AngularFire, private user_auth : UserauthService) { }
+
+
 
   ngOnInit() {
 
     this.route.params.forEach((params: Params) => {
-      let event_id = params['id']; 
-      console.log(event_id);
 
-      this.written_debate_data = this.af.database.object('/event_related/written_debate/' + event_id);
+      if(this.combined_src_subscription){
+        this.combined_src_subscription.unsubscribe();
+      }
+
+
+      let event_id = params['id']; 
+      const written_debate_item$ = this.af.database.object('/event_related/written_debate/' + event_id);
+      const combined_src = this.user_auth.own_user_subject$.combineLatest(written_debate_item$, 
+        (own_user, written_debate_data : any)=>{
+          this.written_debate_data = written_debate_data;
+          const team = written_debate_data.team;
+          const own_uid = own_user.id;
+          if(team.proposition && team.proposition[own_uid]){
+            this.own_team = "proposition";
+          }
+          if(team.opposition && team.opposition[own_uid]){
+            this.own_team = "opposition";
+          }
+        }
+      )
+      this.combined_src_subscription = combined_src.subscribe();
+
+
       this.event_data = this.af.database.object('/event_related/event/' + event_id);
       console.log("event data");
     });
@@ -33,5 +58,11 @@ export class WrittenDebateComponent implements OnInit {
     }
   */  
   }
- 
+
+  ngOnDestroy(){
+    this.combined_src_subscription.unsubscribe();
+  }
+  
+
+
 }
