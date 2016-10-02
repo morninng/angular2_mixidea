@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserauthService} from './../../shared/userauth.service';
-import {User} from './../../interface/user'
+import { UserauthService} from './../../../shared/userauth.service';
+import {User} from './../../../interface/user'
 
 @Component({
   selector: 'app-articlelist-layout',

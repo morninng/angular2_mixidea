@@ -5,11 +5,11 @@ import {FormsModule} from '@angular/forms';
 import {SharedModule} from './../shared/shared.module';
 
 import {ArticleRouting} from './article.routing';
-import {ArticlelistLayoutComponent} from './articlelist-layout/articlelist-layout.component';
-import { ArticlelistComponent } from './articlelist-layout/articlelist/articlelist.component';
-import { WrittendebateLayoutComponent } from './writtendebate-layout/writtendebate-layout.component';
-import { WrittenDebateComponent } from './writtendebate-layout/written-debate/written-debate.component';
-import { ArgumentComponent } from './writtendebate-layout/written-debate/argument/argument.component';
+import {ArticlelistLayoutComponent} from './articlelist/articlelist-layout/articlelist-layout.component';
+import { ArticlelistComponent } from './articlelist/articlelist/articlelist.component';
+import { WrittendebateLayoutComponent } from './writtendebate/writtendebate-layout/writtendebate-layout.component';
+import { WrittenDebateComponent } from './writtendebate/written-debate/written-debate.component';
+import { ArgumentComponent } from './writtendebate/argument/argument.component';
 
 
 @NgModule({

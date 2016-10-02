@@ -1,7 +1,7 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {ArticlelistLayoutComponent} from './articlelist-layout/articlelist-layout.component';
-import {WrittendebateLayoutComponent} from './writtendebate-layout/writtendebate-layout.component';
+import {ArticlelistLayoutComponent} from './articlelist/articlelist-layout/articlelist-layout.component';
+import {WrittendebateLayoutComponent} from './writtendebate/writtendebate-layout/writtendebate-layout.component';
 
 
 const ArticleRoutes: Routes = [
