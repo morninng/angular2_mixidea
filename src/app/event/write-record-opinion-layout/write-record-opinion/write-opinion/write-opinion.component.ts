@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import {EventFirebaseService} from './../service/upload-to-firebase.service'
+import {EventFirebaseService} from './../service/event-firebase.service'
 
 @Component({
   selector: 'app-write-opinion',
