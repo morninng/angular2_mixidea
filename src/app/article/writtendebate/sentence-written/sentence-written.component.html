@@ -1,6 +1,10 @@
-<p>
+<div>
   sentence-written works!
 
-  {{content | json}}
-  {{content.content}}
-</p>
+  <div (mouseenter)="content_mouseenter()" (mouseleave)="content_mouseleave()" >
+    <div>{{content.content}}</div>
+    <div *ngIf="show_balloon">
+      <input type="button" value="balloon" (click)="open_sentence_comment()">
+    </div>
+  </div>
+</div>
