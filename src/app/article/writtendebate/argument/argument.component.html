@@ -1,8 +1,29 @@
 <div class="argument_container">
   <p>
-    argument works! {{argument_id}} {{own_team}}
-    <br> partial opinion {{partial_opinion | json}}
+     <br><br>argument works! {{argument_id}} {{own_team}}
+     <br><br> partial opinion {{partial_opinion | json}}
+     <br><br>partial_arg_status　{{partial_arg_status | json}}
   </p>
+
+  partial_arg_status.main.opinion_id: {{partial_arg_status.main.opinion_id}}
+
+<br>
+-------------<br>
+partial_arg_status.subsequent : <br>
+{{partial_arg_status.subsequent | json}}
+
+  <span *ngFor="let subsequent_opinion_arr of partial_arg_status.subsequent | keysInObject">
+    <br><br>
+    subsequent <br>
+    subsequent_opinion_arr.value.opinion_id : {{subsequent_opinion_arr.value.opinion_id}}
+
+    <app-opinion [opinion_id]="subsequent_opinion_arr.value.opinion_id" 
+                 [opinion]="partial_opinion[subsequent_opinion_arr.value.opinion_id]"
+                 [subsequent_id]="subsequent_opinion_arr.key"
+                 [opinion_status]="partial_arg_status.subsequent[subsequent_opinion_arr.key].status" ></app-opinion>
+
+  </span>
+
 
 
   <input type="button" value="add new argument"  (click)="add_new_argument()">

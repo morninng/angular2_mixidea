@@ -10,6 +10,7 @@ import { ArticlelistComponent } from './articlelist/articlelist/articlelist.comp
 import { WrittendebateLayoutComponent } from './writtendebate/writtendebate-layout/writtendebate-layout.component';
 import { WrittenDebateComponent } from './writtendebate/written-debate/written-debate.component';
 import { ArgumentComponent } from './writtendebate/argument/argument.component';
+import { OpinionComponent } from './writtendebate/opinion/opinion.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ArgumentComponent } from './writtendebate/argument/argument.component';
       ArticlelistComponent,
       WrittendebateLayoutComponent,
       WrittenDebateComponent,
-      ArgumentComponent
+      ArgumentComponent,
+      OpinionComponent
   ],
   providers: []
 })
