@@ -15,5 +15,11 @@ audio url {{opinion.audio_url}}<br>
 
 writer {{opinion.writer}}<br>
 content {{opinion.content_arr | json}}<br>
+
+
+
+<app-transcription [transcription_arr]="opinion.transcript"></app-transcription>
+<app-written [content_arr]="opinion.content_arr"></app-written>
+
 </div>
 

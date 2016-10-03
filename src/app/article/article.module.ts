@@ -11,6 +11,10 @@ import { WrittendebateLayoutComponent } from './writtendebate/writtendebate-layo
 import { WrittenDebateComponent } from './writtendebate/written-debate/written-debate.component';
 import { ArgumentComponent } from './writtendebate/argument/argument.component';
 import { OpinionComponent } from './writtendebate/opinion/opinion.component';
+import { WrittenComponent } from './writtendebate/written/written.component';
+import { TranscriptionComponent } from './writtendebate/transcription/transcription.component';
+import { SentenceWrittenComponent } from './writtendebate/sentence-written/sentence-written.component';
+import { SentenceTranscriptionComponent } from './writtendebate/sentence-transcription/sentence-transcription.component';
 
 
 @NgModule({
@@ -26,7 +30,11 @@ import { OpinionComponent } from './writtendebate/opinion/opinion.component';
       WrittendebateLayoutComponent,
       WrittenDebateComponent,
       ArgumentComponent,
-      OpinionComponent
+      OpinionComponent,
+      WrittenComponent,
+      TranscriptionComponent,
+      SentenceWrittenComponent,
+      SentenceTranscriptionComponent
   ],
   providers: []
 })

@@ -12,6 +12,9 @@ export class OpinionComponent implements OnInit {
   @Input() subsequent_id :string;
   @Input() opinion_status : string;
 
+  
+
+
   _el;
   audio_element;
 

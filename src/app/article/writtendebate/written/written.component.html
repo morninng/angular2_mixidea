@@ -1,0 +1,9 @@
+<p>
+  written works!
+content arr {{ content_arr | json}}
+</p>
+
+<span *ngFor="let content of content_arr">
+  <app-sentence-written [content]="content"></app-sentence-written>
+
+</span>
