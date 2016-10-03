@@ -56,22 +56,25 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
   }
 
 
-
   add_opinion_prop(){
     let navigationExtras: NavigationExtras = {
-      queryParams: {team_name:"proposition"}
+      queryParams: {
+        argument_id: "",
+        team_name:"proposition", 
+        type: "main"}
     }
     this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
   }
 
   add_opinion_opp(){
-    
     let navigationExtras: NavigationExtras = {
-      queryParams: {team_name:"opposition"}
+      queryParams: {
+        argument_id: null,
+        team_name:"opposition", 
+        type: "main"}
     }
     this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
   }
-
 
   publish_to_public(){
     console.log("publish to public");

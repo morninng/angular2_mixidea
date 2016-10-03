@@ -1,5 +1,10 @@
+<div class="argument_container">
+  <p>
+    argument works! {{argument_id}} {{own_team}}
+    <br> partial opinion {{partial_opinion | json}}
+  </p>
 
-<p>
-  argument works! {{argument_id}} {{own_team}}
-  <br> partial opinion {{partial_opinion | json}}
-</p>
+
+  <input type="button" value="add new argument"  (click)="add_new_argument()">
+
+</div>

@@ -111,7 +111,7 @@ export class EventFirebaseService {
 
 
 
-  set_opinion_status(event_id, arg_id, opinion_id,type, status = "checking",team_name){
+  set_arg_status(event_id, arg_id, opinion_id,type, status = "checking",team_name){
 
     if(type=="main"){
 

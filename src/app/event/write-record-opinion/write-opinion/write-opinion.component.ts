@@ -13,6 +13,7 @@ export class WriteOpinionComponent implements OnInit {
   @Input() team_name: string;
   @Input() opinion_id: string;
   @Input() arg_id: string;
+  @Input() type:string
 
   constructor(private event_firebase :EventFirebaseService) { }
 
@@ -27,10 +28,7 @@ export class WriteOpinionComponent implements OnInit {
     console.log(upload_opinion)
 
     this.event_firebase.upload_opinion_content(this.event_id,this.arg_id, this.opinion_id, upload_opinion);
-
-   this.event_firebase.set_opinion_status(this.event_id, this.arg_id, this.opinion_id,"main", "checking",this.team_name);
-
-
+    this.event_firebase.set_arg_status(this.event_id, this.arg_id, this.opinion_id,this.type, "checking",this.team_name);
   }
 
 }

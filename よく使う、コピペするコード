@@ -1,4 +1,4 @@
-ログインしていなかったら、モーダルを出す。
+■■■■■■■■■■■■■ログインしていなかったら、モーダルを出す■■■■■■■■■■■■■
 
 
     import { UserauthService} from './../../shared/userauth.service';
@@ -11,7 +11,7 @@
       this.user_auth.open_login_modal();
     
 
-json を　arrayのように、ngForで扱う。
+■■■■■■■■■■■■■json を　arrayのように、ngForで扱う■■■■■■■■■■■■■
 
 
 <span *ngFor="let argument of ((written_debate_data | async)?.arg_status | keysInObject)">
@@ -21,8 +21,25 @@ json を　arrayのように、ngForで扱う。
 
 
 
-firebaseからの取得
+■■■■■■■■■■■■■firebaseからの取得■■■■■■■■■■■■■
 
 
-firebaseへのセーブ
+■■■■■■■■■■■■■firebaseへのセーブ■■■■■■■■■■■■■
 
+
+■■■■■■■■Routerで遷移■■■■■■■■■■■■■
+
+import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+
+
+  constructor(private route: ActivatedRoute,
+               private router: Router
+								) { }
+
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        argument_id: null,
+        team_name:"proposition", 
+        type: "main"}
+    }
+    this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);

@@ -13,6 +13,7 @@ export class WrittenDebateComponent implements OnInit {
 
 
   written_debate_data;
+  event_id: string;
   event_data: FirebaseObjectObservable<any>;
   combined_src_subscription = null;
   own_team: string = "audience";
@@ -30,8 +31,8 @@ export class WrittenDebateComponent implements OnInit {
       }
 
 
-      let event_id = params['id']; 
-      const written_debate_item$ = this.af.database.object('/event_related/written_debate/' + event_id);
+      this.event_id = params['id']; 
+      const written_debate_item$ = this.af.database.object('/event_related/written_debate/' + this.event_id);
       const combined_src = this.user_auth.own_user_subject$.combineLatest(written_debate_item$, 
         (own_user, written_debate_data : any)=>{
           this.written_debate_data = written_debate_data;
@@ -47,8 +48,7 @@ export class WrittenDebateComponent implements OnInit {
       )
       this.combined_src_subscription = combined_src.subscribe();
 
-
-      this.event_data = this.af.database.object('/event_related/event/' + event_id);
+      this.event_data = this.af.database.object('/event_related/event/' + this.event_id);
       console.log("event data");
     });
 /*

@@ -22,6 +22,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   @Input() team_name: string;
   @Input() opinion_id: string;
   @Input() arg_id: string;
+  @Input() type:string;
 
   constructor(private record_wav: RecordWavService,
               private encode_to_mp3: EncodeToMp3Service,
@@ -91,11 +92,10 @@ export class UploadFileComponent implements OnInit, OnDestroy {
 
 //setting the basic info.
     const user_id = this.user_auth.own_user_id;
-    const type = "main";  // this is the temporal value. it must be fixed;
-    this.event_firebase.set_basic_info(this.event_id,this.arg_id, this.opinion_id, user_id, type);
+    this.event_firebase.set_basic_info(this.event_id,this.arg_id, this.opinion_id, user_id, this.type);
 
 // add it on the opinion_status
-    this.event_firebase.set_opinion_status(this.event_id, this.arg_id, this.opinion_id,"arg", "checking",this.team_name);
+    this.event_firebase.set_arg_status(this.event_id, this.arg_id, this.opinion_id,this.type, "checking",this.team_name);
 
   }
 

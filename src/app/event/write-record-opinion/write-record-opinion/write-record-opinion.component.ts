@@ -18,6 +18,7 @@ export class WriteRecordOpinionComponent implements OnInit {
   arg_id : string;
   opinion_id : string;
   team_name :string;
+  type: string;
 
 
   @ViewChild(PlayerTranscriptionComponent) 
@@ -36,18 +37,20 @@ export class WriteRecordOpinionComponent implements OnInit {
   ngOnInit() {
 
     this.opinion_id = generate_id();
-    this.arg_id = generate_id2();
 
     const source = this.route.params.combineLatest(this.route.queryParams, (param: Params, query)=>{
       return {param, query}
     })
     this.router_param_subscription = source.subscribe(
       (obj)=>{
-        // event id and team is included.
         console.log(obj);
-
         this.event_id = obj.param["id"];
         this.team_name = obj.query["team_name"];
+        this.arg_id = obj.query["argument_id"];
+        this.type = obj.query["type"];
+        if(!this.arg_id){
+          this.arg_id = generate_id2();
+        }
       }
     )
   }
@@ -58,6 +61,5 @@ export class WriteRecordOpinionComponent implements OnInit {
     this.record_transcript.reset_record();
     this.upload_file.reset_encode_upload();
   }
-
 
 }
