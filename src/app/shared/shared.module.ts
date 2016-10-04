@@ -8,6 +8,7 @@ import {RightColumnAdComponent} from './right-column-ad/right-column-ad.componen
 
 import { UserauthService} from './userauth.service';
 import { KeysInObjectPipe } from './../pipes/keys-in-object.pipe';
+import { ModelUserService} from './model-user.service';
 
 
 
@@ -46,7 +47,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [UserauthService]
+      providers: [UserauthService, ModelUserService]
     }
 
   }

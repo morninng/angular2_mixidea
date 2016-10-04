@@ -3,12 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 
 import {ArticlelistLayoutComponent} from './article/articlelist/articlelist-layout/articlelist-layout.component';
 
+import {TestComponent} from './test/test.component'
 
 const appRoutes: Routes = [
 
   {
     path: 'articlelist',
     component: ArticlelistLayoutComponent
+  },{
+    path: 'test',
+    component: TestComponent
   },
   {
     path: '',

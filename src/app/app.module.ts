@@ -26,6 +26,7 @@ import {EventModule} from './event/event.module';
 import {ArticleModule} from './article/article.module'
 
 import {SharedModule} from './shared/shared.module';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -37,6 +38,7 @@ import {SharedModule} from './shared/shared.module';
     NotificationHeaderComponent,
     MessageHeaderComponent,
     LoginModalComponent,
+    TestComponent,
   ],
   imports: [
     BrowserModule,
