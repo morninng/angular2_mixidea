@@ -3,12 +3,16 @@
 </p>
 
 <div>
-   opinion {{opinion | json}}<br>
+argument_id {{argument_id}}<br>
+opinion_id {{opinion_id}}
+opinion {{opinion | json}}<br>
 subsequent_id {{subsequent_id}}<br>
 opinion_status {{opinion_status}}<br>
 
 audio url {{opinion.audio_url}}<br>
-
+argument_team {{argument_team}}<br>
+opinion_team {{opinion_team}}<br>
+opinion_type {{opinion_type}}<br>
 
 <span class="audio_container"></span>
 
@@ -18,8 +22,15 @@ content {{opinion.content_arr | json}}<br>
 
 
 
-<app-transcription [transcription_arr]="opinion.transcript"></app-transcription>
-<app-written [content_arr]="opinion.content_arr"></app-written>
+<app-transcription [event_id] = "event_id"
+                   [transcription_arr]="opinion.transcript" 
+                   [argument_id]="argument_id"
+                   [opinion_id]="opinion_id" ></app-transcription>
+                   
+<app-written [event_id] = "event_id"
+             [content_arr]="opinion.content_arr"
+             [argument_id]="argument_id"
+             [opinion_id]="opinion_id" ></app-written>
 
 </div>
 

@@ -1,0 +1,10 @@
+<p>
+  sentence-comment-container works!
+</p>
+
+
+<span *ngIf="is_open">
+  sentence comment area
+  <input type="text" placeholder="put a comment here" #comment>
+  <input type="button" value="submit" (click)="submit_comment(comment.value)">
+</span>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import {CommentService, COMMENT_TYPE_SENTENCE_WRITTEN} from './../../service/comment.service'
 
 @Component({
   selector: 'app-sentence-written',
@@ -7,13 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SentenceWrittenComponent implements OnInit {
 
-  show_balloon : boolean;
   @Input() content;
+  @Input() event_id : string;
+  @Input() argument_id : string;
+  @Input() opinion_id : string;
+  show_balloon : boolean;
+  sentence_num : number;
 
-
-  constructor() { }
+  constructor(private comment_service: CommentService) { }
 
   ngOnInit() {
+    this.sentence_num = this.content.num;
   }
 
   content_mouseenter(){
@@ -25,6 +30,13 @@ export class SentenceWrittenComponent implements OnInit {
 
   open_sentence_comment(){
     console.log("open_sentence_comment");
+    this.comment_service.open_sentence_comment(
+              COMMENT_TYPE_SENTENCE_WRITTEN, 
+              this.event_id,
+              this.argument_id,
+              this.opinion_id,
+              this.sentence_num);
+    
   }
 
 }

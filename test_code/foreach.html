@@ -1,0 +1,13 @@
+<html>
+<script>
+
+var aa= [{aa:"aa"},{bb:"bb"},{cc:"cc"}];
+aa.forEach(function(current, index, array){
+	var obj = array[index];
+	obj["num"]=index;
+	array[index]=obj;
+})
+console.log(aa);
+
+</script>
+</html>

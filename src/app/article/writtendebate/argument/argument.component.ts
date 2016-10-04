@@ -13,7 +13,7 @@ export class ArgumentComponent implements OnInit {
   @Input() own_team: string;
   @Input() partial_opinion;
   @Input() partial_arg_status;
-  argument_team
+  @Input() argument_team
 
   constructor(private route: ActivatedRoute,
                private router: Router){}

@@ -15,7 +15,10 @@ import { WrittenComponent } from './writtendebate/written/written.component';
 import { TranscriptionComponent } from './writtendebate/transcription/transcription.component';
 import { SentenceWrittenComponent } from './writtendebate/sentence-written/sentence-written.component';
 import { SentenceTranscriptionComponent } from './writtendebate/sentence-transcription/sentence-transcription.component';
+import {CommentService} from './service/comment.service';
+import { SentenceCommentContainerComponent } from './writtendebate/sentence-comment-container/sentence-comment-container.component'
 
+import {ArticleFirebaseService} from './service/article-firebase.service'
 
 @NgModule({
   imports: [
@@ -34,8 +37,9 @@ import { SentenceTranscriptionComponent } from './writtendebate/sentence-transcr
       WrittenComponent,
       TranscriptionComponent,
       SentenceWrittenComponent,
-      SentenceTranscriptionComponent
+      SentenceTranscriptionComponent,
+      SentenceCommentContainerComponent
   ],
-  providers: []
+  providers: [CommentService, ArticleFirebaseService]
 })
 export class ArticleModule {}

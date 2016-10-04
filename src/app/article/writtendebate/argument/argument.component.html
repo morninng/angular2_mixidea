@@ -17,10 +17,15 @@ partial_arg_status.subsequent : <br>
     subsequent <br>
     subsequent_opinion_arr.value.opinion_id : {{subsequent_opinion_arr.value.opinion_id}}
 
-    <app-opinion [opinion_id]="subsequent_opinion_arr.value.opinion_id" 
+    <app-opinion 
+                 [event_id] = "event_id"
+                 [argument_id]="argument_id"
+                 [opinion_id]="subsequent_opinion_arr.value.opinion_id" 
                  [opinion]="partial_opinion[subsequent_opinion_arr.value.opinion_id]"
                  [subsequent_id]="subsequent_opinion_arr.key"
-                 [opinion_status]="partial_arg_status.subsequent[subsequent_opinion_arr.key].status" ></app-opinion>
+                 [opinion_status]="partial_arg_status.subsequent[subsequent_opinion_arr.key].status"
+                 [argument_team]="argument_team"
+                 [opinion_team]="partial_arg_status.subsequent[subsequent_opinion_arr.key].team_name" ></app-opinion>
 
   </span>
 
