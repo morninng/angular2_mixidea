@@ -1,7 +1,15 @@
 <p>
   test works!
 </p>
+user full name<br>
 
+
+<span *ngIf="user">
+  {{user.full_name}}
+  <img src={{user.pict_src}}>
+</span>
+
+{{full_name}}
 
 <input value="start_user_subscription" type="button" (click)="start_user_subscription()">
 <input value="user_test" type="button" (click)="user_test()">

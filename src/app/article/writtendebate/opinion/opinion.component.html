@@ -21,6 +21,8 @@ writer {{opinion.writer}}<br>
 content {{opinion.content_arr | json}}<br>
 
 
+<app-user-link-full-parallel [user_id]="writer" ></app-user-link-full-parallel>
+
 
 <app-transcription [event_id] = "event_id"
                    [transcription_arr]="opinion.transcript" 

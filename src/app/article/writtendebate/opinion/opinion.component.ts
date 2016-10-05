@@ -21,12 +21,21 @@ export class OpinionComponent implements OnInit {
   _el;
   audio_element;
   opinion_type
+  writer
+  audio_url
+  content_arr
+  transcript_arr
 
   constructor(private el: ElementRef) { }
 
 
   ngOnInit() {
     this.opinion_type = this.opinion.type;
+    this.writer = this.opinion.writer
+    this.audio_url = this.opinion.audio_url;
+    this.content_arr = this.opinion.content_arr;
+    this.transcript_arr = this.opinion.transcript_arr;
+    
   }
 
 

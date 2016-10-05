@@ -16,10 +16,12 @@ export class ModelUserService {
   constructor(private af: AngularFire) {
     this.source = new Subject();
     this.user_model_observable = Observable.from(this.source)
-      .scan((acc, curr )=>{
-        const obj = Object.assign({}, acc, curr);
-        this.userlist_obj = obj;
-        return obj;
+      .scan((acc : any , curr )=>{
+       // const acc_user = acc.user;
+        const new_user = Object.assign({}, acc, curr);
+        this.userlist_obj = new_user;
+       // const new_state = {user:new_user};
+        return new_user;
       }, {});
    }
 
