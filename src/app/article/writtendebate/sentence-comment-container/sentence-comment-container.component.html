@@ -8,3 +8,14 @@
   <input type="text" placeholder="put a comment here" #comment>
   <input type="button" value="submit" (click)="submit_comment(comment.value)">
 </span>
+
+
+{{comment_sentence_written | json}}
+<br><br><br>
+<span *ngFor="let each_comment_sentence of (comment_sentence | keysInObject)">
+each_comment<br>
+  {{each_comment_sentence | json}}
+
+  <app-sentence-comment-each [each_comment_sentence]="each_comment_sentence.value"></app-sentence-comment-each>
+
+</span>

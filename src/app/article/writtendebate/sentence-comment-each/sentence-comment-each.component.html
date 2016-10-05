@@ -1,0 +1,8 @@
+<p>
+  sentence-comment-each works!
+{{each_comment_sentence | json}}
+</p>
+
+<app-user-link-full-parallel [user_id]="each_comment_sentence.user_id" ></app-user-link-full-parallel>
+
+{{each_comment_sentence.comment_content}}

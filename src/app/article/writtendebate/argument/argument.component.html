@@ -25,7 +25,8 @@ partial_arg_status.subsequent : <br>
                  [subsequent_id]="subsequent_opinion_arr.key"
                  [opinion_status]="partial_arg_status.subsequent[subsequent_opinion_arr.key].status"
                  [argument_team]="argument_team"
-                 [opinion_team]="partial_arg_status.subsequent[subsequent_opinion_arr.key].team_name" ></app-opinion>
+                 [opinion_team]="partial_arg_status.subsequent[subsequent_opinion_arr.key].team_name"
+                 [comment_sentence_written]="partial_comment_sentence_written[subsequent_opinion_arr.value.opinion_id]" ></app-opinion>
 
   </span>
 

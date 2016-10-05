@@ -12,6 +12,11 @@ export class SentenceWrittenComponent implements OnInit {
   @Input() event_id : string;
   @Input() argument_id : string;
   @Input() opinion_id : string;
+
+
+  @Input() comment_sentence_written : any;
+
+
   show_balloon : boolean;
   sentence_num : number;
 
@@ -35,8 +40,10 @@ export class SentenceWrittenComponent implements OnInit {
               this.event_id,
               this.argument_id,
               this.opinion_id,
-              this.sentence_num);
-    
+              this.sentence_num,
+              this.comment_sentence_written
+              );
+
   }
 
 }

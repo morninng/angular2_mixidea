@@ -11,9 +11,9 @@ export class WrittenComponent implements OnInit {
   @Input() content_arr: string[];
   @Input() argument_id : string;
   @Input() opinion_id : string;
+  @Input() comment_sentence_written;
 
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     if(this.content_arr){

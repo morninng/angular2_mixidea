@@ -13,6 +13,7 @@ export class SentenceCommentContainerComponent implements OnInit {
 
   open_subscription
   is_open = false;
+  comment_sentence;
 
   constructor(private comment_service: CommentService, private _eref: ElementRef, private user_auth : UserauthService) { }
 
@@ -20,7 +21,8 @@ export class SentenceCommentContainerComponent implements OnInit {
   ngOnInit() {
     const open_subject$ = this.comment_service.sentence_comment_open_subject$
     this.open_subscription = open_subject$.subscribe(
-      ()=>{
+      (comment_sentence)=>{
+        this.comment_sentence = comment_sentence;
         console.log("open");
         setTimeout(()=>{
           this.is_open = true;
@@ -38,17 +40,13 @@ export class SentenceCommentContainerComponent implements OnInit {
 
   submit_comment(text){
 
-
     if(!this.user_auth.own_user.loggedIn){
       alert("you need to login to put a comment");
       this.user_auth.open_login_modal();
       return;
     }
-
-
     console.log(text);
     this.comment_service.put_sentence_comment(text)
   }
-
 
 }

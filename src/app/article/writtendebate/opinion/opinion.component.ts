@@ -15,6 +15,7 @@ export class OpinionComponent implements OnInit {
   @Input() opinion_status : string;
   @Input() argument_team : string;
   @Input() opinion_team : string;
+  @Input() comment_sentence_written;
   
 
 
@@ -34,8 +35,7 @@ export class OpinionComponent implements OnInit {
     this.writer = this.opinion.writer
     this.audio_url = this.opinion.audio_url;
     this.content_arr = this.opinion.content_arr;
-    this.transcript_arr = this.opinion.transcript_arr;
-    
+    this.transcript_arr = this.opinion.transcript_arr; 
   }
 
 

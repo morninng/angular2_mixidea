@@ -14,6 +14,7 @@ export class ArgumentComponent implements OnInit {
   @Input() partial_opinion;
   @Input() partial_arg_status;
   @Input() argument_team
+  @Input() partial_comment_sentence_written
 
   constructor(private route: ActivatedRoute,
                private router: Router){}

@@ -25,11 +25,13 @@ content {{opinion.content_arr | json}}<br>
                    [transcription_arr]="opinion.transcript" 
                    [argument_id]="argument_id"
                    [opinion_id]="opinion_id" ></app-transcription>
-                   
+
 <app-written [event_id] = "event_id"
              [content_arr]="opinion.content_arr"
              [argument_id]="argument_id"
-             [opinion_id]="opinion_id" ></app-written>
+             [opinion_id]="opinion_id"
+             [comment_sentence_written]="comment_sentence_written" ></app-written>
+
 
 </div>
 
