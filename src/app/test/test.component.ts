@@ -17,6 +17,7 @@ export class TestComponent implements OnInit {
   full_name : string;
 
   ngOnInit() {
+
     const user_observable =
       this.user_service.user_model_observable.subscribe(
         (user_model)=>{
@@ -27,9 +28,11 @@ export class TestComponent implements OnInit {
           }
         }
       );
+
   }
 
   start_user_subscription(){
+
   }
 
   user_test(){
