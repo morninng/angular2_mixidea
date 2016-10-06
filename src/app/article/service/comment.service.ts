@@ -23,7 +23,7 @@ export class CommentService {
 
   }
 
-  open_sentence_comment(type,event_id, art_id, opinion_id, sentence_num /*, sentence_comment_object */){
+  open_sentence_comment(type,event_id, art_id, opinion_id, sentence_num , comment_sentence_written){
     
     console.log("open_sentence_comment service");
     
@@ -32,11 +32,7 @@ export class CommentService {
     this.current_opinion_id = opinion_id;
     this.current_sentence_num = sentence_num;
     this.current_type = type;
-
-    /*
-    sentence_comment_object
-    */
-    this.sentence_comment_open_subject$.next();
+    this.sentence_comment_open_subject$.next(comment_sentence_written);
   }
 
   add_comment(){

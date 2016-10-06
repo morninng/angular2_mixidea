@@ -9,7 +9,6 @@ import {ModelUserService} from './../../shared/model-user.service';
 })
 export class UserLinkFullParallelComponent implements OnInit {
 
-
   @Input() user_id : string;
   user;
 
@@ -19,7 +18,7 @@ export class UserLinkFullParallelComponent implements OnInit {
 
   ngOnInit() {
 
-    this.user_service.add_user('By9wCZOaxNdgyE6dNzPS0qoJ7zB2');
+    this.user_service.add_user(this.user_id);
 
     const user_observable =
       this.user_service.user_model_observable.subscribe(
@@ -33,7 +32,7 @@ export class UserLinkFullParallelComponent implements OnInit {
       );
 
 
-
+ 
   }
 
 

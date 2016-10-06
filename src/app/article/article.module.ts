@@ -18,7 +18,8 @@ import { SentenceTranscriptionComponent } from './writtendebate/sentence-transcr
 import {CommentService} from './service/comment.service';
 import { SentenceCommentContainerComponent } from './writtendebate/sentence-comment-container/sentence-comment-container.component'
 
-import {ArticleFirebaseService} from './service/article-firebase.service'
+import {ArticleFirebaseService} from './service/article-firebase.service';
+import { SentenceCommentEachComponent } from './writtendebate/sentence-comment-each/sentence-comment-each.component'
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import {ArticleFirebaseService} from './service/article-firebase.service'
       TranscriptionComponent,
       SentenceWrittenComponent,
       SentenceTranscriptionComponent,
-      SentenceCommentContainerComponent
+      SentenceCommentContainerComponent,
+      SentenceCommentEachComponent
   ],
   providers: [CommentService, ArticleFirebaseService]
 })
