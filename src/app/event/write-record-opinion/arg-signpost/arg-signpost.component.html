@@ -1,0 +1,11 @@
+
+<span *ngIf="input_signpost">
+  <div class="input_signpost">
+    signpost<br>
+    <input class="text_input" type="text" placeholder="set signpost of argument" #signpost>
+    <input type="button" value="set signpost" (click)="set_signpost(signpost.value)">
+  </div>
+</span>
+<span *ngIf="show_signpost">
+  show signpost
+</span>
