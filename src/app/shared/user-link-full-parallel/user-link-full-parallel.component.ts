@@ -23,7 +23,7 @@ export class UserLinkFullParallelComponent implements OnInit {
     const user_observable =
       this.user_service.user_model_observable.subscribe(
         (user_model)=>{
-          if(!this.user &&　user_model[this.user_id]){
+          if(!this.user &&　user_model[this.user_id] && user_model[this.user_id].pict_src){
             this.user = {};
             this.user.full_name = user_model[this.user_id].full_name;
             this.user.pict_src = user_model[this.user_id].pict_src;
