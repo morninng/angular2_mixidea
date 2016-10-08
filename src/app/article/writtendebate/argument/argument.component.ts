@@ -24,7 +24,9 @@ export class ArgumentComponent implements OnInit, OnChanges {
   comment_sentence_written
 
   constructor(private route: ActivatedRoute,
-               private router: Router){}
+               private router: Router){
+                 console.log("argument component constructor is called");
+               }
  
   ngOnChanges(){
     console.log("argument component on change argumen id = ", this.argument_id);

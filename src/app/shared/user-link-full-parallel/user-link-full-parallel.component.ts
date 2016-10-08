@@ -30,10 +30,7 @@ export class UserLinkFullParallelComponent implements OnInit {
             this.change_ref.detectChanges()
           }
         }
-      );
-
-
- 
+      ); 
   }
 
 

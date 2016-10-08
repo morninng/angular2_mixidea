@@ -31,7 +31,8 @@ import {SpeechRecognitionService} from './event-service/speech-recognition.servi
 import {EncodeToMp3Service} from './event-service/encode-to-mp3.service';
 import {EventFirebaseService} from './event-service/event-firebase.service';
 import { WriteOpinionComponent } from './write-record-opinion/write-opinion/write-opinion.component';
-import { ClearRecordTranscriptionComponent } from './write-record-opinion/clear-record-transcription/clear-record-transcription.component'
+import { ClearRecordTranscriptionComponent } from './write-record-opinion/clear-record-transcription/clear-record-transcription.component';
+import { ArgSignpostComponent } from './write-record-opinion/arg-signpost/arg-signpost.component'
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { ClearRecordTranscriptionComponent } from './write-record-opinion/clear-
     UploadFileComponent,
     WriteOpinionComponent,
     ClearRecordTranscriptionComponent,
+    ArgSignpostComponent,
   ],
   providers: [RecordWavService,SpeechRecognitionService,EncodeToMp3Service,EventFirebaseService ]
 })
