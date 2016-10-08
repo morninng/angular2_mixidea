@@ -49,22 +49,19 @@ export class WrittenDebateComponent implements OnInit {
           const own_uid = own_user.id;
           
           /* computed data*/ 
-          if(written_debate_data.team){
-            const team = written_debate_data.team;
-            if(team.proposition && team.proposition[own_uid]){
-              this.own_team = "proposition";
-            }
-            if(team.opposition && team.opposition[own_uid]){
-              this.own_team = "opposition";
-            }
+          const team = written_debate_data.team || {};
+          if(team.proposition && team.proposition[own_uid]){
+            this.own_team = "proposition";
+          }
+          if(team.opposition && team.opposition[own_uid]){
+            this.own_team = "opposition";
           }
 
-          this.opinion = Object.assign({}, written_debate_data.opinion);
-          this.arg_status = Object.assign({}, written_debate_data.arg_status)
-          if(!written_debate_data.comment){
-            written_debate_data.comment = {};
-          }
-          this.comment_sentence_written = Object.assign({}, written_debate_data.comment.sentence_written);
+          this.opinion = written_debate_data.opinion;
+          this.opinion = written_debate_data.opinion;
+          this.arg_status = written_debate_data.arg_status;
+          const written_debate_comment = written_debate_data.comment || {};
+          this.comment_sentence_written = written_debate_comment.sentence_written || {};
         }
       )
       this.combined_src_subscription = combined_src.subscribe();

@@ -1,19 +1,18 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,OnChanges,ChangeDetectionStrategy } from '@angular/core';
 import {CommentService, COMMENT_TYPE_SENTENCE_WRITTEN} from './../../service/comment.service'
 
 @Component({
   selector: 'app-sentence-written',
   templateUrl: './sentence-written.component.html',
-  styleUrls: ['./sentence-written.component.scss']
+  styleUrls: ['./sentence-written.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SentenceWrittenComponent implements OnInit {
+export class SentenceWrittenComponent implements OnInit,OnChanges {
 
   @Input() content;
   @Input() event_id : string;
   @Input() argument_id : string;
   @Input() opinion_id : string;
-
-
   @Input() comment_sentence_written : any;
 
 
@@ -22,8 +21,12 @@ export class SentenceWrittenComponent implements OnInit {
 
   constructor(private comment_service: CommentService) { }
 
-  ngOnInit() {
+  ngOnChanges(){
     this.sentence_num = this.content.num;
+  }
+
+
+  ngOnInit() {
   }
 
   content_mouseenter(){

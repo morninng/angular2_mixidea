@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, ElementRef, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, OnChanges,ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-opinion',
   templateUrl: './opinion.component.html',
-  styleUrls: ['./opinion.component.scss']
+  styleUrls: ['./opinion.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OpinionComponent implements OnInit, OnChanges {
   
@@ -30,7 +31,7 @@ export class OpinionComponent implements OnInit, OnChanges {
 
 
   ngOnChanges(){
-    console.log("opinion component is initialized", this.opinion_id);
+    console.log("opinion component on change opinion id is", this.opinion_id);
     this.opinion_type = this.opinion.type;
     this.writer = this.opinion.writer;
     this.audio_url = this.opinion.audio_url;
@@ -49,7 +50,6 @@ export class OpinionComponent implements OnInit, OnChanges {
     const audio_container = this._el.getElementsByClassName("audio_container")[0];
 
     if(this.opinion.audio_url){
-
       console.log(this.opinion.audio_url);
       this.audio_element = new Audio();
       this.audio_element.controls = true;

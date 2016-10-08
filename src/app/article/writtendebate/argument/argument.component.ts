@@ -1,10 +1,11 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 
 @Component({
   selector: 'app-argument',
   templateUrl: './argument.component.html',
-  styleUrls: ['./argument.component.scss']
+  styleUrls: ['./argument.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArgumentComponent implements OnInit, OnChanges {
 
@@ -26,14 +27,13 @@ export class ArgumentComponent implements OnInit, OnChanges {
                private router: Router){}
  
   ngOnChanges(){
-    console.log("argument component is initialized", this.argument_id);
+    console.log("argument component on change argumen id = ", this.argument_id);
     console.log("own_team", this.own_team);
 
-    this.main_status = Object.assign({}, this.partial_arg_status.main)
-    this.subsequent_status = Object.assign({}, this.partial_arg_status.subsequent)
-
+    this.main_status = this.partial_arg_status.main || {};
+    this.subsequent_status = this.partial_arg_status.subsequent || {};
+    this.comment_sentence_written = this.partial_comment_sentence_written || {}
     this.argument_team = this.main_status.team_name;
-    this.comment_sentence_written = Object.assign({}, this.partial_comment_sentence_written); 
   }
 
 
