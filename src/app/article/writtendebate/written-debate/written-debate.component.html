@@ -1,29 +1,18 @@
 <div class="write-debate-container">
   <div class="debate_container">
-  <p>
-    written-debate works!
-  </p>
-
+    event_id {{event_id}}
   own_team {{own_team}}
-  <br><br>
-  event_data 
-  <span >{{event_data | async | json}}</span>
-  <br><br>
-  written_debate_data
-  <span >{{written_debate_data | json}}</span>
-  <br><br>
-  --------------combine-------------------
+  <br>
+
   <span *ngFor="let argument of (written_debate_data?.arg_status | keysInObject)">
-    
-    <br><br><br><br>
-    argument_id:  {{argument.key}}<br>
+
     <app-argument
         [event_id]="event_id" 
         [argument_id]="argument.key" 
         [own_team]="own_team" 
-        [partial_opinion]="written_debate_data.opinion[argument.key]" 
-        [partial_arg_status] = "written_debate_data.arg_status[argument.key]"
-        [partial_comment_sentence_written]="written_debate_data.comment.sentence_written[argument.key]"></app-argument>
+        [partial_opinion]="opinion[argument.key]" 
+        [partial_arg_status] = "arg_status[argument.key]"
+        [partial_comment_sentence_written]="comment_sentence_written[argument.key]"></app-argument>
 
   </span>
 
@@ -31,4 +20,5 @@
   <div class="sentence_comment_container">
     <app-sentence-comment-container></app-sentence-comment-container>
   </div>
+    event_id {{event_id}}
 </div>

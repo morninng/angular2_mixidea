@@ -1,9 +1,6 @@
 
 <div class="opinion_container">
-argument_id {{argument_id}}<br>
-opinion_id {{opinion_id}}
-opinion {{opinion | json}}<br>
-subsequent_id {{subsequent_id}}<br>
+
 opinion_status {{opinion_status}}<br>
 
 audio url {{opinion.audio_url}}<br>
@@ -14,22 +11,20 @@ opinion_type {{opinion_type}}<br>
 <span class="audio_container"></span>
 
 
-writer {{opinion.writer}}<br>
-content {{opinion.content_arr | json}}<br>
 
 
 <app-user-link-full-parallel [user_id]="writer" ></app-user-link-full-parallel>
 
 
 <app-transcription [event_id] = "event_id"
-                   [transcription_arr]="opinion.transcript" 
                    [argument_id]="argument_id"
-                   [opinion_id]="opinion_id" ></app-transcription>
+                   [opinion_id]="opinion_id"
+                   [transcription_arr]="opinion.transcript"  ></app-transcription>
 
 <app-written [event_id] = "event_id"
-             [content_arr]="opinion.content_arr"
              [argument_id]="argument_id"
              [opinion_id]="opinion_id"
+             [content_arr]="opinion.content_arr"
              [comment_sentence_written]="comment_sentence_written" ></app-written>
 
 

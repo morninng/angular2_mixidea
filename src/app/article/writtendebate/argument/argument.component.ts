@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 
 @Component({
@@ -6,7 +6,7 @@ import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/route
   templateUrl: './argument.component.html',
   styleUrls: ['./argument.component.scss']
 })
-export class ArgumentComponent implements OnInit {
+export class ArgumentComponent implements OnInit, OnChanges {
 
   @Input() event_id: string;
   @Input() argument_id: string;
@@ -16,13 +16,28 @@ export class ArgumentComponent implements OnInit {
   @Input() argument_team
   @Input() partial_comment_sentence_written
 
+
+  /*data generated for the use of child component*/
+  main_status : any;
+  subsequent_status : any;
+  comment_sentence_written
+
   constructor(private route: ActivatedRoute,
                private router: Router){}
+ 
+  ngOnChanges(){
+    console.log("argument component is initialized", this.argument_id);
+    console.log("own_team", this.own_team);
+
+    this.main_status = Object.assign({}, this.partial_arg_status.main)
+    this.subsequent_status = Object.assign({}, this.partial_arg_status.subsequent)
+
+    this.argument_team = this.main_status.team_name;
+    this.comment_sentence_written = Object.assign({}, this.partial_comment_sentence_written); 
+  }
+
 
   ngOnInit() {
-    console.log("argument id", this.argument_id);
-    console.log("own_team", this.own_team);
-    this.argument_team = this.partial_arg_status.main.team_name;
   }
 
   add_new_argument(){

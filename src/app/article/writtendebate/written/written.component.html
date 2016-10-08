@@ -1,16 +1,11 @@
-<p>
-  written works!
-content arr {{ content_arr | json}}
+<p>written
 </p>
 
-argument_id in written {{argument_id}}<br>
-opinion_id in written {{opinion_id}}<br>
-
-<span *ngFor="let content of content_arr">
+<span *ngFor="let content of content_arr_with_num">
   <app-sentence-written [content]="content"
                         [event_id]="event_id"
                         [argument_id]="argument_id"
                         [opinion_id]="opinion_id"
-                        [comment_sentence_written]="comment_sentence_written[content.num]">
+                        [comment_sentence_written]="comment_sentence_written_edited[content.num]">
   </app-sentence-written>
 </span>

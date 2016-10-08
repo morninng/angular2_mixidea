@@ -1,17 +1,16 @@
-import { Component, OnInit, Input, ElementRef } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-opinion',
   templateUrl: './opinion.component.html',
   styleUrls: ['./opinion.component.scss']
 })
-export class OpinionComponent implements OnInit {
+export class OpinionComponent implements OnInit, OnChanges {
   
   @Input() event_id : string;
   @Input() argument_id : string
   @Input() opinion_id :string;
   @Input() opinion :any;
-  @Input() subsequent_id :string;
   @Input() opinion_status : string;
   @Input() argument_team : string;
   @Input() opinion_team : string;
@@ -30,12 +29,17 @@ export class OpinionComponent implements OnInit {
   constructor(private el: ElementRef) { }
 
 
-  ngOnInit() {
+  ngOnChanges(){
+    console.log("opinion component is initialized", this.opinion_id);
     this.opinion_type = this.opinion.type;
-    this.writer = this.opinion.writer
+    this.writer = this.opinion.writer;
     this.audio_url = this.opinion.audio_url;
     this.content_arr = this.opinion.content_arr;
     this.transcript_arr = this.opinion.transcript_arr; 
+  }
+
+
+  ngOnInit() {
   }
 
 
