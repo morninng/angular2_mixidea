@@ -8,7 +8,7 @@ import { UserauthService} from './../../../shared/userauth.service';
   templateUrl: './sentence-comment-container.component.html',
   styleUrls: ['./sentence-comment-container.component.scss'],
   host: {'(document:click)': 'onClick($event)'}
- // changeDetection: ChangeDetectionStrategy.OnPush
+ // changeDetection: ChangeDetectionStrategy.OnPush //this component is mutable
 })
 export class SentenceCommentContainerComponent implements OnInit {
 

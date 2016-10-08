@@ -1,8 +1,8 @@
-<p>
-  user-link-full-parallel works!
-</p>
 
-<span *ngIf="user">
-  {{user.full_name}}
-  <img src={{user.pict_src}}>
-</span>
+
+<div class="user_full_parallel_container">
+  <div *ngIf="user" class="user_container">
+    <img src={{user.pict_src}}>
+    <span class="name">{{user.full_name}}</span>
+  </div>
+</div>

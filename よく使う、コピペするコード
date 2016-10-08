@@ -43,3 +43,16 @@ import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/route
         type: "main"}
     }
     this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
+
+■データの反映
+
+https://angular.io/docs/ts/latest/api/core/index/ChangeDetectorRef-class.html
+http://stackoverflow.com/questions/35386822/changedetectionstrategy-onpush-and-observable-subscribe-in-angular-2
+constructor(private change_ref: ChangeDetectorRef)
+this.change_ref.detectChanges()
+これを用いると、ChangeDetectionStrategy.OnPushを用いた
+immutable な環境でも、特定のアクションがきたときに
+change detectionを走らせることができ、親には影響せず、子供にだけ影響する。
+
+親にも影響させたい場合にはmarkForCheck()
+

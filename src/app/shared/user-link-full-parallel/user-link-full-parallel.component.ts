@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input,ChangeDetectorRef } from '@angular/core';
 import {ModelUserService} from './../../shared/model-user.service';
 
 
@@ -10,9 +10,9 @@ import {ModelUserService} from './../../shared/model-user.service';
 export class UserLinkFullParallelComponent implements OnInit {
 
   @Input() user_id : string;
-  user;
+  user = null;
 
-  constructor(private user_service : ModelUserService) { }
+  constructor(private user_service : ModelUserService, private change_ref: ChangeDetectorRef) { }
 
 
 
@@ -23,10 +23,11 @@ export class UserLinkFullParallelComponent implements OnInit {
     const user_observable =
       this.user_service.user_model_observable.subscribe(
         (user_model)=>{
-          if(user_model[this.user_id]){
+          if(!this.user &&　user_model[this.user_id]){
             this.user = {};
             this.user.full_name = user_model[this.user_id].full_name;
             this.user.pict_src = user_model[this.user_id].pict_src;
+            this.change_ref.detectChanges()
           }
         }
       );

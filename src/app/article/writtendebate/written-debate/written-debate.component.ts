@@ -4,6 +4,8 @@ import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
 import { UserauthService} from './../../../shared/userauth.service';
 
 
+declare var window:any;
+
 @Component({
   selector: 'app-written-debate',
   templateUrl: './written-debate.component.html',
@@ -34,6 +36,7 @@ export class WrittenDebateComponent implements OnInit {
 
       if(this.combined_src_subscription){
         this.combined_src_subscription.unsubscribe();
+        window.scrollTo(0,0);
       }
 
 
@@ -65,10 +68,6 @@ export class WrittenDebateComponent implements OnInit {
         }
       )
       this.combined_src_subscription = combined_src.subscribe();
-/*
-      this.event_data = this.af.database.object('/event_related/event/' + this.event_id);
-      console.log("event data");
-*/
     });
 /*
     if(!this.user_auth.own_user.loggedIn){
