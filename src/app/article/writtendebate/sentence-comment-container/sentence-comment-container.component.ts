@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef,ChangeDetectionStrategy } from '@angular/core';
 import {CommentService} from './../../service/comment.service'
 
 import { UserauthService} from './../../../shared/userauth.service';
@@ -8,6 +8,7 @@ import { UserauthService} from './../../../shared/userauth.service';
   templateUrl: './sentence-comment-container.component.html',
   styleUrls: ['./sentence-comment-container.component.scss'],
   host: {'(document:click)': 'onClick($event)'}
+ // changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SentenceCommentContainerComponent implements OnInit {
 
