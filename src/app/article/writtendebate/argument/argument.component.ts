@@ -21,7 +21,9 @@ export class ArgumentComponent implements OnInit, OnChanges {
   /*data generated for the use of child component*/
   main_status : any;
   subsequent_status : any;
-  comment_sentence_written
+  comment_sentence_written;
+  is_prop : boolean;
+  is_opp : boolean;
 
   constructor(private route: ActivatedRoute,
                private router: Router){
@@ -36,6 +38,9 @@ export class ArgumentComponent implements OnInit, OnChanges {
     this.subsequent_status = this.partial_arg_status.subsequent || {};
     this.comment_sentence_written = this.partial_comment_sentence_written || {}
     this.argument_team = this.main_status.team_name;
+
+    this.is_prop = this.argument_team=='proposition';
+    this.is_opp = this.argument_team=='opposition';
   }
 
 
@@ -60,7 +65,6 @@ export class ArgumentComponent implements OnInit, OnChanges {
                   }
     }
     this.router.navigate(['/writerecord_opinion',this.event_id], navigationExtras);
-
 
   }
 

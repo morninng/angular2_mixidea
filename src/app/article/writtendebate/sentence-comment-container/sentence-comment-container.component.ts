@@ -31,10 +31,6 @@ export class SentenceCommentContainerComponent implements OnInit {
         setTimeout(()=>{
           this.is_open = true;
           this.change_ref.detectChanges()
-
-
-
-
         },100);
       }
     )

@@ -1,9 +1,18 @@
 <div class="argument_container">
-  <p>
-     <br><br>main_status {{main_status | json}}
-  </p>
 
-  sign_post: {{partial_opinion[main_status.opinion_id].sign_post}}
+  <div [ngClass]="{'prop_arg':is_prop, 'opp_arg': is_opp}" >
+
+    <p class="sign_post">
+    sign_post: {{partial_opinion[main_status.opinion_id].sign_post}}
+    </p>
+
+    <p class="argument_team">
+        argument_team {{argument_team}}
+    </p>
+
+     <br><br>main_status {{main_status | json}}
+  </div>
+
 
   <app-opinion 
       [event_id] = "event_id"
