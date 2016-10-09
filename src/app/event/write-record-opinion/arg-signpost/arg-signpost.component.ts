@@ -1,4 +1,5 @@
 import { Component, OnInit,Input, OnChanges} from '@angular/core';
+import {EventFirebaseService} from './../../event-service/event-firebase.service'
 
 @Component({
   selector: 'app-arg-signpost',
@@ -8,15 +9,17 @@ import { Component, OnInit,Input, OnChanges} from '@angular/core';
 export class ArgSignpostComponent implements OnInit, OnChanges {
 
   @Input() type:string
+  @Input() event_id:string
+  @Input() arg_id:string
+  @Input() opinion_id:string
 
   input_signpost = false;
   show_signpost = false;
 
 
-  constructor() { }
+  constructor(private event_firebase :EventFirebaseService) { }
 
   ngOnInit() {
-
   }
 
   ngOnChanges(){
@@ -29,8 +32,9 @@ export class ArgSignpostComponent implements OnInit, OnChanges {
     }
   }
 
-  set_signpost(signpost){
-    console.log(signpost);
+  signpost_update(signpost){
+    this.event_firebase.signpost_update(this.event_id, this.arg_id, this.opinion_id, signpost);
+ 
   }
 
 

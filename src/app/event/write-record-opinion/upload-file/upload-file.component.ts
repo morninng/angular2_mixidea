@@ -58,7 +58,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
     )
   }
 
-
+ 
   upload_file(){
 
     if(!this.user_auth.own_user.loggedIn){

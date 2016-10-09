@@ -3,6 +3,8 @@
      <br><br>main_status {{main_status | json}}
   </p>
 
+  sign_post: {{partial_opinion[main_status.opinion_id].sign_post}}
+
   <app-opinion 
       [event_id] = "event_id"
       [argument_id]="argument_id"

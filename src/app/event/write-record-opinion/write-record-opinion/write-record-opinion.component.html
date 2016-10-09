@@ -3,9 +3,13 @@
 ss
 
 <span *ngIf="show_signpost">
-    <app-arg-signpost [type]="type" ></app-arg-signpost>
+    <app-arg-signpost 
+        [type]="type"
+        [event_id]="event_id"
+        [arg_id]="arg_id"
+        [opinion_id]="opinion_id" >
+    </app-arg-signpost>
 </span>
-
 
 
 <span [ngSwitch]="opinion_input_phase">
@@ -14,7 +18,7 @@ ss
         <app-select-write-or-record 
             (onSelectRecording)="onSelectRecording()"
             (onSelectWriting)="onSelectWriting()">
-            </app-select-write-or-record>
+        </app-select-write-or-record>
     </span>
     <span *ngSwitchCase="'recording'">
         recording
@@ -24,7 +28,7 @@ ss
             [arg_id]="arg_id"
             [opinion_id]="opinion_id"
             [type]="type">
-            </app-record-transcript-container>
+        </app-record-transcript-container>
     </span>
 
     <span *ngSwitchCase="'writing'">
@@ -35,7 +39,7 @@ ss
             [arg_id]="arg_id"
             [opinion_id]="opinion_id"
             [type]="type">
-            </app-write-opinion>
+        </app-write-opinion>
     </span>
     <span *ngSwitchDefault>
         default

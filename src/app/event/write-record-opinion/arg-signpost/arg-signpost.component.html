@@ -2,8 +2,7 @@
 <span *ngIf="input_signpost">
   <div class="input_signpost">
     signpost<br>
-    <input class="text_input" type="text" placeholder="set signpost of argument" #signpost>
-    <input type="button" value="set signpost" (click)="set_signpost(signpost.value)">
+    <input class="text_input" type="text" placeholder="set signpost of argument" (keyup)="signpost_update(signpost.value)" #signpost>
   </div>
 </span>
 <span *ngIf="show_signpost">

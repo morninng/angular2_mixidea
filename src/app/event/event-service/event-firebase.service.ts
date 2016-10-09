@@ -46,6 +46,7 @@ export class EventFirebaseService {
           this.retrieve_upload_transcription(event_id, arg_id, opinion_id, type);
           this.set_basic_info(event_id, arg_id, opinion_id, type);
           this.set_arg_status(event_id, arg_id, opinion_id, type, "checking",team_name);
+          this.set_signpost(event_id, arg_id, opinion_id);
         })
       }
     )
@@ -97,6 +98,7 @@ export class EventFirebaseService {
       console.log("uploading opinion succeeded");
       this.set_basic_info(event_id, arg_id, opinion_id, type);
       this.set_arg_status(event_id, arg_id, opinion_id, type, "checking", team_name);
+      this.set_signpost(event_id, arg_id, opinion_id);
     })
   }
 
@@ -113,6 +115,34 @@ export class EventFirebaseService {
       const subsequent_obj = {opinion_id, status, team_name };
       const arg_status_subsequent_db_item = this.af.database.list(arg_status_subsequent_reference);
       arg_status_subsequent_db_item.push(subsequent_obj);
+    }
+  }
+
+  signpost_stock = {};
+
+  signpost_update(event_id,arg_id,opinion_id,signpost){
+    console.log(event_id,arg_id,signpost);
+    this.signpost_stock[event_id] = this.signpost_stock[event_id] || {};
+    this.signpost_stock[event_id][arg_id] = this.signpost_stock[event_id][arg_id] || {};
+    this.signpost_stock[event_id][arg_id][opinion_id] = signpost;
+  }
+
+  set_signpost(event_id,arg_id, opinion_id){
+    if(this.signpost_stock[event_id] && 
+      this.signpost_stock[event_id][arg_id] && 
+      this.signpost_stock[event_id][arg_id][opinion_id]){
+      const signpost = this.signpost_stock[event_id][arg_id][opinion_id];
+      console.log(signpost);
+
+      const reference = "event_related/written_debate/" + event_id 
+                         + "/opinion/" + arg_id
+                         + "/" + opinion_id
+                        + "/sign_post";
+      const signpost_item = this.af.database.object(reference);
+      const promise = signpost_item.set(signpost);
+      promise.then(()=>{
+        this.signpost_stock[event_id][arg_id][opinion_id] = null;
+      })
     }
   }
 
