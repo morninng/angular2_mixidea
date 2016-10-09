@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute, Params  }     from '@angular/router';
 import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
 import { UserauthService} from './../../../shared/userauth.service';
@@ -9,7 +9,8 @@ declare var window:any;
 @Component({
   selector: 'app-written-debate',
   templateUrl: './written-debate.component.html',
-  styleUrls: ['./written-debate.component.scss']
+  styleUrls: ['./written-debate.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WrittenDebateComponent implements OnInit {
 
@@ -26,7 +27,10 @@ export class WrittenDebateComponent implements OnInit {
   comment_sentence_written : any;
 
 
-  constructor(private route: ActivatedRoute, private af: AngularFire, private user_auth : UserauthService) { }
+  constructor(private route: ActivatedRoute,
+               private af: AngularFire, 
+               private user_auth : UserauthService,
+               private change_ref: ChangeDetectorRef) { }
 
 
 
@@ -65,6 +69,7 @@ export class WrittenDebateComponent implements OnInit {
           this.arg_status = written_debate_data.arg_status;
           const written_debate_comment = written_debate_data.comment || {};
           this.comment_sentence_written = written_debate_comment.sentence_written || {};
+          this.change_ref.markForCheck();
         }
       )
       this.combined_src_subscription = combined_src.subscribe();

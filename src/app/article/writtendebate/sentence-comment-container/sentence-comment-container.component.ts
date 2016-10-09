@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef,ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ElementRef,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 import {CommentService} from './../../service/comment.service'
 
 import { UserauthService} from './../../../shared/userauth.service';
@@ -16,7 +16,10 @@ export class SentenceCommentContainerComponent implements OnInit {
   is_open = false;
   comment_sentence;
 
-  constructor(private comment_service: CommentService, private _eref: ElementRef, private user_auth : UserauthService) { }
+  constructor(private comment_service: CommentService,
+             private _eref: ElementRef,
+             private user_auth : UserauthService,
+             private change_ref: ChangeDetectorRef) { }
 
 
   ngOnInit() {
@@ -27,6 +30,11 @@ export class SentenceCommentContainerComponent implements OnInit {
         console.log("open");
         setTimeout(()=>{
           this.is_open = true;
+          this.change_ref.detectChanges()
+
+
+
+
         },100);
       }
     )
