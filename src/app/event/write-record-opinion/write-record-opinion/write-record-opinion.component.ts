@@ -55,6 +55,15 @@ export class WriteRecordOpinionComponent implements OnInit {
     )
   }
 
+  onSelectWriting(){
+    console.log("select writing is chosen");
+  }
+
+  onSelectRecording(){
+    console.log("record and transcription is chosen");
+  }
+
+
   clear_all(){
     console.log("clear all from parent component");
     this.player_transcript.clear_player_and_transcription();
