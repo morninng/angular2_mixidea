@@ -58,7 +58,6 @@ export class UploadFileComponent implements OnInit, OnDestroy {
         });
       }
     )
-
   }
 
 
