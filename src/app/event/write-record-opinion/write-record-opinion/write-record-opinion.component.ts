@@ -20,6 +20,9 @@ export class WriteRecordOpinionComponent implements OnInit {
   team_name :string;
   type: string;
 
+  opinion_input_phase = "selecting";
+  show_signpost = true;
+
 
   @ViewChild(PlayerTranscriptionComponent) 
   private player_transcript: PlayerTranscriptionComponent;
@@ -57,10 +60,12 @@ export class WriteRecordOpinionComponent implements OnInit {
 
   onSelectWriting(){
     console.log("select writing is chosen");
+    this.opinion_input_phase = "writing";
   }
 
   onSelectRecording(){
     console.log("record and transcription is chosen");
+    this.opinion_input_phase = "recording";
   }
 
 

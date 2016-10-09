@@ -1,28 +1,44 @@
 
 
-<app-arg-signpost [type]="type" ></app-arg-signpost>
+ss
 
-
-<app-select-write-or-record 
-    (onSelectRecording)="onSelectRecording()"
-     (onSelectWriting)="onSelectWriting()">
-     </app-select-write-or-record>
-
-<app-record-transcript-container
-    [event_id]="event_id"
-    [team_name]="team_name"
-    [arg_id]="arg_id"
-    [opinion_id]="opinion_id"
-    [type]="type">
-    </app-record-transcript-container>
+<span *ngIf="show_signpost">
+    <app-arg-signpost [type]="type" ></app-arg-signpost>
+</span>
 
 
 
-<app-write-opinion 
-    [event_id]="event_id"
-    [team_name]="team_name"
-    [arg_id]="arg_id"
-    [opinion_id]="opinion_id"
-    [type]="type">
-    </app-write-opinion>
+<span [ngSwitch]="opinion_input_phase">
+    <span *ngSwitchCase="'selecting'">
+        selecting
+        <app-select-write-or-record 
+            (onSelectRecording)="onSelectRecording()"
+            (onSelectWriting)="onSelectWriting()">
+            </app-select-write-or-record>
+    </span>
+    <span *ngSwitchCase="'recording'">
+        recording
+        <app-record-transcript-container
+            [event_id]="event_id"
+            [team_name]="team_name"
+            [arg_id]="arg_id"
+            [opinion_id]="opinion_id"
+            [type]="type">
+            </app-record-transcript-container>
+    </span>
+
+    <span *ngSwitchCase="'writing'">
+        writing
+        <app-write-opinion 
+            [event_id]="event_id"
+            [team_name]="team_name"
+            [arg_id]="arg_id"
+            [opinion_id]="opinion_id"
+            [type]="type">
+            </app-write-opinion>
+    </span>
+    <span *ngSwitchDefault>
+        default
+    </span>
+</span>
 
