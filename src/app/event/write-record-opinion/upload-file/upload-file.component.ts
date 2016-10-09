@@ -2,7 +2,6 @@ import { Component, OnInit,NgZone,ElementRef, Input, OnDestroy } from '@angular/
 import {RecordWavService} from './../../event-service/record-wav.service';
 import {EncodeToMp3Service} from './../../event-service/encode-to-mp3.service'
 import {EventFirebaseService} from './../../event-service/event-firebase.service'
-import { Store } from '@ngrx/store';
 
 import { UserauthService} from './../../../shared/userauth.service';
 
@@ -29,7 +28,6 @@ export class UploadFileComponent implements OnInit, OnDestroy {
                private _ngZone: NgZone,
                private el: ElementRef,
                private event_firebase :EventFirebaseService,
-               public store: Store<any>,
                private user_auth : UserauthService
                ) {}
 
@@ -64,7 +62,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   upload_file(){
 
     if(!this.user_auth.own_user.loggedIn){
-      alert("you need to login to create a game");
+      alert("you need to login before uploading the file");
       this.user_auth.open_login_modal();
       return;
     }
@@ -74,38 +72,18 @@ export class UploadFileComponent implements OnInit, OnDestroy {
       this.show_upload_button = false;
       this.under_encoding = true;
       this.encode_to_mp3.encode_wav_to_mp3(this.audio_blob);
-      this.event_firebase.upload_file_after_encoding(this.event_id,this.arg_id,this.opinion_id, this.team_name);
+      this.event_firebase.upload_file_after_encoding(this.event_id,this.arg_id,this.opinion_id, this.team_name, this.type);
     }
-
-//uploading the transcription 
-    const transcript_sentence_arr = this.store.select('transcript');
-    transcript_sentence_arr.take(1).subscribe((state:any[])=>{
-      console.log(state);
-      const upload_transcript_arr = state.map(
-            (transcript)=>{ 
-              return {content:transcript.sentence, end_time:transcript.end_time} 
-            }
-          );
-      this.event_firebase.upload_transcription(this.event_id,this.arg_id,this.opinion_id, upload_transcript_arr)
-    })
-
-//setting the basic info.
-    const user_id = this.user_auth.own_user_id;
-    this.event_firebase.set_basic_info(this.event_id,this.arg_id, this.opinion_id, user_id, this.type);
-
-// add it on the opinion_status
-    this.event_firebase.set_arg_status(this.event_id, this.arg_id, this.opinion_id,this.type, "checking",this.team_name);
-
   }
 
-
+/*
   upload_file_without_encode(){
 
     if(this.audio_blob){
       this.event_firebase.upload_file_without_encoding(this.event_id,this.arg_id, this.opinion_id,this.audio_blob)
     }
+*/
 
-  }
 
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit,Input } from '@angular/core';
 import {EventFirebaseService} from './../../event-service/event-firebase.service'
+import { UserauthService} from './../../../shared/userauth.service';
 
 @Component({
   selector: 'app-write-opinion',
@@ -15,7 +16,8 @@ export class WriteOpinionComponent implements OnInit {
   @Input() arg_id: string;
   @Input() type:string
 
-  constructor(private event_firebase :EventFirebaseService) { }
+  constructor(private event_firebase :EventFirebaseService,
+              private user_auth : UserauthService) { }
 
   ngOnInit() {
   }
@@ -23,12 +25,17 @@ export class WriteOpinionComponent implements OnInit {
 
   upload_opinion(text){
 
-    const section_arr = text.split("\n\n");
-    const upload_opinion = section_arr.map((value)=>{return {content:value}});
-    console.log(upload_opinion)
+    if(!this.user_auth.own_user.loggedIn){
+      alert("you need to login to upload context");
+      this.user_auth.open_login_modal();
+      return;
+    }
 
-    this.event_firebase.upload_opinion_content(this.event_id,this.arg_id, this.opinion_id, upload_opinion);
-    this.event_firebase.set_arg_status(this.event_id, this.arg_id, this.opinion_id,this.type, "checking",this.team_name);
+    const section_arr = text.split("\n\n");
+    const opinion_content_arr = section_arr.map((value)=>{return {content:value}});
+    console.log(opinion_content_arr)
+
+    this.event_firebase.upload_opinion_content(this.event_id,this.arg_id, this.opinion_id, this.type,this.team_name, opinion_content_arr);
   }
 
 }

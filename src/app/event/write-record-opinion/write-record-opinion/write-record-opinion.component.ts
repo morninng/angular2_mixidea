@@ -6,6 +6,8 @@ import {PlayerTranscriptionComponent} from './../player-transcription/player-tra
 import {RecordTranscriptComponent} from './../record-transcript/record-transcript.component'
 import {UploadFileComponent} from './../upload-file/upload-file.component';
 
+import {EventFirebaseService} from './../../event-service/event-firebase.service'
+
 @Component({
   selector: 'app-write-record-opinion',
   templateUrl: './write-record-opinion.component.html',
@@ -24,18 +26,8 @@ export class WriteRecordOpinionComponent implements OnInit {
   show_signpost = true;
 
 
-  @ViewChild(PlayerTranscriptionComponent) 
-  private player_transcript: PlayerTranscriptionComponent;
-
-
-  @ViewChild(RecordTranscriptComponent) 
-  private record_transcript: RecordTranscriptComponent;
-
-
-  @ViewChild(UploadFileComponent) 
-  private upload_file: UploadFileComponent;
-
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,
+              private event_firebase :EventFirebaseService) { }
 
   ngOnInit() {
 
@@ -69,11 +61,5 @@ export class WriteRecordOpinionComponent implements OnInit {
   }
 
 
-  clear_all(){
-    console.log("clear all from parent component");
-    this.player_transcript.clear_player_and_transcription();
-    this.record_transcript.reset_record();
-    this.upload_file.reset_encode_upload();
-  }
 
 }

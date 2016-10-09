@@ -56,3 +56,4 @@ change detectionを走らせることができ、親には影響せず、子供�
 
 親にも影響させたい場合にはmarkForCheck()
 
+ 
