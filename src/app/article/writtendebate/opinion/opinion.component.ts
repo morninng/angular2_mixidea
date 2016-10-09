@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ElementRef, OnChanges,ChangeDetectionStrategy } from '@angular/core';
+import {ArticleFirebaseService} from './../../service/article-firebase.service'
 
 @Component({
   selector: 'app-opinion',
@@ -16,7 +17,8 @@ export class OpinionComponent implements OnInit, OnChanges {
   @Input() argument_team : string;
   @Input() opinion_team : string;
   @Input() comment_sentence_written;
-  
+  @Input() category : string;
+  @Input() subsequent_id : string;
 
 
   _el;
@@ -27,7 +29,7 @@ export class OpinionComponent implements OnInit, OnChanges {
   content_arr
   transcript_arr
 
-  constructor(private el: ElementRef) { }
+  constructor(private el: ElementRef, private article_firebase : ArticleFirebaseService) { }
 
 
   ngOnChanges(){
@@ -60,5 +62,17 @@ export class OpinionComponent implements OnInit, OnChanges {
       audio_container.insertBefore(this.audio_element, null);
     }
   }
+
+  publish_opinion(){
+
+    this.article_firebase.publish_opinion(
+              this.event_id, 
+              this.argument_id, 
+              this.category,
+              this.subsequent_id);
+
+
+  }
+
 
 }

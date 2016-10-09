@@ -24,5 +24,11 @@ opinion_type {{opinion_type}}<br>
              [comment_sentence_written]="comment_sentence_written" ></app-written>
 
 
+<span *ngIf="opinion_status == 'checking'">
+    checking
+    <input type="button" (click)="publish_opinion()" value="publish">
+</span>
+
+
 </div>
 

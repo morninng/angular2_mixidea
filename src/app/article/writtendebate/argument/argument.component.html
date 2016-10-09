@@ -14,6 +14,8 @@
       [argument_team]="argument_team"
       [opinion_team]="main_status.team_name"
       [comment_sentence_written]="comment_sentence_written[main_status.opinion_id]"
+      [category]="'main'"
+      [subsequent_id]=null
       >
       </app-opinion>
 
@@ -27,7 +29,9 @@
       [opinion_status]="subsequent_status[subsequent_status_arr.key].status"
       [argument_team]="argument_team"
       [opinion_team]="subsequent_status[subsequent_status_arr.key].team_name"
-      [comment_sentence_written]="comment_sentence_written[subsequent_status_arr.value.opinion_id]" >
+      [comment_sentence_written]="comment_sentence_written[subsequent_status_arr.value.opinion_id]"
+      [category]="'subsequent'"
+      [subsequent_id]="subsequent_status_arr.key" >
       </app-opinion>
 
   </span>
