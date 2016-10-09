@@ -17,15 +17,6 @@ export class EventFirebaseService {
               private af: AngularFire,
               private user_auth : UserauthService,
               public store: Store<any>) {
-    /////temporal implementation before the Angularfire2 storage is developed.////////////////////////////////////
-    var config = {
-      apiKey: "AIzaSyBp_ZDqoPygbPs7jMclrBSJ3a99t1Yvr1k",
-      authDomain: "mixidea-91a20.firebaseapp.com",
-      databaseURL: "https://mixidea-91a20.firebaseio.com",
-      storageBucket: "mixidea-91a20.appspot.com"
-    };
-    firebase.initializeApp(config);
-    ////////////temporal implementation//////////////////////////////////////////////////////
   }
 
   upload_file_after_encoding(event_id, arg_id, opinion_id, team_name, type){
