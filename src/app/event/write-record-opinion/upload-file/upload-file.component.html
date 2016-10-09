@@ -1,21 +1,22 @@
 
-<div  *ngIf="show_upload_button">
-  <input type="button" value="upload_file" (click)="upload_file()">
-<!--  
-  <input type="button" value="upload_transcript" (click)="upload_transcript()">
-  <input type="button" value="upload_file without encode" (click)="upload_file_without_encode()">
-  -->
+<div class="upload_file_container">
+
+  <div  *ngIf="show_upload_button">
+    <input type="button" value="upload audio file and transcripted data" (click)="upload_file()">
+  <!--  
+    <input type="button" value="upload_transcript" (click)="upload_transcript()">
+    <input type="button" value="upload_file without encode" (click)="upload_file_without_encode()">
+    -->
+  </div>
+
+  <span *ngIf="under_encoding">
+    under encoding
+    <img src="./assets/images/horizontal_loader.gif">
+  </span>
+  <span *ngIf="under_uploading">
+    under uploading
+    <img src="./assets/images/google-loading-icon.gif">
+  </span>
+
 </div>
-
-<span *ngIf="under_encoding">
-  under encoding
-  <img src="./assets/images/horizontal_loader.gif">
-</span>
-<span *ngIf="under_uploading">
-  under uploading
-  <img src="./assets/images/google-loading-icon.gif">
-</span>
-
-
-<span id="uploaded_audio"></span>
 
