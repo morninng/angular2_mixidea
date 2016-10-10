@@ -19,7 +19,10 @@ import {CommentService} from './service/comment.service';
 import { SentenceCommentContainerComponent } from './writtendebate/sentence-comment-container/sentence-comment-container.component'
 
 import {ArticleFirebaseService} from './service/article-firebase.service';
-import { SentenceCommentEachComponent } from './writtendebate/sentence-comment-each/sentence-comment-each.component'
+import { SentenceCommentEachComponent } from './writtendebate/sentence-comment-each/sentence-comment-each.component';
+import { GeneralCommentComponent } from './writtendebate/general-comment/general-comment.component';
+import { TeamMemberComponent } from './writtendebate/team-member/team-member.component';
+import { VoteComponent } from './writtendebate/vote/vote.component'
 
 @NgModule({
   imports: [
@@ -40,7 +43,10 @@ import { SentenceCommentEachComponent } from './writtendebate/sentence-comment-e
       SentenceWrittenComponent,
       SentenceTranscriptionComponent,
       SentenceCommentContainerComponent,
-      SentenceCommentEachComponent
+      SentenceCommentEachComponent,
+      GeneralCommentComponent,
+      TeamMemberComponent,
+      VoteComponent
   ],
   providers: [CommentService, ArticleFirebaseService]
 })

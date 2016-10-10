@@ -69,7 +69,7 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
   add_opinion_opp(){
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        argument_id: null,
+        argument_id: "",
         team_name:"opposition", 
         type: "main"}
     }

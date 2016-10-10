@@ -17,7 +17,7 @@ export class WrittenDebateComponent implements OnInit {
 
   written_debate_data;
   event_id: string;
-  event_data: FirebaseObjectObservable<any>;
+  event_item$: FirebaseObjectObservable<any>;
   combined_src_subscription = null;
 
   /*data generated for the use of child component*/
@@ -25,7 +25,8 @@ export class WrittenDebateComponent implements OnInit {
   opinion: any;
   arg_status: any;
   comment_sentence_written : any;
-
+  team_members
+ 
 
   constructor(private route: ActivatedRoute,
                private af: AngularFire, 
@@ -56,11 +57,12 @@ export class WrittenDebateComponent implements OnInit {
           const own_uid = own_user.id;
           
           /* computed data*/ 
-          const team = written_debate_data.team || {};
-          if(team.proposition && team.proposition[own_uid]){
+          this.team_members = written_debate_data.team || {};
+          if(this.team_members.proposition && this.team_members.proposition[own_uid]){
             this.own_team = "proposition";
           }
-          if(team.opposition && team.opposition[own_uid]){
+
+          if(this.team_members.opposition && this.team_members.opposition[own_uid]){
             this.own_team = "opposition";
           }
 
@@ -73,7 +75,16 @@ export class WrittenDebateComponent implements OnInit {
         }
       )
       this.combined_src_subscription = combined_src.subscribe();
+
+
+      this.event_item$ = this.af.database.object('/event_related/event/' + this.event_id);
     });
+
+
+
+
+
+
 /*
     if(!this.user_auth.own_user.loggedIn){
       alert("you need to login to see event data");

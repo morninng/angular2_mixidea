@@ -1,0 +1,25 @@
+<div class="team_member_container">
+  <div class="each_team">
+    proposition
+
+    <span *ngFor="let member of proposition_members | keysInObject">
+      <app-user-link-full-parallel 
+            [user_id]="member.key" 
+            [type]="'only_pict'" >
+      </app-user-link-full-parallel>
+    </span>
+
+  </div>
+  <div class="each_team">
+    opposition
+
+    <span *ngFor="let member of opposition_members | keysInObject">
+      <app-user-link-full-parallel 
+            [user_id]="member.key" 
+            [type]="'only_pict'" >
+      </app-user-link-full-parallel>
+    </span>
+
+
+  </div>
+</div>

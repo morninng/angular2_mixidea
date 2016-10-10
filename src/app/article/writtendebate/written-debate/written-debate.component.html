@@ -1,20 +1,32 @@
 <div class="write-debate-container">
+
+
+
   <div class="debate_container">
+    <div>
+      <span class="motion"> {{ ( event_item$ | async)?.title}} </span>
+    </div>
     event_id {{event_id}}<br>
-  own_team {{own_team}}
-  <br>
+    own_team {{own_team}}<br>
+    
 
-  <span *ngFor="let argument of (written_debate_data?.arg_status | keysInObject)">
+    <app-team-member class="full_width"
+          [team_members]="team_members"></app-team-member>
 
-    <app-argument
-        [event_id]="event_id" 
-        [argument_id]="argument.key" 
-        [own_team]="own_team" 
-        [partial_opinion]="opinion[argument.key]" 
-        [partial_arg_status] = "arg_status[argument.key]"
-        [partial_comment_sentence_written]="comment_sentence_written[argument.key]"></app-argument>
+    <span *ngFor="let argument of (written_debate_data?.arg_status | keysInObject)">
 
-  </span>
+      <app-argument
+          [event_id]="event_id" 
+          [argument_id]="argument.key" 
+          [own_team]="own_team" 
+          [partial_opinion]="opinion[argument.key]" 
+          [partial_arg_status] = "arg_status[argument.key]"
+          [partial_comment_sentence_written]="comment_sentence_written[argument.key]"></app-argument>
+
+    </span>
+
+    <app-vote></app-vote>
+    <app-general-comment></app-general-comment>
 
   </div>
   <div class="sentence_comment_container">
