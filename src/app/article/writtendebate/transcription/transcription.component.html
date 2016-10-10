@@ -4,9 +4,8 @@
 {{transcription_arr | json}}
 </p>
 
-<>
 
 
-<span *ngFor="let transcript of transcription_arr">
+<span *ngFor="let transcript of converted_transcription_arr">
   <app-sentence-transcription [transcript]="transcript"></app-sentence-transcription>
 </span>

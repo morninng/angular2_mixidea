@@ -33,8 +33,6 @@ export class WrittenDebateComponent implements OnInit {
                private user_auth : UserauthService,
                private change_ref: ChangeDetectorRef) { }
 
-
-
   ngOnInit() {
 
     this.route.params.forEach((params: Params) => {
