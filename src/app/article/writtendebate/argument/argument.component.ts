@@ -22,8 +22,8 @@ export class ArgumentComponent implements OnInit, OnChanges {
   main_status : any;
   subsequent_status : any;
   comment_sentence_written;
-  is_prop : boolean;
-  is_opp : boolean;
+  is_arg_prop : boolean;
+  is_arg_opp : boolean;
 
   constructor(private route: ActivatedRoute,
                private router: Router){
@@ -39,8 +39,8 @@ export class ArgumentComponent implements OnInit, OnChanges {
     this.comment_sentence_written = this.partial_comment_sentence_written || {}
     this.argument_team = this.main_status.team_name;
 
-    this.is_prop = this.argument_team=='proposition';
-    this.is_opp = this.argument_team=='opposition';
+    this.is_arg_prop = this.argument_team=='proposition';
+    this.is_arg_opp = this.argument_team=='opposition';
   }
 
 

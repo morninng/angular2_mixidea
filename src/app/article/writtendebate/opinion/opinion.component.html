@@ -1,13 +1,17 @@
 
 <div class="opinion_container">
 
-opinion_status {{opinion_status}}<br>
 
-argument_team {{argument_team}}<br>
-opinion_team {{opinion_team}}<br>
-opinion_type {{opinion_type}}<br>
-<span class="audio_container"></span>
 
+<div [ngClass]="{'prop_opinion':is_opinion_prop, 'opp_opinion': is_opinion_opp}" >
+
+    opinion_status {{opinion_status}}<br>
+
+    argument_team {{argument_team}}<br>
+    opinion_team {{opinion_team}}<br>
+    opinion_type {{opinion_type}}<br>
+    <span class="audio_container"></span>
+</div>
 
 <app-user-link-full-parallel [user_id]="writer" ></app-user-link-full-parallel>
 

@@ -27,7 +27,9 @@ export class OpinionComponent implements OnInit, OnChanges {
   writer
   audio_url
   content_arr
-  transcript_arr
+  transcript_arr;
+  is_opinion_prop : boolean;
+  is_opinion_opp : boolean;
 
   constructor(private el: ElementRef, private article_firebase : ArticleFirebaseService) { }
 
@@ -39,6 +41,9 @@ export class OpinionComponent implements OnInit, OnChanges {
     this.audio_url = this.opinion.audio_url;
     this.content_arr = this.opinion.content_arr;
     this.transcript_arr = this.opinion.transcript_arr; 
+
+    this.is_opinion_prop = this.opinion_team=='proposition';
+    this.is_opinion_opp = this.opinion_team=='opposition';
   }
 
 

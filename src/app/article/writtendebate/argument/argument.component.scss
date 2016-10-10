@@ -4,9 +4,18 @@
 }
 
 .prop_arg{
-    background-color:green
+    background-color:green;
+    .sign_post{
+        text-align:left;
+        font-weight:bold;
+    }
+    
 }
 
 .opp_arg{
     background-color:red;
+    .sign_post{
+        text-align:right;
+        font-weight:bold;
+    }
 }
