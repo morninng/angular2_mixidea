@@ -23,20 +23,21 @@ export class CommentService {
 
   }
 
-  open_sentence_comment(type,event_id, art_id, opinion_id, sentence_num , comment_sentence_written){
+  open_sentence_comment(type,event_id, art_id, opinion_id, sentence_num , comment_sentence){
     
     console.log("open_sentence_comment service");
     
+    this.current_type = type;
     this.current_event_id = event_id;
     this.current_arg_id = art_id; 
     this.current_opinion_id = opinion_id;
     this.current_sentence_num = sentence_num;
-    this.current_type = type;
-    this.sentence_comment_open_subject$.next(comment_sentence_written);
+    this.sentence_comment_open_subject$.next(comment_sentence);
   }
 
   add_comment(){
 
+    
   }
   
   put_sentence_comment(text){
@@ -48,7 +49,7 @@ export class CommentService {
                   this.current_opinion_id,
                   this.current_sentence_num,
                   text );
-    
+
   }
 
 

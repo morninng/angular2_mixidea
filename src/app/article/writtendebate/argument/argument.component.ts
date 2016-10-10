@@ -16,12 +16,14 @@ export class ArgumentComponent implements OnInit, OnChanges {
   @Input() partial_arg_status;
   @Input() argument_team
   @Input() partial_comment_sentence_written
+  @Input() partial_comment_sentence_transcription
 
 
   /*data generated for the use of child component*/
   main_status : any;
   subsequent_status : any;
   comment_sentence_written;
+  comment_sentence_transcript;
   is_arg_prop : boolean;
   is_arg_opp : boolean;
 
@@ -37,6 +39,7 @@ export class ArgumentComponent implements OnInit, OnChanges {
     this.main_status = this.partial_arg_status.main || {};
     this.subsequent_status = this.partial_arg_status.subsequent || {};
     this.comment_sentence_written = this.partial_comment_sentence_written || {}
+    this.comment_sentence_transcript = this.partial_comment_sentence_transcription || {}
     this.argument_team = this.main_status.team_name;
 
     this.is_arg_prop = this.argument_team=='proposition';

@@ -2,6 +2,7 @@ import { Component, OnInit,ChangeDetectionStrategy,ChangeDetectorRef } from '@an
 import { Router, ActivatedRoute, Params  }     from '@angular/router';
 import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
 import { UserauthService} from './../../../shared/userauth.service';
+import { COMMENT_TYPE_SENTENCE_WRITTEN, COMMENT_TYPE_SENTENCE_TRANSCRIPT} from './../../service/comment.service'
 
 
 declare var window:any;
@@ -25,6 +26,7 @@ export class WrittenDebateComponent implements OnInit {
   opinion: any;
   arg_status: any;
   comment_sentence_written : any;
+  comment_sentence_transcription : any;
   team_members
  
 
@@ -68,7 +70,8 @@ export class WrittenDebateComponent implements OnInit {
           this.opinion = written_debate_data.opinion;
           this.arg_status = written_debate_data.arg_status;
           const written_debate_comment = written_debate_data.comment || {};
-          this.comment_sentence_written = written_debate_comment.sentence_written || {};
+          this.comment_sentence_written = written_debate_comment[COMMENT_TYPE_SENTENCE_WRITTEN] || {};
+          this.comment_sentence_transcription = written_debate_comment[COMMENT_TYPE_SENTENCE_TRANSCRIPT] || {};
           this.change_ref.markForCheck();
         }
       )

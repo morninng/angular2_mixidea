@@ -14,16 +14,14 @@ export class WrittenComponent implements OnInit, OnChanges {
   @Input() opinion_id : string;
   @Input() comment_sentence_written;
 
-  comment_sentence_written_edited
   content_arr_with_num
 
-  constructor() {}
+  constructor() {} 
 
   ngOnChanges(){
 
-    console.log("written component onchange, with opinion id", this.opinion_id)
-    this.comment_sentence_written_edited = [];
-    this.comment_sentence_written_edited = this.comment_sentence_written || [];
+    console.log("written component onchange, with opinion id", this.opinion_id);
+    this.comment_sentence_written = this.comment_sentence_written || [];
     this.content_arr = this.content_arr || [];
     this.content_arr_with_num = [];
     for(var i=0; i<this.content_arr.length; i++){

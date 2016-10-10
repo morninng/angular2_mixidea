@@ -4,3 +4,9 @@
 .under_playing{
     color:red;
 }
+
+.not_playing{
+    .show_only_playing{
+        display:none;
+    }
+}

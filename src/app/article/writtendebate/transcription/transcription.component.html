@@ -9,5 +9,9 @@
 <span *ngFor="let transcript of converted_transcription_arr">
   <app-sentence-transcription 
           [transcript]="transcript"
+          [event_id]="event_id"
+          [argument_id]="argument_id"
+          [opinion_id]="opinion_id"
+          [comment_sentence_transcript]="comment_sentence_transcript[transcript.num]"
           [audio_play_time]="audio_play_time" ></app-sentence-transcription>
 </span>

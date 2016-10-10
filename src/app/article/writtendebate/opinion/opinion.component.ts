@@ -17,6 +17,7 @@ export class OpinionComponent implements OnInit, OnChanges {
   @Input() argument_team : string;
   @Input() opinion_team : string;
   @Input() comment_sentence_written;
+  @Input() comment_sentence_transcript;
   @Input() category : string;
   @Input() subsequent_id : string;
 

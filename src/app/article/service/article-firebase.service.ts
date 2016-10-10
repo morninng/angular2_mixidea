@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import {COMMENT_TYPE_SENTENCE_WRITTEN} from './../service/comment.service'
 import { UserauthService} from './../../shared/userauth.service';
 
 

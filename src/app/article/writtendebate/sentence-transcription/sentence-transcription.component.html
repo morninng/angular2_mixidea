@@ -2,10 +2,16 @@
 start {{transcript.start_time}} -  end{{transcript.end_time}} : 
 
  under_playing
- <span [ngClass]="{'under_playing': under_playing}">
+ <span [ngClass]="{'under_playing': under_playing, 'not_playing':!under_playing}">
 content {{transcript.content}}
+    <span class="show_only_playing">
+        <input type="button" value="balloon" (click)="open_sentence_comment()">
+    </span>
  </span>
 <br>
 audio_play_time{{audio_play_time}}
-</p>
 
+<br>
+{{comment_sentence_transcript | json}}
+
+</p>
