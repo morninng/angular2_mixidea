@@ -10,6 +10,7 @@ import {ModelUserService} from './../../shared/model-user.service';
 export class UserLinkFullParallelComponent implements OnInit {
 
   @Input() user_id : string;
+  @Input() type : string;
   user = null;
 
   constructor(private user_service : ModelUserService, private change_ref: ChangeDetectorRef) { }

@@ -14,6 +14,7 @@ import { ModelUserService} from './model-user.service';
 
 import { AngularFireModule, AuthProviders, AuthMethods, } from 'angularfire2';
 import { UserLinkFullParallelComponent } from './user-link-full-parallel/user-link-full-parallel.component';
+
 const firebaseConfig = {
     apiKey: "AIzaSyBp_ZDqoPygbPs7jMclrBSJ3a99t1Yvr1k",
     authDomain: "mixidea-91a20.firebaseapp.com",

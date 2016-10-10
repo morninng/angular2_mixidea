@@ -1,8 +1,24 @@
 
 
-<div class="user_full_parallel_container">
-  <div *ngIf="user" class="user_container">
-    <img src={{user.pict_src}}>
-    <span class="name">{{user.full_name}}</span>
-  </div>
-</div>
+<span [ngSwitch]="type">
+
+  <span *ngSwitchCase="'full_parallel'">
+
+    <div class="user_full_parallel_container">
+      <div *ngIf="user" class="user_container">
+        <img src={{user.pict_src}}>
+        <span class="name">{{user.full_name}}</span>
+      </div>
+    </div>
+  </span>
+
+  <span *ngSwitchCase="'only_pict'">
+    <div class="only_pict">
+      <div *ngIf="user" class="user_container">
+        <img src={{user.pict_src}}>
+      </div>
+    </div>
+  </span>
+
+
+</span>
