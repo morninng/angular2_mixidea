@@ -15,18 +15,17 @@
 
 <app-user-link-full-parallel [user_id]="writer" [type]="'full_parallel'" ></app-user-link-full-parallel>
 
-
 <app-transcription [event_id] = "event_id"
                    [argument_id]="argument_id"
                    [opinion_id]="opinion_id"
-                   [transcription_arr]="opinion.transcript"  ></app-transcription>
+                   [transcription_arr]="opinion.transcript"
+                   [audio_play_time]="audio_play_time"  ></app-transcription>
 
 <app-written [event_id] = "event_id"
              [argument_id]="argument_id"
              [opinion_id]="opinion_id"
              [content_arr]="opinion.content_arr"
              [comment_sentence_written]="comment_sentence_written" ></app-written>
-
 
 <span *ngIf="opinion_status == 'checking'">
     checking

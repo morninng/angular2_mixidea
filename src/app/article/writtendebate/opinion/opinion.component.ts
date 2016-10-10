@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ElementRef, OnChanges,ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, Input, ElementRef, OnChanges,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 import {ArticleFirebaseService} from './../../service/article-firebase.service'
 
 @Component({
@@ -30,8 +30,11 @@ export class OpinionComponent implements OnInit, OnChanges {
   transcript_arr;
   is_opinion_prop : boolean;
   is_opinion_opp : boolean;
+  audio_play_time  = -1;
 
-  constructor(private el: ElementRef, private article_firebase : ArticleFirebaseService) { }
+  constructor(private el: ElementRef, 
+              private article_firebase : ArticleFirebaseService,
+              private change_ref: ChangeDetectorRef) { }
 
 
   ngOnChanges(){
@@ -61,12 +64,23 @@ export class OpinionComponent implements OnInit, OnChanges {
       this.audio_element = new Audio();
       this.audio_element.controls = true;
       this.audio_element.src = this.opinion.audio_url;
-      this.audio_element.addEventListener("play", ()=>{ console.log("play"); });
-      this.audio_element.addEventListener("seeked", ()=>{ console.log("seeked"); });
-      this.audio_element.addEventListener("timeupdate", ()=>{ console.log("time update"); });
+      this.audio_element.addEventListener("play", ()=>{ this.audio_time_update( "play"); });
+      this.audio_element.addEventListener("seeked", ()=>{ this.audio_time_update( "seeked"); });
+      this.audio_element.addEventListener("timeupdate", ()=>{ this.audio_time_update( "time_update"); });
       audio_container.insertBefore(this.audio_element, null);
     }
   }
+
+
+  private audio_time_update(type){
+    
+    this.audio_play_time = this.audio_element.currentTime * 1000;
+    console.log("audio play time update", this.audio_play_time);
+    this.change_ref.markForCheck();
+
+  }
+
+
 
   publish_opinion(){
 

@@ -11,9 +11,12 @@ export class TranscriptionComponent implements OnInit,OnChanges {
   @Input() event_id : string;
   @Input() argument_id : string;
   @Input() opinion_id : string;
-
+  @Input() audio_play_time : number;
+  
   converted_transcription_arr = [];
   constructor() {}
+
+
 
   ngOnInit() {
 

@@ -1,5 +1,11 @@
 <p class="transcript_sentence">
 start {{transcript.start_time}} -  end{{transcript.end_time}} : 
+
+ under_playing
+ <span [ngClass]="{'under_playing': under_playing}">
 content {{transcript.content}}
+ </span>
+<br>
+audio_play_time{{audio_play_time}}
 </p>
 

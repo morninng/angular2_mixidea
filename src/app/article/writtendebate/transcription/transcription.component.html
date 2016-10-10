@@ -1,11 +1,13 @@
 
 <p>
   transcription works!
-{{transcription_arr | json}}
+{{converted_transcription_arr | json}}
 </p>
 
 
 
 <span *ngFor="let transcript of converted_transcription_arr">
-  <app-sentence-transcription [transcript]="transcript"></app-sentence-transcription>
+  <app-sentence-transcription 
+          [transcript]="transcript"
+          [audio_play_time]="audio_play_time" ></app-sentence-transcription>
 </span>
