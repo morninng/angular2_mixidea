@@ -29,14 +29,10 @@ export class WrittenComponent implements OnInit, OnChanges {
       obj["num"]=i;
       this.content_arr_with_num.push(obj);
     }
-
   }
 
 
   ngOnInit() {
-
-
-
   }
 
 

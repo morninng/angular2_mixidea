@@ -1,7 +1,7 @@
 <p>
   write-opinion works!
 </p>
-<textarea #opinion_text></textarea>
-<input type="button" value="upload argument" (click)="upload_opinion(opinion_text.value)">
 
+<textarea #opinion_text [(ngModel)]="written_text"></textarea>
 
+<input type="button" value="upload argument"   (click)="upload_opinion(written_text)">

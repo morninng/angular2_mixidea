@@ -4,10 +4,10 @@ ss
 
 <span *ngIf="show_signpost">
     <app-arg-signpost 
-        [type]="type"
         [event_id]="event_id"
         [arg_id]="arg_id"
-        [opinion_id]="opinion_id" >
+        [opinion_id]="opinion_id"
+        [default_signpost]="default_signpost" >
     </app-arg-signpost>
 </span>
 
@@ -27,7 +27,7 @@ ss
             [team_name]="team_name"
             [arg_id]="arg_id"
             [opinion_id]="opinion_id"
-            [type]="type">
+            [phase]="phase">
         </app-record-transcript-container>
     </span>
 
@@ -38,7 +38,8 @@ ss
             [team_name]="team_name"
             [arg_id]="arg_id"
             [opinion_id]="opinion_id"
-            [type]="type">
+            [default_text]="default_text"
+            [phase]="phase">
         </app-write-opinion>
     </span>
     <span *ngSwitchDefault>

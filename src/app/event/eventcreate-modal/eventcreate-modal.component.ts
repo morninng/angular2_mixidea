@@ -9,7 +9,6 @@ import {FormsModule} from '@angular/forms';
 import {AngularFire} from 'angularfire2';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-eventcreate-modal',
   templateUrl: './eventcreate-modal.component.html',
@@ -93,7 +92,6 @@ export class EventcreateModalComponent implements OnInit {
         console.log("error to save data to firebase", err)
         alert("fail to save data ");
       })
-
   }
 
   finsh_event_creation(){    

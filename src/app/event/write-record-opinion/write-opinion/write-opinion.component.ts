@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, OnChanges } from '@angular/core';
 import {EventFirebaseService} from './../../event-service/event-firebase.service'
 import { UserauthService} from './../../../shared/userauth.service';
 
@@ -7,14 +7,17 @@ import { UserauthService} from './../../../shared/userauth.service';
   templateUrl: './write-opinion.component.html',
   styleUrls: ['./write-opinion.component.scss']
 })
-export class WriteOpinionComponent implements OnInit {
+export class WriteOpinionComponent implements OnInit, OnChanges {
 
 
   @Input() event_id: string;
   @Input() team_name: string;
   @Input() opinion_id: string;
   @Input() arg_id: string;
-  @Input() type:string
+  @Input() phase:string
+  @Input() default_text:string
+
+  written_text = ""
 
   constructor(private event_firebase :EventFirebaseService,
               private user_auth : UserauthService) { }
@@ -22,6 +25,12 @@ export class WriteOpinionComponent implements OnInit {
   ngOnInit() {
   }
 
+
+  ngOnChanges(){
+    if(this.default_text){
+      this.written_text = this.default_text;
+    }
+  }
 
   upload_opinion(text){
 
@@ -35,7 +44,7 @@ export class WriteOpinionComponent implements OnInit {
     const opinion_content_arr = section_arr.map((value)=>{return {content:value}});
     console.log(opinion_content_arr)
 
-    this.event_firebase.upload_opinion_content(this.event_id,this.arg_id, this.opinion_id, this.type,this.team_name, opinion_content_arr);
+    this.event_firebase.upload_opinion_content(this.event_id,this.arg_id, this.opinion_id, this.phase,this.team_name, opinion_content_arr);
   }
 
 }

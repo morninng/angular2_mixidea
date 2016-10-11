@@ -8,13 +8,13 @@ import {EventFirebaseService} from './../../event-service/event-firebase.service
 })
 export class ArgSignpostComponent implements OnInit, OnChanges {
 
-  @Input() type:string
-  @Input() event_id:string
-  @Input() arg_id:string
-  @Input() opinion_id:string
+  @Input() type:string;
+  @Input() event_id:string;
+  @Input() arg_id:string;
+  @Input() opinion_id:string;
+  @Input() default_signpost:string;
 
-  input_signpost = false;
-  show_signpost = false;
+  signpost_text = "";
 
 
   constructor(private event_firebase :EventFirebaseService) { }
@@ -23,12 +23,9 @@ export class ArgSignpostComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(){
-    if(this.type == "main"){
-      this.input_signpost = true;
-      this.show_signpost = false;
-    }else{
-      this.show_signpost = true;
-      this.input_signpost = false;
+
+    if(this.default_signpost){
+      this.signpost_text = this.default_signpost
     }
   }
 

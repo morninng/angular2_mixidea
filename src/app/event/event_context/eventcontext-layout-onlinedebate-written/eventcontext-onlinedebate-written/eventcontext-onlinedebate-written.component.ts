@@ -5,6 +5,7 @@ import { UserauthService} from './../../../../shared/userauth.service';
 
 import {PublishArticleFromEvent} from "./../../../publish-article-from-event"
 
+import {CREATE_MAIN_OPINION} from './../../../../interface/opinion'
 
 import{ONLINE_DEBATE_LIVE_VIDEO, ONLINE_DEBATE_WRITTEN} from './../../../event_type'
 
@@ -59,9 +60,8 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
   add_opinion_prop(){
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        argument_id: "",
-        team_name:"proposition", 
-        type: "main"}
+        phase: CREATE_MAIN_OPINION,
+        team_name:"proposition"}
     }
     this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
   }
@@ -69,9 +69,8 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
   add_opinion_opp(){
     let navigationExtras: NavigationExtras = {
       queryParams: {
-        argument_id: "",
-        team_name:"opposition", 
-        type: "main"}
+        phase: CREATE_MAIN_OPINION,
+        team_name:"opposition"}
     }
     this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
   }

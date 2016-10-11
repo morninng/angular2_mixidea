@@ -1,5 +1,10 @@
 import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
+import {ADD_SUBSEQUENT_OPINION} from './../../../interface/opinion'
+import {CATEGORY_SUBSEQUENT, CATEGORY_MAIN} from './../../../interface/opinion'
+
+
+
 
 @Component({
   selector: 'app-argument',
@@ -27,6 +32,9 @@ export class ArgumentComponent implements OnInit, OnChanges {
   is_arg_prop : boolean;
   is_arg_opp : boolean;
 
+  CATEGORY_SUBSEQUENT = CATEGORY_SUBSEQUENT;
+  CATEGORY_MAIN = CATEGORY_MAIN
+  
   constructor(private route: ActivatedRoute,
                private router: Router){
                  console.log("argument component constructor is called");
@@ -52,19 +60,13 @@ export class ArgumentComponent implements OnInit, OnChanges {
 
   add_new_argument(){
     console.log("add new argument");
-    
-    let type = "";
-    if(this.own_team == this.argument_team){
-      type= "refute_back";
-    }else{
-      type= "refute";
-    }
+
 
     let navigationExtras: NavigationExtras = {
       queryParams: {
+                    phase: ADD_SUBSEQUENT_OPINION,
                     argument_id: this.argument_id,
-                    team_name:this.own_team,
-                    type
+                    team_name:this.own_team
                   }
     }
     this.router.navigate(['/writerecord_opinion',this.event_id], navigationExtras);

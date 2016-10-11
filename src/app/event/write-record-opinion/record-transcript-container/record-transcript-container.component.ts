@@ -16,7 +16,7 @@ export class RecordTranscriptContainerComponent implements OnInit {
   @Input() team_name: string;
   @Input() opinion_id: string;
   @Input() arg_id: string;
-  @Input() type:string;
+  @Input() phase:string;
 
   @ViewChild(PlayerTranscriptionComponent) 
   private player_transcript: PlayerTranscriptionComponent;

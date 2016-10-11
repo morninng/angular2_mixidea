@@ -6,6 +6,13 @@ import {AngularFire} from 'angularfire2';
 import { Store } from '@ngrx/store';
 import { UserauthService} from './../../shared/userauth.service';
 
+import {CATEGORY_MAIN, CATEGORY_SUBSEQUENT} from './../../interface/opinion';
+
+import {CREATE_MAIN_OPINION, 
+        ADD_SUBSEQUENT_OPINION, 
+        UPDATE_MAIN_OPINION, 
+        UPDATE_SUBSEQUENT_OPINION} from './../../interface/opinion'
+
 declare var firebase: any;
 
 @Injectable()
@@ -19,7 +26,7 @@ export class EventFirebaseService {
               public store: Store<any>) {
   }
 
-  upload_file_after_encoding(event_id, arg_id, opinion_id, team_name, type){
+  upload_file_after_encoding(event_id, arg_id, opinion_id, team_name,  phase){
     const storage = firebase.storage();
     const storage_ref = storage.ref();
     var file_name = generate_random_string();
@@ -43,17 +50,35 @@ export class EventFirebaseService {
         }).then(()=>{
           console.log("setting firebase url in the database has been finished")
           //after the file upload and url setting is done, remained information is set.
-          this.retrieve_upload_transcription(event_id, arg_id, opinion_id, type);
-          this.set_basic_info(event_id, arg_id, opinion_id, type);
-          this.set_arg_status(event_id, arg_id, opinion_id, type, "checking",team_name);
-          this.set_signpost(event_id, arg_id, opinion_id);
+          this.retrieve_upload_transcription(event_id, arg_id, opinion_id);
+
+          switch(phase){
+            case CREATE_MAIN_OPINION:
+              this.set_arg_status(event_id, arg_id, opinion_id, CATEGORY_MAIN, "checking", team_name);
+              this.set_user_info(event_id, arg_id, opinion_id);
+              this.set_signpost(event_id, arg_id, opinion_id);
+            break;
+
+            case UPDATE_MAIN_OPINION:
+              this.set_signpost(event_id, arg_id, opinion_id);
+            break;
+
+            case ADD_SUBSEQUENT_OPINION:
+              this.set_arg_status(event_id, arg_id, opinion_id, CATEGORY_SUBSEQUENT, "checking", team_name);
+              this.set_user_info(event_id, arg_id, opinion_id);
+            break;
+
+            case UPDATE_SUBSEQUENT_OPINION:
+            break;
+          }
+
         })
       }
     )
   }
 
 
-  private retrieve_upload_transcription(event_id,arg_id,opinion_id, type){
+  private retrieve_upload_transcription(event_id,arg_id,opinion_id){
       const transcript_sentence_arr = this.store.select('transcript');
       transcript_sentence_arr.take(1).subscribe((state:any[])=>{
         console.log(state);
@@ -77,41 +102,57 @@ export class EventFirebaseService {
   }
 
 
-  set_basic_info(event_id, arg_id, opinion_id, type){
+  set_user_info(event_id, arg_id, opinion_id){
 
     const user_id = this.user_auth.own_user_id;
 
     const reference = "event_related/written_debate/" + event_id + "/opinion/" + arg_id + "/" + opinion_id;
     const basicinfo_db_item = this.af.database.object(reference);
-    const promise = basicinfo_db_item.update({writer:user_id, type: type});
+    const promise = basicinfo_db_item.update({writer:user_id});
     promise.then(()=>{
       console.log("setting basic info has been succeeded");
     })
   }
 
-  upload_opinion_content(event_id, arg_id, opinion_id, type,team_name, opinion_content_arr){
+  upload_opinion_content(event_id, arg_id, opinion_id, phase, team_name, opinion_content_arr){
 
     const reference = "event_related/written_debate/" + event_id + "/opinion/"  + arg_id + "/" + opinion_id + "/content_arr";
     const opinion_db_item = this.af.database.object(reference);
     const promise = opinion_db_item.set(opinion_content_arr);
     promise.then(()=>{
-      console.log("uploading opinion succeeded");
-      this.set_basic_info(event_id, arg_id, opinion_id, type);
-      this.set_arg_status(event_id, arg_id, opinion_id, type, "checking", team_name);
-      this.set_signpost(event_id, arg_id, opinion_id);
+
+      switch(phase){
+        case CREATE_MAIN_OPINION:
+          this.set_arg_status(event_id, arg_id, opinion_id, CATEGORY_MAIN, "checking", team_name);
+          this.set_user_info(event_id, arg_id, opinion_id);
+          this.set_signpost(event_id, arg_id, opinion_id);
+        break;
+        case UPDATE_MAIN_OPINION:
+          this.set_signpost(event_id, arg_id, opinion_id);
+        break;
+
+        case ADD_SUBSEQUENT_OPINION:
+          this.set_arg_status(event_id, arg_id, opinion_id, CATEGORY_SUBSEQUENT, "checking", team_name);
+          this.set_user_info(event_id, arg_id, opinion_id);
+
+        break;
+        case UPDATE_SUBSEQUENT_OPINION:
+        break;
+      }
+
+
     })
   }
 
 
-
-  set_arg_status(event_id, arg_id, opinion_id,type, status,team_name){
-    if(type=="main"){
-      const arg_status_main_reference = "event_related/written_debate/" + event_id + "/arg_status/" + arg_id + "/main";
+  set_arg_status(event_id, arg_id, opinion_id,category, status,team_name){
+    if(category==CATEGORY_MAIN){
+      const arg_status_main_reference = "event_related/written_debate/" + event_id + "/arg_status/" + arg_id + "/" + CATEGORY_MAIN ;
       const main_obj = {opinion_id, status, team_name};
       const arg_status_main_db_item = this.af.database.object(arg_status_main_reference);
       arg_status_main_db_item.set(main_obj);
-    }else if (type=="refute" || type=="refute_back"){
-      const arg_status_subsequent_reference = "event_related/written_debate/" + event_id + "/arg_status/" + arg_id + "/subsequent/";
+    }else if (category==CATEGORY_SUBSEQUENT){
+      const arg_status_subsequent_reference = "event_related/written_debate/" + event_id + "/arg_status/" + arg_id + "/" + CATEGORY_SUBSEQUENT;
       const subsequent_obj = {opinion_id, status, team_name };
       const arg_status_subsequent_db_item = this.af.database.list(arg_status_subsequent_reference);
       arg_status_subsequent_db_item.push(subsequent_obj);

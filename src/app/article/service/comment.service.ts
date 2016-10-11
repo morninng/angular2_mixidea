@@ -37,7 +37,6 @@ export class CommentService {
 
   add_comment(){
 
-    
   }
   
   put_sentence_comment(text){

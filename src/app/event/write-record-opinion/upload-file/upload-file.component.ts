@@ -21,7 +21,7 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   @Input() team_name: string;
   @Input() opinion_id: string;
   @Input() arg_id: string;
-  @Input() type:string;
+  @Input() phase:string;
 
   constructor(private record_wav: RecordWavService,
               private encode_to_mp3: EncodeToMp3Service,
@@ -72,7 +72,12 @@ export class UploadFileComponent implements OnInit, OnDestroy {
       this.show_upload_button = false;
       this.under_encoding = true;
       this.encode_to_mp3.encode_wav_to_mp3(this.audio_blob);
-      this.event_firebase.upload_file_after_encoding(this.event_id,this.arg_id,this.opinion_id, this.team_name, this.type);
+      this.event_firebase.upload_file_after_encoding(
+                                  this.event_id,
+                                  this.arg_id,
+                                  this.opinion_id, 
+                                  this.team_name, 
+                                  this.phase);
     }
   }
 
