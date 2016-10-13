@@ -1,23 +1,30 @@
-import { Component, OnInit, Input, AfterViewChecked, ElementRef, OnChanges,NgZone } from '@angular/core';
+import { Component, OnInit, Input, AfterViewChecked, ElementRef, OnChanges,OnDestroy } from '@angular/core';
 import {SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 import {ActionCreator} from './../../../redux/action-creator';
 import {EventFirebaseService} from './../../event-service/event-firebase.service'
 
-
+import {CREATE_MAIN_OPINION, 
+        ADD_SUBSEQUENT_OPINION, 
+        UPDATE_MAIN_OPINION_Written,
+        UPDATE_SUBSEQUENT_OPINION_Written,
+        UPDATE_MAIN_OPINION_AudioTranscript,
+        UPDATE_SUBSEQUENT_OPINION_AudioTranscript
+    } from './../../../interface/opinion'
 
 @Component({
   selector: 'app-update-transcript',
   templateUrl: './update-transcript.component.html',
   styleUrls: ['./update-transcript.component.scss']
 })
-export class UpdateTranscriptComponent implements OnInit,  OnChanges {
+export class UpdateTranscriptComponent implements OnInit,  OnChanges,OnDestroy {
 
   @Input() audio_url :string;
   @Input() event_id :string;
   @Input() arg_id :string;
   @Input() opinion_id :string;
+  @Input() phase :string;
   _el;
   audio_src
   audio_element
@@ -79,7 +86,15 @@ export class UpdateTranscriptComponent implements OnInit,  OnChanges {
 
   upload_transcript(){
       this.event_firebase.retrieve_upload_transcription(this.event_id,this.arg_id,this.opinion_id);
+
+      if(this.phase==UPDATE_MAIN_OPINION_AudioTranscript){
+        this.event_firebase.set_signpost(this.event_id,this.arg_id,this.opinion_id);
+      }
   }
 
+  ngOnDestroy(){
+
+  }
+  
 
 }
