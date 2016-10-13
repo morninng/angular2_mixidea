@@ -74,26 +74,15 @@ export class PlayerTranscriptionComponent implements OnInit, AfterViewInit {
   }
 
 
-  Audio_Time_update(type, current_time){
 
+  Audio_Time_update(type, current_time){
     console.log(current_time);
     current_time = current_time * 1000;
-
-    if(type=="time_update"){
-      var duration = current_time - this.prev_updated_time;
-      console.log("duration " + duration);
-      if(duration > 0.5){
-        const obj = ActionCreator.transcription_play(current_time);
-        this.store.dispatch(obj);
-      }
-    }else if (type=="seek"){
-        const obj = ActionCreator.transcription_play(current_time);
-        this.store.dispatch(obj);
-    }else if (type=="play"){
-        const obj = ActionCreator.transcription_play(0);
-        this.store.dispatch(obj);
-    }
+    const obj = ActionCreator.transcription_play(current_time);
+    this.store.dispatch(obj);
   }
+
+ 
 
   update_each_sentence(id, sentence){
     var obj = ActionCreator.transcription_update_sentence(id,sentence);
