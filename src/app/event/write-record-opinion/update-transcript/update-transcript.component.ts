@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, AfterViewChecked, ElementRef, OnChanges,OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, AfterViewChecked, 
+        ElementRef, OnChanges,OnDestroy,Output,EventEmitter } from '@angular/core';
 import {SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
@@ -25,6 +26,8 @@ export class UpdateTranscriptComponent implements OnInit,  OnChanges,OnDestroy {
   @Input() arg_id :string;
   @Input() opinion_id :string;
   @Input() phase :string;
+  @Output() onClear_ReRecord = new EventEmitter();;
+
   _el;
   audio_src
   audio_element
@@ -92,9 +95,17 @@ export class UpdateTranscriptComponent implements OnInit,  OnChanges,OnDestroy {
       }
   }
 
-  ngOnDestroy(){
 
+  record_again(){
+    console.log("record_again");
+    this.onClear_ReRecord.emit();
+
+    
   }
-  
+
+  ngOnDestroy(){
+    
+  }
+
 
 }

@@ -189,6 +189,13 @@ export class WriteRecordOpinionComponent implements OnInit {
     this.opinion_input_phase = "recording";
   }
 
+  onClear_ReRecord(){
 
+    const obj = ActionCreator.transcription_clearAll();
+    this.store.dispatch(obj);
+    this.opinion_input_phase = "recording";
+
+    console.log("onReflesh_ReRecord is called from child component");
+  }
 
 }
