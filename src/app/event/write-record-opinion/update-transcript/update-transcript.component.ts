@@ -95,12 +95,9 @@ export class UpdateTranscriptComponent implements OnInit,  OnChanges,OnDestroy {
       }
   }
 
-
   record_again(){
     console.log("record_again");
-    this.onClear_ReRecord.emit();
-
-    
+    this.onClear_ReRecord.emit();    
   }
 
   ngOnDestroy(){

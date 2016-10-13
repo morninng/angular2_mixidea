@@ -1,5 +1,8 @@
 .transcript_sentence{
     border: thin solid #000000;
+    .number_comment{
+        float:right;
+    }
 }
 .under_playing{
     color:red;
@@ -9,4 +12,9 @@
     .show_only_playing{
         display:none;
     }
+}
+
+.number_comment{
+     float:right;
+     padding-right:30px;
 }

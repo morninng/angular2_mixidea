@@ -18,6 +18,7 @@ export class SentenceTranscriptionComponent implements OnInit,OnChanges {
 
   under_playing = false;
   sentence_num : number;
+  comment_num : number;
 
   constructor(private comment_service: CommentService) { }
 
@@ -35,6 +36,16 @@ export class SentenceTranscriptionComponent implements OnInit,OnChanges {
     }else{
       this.under_playing = false;
     }
+
+
+    if(this.comment_sentence_transcript){
+      let count = 0;
+      for(let key in this.comment_sentence_transcript){
+        count++;
+      }
+      this.comment_num = count;
+    }
+
   }
   open_sentence_comment(){
     console.log("open_sentence_comment");

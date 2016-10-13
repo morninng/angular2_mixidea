@@ -8,6 +8,7 @@ content {{transcript.content}}
         <input type="button" value="balloon" (click)="open_sentence_comment()">
     </span>
  </span>
+ <span class="number_comment" *ngIf="comment_num && comment_num>0">number of comment {{comment_num}}</span>
 <br>
 audio_play_time{{audio_play_time}}
 

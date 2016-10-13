@@ -18,13 +18,20 @@ export class SentenceWrittenComponent implements OnInit,OnChanges {
 
   show_balloon : boolean;
   sentence_num : number;
+  comment_num : number
 
   constructor(private comment_service: CommentService) { }
 
   ngOnChanges(){
     this.sentence_num = this.content.num;
+    if(this.comment_sentence_written){
+      let count = 0;
+      for(let key in this.comment_sentence_written){
+        count++;
+      }
+      this.comment_num = count;
+    }
   }
-
 
   ngOnInit() {
   }
@@ -46,7 +53,6 @@ export class SentenceWrittenComponent implements OnInit,OnChanges {
               this.sentence_num,
               this.comment_sentence_written
               );
-
   }
 
 }
