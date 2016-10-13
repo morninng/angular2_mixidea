@@ -42,6 +42,18 @@ ss
             [phase]="phase">
         </app-write-opinion>
     </span>
+
+    <span *ngSwitchCase="'update_transcript'">
+        <app-update-transcript
+            [audio_url]="audio_url"
+            [event_id]="event_id"
+            [arg_id]="arg_id"
+            [opinion_id]="opinion_id"></app-update-transcript>
+    </span>
+
+
+
+
     <span *ngSwitchDefault>
         default
     </span>

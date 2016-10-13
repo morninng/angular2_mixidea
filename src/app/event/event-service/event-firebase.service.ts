@@ -10,8 +10,10 @@ import {CATEGORY_MAIN, CATEGORY_SUBSEQUENT} from './../../interface/opinion';
 
 import {CREATE_MAIN_OPINION, 
         ADD_SUBSEQUENT_OPINION, 
-        UPDATE_MAIN_OPINION, 
-        UPDATE_SUBSEQUENT_OPINION} from './../../interface/opinion'
+        UPDATE_MAIN_OPINION_Written, 
+        UPDATE_MAIN_OPINION_AudioTranscript,
+        UPDATE_SUBSEQUENT_OPINION_Written,
+        UPDATE_SUBSEQUENT_OPINION_AudioTranscript} from './../../interface/opinion'
 
 declare var firebase: any;
 
@@ -59,7 +61,7 @@ export class EventFirebaseService {
               this.set_signpost(event_id, arg_id, opinion_id);
             break;
 
-            case UPDATE_MAIN_OPINION:
+            case UPDATE_MAIN_OPINION_AudioTranscript:
               this.set_signpost(event_id, arg_id, opinion_id);
             break;
 
@@ -68,7 +70,7 @@ export class EventFirebaseService {
               this.set_user_info(event_id, arg_id, opinion_id);
             break;
 
-            case UPDATE_SUBSEQUENT_OPINION:
+            case UPDATE_SUBSEQUENT_OPINION_AudioTranscript:
             break;
           }
 
@@ -78,7 +80,7 @@ export class EventFirebaseService {
   }
 
 
-  private retrieve_upload_transcription(event_id,arg_id,opinion_id){
+  retrieve_upload_transcription(event_id,arg_id,opinion_id){
       const transcript_sentence_arr = this.store.select('transcript');
       transcript_sentence_arr.take(1).subscribe((state:any[])=>{
         console.log(state);
@@ -127,7 +129,7 @@ export class EventFirebaseService {
           this.set_user_info(event_id, arg_id, opinion_id);
           this.set_signpost(event_id, arg_id, opinion_id);
         break;
-        case UPDATE_MAIN_OPINION:
+        case UPDATE_MAIN_OPINION_Written:
           this.set_signpost(event_id, arg_id, opinion_id);
         break;
 
@@ -136,7 +138,7 @@ export class EventFirebaseService {
           this.set_user_info(event_id, arg_id, opinion_id);
 
         break;
-        case UPDATE_SUBSEQUENT_OPINION:
+        case UPDATE_SUBSEQUENT_OPINION_Written:
         break;
       }
 

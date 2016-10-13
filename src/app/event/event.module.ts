@@ -34,7 +34,8 @@ import { WriteOpinionComponent } from './write-record-opinion/write-opinion/writ
 import { ClearRecordTranscriptionComponent } from './write-record-opinion/clear-record-transcription/clear-record-transcription.component';
 import { ArgSignpostComponent } from './write-record-opinion/arg-signpost/arg-signpost.component';
 import { SelectWriteOrRecordComponent } from './write-record-opinion/select-write-or-record/select-write-or-record.component';
-import { RecordTranscriptContainerComponent } from './write-record-opinion/record-transcript-container/record-transcript-container.component'
+import { RecordTranscriptContainerComponent } from './write-record-opinion/record-transcript-container/record-transcript-container.component';
+import { UpdateTranscriptComponent } from './write-record-opinion/update-transcript/update-transcript.component'
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { RecordTranscriptContainerComponent } from './write-record-opinion/recor
     ArgSignpostComponent,
     SelectWriteOrRecordComponent,
     RecordTranscriptContainerComponent,
+    UpdateTranscriptComponent,
   ],
   providers: [RecordWavService,SpeechRecognitionService,EncodeToMp3Service,EventFirebaseService ]
 })

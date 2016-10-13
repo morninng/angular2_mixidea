@@ -9,3 +9,7 @@
                         [comment_sentence_written]="comment_sentence_written[content.num]">
   </app-sentence-written>
 </span>
+
+<span *ngIf="content_arr_with_num.length > 0">
+  <input type="button" (click)="update_written_opinion()" value="update writing" >
+</span>

@@ -1,4 +1,4 @@
-import { Component, OnInit,ViewChild } from '@angular/core';
+import { Component, OnInit,ViewChild,ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute, Params  }     from '@angular/router';
 import 'rxjs/add/operator/combineLatest'; 
 import {generate_id, generate_id2} from './../../../util_func';
@@ -11,10 +11,17 @@ import {EventFirebaseService} from './../../event-service/event-firebase.service
 
 import {CREATE_MAIN_OPINION, 
         ADD_SUBSEQUENT_OPINION, 
-        UPDATE_MAIN_OPINION,
-        UPDATE_SUBSEQUENT_OPINION} from './../../../interface/opinion'
+        UPDATE_MAIN_OPINION_Written,
+        UPDATE_SUBSEQUENT_OPINION_Written,
+        UPDATE_MAIN_OPINION_AudioTranscript,
+        UPDATE_SUBSEQUENT_OPINION_AudioTranscript
+    } from './../../../interface/opinion'
 
 import {CATEGORY_MAIN, CATEGORY_SUBSEQUENT} from './../../../interface/opinion'
+
+import { Store } from '@ngrx/store';
+import {ActionCreator} from './../../../redux/action-creator';
+
 
 @Component({
   selector: 'app-write-record-opinion',
@@ -37,9 +44,13 @@ export class WriteRecordOpinionComponent implements OnInit {
   default_text : string;
   default_signpost : string;
 
+  audio_url : string;
+
   constructor(private route: ActivatedRoute,
               private event_firebase :EventFirebaseService,
-              private af: AngularFire) { }
+              private af: AngularFire,
+              public store: Store<any>,
+              private change_ref: ChangeDetectorRef) { }
 
   ngOnInit() {
 
@@ -67,7 +78,7 @@ export class WriteRecordOpinionComponent implements OnInit {
             this.show_signpost = false;
           break;
 
-          case UPDATE_MAIN_OPINION:
+          case UPDATE_MAIN_OPINION_Written:
             {
             this.arg_id = obj.query["argument_id"];
             this.opinion_id = obj.query["opinion_id"];
@@ -88,7 +99,7 @@ export class WriteRecordOpinionComponent implements OnInit {
             }
           break;
 
-          case UPDATE_SUBSEQUENT_OPINION:
+          case UPDATE_SUBSEQUENT_OPINION_Written:
             {
             this.arg_id = obj.query["argument_id"];
             this.opinion_id = obj.query["opinion_id"];
@@ -104,6 +115,63 @@ export class WriteRecordOpinionComponent implements OnInit {
               })
               this.default_text = text;
             })
+            }
+          break;
+
+          case UPDATE_MAIN_OPINION_AudioTranscript:
+            {
+            this.opinion_input_phase = "update_transcript";
+            const action_obj = ActionCreator.transcription_clearAll();
+            this.store.dispatch(action_obj);
+
+            this.arg_id = obj.query["argument_id"];
+            this.opinion_id = obj.query["opinion_id"];
+            this.show_signpost = true;
+            const reference = "event_related/written_debate/" + this.event_id + "/opinion/" + this.arg_id + "/" + this.opinion_id;
+            this.opinion_item = this.af.database.object(reference);
+            this.opinion_item.take(1).subscribe((opinion_data)=>{
+              console.log(opinion_data);
+
+              const transcript_arr = opinion_data.transcript || [];
+              transcript_arr.forEach((transcipt)=>{
+                const obj = ActionCreator.transcription_addsentence(transcipt.content, transcipt.end_time);
+                this.store.dispatch(obj);
+              })
+              this.audio_url = opinion_data.audio_url;
+              this.default_signpost = opinion_data.sign_post;
+              this.change_ref.markForCheck();
+            })
+            }
+          break;
+
+
+          case UPDATE_SUBSEQUENT_OPINION_AudioTranscript:
+            {
+            this.opinion_input_phase = "update_transcript";
+            const action_obj = ActionCreator.transcription_clearAll();
+            this.store.dispatch(action_obj);
+
+            this.arg_id = obj.query["argument_id"];
+            this.opinion_id = obj.query["opinion_id"];
+            this.show_signpost = false;
+            const reference = "event_related/written_debate/" + this.event_id + "/opinion/" + this.arg_id + "/" + this.opinion_id;
+            this.opinion_item = this.af.database.object(reference);
+            this.opinion_item.take(1).subscribe((opinion_data)=>{
+
+              console.log(opinion_data);
+              const transcript_arr = opinion_data.transcript || [];
+              console.log("transcript arr", transcript_arr);
+
+              const obj = ActionCreator.transcription_clearAll();
+              this.store.dispatch(obj);
+              transcript_arr.forEach((transcipt)=>{
+                const obj = ActionCreator.transcription_addsentence(transcipt.content, transcipt.end_time);
+                this.store.dispatch(obj);
+              })
+              this.audio_url = opinion_data.audio_url;
+
+              this.change_ref.markForCheck();
+             })
             }
           break;
         }

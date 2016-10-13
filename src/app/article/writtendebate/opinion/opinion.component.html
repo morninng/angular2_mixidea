@@ -20,18 +20,21 @@
                    [opinion_id]="opinion_id"
                    [transcription_arr]="opinion.transcript"
                    [audio_play_time]="audio_play_time"
-                   [comment_sentence_transcript]="comment_sentence_transcript"  ></app-transcription>
+                   [comment_sentence_transcript]="comment_sentence_transcript"
+                   [category]="category"
+                   [own_team]="own_team" ></app-transcription>
 
 <app-written [event_id] = "event_id"
              [argument_id]="argument_id"
              [opinion_id]="opinion_id"
              [content_arr]="opinion.content_arr"
-             [comment_sentence_written]="comment_sentence_written" ></app-written>
+             [comment_sentence_written]="comment_sentence_written"
+             [category]="category"
+             [own_team]="own_team" ></app-written>
 
 <span *ngIf="opinion_status == 'checking'">
     checking
     <input type="button" (click)="publish_opinion()" value="publish">
-    <input type="button" (click)="update_opinion()" value="update">
 </span>
 
 

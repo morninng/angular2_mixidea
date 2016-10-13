@@ -15,3 +15,7 @@
           [comment_sentence_transcript]="comment_sentence_transcript[transcript.num]"
           [audio_play_time]="audio_play_time" ></app-sentence-transcription>
 </span>
+
+<span *ngIf="converted_transcription_arr.length>0">
+  <input type="button" (click)="update_audio_transcript()" value="update speech and transcription">
+</span>
