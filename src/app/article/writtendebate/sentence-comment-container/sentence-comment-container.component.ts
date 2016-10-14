@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 import {CommentService} from './../../service/comment.service'
 
-import { UserauthService} from './../../../shared/userauth.service';
+import { UserauthService} from './../../../shared/service/userauth.service';
 
 @Component({
   selector: 'app-sentence-comment-container',

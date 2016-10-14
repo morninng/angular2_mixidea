@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
-import { UserauthService} from './../../shared/userauth.service';
+import { UserauthService} from './../../shared/service/userauth.service';
 
 
 

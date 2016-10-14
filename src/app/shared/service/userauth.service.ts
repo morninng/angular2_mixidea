@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFire , FirebaseObjectObservable} from 'angularfire2';
-import {User, User_Search} from './../interface/user'
+import {User, User_Search} from './../../interface/user'
 import {BehaviorSubject, Subject } from 'rxjs/Rx'
 
 @Injectable()

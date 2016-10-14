@@ -3,7 +3,7 @@ import {RecordWavService} from './../../service/record-wav.service';
 import {EncodeToMp3Service} from './../../service/encode-to-mp3.service'
 import {EventFirebaseService} from './../../service/event-firebase.service'
 
-import { UserauthService} from './../../../shared/userauth.service';
+import { UserauthService} from './../../../shared/service/userauth.service';
 
 @Component({
   selector: 'app-upload-file',

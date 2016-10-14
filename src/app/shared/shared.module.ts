@@ -6,9 +6,9 @@ import { CommonModule }   from '@angular/common';
 import {LeftColumnMenuPcComponent} from './left-column-menu-pc/left-column-menu-pc.component';
 import {RightColumnAdComponent} from './right-column-ad/right-column-ad.component'
 
-import { UserauthService} from './userauth.service';
+import { UserauthService} from './service/userauth.service';
 import { KeysInObjectPipe } from './../pipes/keys-in-object.pipe';
-import { ModelUserService} from './model-user.service';
+import { ModelUserService} from './service/model-user.service';
 
 
 

@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 import {generate_random_string} from './../../util_func';
 import {AngularFire} from 'angularfire2';
 import { Store } from '@ngrx/store';
-import { UserauthService} from './../../shared/userauth.service';
+import { UserauthService} from './../../shared/service/userauth.service';
 
 import {CATEGORY_MAIN, CATEGORY_SUBSEQUENT} from './../../interface/opinion';
 

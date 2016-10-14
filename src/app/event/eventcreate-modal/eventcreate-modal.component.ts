@@ -1,5 +1,5 @@
 import { Component, OnInit , ViewChild, Input} from '@angular/core';
-import { UserauthService} from './../../shared/userauth.service';
+import { UserauthService} from './../../shared/service/userauth.service';
 
 import { ModalDirective } from './../../../../node_modules/ng2-bootstrap/components/modal/modal.component';
 import {DatepickerModule} from './../../../../node_modules/ng2-bootstrap/components/datepicker';

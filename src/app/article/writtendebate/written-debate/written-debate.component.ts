@@ -1,7 +1,7 @@
 import { Component, OnInit,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute, Params  }     from '@angular/router';
 import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
-import { UserauthService} from './../../../shared/userauth.service';
+import { UserauthService} from './../../../shared/service/userauth.service';
 import { COMMENT_TYPE_SENTENCE_WRITTEN, COMMENT_TYPE_SENTENCE_TRANSCRIPT} from './../../service/comment.service'
 
 

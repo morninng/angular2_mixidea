@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
-import { UserauthService} from './../../../shared/userauth.service';
+import { UserauthService} from './../../../shared/service/userauth.service';
 
 import {PublishArticleFromEvent} from "./../../publish-article-from-event"
 

@@ -1,7 +1,7 @@
 ■■■■■■■■■■■■■ログインしていなかったら、モーダルを出す■■■■■■■■■■■■■
 
 
-    import { UserauthService} from './../../shared/userauth.service';
+    import { UserauthService} from './../../shared/service/userauth.service';
 
 
       constructor( private user_auth : UserauthService) { }
