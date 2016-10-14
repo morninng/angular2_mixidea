@@ -1,4 +1,5 @@
-import { Component, OnInit, Input,ChangeDetectionStrategy, OnChanges } from '@angular/core';
+import { Component, OnInit,Output, Input,ChangeDetectionStrategy, 
+          OnChanges,EventEmitter } from '@angular/core';
 import {CommentService, COMMENT_TYPE_SENTENCE_TRANSCRIPT} from './../../service/comment.service'
 
 @Component({
@@ -15,6 +16,7 @@ export class SentenceTranscriptionComponent implements OnInit,OnChanges {
   @Input() opinion_id : string;
   @Input() comment_sentence_transcript
   @Input() audio_play_time
+  @Output() onPlayFromHere = new EventEmitter<number>()
 
   under_playing = false;
   sentence_num : number;
@@ -24,7 +26,6 @@ export class SentenceTranscriptionComponent implements OnInit,OnChanges {
 
   ngOnInit() {
   }
-
 
   ngOnChanges(){
 
@@ -57,7 +58,10 @@ export class SentenceTranscriptionComponent implements OnInit,OnChanges {
               this.sentence_num,
               this.comment_sentence_transcript
               );
-
+  }
+  play_from_here(){
+    console.log("play_from_here", this.transcript.start_time);
+    this.onPlayFromHere.emit(this.transcript.start_time);
   }
 
 }

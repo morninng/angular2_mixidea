@@ -87,7 +87,11 @@ export class OpinionComponent implements OnInit, OnChanges {
               this.subsequent_id);
   }
 
-
+  onPlayFromHere(start_time){
+    console.log("on play from here in opinion", event);
+    this.audio_element.currentTime = start_time/1000;
+    this.audio_element.play();
+  }
 
 
 }

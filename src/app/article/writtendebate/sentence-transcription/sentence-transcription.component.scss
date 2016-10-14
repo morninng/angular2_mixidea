@@ -1,5 +1,13 @@
 .transcript_sentence{
-    border: thin solid #000000;
+    display:flex;
+    border: thin solid gray;
+    .play_from_here{
+        width:100;
+    }
+    .transcript_sentence_main{
+        flex:1;
+    }
+
     .number_comment{
         float:right;
     }

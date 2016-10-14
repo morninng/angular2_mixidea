@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, OnChanges } from '@angular/core';
+import { Component, OnInit,Input, OnChanges,EventEmitter,Output } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import {CATEGORY_SUBSEQUENT, CATEGORY_MAIN} from './../../../interface/opinion'
 
@@ -22,7 +22,8 @@ export class TranscriptionComponent implements OnInit,OnChanges {
   @Input() comment_sentence_transcript;
   @Input() category : string;
   @Input() own_team : string;
-  
+  @Output() onPlayFromHere = new EventEmitter<number>()
+
   converted_transcription_arr = [];
   constructor(private route: ActivatedRoute,
               private router: Router) {}
@@ -68,6 +69,10 @@ export class TranscriptionComponent implements OnInit,OnChanges {
     }
     this.router.navigate(['/writerecord_opinion',this.event_id], navigationExtras);
 
+  }
+
+  on_play_from_here(event){
+    this.onPlayFromHere.emit(event);
   }
 
 

@@ -1,18 +1,27 @@
-<p class="transcript_sentence">
-start {{transcript.start_time}} -  end{{transcript.end_time}} : 
+<div class="transcript_sentence">
 
- under_playing
- <span [ngClass]="{'under_playing': under_playing, 'not_playing':!under_playing}">
-content {{transcript.content}}
-    <span class="show_only_playing">
-        <input type="button" value="balloon" (click)="open_sentence_comment()">
-    </span>
- </span>
- <span class="number_comment" *ngIf="comment_num && comment_num>0">number of comment {{comment_num}}</span>
-<br>
-audio_play_time{{audio_play_time}}
+    <div class="transcript_sentence_main">
+        <div>
+            start {{transcript.start_time}} -  end{{transcript.end_time}} : 
 
-<br>
-{{comment_sentence_transcript | json}}
+            under_playing
+            <span [ngClass]="{'under_playing': under_playing, 'not_playing':!under_playing}">
+            content {{transcript.content}}
+                <span class="show_only_playing">
+                    <input type="button" value="balloon" (click)="open_sentence_comment()">
+                </span>
+            </span>
+            <span class="number_comment" *ngIf="comment_num && comment_num>0">number of comment {{comment_num}}</span>
+            <br>
+            audio_play_time{{audio_play_time}}
+        </div>
+    </div>
+    <div *ngIf="sentence_num !== 0" class="play_from_here">
+        <input type="button" value="play_from_here" (click)="play_from_here()">
+    </div>
+</div>
+<div *ngIf="comment_num && comment_num>0">
+    comment: {{comment_sentence_transcript | json}}
+</div>
 
-</p>
+

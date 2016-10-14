@@ -22,7 +22,8 @@
                    [audio_play_time]="audio_play_time"
                    [comment_sentence_transcript]="comment_sentence_transcript"
                    [category]="category"
-                   [own_team]="own_team" ></app-transcription>
+                   [own_team]="own_team"
+                   (onPlayFromHere)="onPlayFromHere($event)" ></app-transcription>
 
 <app-written [event_id] = "event_id"
              [argument_id]="argument_id"
