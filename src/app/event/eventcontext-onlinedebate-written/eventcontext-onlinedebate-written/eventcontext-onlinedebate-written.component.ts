@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
-import { UserauthService} from './../../../../shared/userauth.service';
+import { UserauthService} from './../../../shared/userauth.service';
 
-import {PublishArticleFromEvent} from "./../../../publish-article-from-event"
+import {PublishArticleFromEvent} from "./../../publish-article-from-event"
 
-import {CREATE_MAIN_OPINION} from './../../../../interface/opinion'
+import {CREATE_MAIN_OPINION} from './../../../interface/opinion'
 
-import{ONLINE_DEBATE_LIVE_VIDEO, ONLINE_DEBATE_WRITTEN} from './../../../event_type'
+import{ONLINE_DEBATE_LIVE_VIDEO, ONLINE_DEBATE_WRITTEN} from './../../event_type'
 
 @Component({
   selector: 'app-eventcontext-onlinedebate-written',
@@ -81,10 +81,8 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
     publish_article_obj.publish(this.evnet_id, ONLINE_DEBATE_WRITTEN, "thw ban tobacco", ["aaa", "bbb"], "description ");
   }
 
-
   ngOnDestroy(){
     this.event_obj_subscription.unsubscribe();
   }
-  
 
 }
