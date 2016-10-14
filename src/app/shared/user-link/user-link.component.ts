@@ -3,11 +3,11 @@ import {ModelUserService} from './../../shared/service/model-user.service';
 
 
 @Component({
-  selector: 'app-user-link-full-parallel',
-  templateUrl: './user-link-full-parallel.component.html',
-  styleUrls: ['./user-link-full-parallel.component.scss']
+  selector: 'app-user-link',
+  templateUrl: './user-link.component.html',
+  styleUrls: ['./user-link.component.scss']
 })
-export class UserLinkFullParallelComponent implements OnInit {
+export class UserLinkComponent implements OnInit {
 
   @Input() user_id : string;
   @Input() type : string;

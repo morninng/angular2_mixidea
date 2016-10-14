@@ -3,10 +3,10 @@
     proposition
 
     <span *ngFor="let member of proposition_members | keysInObject">
-      <app-user-link-full-parallel 
+      <app-user-link 
             [user_id]="member.key" 
             [type]="'only_pict'" >
-      </app-user-link-full-parallel>
+      </app-user-link>
     </span>
 
   </div>
@@ -14,10 +14,10 @@
     opposition
 
     <span *ngFor="let member of opposition_members | keysInObject">
-      <app-user-link-full-parallel 
+      <app-user-link 
             [user_id]="member.key" 
             [type]="'only_pict'" >
-      </app-user-link-full-parallel>
+      </app-user-link>
     </span>
 
 

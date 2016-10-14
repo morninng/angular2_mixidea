@@ -13,7 +13,7 @@ import { ModelUserService} from './service/model-user.service';
 
 
 import { AngularFireModule, AuthProviders, AuthMethods, } from 'angularfire2';
-import { UserLinkFullParallelComponent } from './user-link-full-parallel/user-link-full-parallel.component';
+import { UserLinkComponent } from './user-link/user-link.component';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBp_ZDqoPygbPs7jMclrBSJ3a99t1Yvr1k",
@@ -37,13 +37,13 @@ const firebaseAuthConfig = {
     LeftColumnMenuPcComponent,
     RightColumnAdComponent,
     KeysInObjectPipe,
-    UserLinkFullParallelComponent
+    UserLinkComponent
     ],
   exports:  [
    LeftColumnMenuPcComponent,
     RightColumnAdComponent,
     KeysInObjectPipe,
-    UserLinkFullParallelComponent
+    UserLinkComponent
     ]
 })
 export class SharedModule {
