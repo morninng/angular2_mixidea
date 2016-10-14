@@ -4,7 +4,7 @@ import {SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Rx';
 import {ActionCreator} from './../../../redux/action-creator';
-import {EventFirebaseService} from './../../event-service/event-firebase.service'
+import {EventFirebaseService} from './../../service/event-firebase.service'
 
 import {CREATE_MAIN_OPINION, 
         ADD_SUBSEQUENT_OPINION, 

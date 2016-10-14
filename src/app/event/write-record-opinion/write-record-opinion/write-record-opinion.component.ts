@@ -7,7 +7,7 @@ import {RecordTranscriptComponent} from './../record-transcript/record-transcrip
 import {UploadFileComponent} from './../upload-file/upload-file.component';
 import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
 
-import {EventFirebaseService} from './../../event-service/event-firebase.service'
+import {EventFirebaseService} from './../../service/event-firebase.service'
 
 import {CREATE_MAIN_OPINION, 
         ADD_SUBSEQUENT_OPINION, 

@@ -26,10 +26,10 @@ import { RecordTranscriptComponent } from './write-record-opinion/record-transcr
 import { UploadFileComponent } from './write-record-opinion/upload-file/upload-file.component';
 
 
-import {RecordWavService} from './event-service/record-wav.service';
-import {SpeechRecognitionService} from './event-service/speech-recognition.service';
-import {EncodeToMp3Service} from './event-service/encode-to-mp3.service';
-import {EventFirebaseService} from './event-service/event-firebase.service';
+import {RecordWavService} from './service/record-wav.service';
+import {SpeechRecognitionService} from './service/speech-recognition.service';
+import {EncodeToMp3Service} from './service/encode-to-mp3.service';
+import {EventFirebaseService} from './service/event-firebase.service';
 import { WriteOpinionComponent } from './write-record-opinion/write-opinion/write-opinion.component';
 import { ClearRecordTranscriptionComponent } from './write-record-opinion/clear-record-transcription/clear-record-transcription.component';
 import { ArgSignpostComponent } from './write-record-opinion/arg-signpost/arg-signpost.component';

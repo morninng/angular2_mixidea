@@ -1,6 +1,6 @@
 import { Component, OnInit,NgZone, OnDestroy } from '@angular/core';
-import {RecordWavService} from './../../event-service/record-wav.service';
-import {SpeechRecognitionService} from './../../event-service/speech-recognition.service'
+import {RecordWavService} from './../../service/record-wav.service';
+import {SpeechRecognitionService} from './../../service/speech-recognition.service'
 
 import { UserauthService} from './../../../shared/userauth.service';
 

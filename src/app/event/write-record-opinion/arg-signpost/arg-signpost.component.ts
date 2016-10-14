@@ -1,5 +1,5 @@
 import { Component, OnInit,Input, OnChanges} from '@angular/core';
-import {EventFirebaseService} from './../../event-service/event-firebase.service'
+import {EventFirebaseService} from './../../service/event-firebase.service'
 
 @Component({
   selector: 'app-arg-signpost',

@@ -1,7 +1,7 @@
 import { Component, OnInit,NgZone,ElementRef, Input, OnDestroy } from '@angular/core';
-import {RecordWavService} from './../../event-service/record-wav.service';
-import {EncodeToMp3Service} from './../../event-service/encode-to-mp3.service'
-import {EventFirebaseService} from './../../event-service/event-firebase.service'
+import {RecordWavService} from './../../service/record-wav.service';
+import {EncodeToMp3Service} from './../../service/encode-to-mp3.service'
+import {EventFirebaseService} from './../../service/event-firebase.service'
 
 import { UserauthService} from './../../../shared/userauth.service';
 
