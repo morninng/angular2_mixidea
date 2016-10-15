@@ -58,7 +58,7 @@ export class ArgumentComponent implements OnInit, OnChanges {
   ngOnInit() {
   }
 
-  add_new_argument(){
+  add_new_opinion(){
     console.log("add new argument");
 
 
