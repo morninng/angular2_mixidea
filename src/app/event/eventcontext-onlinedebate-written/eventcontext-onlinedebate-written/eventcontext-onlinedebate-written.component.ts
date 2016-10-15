@@ -19,6 +19,9 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
   evnet_id : string;
   event_obj_observable : FirebaseObjectObservable<any>;
   event_obj_subscription;
+  event_title;
+  event_start_time;
+  event_duration;
 
   constructor(private route: ActivatedRoute,
                private router: Router,
@@ -30,8 +33,14 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
     console.log(this.evnet_id);
     
     this.event_obj_observable = this.af.database.object('/event_related/event/' + this.evnet_id);
-    this.event_obj_subscription
-       = this.event_obj_observable.subscribe();
+    this.event_obj_subscription = this.event_obj_observable.subscribe(
+        (event_obj)=>{
+          console.log(event_obj);
+          this.event_title = event_obj.title;
+          const start_time = event_obj.date_time_start;
+          this.event_start_time = new Date(start_time);
+        }
+    );
   }
 
   join_as_proposition(){
@@ -78,7 +87,7 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
   publish_to_public(){
     console.log("publish to public");
     const publish_article_obj = new PublishArticleFromEvent(this.af)
-    publish_article_obj.publish(this.evnet_id, ONLINE_DEBATE_WRITTEN, "thw ban tobacco", ["aaa", "bbb"], "description ");
+    publish_article_obj.publish(this.evnet_id, ONLINE_DEBATE_WRITTEN, this.event_title, [], "description ");
   }
 
   ngOnDestroy(){
