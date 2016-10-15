@@ -1,9 +1,15 @@
 import { Component, OnInit,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
-import { Router, ActivatedRoute, Params  }     from '@angular/router';
+import { Router, ActivatedRoute, Params,NavigationExtras  }     from '@angular/router';
 import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
 import { UserauthService} from './../../../shared/service/userauth.service';
 import { COMMENT_TYPE_SENTENCE_WRITTEN, COMMENT_TYPE_SENTENCE_TRANSCRIPT} from './../../service/comment.service'
-
+import {TEAM_PROPOSITION, TEAM_OPPOSITION} from "./../../../interface/team"
+import {CREATE_MAIN_OPINION, 
+        ADD_SUBSEQUENT_OPINION, 
+        UPDATE_MAIN_OPINION_Written, 
+        UPDATE_MAIN_OPINION_AudioTranscript,
+        UPDATE_SUBSEQUENT_OPINION_Written,
+        UPDATE_SUBSEQUENT_OPINION_AudioTranscript} from './../../../interface/opinion'
 
 declare var window:any;
 
@@ -33,7 +39,8 @@ export class WrittenDebateComponent implements OnInit {
   constructor(private route: ActivatedRoute,
                private af: AngularFire, 
                private user_auth : UserauthService,
-               private change_ref: ChangeDetectorRef) { }
+               private change_ref: ChangeDetectorRef,
+               private router: Router) { }
 
   ngOnInit() {
 
@@ -59,11 +66,11 @@ export class WrittenDebateComponent implements OnInit {
           /* computed data*/ 
           this.team_members = written_debate_data.team || {};
           if(this.team_members.proposition && this.team_members.proposition[own_uid]){
-            this.own_team = "proposition";
+            this.own_team = TEAM_PROPOSITION;
           }
 
           if(this.team_members.opposition && this.team_members.opposition[own_uid]){
-            this.own_team = "opposition";
+            this.own_team = TEAM_OPPOSITION;
           }
 
           this.opinion = written_debate_data.opinion;
@@ -81,11 +88,6 @@ export class WrittenDebateComponent implements OnInit {
       this.event_item$ = this.af.database.object('/event_related/event/' + this.event_id);
     });
 
-
-
-
-
-
 /*
     if(!this.user_auth.own_user.loggedIn){
       alert("you need to login to see event data");
@@ -93,6 +95,31 @@ export class WrittenDebateComponent implements OnInit {
     }
   */  
   }
+
+  add_new_argument(){
+
+    if(!this.user_auth.own_user.loggedIn){
+      alert("you need to login to add argument");
+      this.user_auth.open_login_modal();
+      return;
+    }
+
+
+    if(this.own_team !=TEAM_PROPOSITION && this.own_team !=TEAM_OPPOSITION){
+      alert("only the debater can add an argument, please join the event");
+      return;
+    }
+
+
+    let navigationExtras: NavigationExtras = {
+      queryParams: {
+        phase: CREATE_MAIN_OPINION,
+        team_name:this.own_team }
+    }
+    this.router.navigate(['/writerecord_opinion',this.event_id], navigationExtras);
+
+  }
+
 
   ngOnDestroy(){
     this.combined_src_subscription.unsubscribe();

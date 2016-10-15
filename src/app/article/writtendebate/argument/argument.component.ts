@@ -2,8 +2,9 @@ import { Component, OnInit, Input, OnChanges, ChangeDetectionStrategy } from '@a
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import {ADD_SUBSEQUENT_OPINION} from './../../../interface/opinion'
 import {CATEGORY_SUBSEQUENT, CATEGORY_MAIN} from './../../../interface/opinion'
+import {TEAM_PROPOSITION, TEAM_OPPOSITION} from "./../../../interface/team"
 
-
+import { UserauthService} from './../../../shared/service/userauth.service';
 
 
 @Component({
@@ -36,7 +37,8 @@ export class ArgumentComponent implements OnInit, OnChanges {
   CATEGORY_MAIN = CATEGORY_MAIN
   
   constructor(private route: ActivatedRoute,
-               private router: Router){
+               private router: Router,
+               private user_auth : UserauthService){
                  console.log("argument component constructor is called");
                }
  
@@ -50,8 +52,8 @@ export class ArgumentComponent implements OnInit, OnChanges {
     this.comment_sentence_transcript = this.partial_comment_sentence_transcription || {}
     this.argument_team = this.main_status.team_name;
 
-    this.is_arg_prop = this.argument_team=='proposition';
-    this.is_arg_opp = this.argument_team=='opposition';
+    this.is_arg_prop = this.argument_team==TEAM_PROPOSITION;
+    this.is_arg_opp = this.argument_team==TEAM_OPPOSITION;
   }
 
 
@@ -59,8 +61,13 @@ export class ArgumentComponent implements OnInit, OnChanges {
   }
 
   add_new_opinion(){
-    console.log("add new argument");
+    console.log("add new opinion");
 
+    if(!this.user_auth.own_user.loggedIn){
+      alert("you need to login to add a new point");
+      this.user_auth.open_login_modal();
+      return;
+    }
 
     let navigationExtras: NavigationExtras = {
       queryParams: {

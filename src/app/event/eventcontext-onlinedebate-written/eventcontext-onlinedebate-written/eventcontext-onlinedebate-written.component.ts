@@ -9,6 +9,9 @@ import {CREATE_MAIN_OPINION} from './../../../interface/opinion'
 
 import{ONLINE_DEBATE_LIVE_VIDEO, ONLINE_DEBATE_WRITTEN} from './../../event_type'
 
+import {TEAM_PROPOSITION, TEAM_OPPOSITION} from "./../../../interface/team"
+
+
 @Component({
   selector: 'app-eventcontext-onlinedebate-written',
   templateUrl: './eventcontext-onlinedebate-written.component.html',
@@ -44,11 +47,11 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
   }
 
   join_as_proposition(){
-    this.join_set_firebase("proposition");
+    this.join_set_firebase(TEAM_PROPOSITION);
   }
 
   join_as_opposition(){
-    this.join_set_firebase("opposition");
+    this.join_set_firebase(TEAM_OPPOSITION);
   } 
 
   private join_set_firebase(in_team){
@@ -70,7 +73,7 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
     let navigationExtras: NavigationExtras = {
       queryParams: {
         phase: CREATE_MAIN_OPINION,
-        team_name:"proposition"}
+        team_name:TEAM_PROPOSITION}
     }
     this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
   }
@@ -79,7 +82,7 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
     let navigationExtras: NavigationExtras = {
       queryParams: {
         phase: CREATE_MAIN_OPINION,
-        team_name:"opposition"}
+        team_name:TEAM_OPPOSITION}
     }
     this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
   }
