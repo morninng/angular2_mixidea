@@ -1,12 +1,11 @@
-import { ModuleWithProviders }  from '@angular/core';
+import { NgModule }     from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import {EventlistLayoutComponent} from './eventlist/eventlist-layout/eventlist-layout.component';
-
 import {EventcontextLayoutOnlinedebateWrittenComponent} from './eventcontext-onlinedebate-written/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
 import {WriteRecordOpinionLayoutComponent} from './write-record-opinion/write-record-opinion-layout/write-record-opinion-layout.component';
 
-const EventRoutes: Routes = [
+const event_routes: Routes = [
   {
     path: 'eventlist',
     component: EventlistLayoutComponent
@@ -27,5 +26,15 @@ const EventRoutes: Routes = [
 ];
 
 
-export const EventRouting: ModuleWithProviders 
-              = RouterModule.forChild(EventRoutes);
+@NgModule({
+  imports: [
+    RouterModule.forChild(event_routes)
+  ],
+  exports: [
+    RouterModule
+  ]
+})
+export class EventRoutingModule { }
+
+
+

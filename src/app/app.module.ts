@@ -3,7 +3,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
-import { routing, appRoutingProviders } from './app.routing';
+//import { routing, appRoutingProviders } from './app.routing';
 
 import { Store, StoreModule } from '@ngrx/store';
 import { counterReducer } from './redux/counter_reducer';
@@ -28,7 +28,8 @@ import {ArticleModule} from './article/article.module'
 import {SharedModule} from './shared/shared.module';
 import { TestComponent } from './test/test.component';
 
-
+/* Routing Module */
+import { AppRoutingModule }   from './app.routing';
 
 @NgModule({
   declarations: [
@@ -45,13 +46,13 @@ import { TestComponent } from './test/test.component';
     FormsModule,
     HttpModule,
     ModalModule,
-    routing,
-    EventModule,
     ArticleModule,
+    EventModule,
+    AppRoutingModule,
     StoreModule.provideStore({ counter: counterReducer,transcript: TranscriptionReducer }, { counter: 0, transcript: [] }),
     SharedModule.forRoot()
   ],
-  providers: [appRoutingProviders],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

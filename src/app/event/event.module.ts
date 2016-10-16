@@ -2,7 +2,7 @@ import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
-import {EventRouting} from './event.routing';
+import {EventRoutingModule} from './event.routing';
 import { EventlistLayoutComponent } from './eventlist/eventlist-layout/eventlist-layout.component';
 import { EventlistComponent } from './eventlist/eventlist/eventlist.component'
 
@@ -41,7 +41,7 @@ import { UpdateTranscriptComponent } from './write-record-opinion/update-transcr
 @NgModule({
   imports: [
     CommonModule,
-    EventRouting,
+    EventRoutingModule,
     ModalModule,
     DatepickerModule,
     TimepickerModule,

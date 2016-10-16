@@ -1,31 +1,33 @@
-import { ModuleWithProviders } from '@angular/core';
+import { NgModule }             from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import {ArticlelistLayoutComponent} from './article/articlelist/articlelist-layout/articlelist-layout.component';
 
 import {TestComponent} from './test/test.component'
 
-const appRoutes: Routes = [
-
+export const app_routes: Routes = [
+  /*
   {
-    path: 'articlelist',
-    component: ArticlelistLayoutComponent
-  },{
+    path: 'artice',
+    loadChildren: 'app/article/artice.module#ArticleModule'
+  },
+  {
+    path: 'event',
+    loadChildren: 'app/event/event.module#EventModule'
+  },
+    */
+  {
     path: 'test',
     component: TestComponent
   },
   {
-    path: '',
-    component: ArticlelistLayoutComponent
-  },
-  {
     path: '**',
-    component: ArticlelistLayoutComponent
+    redirectTo: '/articlelist',
   }
+
 ];
 
-
-
-export const appRoutingProviders: any[] = [];
-
-export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
+@NgModule({
+  imports: [RouterModule.forRoot(app_routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}
