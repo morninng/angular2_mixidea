@@ -96,6 +96,9 @@ export class WrittenDebateComponent implements OnInit {
   */  
   }
 
+
+
+
   add_new_argument(){
 
     if(!this.user_auth.own_user.loggedIn){
@@ -103,7 +106,6 @@ export class WrittenDebateComponent implements OnInit {
       this.user_auth.open_login_modal();
       return;
     }
-
 
     if(this.own_team !=TEAM_PROPOSITION && this.own_team !=TEAM_OPPOSITION){
       alert("only the debater can add an argument, please join the event");

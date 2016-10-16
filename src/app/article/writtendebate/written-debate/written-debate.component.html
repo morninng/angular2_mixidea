@@ -10,8 +10,9 @@
     own_team {{own_team}}<br>
     
 
-    <app-team-member class="full_width"
-          [team_members]="team_members"></app-team-member>
+    <app-team-member
+          [event_id]="event_id" 
+          [team_members]="team_members" ></app-team-member>
 
     <span *ngFor="let argument of (written_debate_data?.arg_status | keysInObject)">
 

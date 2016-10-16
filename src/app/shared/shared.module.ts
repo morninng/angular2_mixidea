@@ -9,6 +9,7 @@ import {RightColumnAdComponent} from './right-column-ad/right-column-ad.componen
 import { UserauthService} from './service/userauth.service';
 import { KeysInObjectPipe } from './../pipes/keys-in-object.pipe';
 import { ModelUserService} from './service/model-user.service';
+import {SharedFirebaseService} from './service/shared-firebase.service'
 
 
 
@@ -51,7 +52,7 @@ export class SharedModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: SharedModule,
-      providers: [UserauthService, ModelUserService]
+      providers: [UserauthService, ModelUserService, SharedFirebaseService]
     }
 
   }

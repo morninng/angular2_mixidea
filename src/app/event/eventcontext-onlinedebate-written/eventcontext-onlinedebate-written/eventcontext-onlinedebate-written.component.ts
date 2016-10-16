@@ -11,6 +11,7 @@ import{ONLINE_DEBATE_LIVE_VIDEO, ONLINE_DEBATE_WRITTEN} from './../../event_type
 
 import {TEAM_PROPOSITION, TEAM_OPPOSITION} from "./../../../interface/team"
 
+import {SharedFirebaseService} from "./../../../shared/service/shared-firebase.service";
 
 @Component({
   selector: 'app-eventcontext-onlinedebate-written',
@@ -29,7 +30,8 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
   constructor(private route: ActivatedRoute,
                private router: Router,
                private af: AngularFire,
-                private user_auth : UserauthService) { }
+                private user_auth : UserauthService,
+                private shared_firebase : SharedFirebaseService) { }
 
   ngOnInit() {
     this.evnet_id = this.route.snapshot.params['id'];
@@ -47,26 +49,23 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
   }
 
   join_as_proposition(){
-    this.join_set_firebase(TEAM_PROPOSITION);
-  }
-
-  join_as_opposition(){
-    this.join_set_firebase(TEAM_OPPOSITION);
-  } 
-
-  private join_set_firebase(in_team){
-
     if(!this.user_auth.own_user.loggedIn){
-      alert("you need to login to create a game");
+      alert("you need to login to join event");
       this.user_auth.open_login_modal();
       return;
     }
-    const participate_item = this.af.database.object("/event_related/event/" + this.evnet_id + "/participnts/" + this.user_auth.own_user_id);
-    participate_item.set(true);
-    const prop_item = this.af.database.object("/event_related/written_debate/" + this.evnet_id + "/team/" + in_team + "/" + this.user_auth.own_user_id);
-    prop_item.set(true);
-
+    this.shared_firebase.join_writtendebate_event_team(this.user_auth.own_user_id, this.evnet_id, TEAM_PROPOSITION);
   }
+
+  join_as_opposition(){
+    if(!this.user_auth.own_user.loggedIn){
+      alert("you need to login to join event");
+      this.user_auth.open_login_modal();
+      return;
+    }
+    this.shared_firebase.join_writtendebate_event_team(this.user_auth.own_user_id, this.evnet_id, TEAM_OPPOSITION);
+
+  } 
 
 
   add_opinion_prop(){
