@@ -24,7 +24,7 @@ export class ArticlelistComponent implements OnInit {
     /* retrieving the participants information can be triggered here */
     console.log("goto_article");
 
-    this.router.navigate(['/written_debate_article', event_id]);
+    this.router.navigate(['/article/written_debate_article', event_id]);
 
   }
 

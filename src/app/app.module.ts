@@ -46,8 +46,8 @@ import { AppRoutingModule }   from './app.routing';
     FormsModule,
     HttpModule,
     ModalModule,
-    ArticleModule,
     EventModule,
+    ArticleModule,
     AppRoutingModule,
     StoreModule.provideStore({ counter: counterReducer,transcript: TranscriptionReducer }, { counter: 0, transcript: [] }),
     SharedModule.forRoot()

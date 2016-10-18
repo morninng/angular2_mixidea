@@ -86,7 +86,7 @@ export class EventcreateModalComponent implements OnInit {
           alert("saving data success");
           this.event_create_modal.hide();
           // goto event page;
-          this.router.navigate(['/articlelist']);
+          this.router.navigate(['/article/articlelist']);
         })
       .catch((err)=>{
         console.log("error to save data to firebase", err)

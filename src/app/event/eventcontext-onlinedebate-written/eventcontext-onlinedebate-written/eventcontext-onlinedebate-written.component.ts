@@ -74,7 +74,7 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
         phase: CREATE_MAIN_OPINION,
         team_name:TEAM_PROPOSITION}
     }
-    this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
+    this.router.navigate(['/event/eventcontext/writerecord_opinion',this.evnet_id], navigationExtras);
   }
 
   add_opinion_opp(){
@@ -83,7 +83,7 @@ export class EventcontextOnlinedebateWrittenComponent implements OnInit, OnDestr
         phase: CREATE_MAIN_OPINION,
         team_name:TEAM_OPPOSITION}
     }
-    this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
+    this.router.navigate(['/event/eventcontext/writerecord_opinion',this.evnet_id], navigationExtras);
   }
 
   publish_to_public(){

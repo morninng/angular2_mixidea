@@ -1,6 +1,7 @@
 import { NgModule }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import {SharedModule} from './../shared/shared.module';
 
@@ -22,7 +23,8 @@ import {ArticleFirebaseService} from './service/article-firebase.service';
 import { SentenceCommentEachComponent } from './writtendebate/sentence-comment-each/sentence-comment-each.component';
 import { GeneralCommentComponent } from './writtendebate/general-comment/general-comment.component';
 import { TeamMemberComponent } from './writtendebate/team-member/team-member.component';
-import { VoteComponent } from './writtendebate/vote/vote.component'
+import { VoteComponent } from './writtendebate/vote/vote.component';
+import { ArticleContainerComponent } from './article-container.component'
 
 @NgModule({
   imports: [
@@ -46,7 +48,8 @@ import { VoteComponent } from './writtendebate/vote/vote.component'
       SentenceCommentEachComponent,
       GeneralCommentComponent,
       TeamMemberComponent,
-      VoteComponent
+      VoteComponent,
+      ArticleContainerComponent
   ],
   providers: [CommentService, ArticleFirebaseService]
 })

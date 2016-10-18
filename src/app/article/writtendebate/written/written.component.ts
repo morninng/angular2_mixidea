@@ -61,7 +61,7 @@ export class WrittenComponent implements OnInit, OnChanges {
         team_name:this.own_team
       }
     }
-    this.router.navigate(['/writerecord_opinion',this.event_id], navigationExtras);
+    this.router.navigate(['/event/eventcontext/writerecord_opinion',this.event_id], navigationExtras);
 
   }
 

@@ -4,9 +4,7 @@ import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
 
 export class PublishArticleFromEvent {
 
-
     constructor(private af: AngularFire){}
-
 
     publish(event_id: string, type : string, title : string, participants : string[], description? : string){
 
@@ -18,8 +16,5 @@ export class PublishArticleFromEvent {
 
         const itemObserbable = this.af.database.object('/event_related/article/' + event_id);
         itemObserbable.set({title,type,description,participant_obj});
-
     }
-
-
 }

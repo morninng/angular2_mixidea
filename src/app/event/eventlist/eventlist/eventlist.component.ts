@@ -41,7 +41,7 @@ export class EventlistComponent implements OnInit, OnDestroy {
 
   event_selected(e){
     console.log(e);
-    this.router.navigate(['eventcontext/onlinedebate_written', e.id])
+    this.router.navigate(['/event/eventcontext/onlinedebate_written', e.id])
   }
 
   ngOnDestroy(){

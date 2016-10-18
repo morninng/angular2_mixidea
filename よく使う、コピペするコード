@@ -42,7 +42,7 @@ import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/route
         team_name:"proposition", 
         type: "main"}
     }
-    this.router.navigate(['/writerecord_opinion',this.evnet_id], navigationExtras);
+    this.router.navigate(['/article/writerecord_opinion',this.evnet_id], navigationExtras);
 
 ■データの反映
 
