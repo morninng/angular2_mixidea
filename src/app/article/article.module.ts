@@ -31,7 +31,7 @@ import { ArticleContainerComponent } from './article-container.component'
     CommonModule,
     ArticleRoutingModule,
     FormsModule,
-    SharedModule.forRoot()
+    SharedModule
   ],
   declarations: [
       ArticlelistLayoutComponent,

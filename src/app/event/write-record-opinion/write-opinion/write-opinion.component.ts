@@ -1,6 +1,6 @@
 import { Component, OnInit,Input, OnChanges } from '@angular/core';
 import {EventFirebaseService} from './../../service/event-firebase.service'
-import { UserauthService} from './../../../shared/service/userauth.service';
+import { UserauthService} from './../../../core/service/userauth.service';
 
 @Component({
   selector: 'app-write-opinion',

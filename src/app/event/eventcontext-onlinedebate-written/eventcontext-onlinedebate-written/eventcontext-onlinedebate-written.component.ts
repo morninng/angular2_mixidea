@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 import { AngularFire, FirebaseObjectObservable } from 'angularfire2';
-import { UserauthService} from './../../../shared/service/userauth.service';
+import { UserauthService} from './../../../core/service/userauth.service';
 
 import {PublishArticleFromEvent} from "./../../publish-article-from-event"
 
@@ -11,7 +11,7 @@ import{ONLINE_DEBATE_LIVE_VIDEO, ONLINE_DEBATE_WRITTEN} from './../../event_type
 
 import {TEAM_PROPOSITION, TEAM_OPPOSITION} from "./../../../interface/team"
 
-import {SharedFirebaseService} from "./../../../shared/service/shared-firebase.service";
+import {SharedFirebaseService} from "./../../../core/service/shared-firebase.service";
 
 @Component({
   selector: 'app-eventcontext-onlinedebate-written',

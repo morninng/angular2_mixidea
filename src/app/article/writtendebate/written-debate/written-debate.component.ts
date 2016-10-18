@@ -1,7 +1,7 @@
 import { Component, OnInit,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 import { Router, ActivatedRoute, Params,NavigationExtras  }     from '@angular/router';
 import {AngularFire, FirebaseObjectObservable} from 'angularfire2';
-import { UserauthService} from './../../../shared/service/userauth.service';
+import { UserauthService} from './../../../core/service/userauth.service';
 import { COMMENT_TYPE_SENTENCE_WRITTEN, COMMENT_TYPE_SENTENCE_TRANSCRIPT} from './../../service/comment.service'
 import {TEAM_PROPOSITION, TEAM_OPPOSITION} from "./../../../interface/team"
 import {CREATE_MAIN_OPINION, 

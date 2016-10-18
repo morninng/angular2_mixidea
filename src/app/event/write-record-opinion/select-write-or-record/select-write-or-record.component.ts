@@ -1,5 +1,5 @@
 import { Component, OnInit,Output, EventEmitter } from '@angular/core';
-import { UserauthService} from './../../../shared/service/userauth.service';
+import { UserauthService} from './../../../core/service/userauth.service';
 
 @Component({
   selector: 'app-select-write-or-record',

@@ -3,18 +3,34 @@
 
 import { NgModule, ModuleWithProviders }       from '@angular/core';
 import { CommonModule }   from '@angular/common';
+
+import { RouterModule} from '@angular/router';
+/*header component*/
+
+import {HeaderComponent} from './header/header.component'
+import {MessageHeaderComponent} from './header/message-header/message-header.component'
+import {MobileLeftMenuComponent} from './header/mobile-left-menu/mobile-left-menu.component'
+import {NotificationHeaderComponent} from './header/notification-header/notification-header.component'
+
+/* common component */
+import { UserLinkComponent } from './user-link/user-link.component';
+
+/* modal*/
+/*
+import { LoginModalComponent } from './login-modal/login-modal.component';
+*/
+
+/* additional sub layout */
 import {LeftColumnMenuPcComponent} from './left-column-menu-pc/left-column-menu-pc.component';
 import {RightColumnAdComponent} from './right-column-ad/right-column-ad.component'
 
-import { UserauthService} from './service/userauth.service';
-import { KeysInObjectPipe } from './../pipes/keys-in-object.pipe';
-import { ModelUserService} from './service/model-user.service';
-import {SharedFirebaseService} from './service/shared-firebase.service'
+/*pipe */
+
+import { KeysInObjectPipe } from './pipes/keys-in-object.pipe';
 
 
 
 import { AngularFireModule, AuthProviders, AuthMethods, } from 'angularfire2';
-import { UserLinkComponent } from './user-link/user-link.component';
 
 const firebaseConfig = {
     apiKey: "AIzaSyBp_ZDqoPygbPs7jMclrBSJ3a99t1Yvr1k",
@@ -32,30 +48,29 @@ const firebaseAuthConfig = {
 @NgModule({
   imports: [
     CommonModule,
-    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig)
+    AngularFireModule.initializeApp(firebaseConfig, firebaseAuthConfig),
+    RouterModule.forRoot([])
   ],
   declarations: [
     LeftColumnMenuPcComponent,
     RightColumnAdComponent,
     KeysInObjectPipe,
-    UserLinkComponent
+    UserLinkComponent,
+    HeaderComponent,
+    MessageHeaderComponent,
+    MobileLeftMenuComponent,
+    NotificationHeaderComponent
     ],
   exports:  [
-   LeftColumnMenuPcComponent,
+    LeftColumnMenuPcComponent,
     RightColumnAdComponent,
     KeysInObjectPipe,
-    UserLinkComponent
+    UserLinkComponent,
+    HeaderComponent,
+    MessageHeaderComponent,
+    MobileLeftMenuComponent,
+    NotificationHeaderComponent
     ]
 })
-export class SharedModule {
-
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SharedModule,
-      providers: [UserauthService, ModelUserService, SharedFirebaseService]
-    }
-
-  }
-
-}
+export class SharedModule {}
 

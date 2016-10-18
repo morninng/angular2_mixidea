@@ -10,8 +10,6 @@ export class AppComponent {
   private viewContainerRef: ViewContainerRef;
   date = new Date();
 
-
-
   public constructor(viewContainerRef:ViewContainerRef){
     
     this.viewContainerRef = viewContainerRef;

@@ -47,7 +47,7 @@ import { EventContainerComponent } from './event-container.component'
     DatepickerModule,
     TimepickerModule,
     FormsModule,
-    SharedModule.forRoot()
+    SharedModule
   ],
   declarations: [
     EventlistLayoutComponent,

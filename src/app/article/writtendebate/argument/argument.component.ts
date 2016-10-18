@@ -4,7 +4,7 @@ import {ADD_SUBSEQUENT_OPINION} from './../../../interface/opinion'
 import {CATEGORY_SUBSEQUENT, CATEGORY_MAIN} from './../../../interface/opinion'
 import {TEAM_PROPOSITION, TEAM_OPPOSITION} from "./../../../interface/team"
 
-import { UserauthService} from './../../../shared/service/userauth.service';
+import { UserauthService} from './../../../core/service/userauth.service';
 
 
 @Component({

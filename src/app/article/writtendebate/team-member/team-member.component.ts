@@ -1,8 +1,8 @@
 import { Component, OnInit, Input,OnChanges } from '@angular/core';
 
-import {SharedFirebaseService} from "./../../../shared/service/shared-firebase.service";
+import {SharedFirebaseService} from "./../../../core/service/shared-firebase.service";
 
-import { UserauthService} from './../../../shared/service/userauth.service';
+import { UserauthService} from './../../../core/service/userauth.service';
 import {TEAM_PROPOSITION, TEAM_OPPOSITION} from "./../../../interface/team"
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit , ViewChild} from '@angular/core';
 
 import { ModalDirective } from './../../../../node_modules/ng2-bootstrap/components/modal/modal.component';
-import { UserauthService} from './../../shared/service/userauth.service';
+import { UserauthService} from './../../core/service/userauth.service';
 
 
 @Component({
