@@ -5,6 +5,9 @@ import {EventFirebaseService} from './../../service/event-firebase.service'
 
 import { UserauthService} from './../../../core/service/userauth.service';
 
+import {ActionCreator} from './../../../redux/action-creator';
+import { Store } from '@ngrx/store';
+
 @Component({
   selector: 'app-upload-file',
   templateUrl: './upload-file.component.html',
@@ -28,7 +31,8 @@ export class UploadFileComponent implements OnInit, OnDestroy {
                private _ngZone: NgZone,
                private el: ElementRef,
                private event_firebase :EventFirebaseService,
-               private user_auth : UserauthService
+               private user_auth : UserauthService,
+               public store: Store<any>
                ) {}
 
   ngOnInit() {
@@ -120,6 +124,10 @@ export class UploadFileComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
+
+    const obj = ActionCreator.transcription_clearAll();
+    this.store.dispatch(obj);
+
     this.encode_to_mp3.finalize();
   }
 

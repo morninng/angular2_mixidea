@@ -1,8 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import {EncodeToMp3Service} from './encode-to-mp3.service'
 import { BehaviorSubject } from 'rxjs';
 import {generate_random_string} from './../../util_func';
 import {AngularFire} from 'angularfire2';
+import * as firebase from 'firebase';
 import { Store } from '@ngrx/store';
 import { UserauthService} from './../../core/service/userauth.service';
 
@@ -15,28 +16,40 @@ import {CREATE_MAIN_OPINION,
         UPDATE_SUBSEQUENT_OPINION_Written,
         UPDATE_SUBSEQUENT_OPINION_AudioTranscript} from './../../interface/opinion'
 
-declare var firebase: any;
+//declare var firebase: any;
 
 @Injectable()
 export class EventFirebaseService {
 
   under_file_upload_subject = new BehaviorSubject(false);
+  storage_ref : any;
 
   constructor(private encode_to_mp3: EncodeToMp3Service,
               private af: AngularFire,
               private user_auth : UserauthService,
-              public store: Store<any>) {
+              public store: Store<any> ) {
+    
+    var config = {
+      apiKey: "AIzaSyBp_ZDqoPygbPs7jMclrBSJ3a99t1Yvr1k",
+      authDomain: "mixidea-91a20.firebaseapp.com",
+      databaseURL: "https://mixidea-91a20.firebaseio.com",
+      storageBucket: "mixidea-91a20.appspot.com",
+      messagingSenderId: "46563705700"
+    };
+    firebase.initializeApp(config);
+    this.storage_ref = firebase.storage().ref();
+    console.log("firebase storage is initialized");
+
   }
 
   upload_file_after_encoding(event_id, arg_id, opinion_id, team_name,  phase){
-    const storage = firebase.storage();
-    const storage_ref = storage.ref();
+
     var file_name = generate_random_string();
 
     this.encode_to_mp3.encode_done$.take(1).subscribe(
       (mp3_uint_arr)=>{
         console.log("encode_to_mps callback is called");
-        const audio_storage_ref = storage_ref.child("audio/written_debate/" + event_id + "/" + file_name + ".mp3");
+        const audio_storage_ref = this.storage_ref.child("audio/written_debate/" + event_id + "/" + file_name + ".mp3");
         this.under_file_upload_subject.next(true);
 
         audio_storage_ref.put(mp3_uint_arr).then((snapshot)=>{

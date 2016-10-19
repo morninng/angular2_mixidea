@@ -36,7 +36,7 @@ const firebaseConfig = {
     apiKey: "AIzaSyBp_ZDqoPygbPs7jMclrBSJ3a99t1Yvr1k",
     authDomain: "mixidea-91a20.firebaseapp.com",
     databaseURL: "https://mixidea-91a20.firebaseio.com",
-    storageBucket: ""
+    storageBucket: "mixidea-91a20.appspot.com"
   };
 
 const firebaseAuthConfig = {
