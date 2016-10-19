@@ -17,7 +17,7 @@ import { ModalModule } from 'ng2-bootstrap/ng2-bootstrap';
 import {CoreModule} from './core/core.module'
 import {EventModule} from './event/event.module';
 import {ArticleModule} from './article/article.module'
-
+import {LiveVideoDebateModule} from './livevideo-debate/livevideo-debate.module';
 import {SharedModule} from './shared/shared.module';
 import { TestComponent } from './test/test.component';
 
@@ -40,6 +40,7 @@ import { AppRoutingModule }   from './app.routing';
     ModalModule,
     EventModule,
     ArticleModule,
+    LiveVideoDebateModule,
     AppRoutingModule,
     StoreModule.provideStore({ counter: counterReducer,transcript: TranscriptionReducer }, { counter: 0, transcript: [] }),
     SharedModule,
