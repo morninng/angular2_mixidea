@@ -1,20 +1,9 @@
 <div class="eventlist_container">
 <ul >
   <li *ngFor="let item of EventList_observable | async">
-    <span [ngSwitch]="item.type">
-      <span *ngSwitchCase="ONLINE_DEBATE_LIVEVIDEO">
-        <app-eachlist-online-debate-livevideo ></app-eachlist-online-debate-livevideo>
-      </span>
-      <span *ngSwitchCase="ONLINE_DEBATE_WRITTEN">
-        <app-eachlist-online-debate-written [each_event]=item (event_selected)="event_selected($event)" ></app-eachlist-online-debate-written>
-      </span>
-      <span *ngSwitchCase="ONLINE_TOURNAMENT_LIVEVIDEO">
-        <app-eachlist-online-tournament-livevideo></app-eachlist-online-tournament-livevideo>
-      </span>
-      <span *ngSwitchCase="ONLINE_TOURNAMENT_WRITTEN">
-        <app-eachlist-online-tournament-written></app-eachlist-online-tournament-written>
-      </span>
-    </span>
+
+    <app-eachlist-online-debate-written [each_event]=item ></app-eachlist-online-debate-written>
+
   </li>
 </ul>
 </div>
