@@ -18,6 +18,10 @@ export class EventcreateModalComponent implements OnInit {
 
   submitted = false;
   event_obj = new Event();
+  ONLINE_DEBATE_LIVEVIDEO = ONLINE_DEBATE_LIVEVIDEO;
+  ONLINE_DEBATE_WRITTEN = ONLINE_DEBATE_WRITTEN;
+  ONLINE_TOURNAMENT_LIVEVIDEO = ONLINE_TOURNAMENT_LIVEVIDEO;
+  ONLINE_TOURNAMENT_WRITTEN = ONLINE_TOURNAMENT_WRITTEN;
 
   constructor(private af: AngularFire, private router: Router, private user_auth : UserauthService) { }
 
@@ -56,7 +60,14 @@ export class EventcreateModalComponent implements OnInit {
 
     switch(this.event_obj.type){
      case ONLINE_DEBATE_LIVEVIDEO :
-      //will be implemented
+      event_save_data = {
+        type: this.event_obj.type,
+        title: this.event_obj.title,
+        date_time_start: this.event_obj.event_date_time_start,
+        date_time_finish: this.event_obj.event_date_time_finish,
+        duration: this.event_obj.duration,
+        created_by: this.user_auth.own_user_id
+      };
      break;
      case  ONLINE_DEBATE_WRITTEN :
       event_save_data = {
