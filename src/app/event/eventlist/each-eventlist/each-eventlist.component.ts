@@ -3,19 +3,16 @@ import { ONLINE_DEBATE_LIVEVIDEO, ONLINE_DEBATE_WRITTEN, ONLINE_TOURNAMENT_LIVEV
    from './../../event'
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
-
 @Component({
-  selector: 'app-eachlist-online-debate-written',
-  templateUrl: './eachlist-online-debate-written.component.html',
-  styleUrls: ['./eachlist-online-debate-written.component.scss']
+  selector: 'app-each-eventlist',
+  templateUrl: './each-eventlist.component.html',
+  styleUrls: ['./each-eventlist.component.scss']
 })
-export class EachlistOnlineDebateWrittenComponent implements OnInit {
+export class EachEventlistComponent implements OnInit {
 
 
    @Input() each_event : any;
-   /*
-   @Output() event_selected = new EventEmitter<any>();
-*/
+
    start_time;
 
   constructor( private router: Router) { }
@@ -25,7 +22,6 @@ export class EachlistOnlineDebateWrittenComponent implements OnInit {
   }
 
   select_event(){
-   // this.event_selected.emit({ id: this.each_event.$key , type:this.each_event.type })
 
     switch(this.each_event.type){
       case ONLINE_DEBATE_LIVEVIDEO:
@@ -41,11 +37,7 @@ export class EachlistOnlineDebateWrittenComponent implements OnInit {
 
     }
 
-
-
   }
-
-
 
 
 }

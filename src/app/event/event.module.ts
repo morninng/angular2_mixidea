@@ -10,9 +10,8 @@ import { EventlistComponent } from './eventlist/eventlist/eventlist.component'
 import {SharedModule} from './../shared/shared.module';
 import { EventcreateModalComponent } from './eventcreate-modal/eventcreate-modal.component';
 
-
 import { ModalModule,DatepickerModule, TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
-import { EachlistOnlineDebateWrittenComponent } from './eventlist/eachlist-online-debate-written/eachlist-online-debate-written.component';
+import { EachEventlistComponent } from './eventlist/each-eventlist/each-eventlist.component';
 import { EventcontextLayoutOnlinedebateLivevideoComponent } from './eventcontext-onlinedebate-livevideo/eventcontext-layout-onlinedebate-livevideo/eventcontext-layout-onlinedebate-livevideo.component';
 import { EventcontextLayoutOnlinedebateWrittenComponent } from './eventcontext-onlinedebate-written/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
 import { EventcontextOnlinedebateWrittenComponent } from './eventcontext-onlinedebate-written/eventcontext-onlinedebate-written/eventcontext-onlinedebate-written.component';
@@ -50,7 +49,7 @@ import { EventContainerComponent } from './event-container.component'
     EventlistLayoutComponent,
     EventlistComponent,
     EventcreateModalComponent,
-    EachlistOnlineDebateWrittenComponent,
+    EachEventlistComponent,
     EventcontextLayoutOnlinedebateLivevideoComponent,
     EventcontextLayoutOnlinedebateWrittenComponent,
     EventcontextOnlinedebateWrittenComponent,
