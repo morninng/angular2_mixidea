@@ -12,11 +12,8 @@ import { IntroductionLayoutComponent } from './introduction/introduction-layout/
     RouterModule.forChild(
     [
       {
-        path: 'livevideo-debate',
-        component: LivevideoDebateContainerComponent,
-        children: [
-          { path: 'introduction', component: IntroductionLayoutComponent}
-        ]
+        path: 'livevideo-debate/:id',
+        component: LivevideoDebateContainerComponent
       }
     ])
   ],
