@@ -32,7 +32,8 @@ import { ArgSignpostComponent } from './write-record-opinion/arg-signpost/arg-si
 import { SelectWriteOrRecordComponent } from './write-record-opinion/select-write-or-record/select-write-or-record.component';
 import { RecordTranscriptContainerComponent } from './write-record-opinion/record-transcript-container/record-transcript-container.component';
 import { UpdateTranscriptComponent } from './write-record-opinion/update-transcript/update-transcript.component';
-import { EventContainerComponent } from './event-container.component'
+import { EventContainerComponent } from './event-container.component';
+import { EventcontextOnlinedebateLivevideoComponent } from './eventcontext-onlinedebate-livevideo/eventcontext-onlinedebate-livevideo/eventcontext-onlinedebate-livevideo.component'
 
 
 @NgModule({
@@ -65,6 +66,7 @@ import { EventContainerComponent } from './event-container.component'
     RecordTranscriptContainerComponent,
     UpdateTranscriptComponent,
     EventContainerComponent,
+    EventcontextOnlinedebateLivevideoComponent,
   ],
   providers: [RecordWavService,SpeechRecognitionService,EncodeToMp3Service,EventFirebaseService ]
 })
