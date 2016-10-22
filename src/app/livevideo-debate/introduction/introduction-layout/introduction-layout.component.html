@@ -2,13 +2,19 @@
   introduction-layout works!
 </p>
 
-{{livevideo_obj.deb_style}}
+
+
+{{livevideo_obj.deb_style}}<br>
+
+{{livevideo_obj | json}}<br>
+
+team member {{team_members | json}}
 
 <span [ngSwitch]="livevideo_obj.deb_style">
 
     <span *ngSwitchCase="STYLE_NA">
-      <app-select-team [team]="TEAM_GOV" [event_id]="event_id"></app-select-team>
-      <app-select-team [team]="TEAM_OPP" [event_id]="event_id"></app-select-team>
+      <app-select-team [team]="TEAM_GOV" [event_id]="event_id" [team_member]="team_members[TEAM_GOV]"></app-select-team>
+      <app-select-team [team]="TEAM_OPP" [event_id]="event_id" [team_member]="team_members[TEAM_OPP]"></app-select-team>
     </span>
 
     <span *ngSwitchCase="STYLE_ASIAN">

@@ -6,3 +6,10 @@
 {{team}}
 <input type="button" value="join" (click)="join_team()">
 {{event_id}}
+
+team_member {{team_member | json}}
+----
+
+<span *ngFor="let member of (team_member | keysInObject)">
+  <br>member id: {{member.key}}
+</span>

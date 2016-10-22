@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import {LiveDebateFirebaseService} from './../../service/live-debate-firebase.service';
 
 import { UserauthService} from './../../../core/service/userauth.service';
@@ -9,15 +9,21 @@ import { UserauthService} from './../../../core/service/userauth.service';
   templateUrl: './select-team.component.html',
   styleUrls: ['./select-team.component.scss']
 })
-export class SelectTeamComponent implements OnInit {
+export class SelectTeamComponent implements OnInit, OnChanges {
 
   @Input() team;
   @Input() event_id;
+  @Input() team_member;
 
   constructor(private livedebate_firebase: LiveDebateFirebaseService,
                private user_auth : UserauthService) { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(){
+    console.log(this.team_member);
+    this.team_member = this.team_member || {};
   }
 
   join_team(){
