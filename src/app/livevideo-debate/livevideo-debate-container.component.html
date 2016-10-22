@@ -4,5 +4,22 @@
   livevideo-debate-container works!
 </p>
 
+<span *ngIf="event_id">
 
- <router-outlet></router-outlet>
+<span [ngSwitch]="livevideo_obj.game_status">
+   <span *ngSwitchCase="STATUS_INTRO">
+     intro
+     <app-introduction-layout [livevideo_obj]="livevideo_obj" [event_id]="event_id" ></app-introduction-layout>
+   </span>
+   <span *ngSwitchCase="STATUS_PREP">
+
+   </span>
+   <span *ngSwitchCase="STATUS_DEBATE">
+
+   </span>
+   <span *ngSwitchCase="STATUS_REFLECTION">
+
+   </span>
+</span>
+
+</span>

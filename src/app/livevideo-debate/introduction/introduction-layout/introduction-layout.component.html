@@ -7,20 +7,20 @@
 <span [ngSwitch]="livevideo_obj.deb_style">
 
     <span *ngSwitchCase="STYLE_NA">
-      <app-select-team [team]="TEAM_GOV"></app-select-team>
-      <app-select-team [team]="TEAM_OPP"></app-select-team>
+      <app-select-team [team]="TEAM_GOV" [event_id]="event_id"></app-select-team>
+      <app-select-team [team]="TEAM_OPP" [event_id]="event_id"></app-select-team>
     </span>
 
     <span *ngSwitchCase="STYLE_ASIAN">
-      <app-select-team [team]="TEAM_PROPOSITION"></app-select-team>
-      <app-select-team [team]="TEAM_OPPOSITION"></app-select-team>
+      <app-select-team [team]="TEAM_PROPOSITION" [event_id]="event_id"></app-select-team>
+      <app-select-team [team]="TEAM_OPPOSITION" [event_id]="event_id"></app-select-team>
     </span>
 
     <span *ngSwitchCase="STYLE_BP">
-      <app-select-team [team]="TEAM_OG"></app-select-team>
-      <app-select-team [team]="TEAM_OO"></app-select-team>
-      <app-select-team [team]="TEAM_CG"></app-select-team>
-      <app-select-team [team]="TEAM_CO"></app-select-team>
+      <app-select-team [team]="TEAM_OG" [event_id]="event_id"></app-select-team>
+      <app-select-team [team]="TEAM_OO" [event_id]="event_id"></app-select-team>
+      <app-select-team [team]="TEAM_CG" [event_id]="event_id"></app-select-team>
+      <app-select-team [team]="TEAM_CO" [event_id]="event_id"></app-select-team>
     </span>
 
 </span>

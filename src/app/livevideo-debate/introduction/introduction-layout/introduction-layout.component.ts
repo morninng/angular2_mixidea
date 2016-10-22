@@ -13,6 +13,7 @@ import {TEAM_PROPOSITION, TEAM_OPPOSITION,
 export class IntroductionLayoutComponent implements OnInit {
 
   @Input() livevideo_obj;
+  @Input() event_id;
 
   STYLE_NA = STYLE_NA;
   STYLE_ASIAN = STYLE_ASIAN;
