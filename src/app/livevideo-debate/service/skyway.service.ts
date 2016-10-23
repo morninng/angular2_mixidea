@@ -70,18 +70,21 @@ export class SkywayService {
 
     this.close_room();
 
-    this.own_peer = new Peer({
+    this.own_peer = new Peer(user_id, {
       key: '63899577-16cc-4fdb-9a4d-ad3ace362cde',
       debug:3
     });
 
     this.own_peer.on('open', ()=>{
-      this.join_room_execute(type , event_id, user_id, team_name)
+      this.join_room_execute(type , event_id,  team_name)
     })
 
+    this.own_peer.on('error', ()=>{
+      alert("peer error");
+    })
   }
 
-join_room_execute(type :string, event_id: string, user_id:string, team_name : string){
+join_room_execute(type :string, event_id: string, team_name : string){
 
     let room_name = ''
     if(type=='main'){
@@ -90,7 +93,7 @@ join_room_execute(type :string, event_id: string, user_id:string, team_name : st
       room_name = 'mixidea_' + event_id + '_' + team_name;
     }else{
       return;
-    }  
+    }
 
    this.sfu_room = this.own_peer.joinRoom(room_name, {mode: 'sfu', stream: this.local_stream })
 
@@ -102,12 +105,12 @@ join_room_execute(type :string, event_id: string, user_id:string, team_name : st
 
     this.sfu_room.on('peerJoin', (peerId)=>{
       this.room_users[peerId] = true;
-      console.log("user entered the video call", peerId);
+      console.log("----user entered the video call ---: ", peerId);
     });
 
     this.sfu_room.on('peerLeave', (peerId)=>{
       this.room_users[peerId] = false;
-      console.log("user leave the video call", peerId);
+      console.log("----user leave the video call ----", peerId);
     });
 }
 
