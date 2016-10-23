@@ -36,6 +36,8 @@
     "angular-cli": "1.0.0-beta.17",
     "codelyzer": "~0.0.26",
     "es6-promise-loader": "^1.0.2",
+    "grunt": "^1.0.1",
+    "grunt-ftp-deploy": "^0.1.10",
     "jasmine-core": "2.4.1",
     "jasmine-spec-reporter": "2.5.0",
     "karma": "1.2.0",

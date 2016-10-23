@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-
+import { BehaviorSubject} from 'rxjs';
 
 declare var navigator:any;
 declare var Peer:any;
@@ -8,7 +8,6 @@ declare var Peer:any;
 @Injectable()
 export class SkywayService {
 
-  constructor() { }
 
   own_peer : any;
   sfu_room : any;
@@ -20,6 +19,16 @@ export class SkywayService {
   video_available: boolean;
   video_active : boolean;
   audio_active : boolean;
+
+
+  localstream_subject : BehaviorSubject<any>;
+
+
+  constructor() { 
+    this.localstream_subject = new BehaviorSubject(null);
+
+  }
+
   
   get_usermedia(){
     const constraints = { audio:true,
@@ -32,6 +41,7 @@ export class SkywayService {
     promise.then((stream)=>{
       console.log("accessing user media has been approved");
       this.local_stream= stream;
+      this.localstream_subject.next(stream);
     });
     promise.catch(()=>{
       alert("you cannot join the game if you do not allow the media");

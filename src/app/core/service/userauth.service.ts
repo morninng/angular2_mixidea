@@ -13,6 +13,26 @@ export class UserauthService {
     af.auth.subscribe((auth) => {
       console.log("auth status changed");
       console.log(auth);
+      if(auth.uid){
+        this.own_user.loggedIn = false;
+        this.own_user.id = auth.uid;
+        this.own_user_id = auth.uid;
+
+        const full_name = auth.facebook.displayName;
+        const split_name_arr = full_name.split(" ");
+        const photoURL = auth.facebook.photoURL;
+        const own_user_id = auth.uid;
+        this.own_user_id = auth.uid;
+
+        this.own_user ={
+            id: own_user_id,
+            loggedIn : true,
+            full_name : full_name, 
+            short_name: split_name_arr[0],
+            pict_src : photoURL
+        }
+        this.own_user_subject$.next(this.own_user);
+      }
     })
 ///////////////////////
    }
