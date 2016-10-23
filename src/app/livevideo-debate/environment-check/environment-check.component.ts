@@ -4,6 +4,7 @@ import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/route
 import { UserauthService} from './../../core/service/userauth.service';
 
 
+import {SkywayService} from './../service/skyway.service';
 
 
 @Component({
@@ -15,13 +16,15 @@ export class EnvironmentCheckComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
                private router: Router
-               ,private user_auth : UserauthService) { }
+               ,private user_auth : UserauthService,
+               private skyway : SkywayService) { }
 
   evnet_id
 
   ngOnInit() {
     this.evnet_id = this.route.snapshot.params['id'];
     console.log(this.evnet_id);
+    this.skyway.get_usermedia();
   }
 
 
@@ -32,7 +35,6 @@ export class EnvironmentCheckComponent implements OnInit {
       this.user_auth.open_login_modal();
       return;
     }
-
     console.log("enter video call");
     this.router.navigate(['/livevideo-debate/game/', this.evnet_id]);
   }

@@ -28,10 +28,14 @@ export class SkywayService {
                             height:{ideal: 45},
                             frameRate: {ideal:2}
                          }};
-    navigator.mediaDevices.getUserMedia(constraints).then((stream)=>{
-      console.log("aa");
+    const promise = navigator.mediaDevices.getUserMedia(constraints);
+    promise.then((stream)=>{
+      console.log("accessing user media has been approved");
       this.local_stream= stream;
     });
+    promise.catch(()=>{
+      alert("you cannot join the game if you do not allow the media");
+    })
   }
 
 

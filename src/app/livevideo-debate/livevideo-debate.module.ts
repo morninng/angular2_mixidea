@@ -15,6 +15,7 @@ import {LiveDebateFirebaseService} from './service/live-debate-firebase.service'
 import { EnvironmentCheckComponent } from './environment-check/environment-check.component';
 import { LivevideoDebateRootComponent } from './livevideo-debate-root.component';
 
+import {SkywayService} from './service/skyway.service';
 
 @NgModule({
   imports: [
@@ -32,6 +33,6 @@ import { LivevideoDebateRootComponent } from './livevideo-debate-root.component'
     EnvironmentCheckComponent,
     LivevideoDebateRootComponent
   ],
-  providers: [LiveDebateFirebaseService]
+  providers: [LiveDebateFirebaseService, SkywayService]
 })
 export class LiveVideoDebateModule {}
