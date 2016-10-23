@@ -1,18 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params, NavigationExtras } from '@angular/router';
 
-import { UserauthService} from './../../../core/service/userauth.service';
+import { UserauthService} from './../../core/service/userauth.service';
+
+
+
 
 @Component({
-  selector: 'app-eventcontext-onlinedebate-livevideo',
-  templateUrl: './eventcontext-onlinedebate-livevideo.component.html',
-  styleUrls: ['./eventcontext-onlinedebate-livevideo.component.scss']
+  selector: 'app-environment-check',
+  templateUrl: './environment-check.component.html',
+  styleUrls: ['./environment-check.component.scss']
 })
-export class EventcontextOnlinedebateLivevideoComponent implements OnInit {
+export class EnvironmentCheckComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
                private router: Router
                ,private user_auth : UserauthService) { }
+
   evnet_id
 
   ngOnInit() {
@@ -20,7 +24,8 @@ export class EventcontextOnlinedebateLivevideoComponent implements OnInit {
     console.log(this.evnet_id);
   }
 
-  enter_video_call(){
+
+  join_game(){
 
     if(!this.user_auth.own_user.loggedIn){
       alert("you need to login to enter video call");
@@ -28,12 +33,10 @@ export class EventcontextOnlinedebateLivevideoComponent implements OnInit {
       return;
     }
 
-
-
-    
     console.log("enter video call");
-    this.router.navigate(['/livevideo-debate/environment_check/', this.evnet_id]);
+    this.router.navigate(['/livevideo-debate/game/', this.evnet_id]);
   }
+
 
 
 }

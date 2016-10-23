@@ -14,10 +14,6 @@ import {LiveVideo} from './livedebate-interface/livedebate';
 })
 
 
-
-
-
-
 export class LivevideoDebateContainerComponent implements OnInit {
 
   STATUS_INTRO = STATUS_INTRO;
@@ -57,7 +53,6 @@ export class LivevideoDebateContainerComponent implements OnInit {
       console.log(this.livevideo_obj);
       this.change_ref.markForCheck();
     })
-
 
   }
 

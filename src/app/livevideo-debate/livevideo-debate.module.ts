@@ -12,6 +12,8 @@ import { SelectTeamComponent } from './introduction/select-team/select-team.comp
 import { ChangeStyleComponent } from './introduction/change-style/change-style.component';
 import { SelectDebaterComponent } from './introduction/select-debater/select-debater.component';
 import {LiveDebateFirebaseService} from './service/live-debate-firebase.service';
+import { EnvironmentCheckComponent } from './environment-check/environment-check.component';
+import { LivevideoDebateRootComponent } from './livevideo-debate-root.component';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import {LiveDebateFirebaseService} from './service/live-debate-firebase.service'
     LivevideoDebateContainerComponent,
     SelectTeamComponent,
     ChangeStyleComponent,
-    SelectDebaterComponent
+    SelectDebaterComponent,
+    EnvironmentCheckComponent,
+    LivevideoDebateRootComponent
   ],
   providers: [LiveDebateFirebaseService]
 })

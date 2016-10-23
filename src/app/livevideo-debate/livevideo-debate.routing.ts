@@ -3,8 +3,9 @@ import { RouterModule } from '@angular/router';
 
 import {LivevideoDebateContainerComponent} from './livevideo-debate-container.component';
 import { IntroductionLayoutComponent } from './introduction/introduction-layout/introduction-layout.component';
+import { LivevideoDebateRootComponent } from './livevideo-debate-root.component';
 
-
+import { EnvironmentCheckComponent } from './environment-check/environment-check.component';
 
 
 @NgModule({
@@ -12,8 +13,12 @@ import { IntroductionLayoutComponent } from './introduction/introduction-layout/
     RouterModule.forChild(
     [
       {
-        path: 'livevideo-debate/:id',
-        component: LivevideoDebateContainerComponent
+        path: 'livevideo-debate',
+        component: LivevideoDebateRootComponent,
+        children:[
+          { path: 'game/:id', component: LivevideoDebateContainerComponent},
+          { path: 'environment_check/:id', component: EnvironmentCheckComponent}
+        ]
       }
     ])
   ],
