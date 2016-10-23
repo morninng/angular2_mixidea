@@ -7,6 +7,10 @@ import { AngularFire } from 'angularfire2';
 
 import {LiveVideo} from './livedebate-interface/livedebate';
 
+import { UserauthService} from './../core/service/userauth.service';
+
+import {SkywayService} from './service/skyway.service';
+
 @Component({
   selector: 'app-livevideo-debate-container',
   templateUrl: './livevideo-debate-container.component.html',
@@ -31,7 +35,9 @@ export class LivevideoDebateContainerComponent implements OnInit {
   constructor(private route: ActivatedRoute,
                private router: Router,
                private af: AngularFire,
-               private change_ref: ChangeDetectorRef) { }
+               private change_ref: ChangeDetectorRef,
+               private skyway : SkywayService,
+               private user_auth : UserauthService) { }
 
 
 
@@ -53,6 +59,8 @@ export class LivevideoDebateContainerComponent implements OnInit {
       console.log(this.livevideo_obj);
       this.change_ref.markForCheck();
     })
+
+    this.skyway.join_room('main', this.event_id, this.user_auth.own_user.id ,null);
 
   }
 

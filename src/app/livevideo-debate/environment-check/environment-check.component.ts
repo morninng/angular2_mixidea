@@ -33,9 +33,12 @@ export class EnvironmentCheckComponent implements OnInit {
 
   ngAfterViewInit(){
 
-    const video_container = this._el.getElementsByClassName("own_video")[0];
-    this.skyway.localstream_subject.subscribe((stream)=>{
+    console.log("ng after vie init of environment_check");
+    this.skyway.local_video_stream_subject.subscribe((stream)=>{
+      console.log("local video stream subscription");
       if(stream){
+        const video_container = this._el.getElementsByClassName("own_video")[0];
+        video_container.innerHTML = "";
         const video_element = document.createElement("video");
         video_element.autoplay = true;
         video_element.src= window.URL.createObjectURL(stream);
