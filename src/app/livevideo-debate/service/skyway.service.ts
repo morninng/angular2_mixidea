@@ -225,19 +225,25 @@ export class SkywayService {
   }
 
   private add_stream_on_roomuser(peerId, stream){
-    const video_user = {}
-    video_user[peerId] = stream;
-    const video_obj = {video_data: video_user};
-    this.room_data = Object.assign({}, this.room_data, video_obj);
+
+    const updated_video_obj = Object.assign({}, this.room_data.video_data)
+    updated_video_obj[peerId] = stream;
+    const updated_video_parent = {video_data: updated_video_obj};
+    this.room_data = Object.assign({}, this.room_data,updated_video_parent);
+    console.log("<<<<<<<room data>>>>>>>>");
+    console.log(this.room_data);
     this.room_data_subject.next(this.room_data);
   }
 
   private remove_stream_from_roomuser(peerId){
-    const video_obj = this.room_data;
-    if(video_obj[peerId]){
-      delete video_obj[peerId];
+    const updated_video_obj = Object.assign({}, this.room_data.video_data);
+    if(updated_video_obj[peerId]){
+      delete updated_video_obj[peerId];
     }
-    this.room_data = Object.assign({}, video_obj);
+    const updated_video_parent = {video_data: updated_video_obj};
+    this.room_data = Object.assign({}, this.room_data,updated_video_parent);
+    console.log("<<<<<<<room data>>>>>>>>");
+    console.log(this.room_data);
     this.room_data_subject.next(this.room_data);
   }
 

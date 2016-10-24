@@ -30,3 +30,16 @@ team member {{team_members | json}}
     </span>
 
 </span>
+
+
+
+
+video data
+{{video_data | json}}
+<span *ngFor="let video_obj of ( video_data | keysInObject)">
+  <br>
+  -----------------begin--------------<br>
+  {{video_obj.key}} - {{video_obj.value}}
+  <app-user-video [video_src]="video_obj.value" [user_id]="video_obj.key"></app-user-video>
+  ------------------end ------------
+</span>
