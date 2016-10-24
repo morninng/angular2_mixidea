@@ -9,13 +9,10 @@ export class UserauthService {
   constructor(public af: AngularFire) {
     console.log("user auth service initialized")
 
-/* this code is still not working, but it will come soon.*/ 
     af.auth.subscribe((auth) => {
       console.log("auth status changed");
       console.log(auth);
-      if(auth.uid){
-        this.own_user.loggedIn = false;
-        this.own_user.id = auth.uid;
+      if(auth && auth.uid){
         this.own_user_id = auth.uid;
 
         const full_name = auth.facebook.displayName;
@@ -34,7 +31,6 @@ export class UserauthService {
         this.own_user_subject$.next(this.own_user);
       }
     })
-///////////////////////
    }
 
 

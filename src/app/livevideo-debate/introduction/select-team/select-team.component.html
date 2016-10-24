@@ -10,6 +10,14 @@
 team_member {{team_member | json}}
 ----
 
+id_videourl_mapping {{id_videourl_mapping | json}}
+
 <span *ngFor="let member of (team_member | keysInObject)">
   <br>member id: {{member.key}}
+
+
+  <span *ngIf="id_videourl_mapping && id_videourl_mapping[member.key]">
+      <app-user-video [video_src]="id_videourl_mapping[member.key]" [user_id]="member.key"></app-user-video>
+  </span>
+
 </span>

@@ -16,6 +16,7 @@ import { EnvironmentCheckComponent } from './environment-check/environment-check
 import { LivevideoDebateRootComponent } from './livevideo-debate-root.component';
 
 import {SkywayService} from './service/skyway.service';
+import { UserVideoComponent } from './common/user-video/user-video.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import {SkywayService} from './service/skyway.service';
     ChangeStyleComponent,
     SelectDebaterComponent,
     EnvironmentCheckComponent,
-    LivevideoDebateRootComponent
+    LivevideoDebateRootComponent,
+    UserVideoComponent
   ],
   providers: [LiveDebateFirebaseService, SkywayService]
 })

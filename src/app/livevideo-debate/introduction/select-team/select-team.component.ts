@@ -3,6 +3,7 @@ import {LiveDebateFirebaseService} from './../../service/live-debate-firebase.se
 
 import { UserauthService} from './../../../core/service/userauth.service';
 
+import {SkywayService} from './../../service/skyway.service';
 
 @Component({
   selector: 'app-select-team',
@@ -15,10 +16,20 @@ export class SelectTeamComponent implements OnInit, OnChanges {
   @Input() event_id;
   @Input() team_member;
 
+  id_videourl_mapping = {};
+
   constructor(private livedebate_firebase: LiveDebateFirebaseService,
-               private user_auth : UserauthService) { }
+               private user_auth : UserauthService,
+               private skyway : SkywayService) { }
+
 
   ngOnInit() {
+
+    this.skyway.id_video_map_obs.subscribe((mapping)=>{
+      console.log(mapping);
+      this.id_videourl_mapping = mapping;
+    })
+
   }
 
   ngOnChanges(){
