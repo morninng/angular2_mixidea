@@ -13,16 +13,16 @@ export class UserLinkComponent implements OnInit {
   @Input() type : string;
   user = null;
 
-  constructor(private user_service : ModelUserService, private change_ref: ChangeDetectorRef) { }
+  constructor(private user_model : ModelUserService, private change_ref: ChangeDetectorRef) { }
 
 
 
   ngOnInit() {
 
-    this.user_service.add_user(this.user_id);
+    this.user_model.add_user(this.user_id);
 
     const user_observable =
-      this.user_service.user_model_observable.subscribe(
+      this.user_model.user_model_observable.subscribe(
         (user_model)=>{
           if(!this.user &&　user_model[this.user_id] && user_model[this.user_id].pict_src){
             this.user = {};

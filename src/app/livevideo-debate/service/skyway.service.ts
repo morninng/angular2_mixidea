@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject} from 'rxjs';
 
+import { UserauthService} from './../../core/service/userauth.service';
+import {ModelUserService} from './../../core/service/model-user.service';
+
 declare var navigator:any;
 declare var Peer:any;
 
@@ -11,32 +14,25 @@ export class SkywayService {
   own_peer : any;
   sfu_room : any;
   local_stream : any;
-  id_video_map_obs : Observable<any>;
-  private id_video_map_subject : Subject<any>;
-  room_users = {};
 
   audio_available : boolean;
   video_available: boolean;
   video_active : boolean;
   audio_active : boolean;
 
-
   local_video_stream_subject : BehaviorSubject<any>;
 
 
-  constructor() { 
+
+  constructor(private user_auth : UserauthService,
+              private user_model : ModelUserService) {
+
+
     this.local_video_stream_subject = new BehaviorSubject(null);
 
-    this.id_video_map_subject = new Subject();
-    this.id_video_map_obs = this.id_video_map_subject.scan((acc :any, curr)=>{
-      const new_mapping = Object.assign({}, acc);
-      new_mapping[curr.peerId] = curr.streamURL;
-      return new_mapping;
-    }, {})
+              }
 
-  }
 
-  
   get_usermedia(){
     const constraints = { audio:true,
                           video: {
@@ -97,7 +93,7 @@ export class SkywayService {
     }else{
       if(!this.middle_process){
         this.join_room_execute(type , event_id,  team_name);
-      } 
+      }
     }
   }
 
@@ -120,8 +116,9 @@ export class SkywayService {
 
 
     this.sfu_room.on('open', ()=>{
-      console.log(" you have enter the room now");
+      console.log("---you have enter the room now---");
       this.middle_process = false;
+      this.set_peer_users();
     });
 
     this.sfu_room.on('error', ()=>{
@@ -132,21 +129,23 @@ export class SkywayService {
     this.sfu_room.on('stream', (stream)=>{
         const streamURL = URL.createObjectURL(stream);
         const peerId = stream.peerId;
-        //this.id_video_src_mapping[peerId] = streamURL;
-        this.id_video_map_subject.next({peerId, streamURL})
+        this.add_stream_on_roomuser(peerId, streamURL);
+
+
         console.log("---stream is detected----");
         console.log("peer id" , peerId);
         console.log("url", streamURL);
     })
 
     this.sfu_room.on('peerJoin', (peerId)=>{
-      this.room_users[peerId] = true;
+      this.user_model.add_user(peerId);
       console.log("----user entered the video call ---: ", peerId);
+      this.set_peer_users();
     });
 
     this.sfu_room.on('peerLeave', (peerId)=>{
-      this.room_users[peerId] = false;
       console.log("----user leave the video call ----", peerId);
+      this.set_peer_users();
     });
   }
 
@@ -156,6 +155,33 @@ export class SkywayService {
       this.sfu_room.close();
       this.sfu_room = null;
     }
+  }
+
+
+  room_data = {
+    room_users:[],
+    video_data:{}
+  };
+  room_data_subject = new BehaviorSubject(this.room_data);
+
+
+  private set_peer_users(){
+
+      this.own_peer.listAllPeers((list)=>{
+        console.log("all user list is", list );
+        const room_user_obj = {};
+        room_user_obj["room_users"]=list;
+        this.room_data = Object.assign({}, this.room_data, room_user_obj);
+        this.room_data_subject.next(this.room_data);
+      })
+  }
+
+  private add_stream_on_roomuser(peerId, stream){
+    const video_user = {}
+    video_user[peerId] = stream;
+    const video_obj = {video_data: video_user};
+    this.room_data = Object.assign({}, this.room_data, video_obj);
+    this.room_data_subject.next(this.room_data);
   }
 
   mute(){
@@ -168,9 +194,6 @@ export class SkywayService {
     this.sfu_room.unmute({"video":true,"audio":true})
   }
 
-  get_media_src(user_id){
-
-  }
 
 
 }

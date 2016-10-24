@@ -15,6 +15,8 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
   @Input() livevideo_obj;
   @Input() event_id;
   team_members;
+  video_data;
+  room_users
 
   STYLE_NA = STYLE_NA;
   STYLE_ASIAN = STYLE_ASIAN;
@@ -38,6 +40,7 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
     const participants = this.livevideo_obj.participants;
     this.team_members = participants.team || {};
     console.log("team_members", this.team_members);
+    this.video_data = this.livevideo_obj.video_data;
 
   }
 

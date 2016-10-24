@@ -15,6 +15,7 @@ export class SelectTeamComponent implements OnInit, OnChanges {
   @Input() team;
   @Input() event_id;
   @Input() team_member;
+  @Input() video_data;
 
   id_videourl_mapping = {};
 
@@ -24,11 +25,6 @@ export class SelectTeamComponent implements OnInit, OnChanges {
 
 
   ngOnInit() {
-
-    this.skyway.id_video_map_obs.subscribe((mapping)=>{
-      console.log(mapping);
-      this.id_videourl_mapping = mapping;
-    })
 
   }
 

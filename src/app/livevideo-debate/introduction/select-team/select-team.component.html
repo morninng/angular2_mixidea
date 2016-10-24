@@ -1,23 +1,24 @@
 <p>
   select-team works!
-</p>
 
 
 {{team}}
 <input type="button" value="join" (click)="join_team()">
 {{event_id}}
 
-team_member {{team_member | json}}
+team_member {{team_member | json}}<br>
 ----
 
-id_videourl_mapping {{id_videourl_mapping | json}}
+video_data {{video_data | json}}<br>
 
 <span *ngFor="let member of (team_member | keysInObject)">
   <br>member id: {{member.key}}
 
 
-  <span *ngIf="id_videourl_mapping && id_videourl_mapping[member.key]">
-      <app-user-video [video_src]="id_videourl_mapping[member.key]" [user_id]="member.key"></app-user-video>
+  <span *ngIf="video_data && video_data[member.key]">
+      <app-user-video [video_src]="video_data[member.key]" [user_id]="member.key"></app-user-video>
   </span>
 
 </span>
+
+</p>

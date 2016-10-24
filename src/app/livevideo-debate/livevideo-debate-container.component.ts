@@ -1,4 +1,4 @@
-import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import {STATUS_INTRO, STATUS_PREP, STATUS_DEBATE, STATUS_REFLECTION} from './livedebate-interface/status'
@@ -18,7 +18,7 @@ import {SkywayService} from './service/skyway.service';
 })
 
 
-export class LivevideoDebateContainerComponent implements OnInit {
+export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
 
   STATUS_INTRO = STATUS_INTRO;
   STATUS_PREP = STATUS_PREP;
@@ -29,8 +29,12 @@ export class LivevideoDebateContainerComponent implements OnInit {
   livevideo_obj : LiveVideo = {
     game_status : STATUS_INTRO,
     deb_style: STYLE_NA,
-    participants: {}
+    participants: {},
+    room_users: [],
+    video_data:{}
   };
+
+  combined_subscription;
 
   constructor(private route: ActivatedRoute,
                private router: Router,
@@ -40,19 +44,31 @@ export class LivevideoDebateContainerComponent implements OnInit {
                private user_auth : UserauthService) { }
 
 
-
   ngOnInit() {
     this.event_id = this.route.snapshot.params['id'];
     console.log(this.event_id);
 
-
     const event_item = this.af.database.object('/event_related/livevideo-debate/' + this.event_id, { preserveSnapshot: true });
-    event_item.subscribe((snapshot)=>{
-      const in_livevideo_obj = snapshot.val();
+
+    const combined_src = 
+    event_item.combineLatest(this.skyway.room_data_subject, (event_snapshot, room_data)=>{
+
+
+      let video_data = room_data.video_data;
+      const room_users = room_data.room_users;
+      for(var key in video_data){
+        if(room_users && room_users.indexOf(key)==-1){
+          delete video_data[key];
+        }
+      }
+      const in_livevideo_obj = event_snapshot.val();
+
       const updated_livevideo_obj : LiveVideo = {
-        game_status: in_livevideo_obj.game_status || this.livevideo_obj.game_status,
-        deb_style: in_livevideo_obj.deb_style || this.livevideo_obj.deb_style,
-        participants: in_livevideo_obj.participants || {}
+        game_status: in_livevideo_obj.game_status || STATUS_INTRO,
+        deb_style: in_livevideo_obj.deb_style || STYLE_NA,
+        participants: in_livevideo_obj.participants || {},
+        room_users : room_users || [],
+        video_data: video_data || {}
       };
       this.livevideo_obj = Object.assign({}, updated_livevideo_obj);
       console.log("livevideo_obj updated");
@@ -61,7 +77,14 @@ export class LivevideoDebateContainerComponent implements OnInit {
     })
 
     this.skyway.join_room('main', this.event_id, this.user_auth.own_user.id ,null);
+    this.combined_subscription = combined_src.subscribe();
 
+  }
+
+  ngOnDestroy(){
+
+    this.combined_subscription.unsubscribe();
+  
   }
 
 }
