@@ -76,7 +76,7 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
       this.change_ref.markForCheck();
     })
 
-    this.skyway.join_room('main', this.event_id, this.user_auth.own_user.id ,null);
+    this.skyway.join_room('main', this.event_id ,null);
     this.combined_subscription = combined_src.subscribe();
 
   }

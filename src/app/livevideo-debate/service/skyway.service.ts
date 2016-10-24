@@ -27,19 +27,45 @@ export class SkywayService {
   constructor(private user_auth : UserauthService,
               private user_model : ModelUserService) {
 
-
     this.local_video_stream_subject = new BehaviorSubject(null);
 
-              }
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    const user_id = this.user_auth.own_user.id;
 
+    this.own_peer = new Peer(user_id, {
+      key: '63899577-16cc-4fdb-9a4d-ad3ace362cde',
+      debug:3
+    });
 
-  get_usermedia(){
-    const constraints = { audio:true,
+    this.own_peer.on('open', ()=>{
+      console.log("connection is established with peer id: " , this.own_peer.id);
+      const constraints = { audio:true,
                           video: {
-                            width:{ideal:80},
-                            height:{ideal: 45},
-                            frameRate: {ideal:2}
-                         }};
+                            width:{ideal:320},
+                            height:{ideal: 180}
+                          }};
+      const room_join = false;
+      this.get_usermedia(constraints, room_join);
+
+    })
+
+    this.own_peer.on('error', ()=>{
+      alert("peer error");
+    })
+
+    const constraints = { audio:true,
+                        video: {
+                          width:{ideal:320},
+                          height:{ideal: 180}
+                        }};
+    const room_join = false;
+    this.get_usermedia(constraints, room_join);
+  }
+
+
+  get_usermedia(constraints : any, room_join = false, 
+                type? :string, event_id?: string, team_name? : string){
+
     const promise = navigator.mediaDevices.getUserMedia(constraints);
     promise.then((video_stream)=>{
       console.log("accessing video and audio has been approved");
@@ -47,12 +73,20 @@ export class SkywayService {
       this.local_video_stream_subject.next(video_stream);
       this.video_available = true;
       this.audio_available = true;
+
+      if(this.sfu_room){
+        this.sfu_room.replaceStream(this.local_stream)
+      }
+      if(room_join){
+        this.join_room_execute(type, event_id, team_name);
+      }
+
     }).catch(()=>{
-      this.get_usermedia_audio()
+      this.get_usermedia_audio(room_join, type, event_id, team_name);
     })
   }
 
-  get_usermedia_audio(){
+  get_usermedia_audio(room_join = false, type? :string, event_id?: string, team_name? : string){
     const constraints = { audio:true,
                           video: false};
     const promise = navigator.mediaDevices.getUserMedia(constraints);
@@ -61,47 +95,49 @@ export class SkywayService {
       this.local_stream= audio_stream;
       this.video_available = false;
       this.audio_available = true;
+      if(this.sfu_room){
+        this.sfu_room.replaceStream(this.local_stream)
+      }
+      if(room_join){
+        this.join_room_execute(type, event_id, team_name);
+      }
     }).catch(()=>{
       alert("you cannot use both aido and video, so you can just watch but cannot speak anything");
       this.video_available = false;
       this.audio_available = false;
+      if(room_join){
+        this.join_room_execute(type, event_id, team_name);
+      }
     })
   }
 
 
+
   middle_process = false;
 
-  join_room(type :string, event_id: string, user_id:string, team_name : string){
+  join_room(type :string, event_id: string, team_name : string){
 
-    console.log("---join room is called with the user_id---", user_id);
+/*
+    const constraints = { audio:true,
+                          video: {
+                            width:{ideal:160},
+                            height:{ideal: 90},
+                            frameRate: {ideal:2}
+                         }};
 
-    if(!this.own_peer ){
-      this.middle_process = true;
-      this.own_peer = new Peer(user_id, {
-        key: '63899577-16cc-4fdb-9a4d-ad3ace362cde',
-        debug:3
-      });
+    console.log("---join room is called ---");
 
-      this.own_peer.on('open', ()=>{
-        console.log("connection is established with peer id: " , user_id)
-        this.join_room_execute(type , event_id,  team_name);
-      })
+    const join_room = true;
+    this.get_usermedia(constraints, join_room, type, event_id,  team_name );
+    */
+    this.join_room_execute(type, event_id,  team_name );
 
-      this.own_peer.on('error', ()=>{
-        alert("peer error");
-      })
-    }else{
-      if(!this.middle_process){
-        this.join_room_execute(type , event_id,  team_name);
-      }
-    }
   }
 
   join_room_execute(type :string, event_id: string, team_name : string){
 
 
     this.close_room();
-
 
     let room_name = ''
     if(type=='main'){
@@ -121,6 +157,10 @@ export class SkywayService {
       this.set_peer_users();
     });
 
+    this.sfu_room.on('close', ()=>{
+      alert("room is closed");
+    });
+
     this.sfu_room.on('error', ()=>{
       console.log(" error has happening");
       this.middle_process = false;
@@ -135,6 +175,14 @@ export class SkywayService {
         console.log("---stream is detected----");
         console.log("peer id" , peerId);
         console.log("url", streamURL);
+    })
+
+    this.sfu_room.on('removeStream', (stream)=>{
+        const peerId = stream.peerId;
+        this.remove_stream_from_roomuser(peerId);
+
+        console.log("---stream is removed----");
+        console.log("peer id" , peerId);
     })
 
     this.sfu_room.on('peerJoin', (peerId)=>{
@@ -181,6 +229,15 @@ export class SkywayService {
     video_user[peerId] = stream;
     const video_obj = {video_data: video_user};
     this.room_data = Object.assign({}, this.room_data, video_obj);
+    this.room_data_subject.next(this.room_data);
+  }
+
+  private remove_stream_from_roomuser(peerId){
+    const video_obj = this.room_data;
+    if(video_obj[peerId]){
+      delete video_obj[peerId];
+    }
+    this.room_data = Object.assign({}, video_obj);
     this.room_data_subject.next(this.room_data);
   }
 

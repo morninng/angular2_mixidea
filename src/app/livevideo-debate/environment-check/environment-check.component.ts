@@ -26,7 +26,6 @@ export class EnvironmentCheckComponent implements OnInit {
     this._el = this.el.nativeElement;
     this.evnet_id = this.route.snapshot.params['id'];
     console.log(this.evnet_id);
-    this.skyway.get_usermedia();
 
   }
 
