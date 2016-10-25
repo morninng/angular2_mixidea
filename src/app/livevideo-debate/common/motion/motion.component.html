@@ -1,0 +1,13 @@
+<div class="motion_container">
+
+  <span *ngIf="!uner_editing && motion">
+    <div class="motion_fixed">{{motion}}</div>
+    <input type="button" value="edit motion" (click)="edit_start()">
+  </span>
+
+  <span *ngIf="uner_editing || !motion ">
+      <input type="text" [(ngModel)]="input_motion" placeholder="input the motion here" >
+      <input type="button" value="save" (click)="save_motion()">
+  </span>
+
+</div>

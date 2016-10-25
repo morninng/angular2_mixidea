@@ -17,4 +17,25 @@ export class LiveDebateFirebaseService {
 
   }
 
+  save_motion = function(event_id, in_motion){
+
+    const event_motion_item = this.af.database.object("/event_related/event/" + event_id + "/motion/");
+    const game_motion_item = this.af.database.object("/event_related/livevideo-debate/" + event_id + "/motion/" );
+
+    const promise = game_motion_item.set(in_motion);
+    promise.then(()=>{
+      return event_motion_item.set(in_motion);
+    }).then(()=>{
+      console.log("motion has been updated");
+    }).catch(()=>{
+      alert("saving the motion has been failed");
+    })
+
+  }
+
+
+
+
+
+
 }

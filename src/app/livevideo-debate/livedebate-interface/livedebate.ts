@@ -4,4 +4,5 @@ export interface LiveVideo{
   participants: any;
   room_users: any;
   video_data: any;
+  motion: string;
 }

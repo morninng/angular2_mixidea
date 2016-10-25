@@ -17,6 +17,7 @@ import { LivevideoDebateRootComponent } from './livevideo-debate-root.component'
 
 import {SkywayService} from './service/skyway.service';
 import { UserVideoComponent } from './common/user-video/user-video.component';
+import { MotionComponent } from './common/motion/motion.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { UserVideoComponent } from './common/user-video/user-video.component';
     SelectDebaterComponent,
     EnvironmentCheckComponent,
     LivevideoDebateRootComponent,
-    UserVideoComponent
+    UserVideoComponent,
+    MotionComponent
   ],
   providers: [LiveDebateFirebaseService, SkywayService]
 })

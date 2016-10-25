@@ -31,7 +31,8 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
     deb_style: STYLE_NA,
     participants: {},
     room_users: [],
-    video_data:{}
+    video_data:{},
+    motion:null
   };
 
   combined_subscription;
@@ -67,6 +68,7 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
         game_status: in_livevideo_obj.game_status || STATUS_INTRO,
         deb_style: in_livevideo_obj.deb_style || STYLE_NA,
         participants: in_livevideo_obj.participants || {},
+        motion: in_livevideo_obj.motion || null,
         room_users : room_users || [],
         video_data: video_data || {}
       };

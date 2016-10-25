@@ -22,6 +22,11 @@ export class UserVideoComponent implements OnInit {
   }
 
   ngAfterViewInit(){
+    console.log("video_src", this.video_src);
+    setTimeout(this.set_user_video, 1000);
+  }
+
+  set_user_video = ()=>{
     if(!this.video_src){
       console.log("no video src for user : ", this.user_id);
       return;
