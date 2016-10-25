@@ -3,7 +3,9 @@ import {STYLE_NA, STYLE_ASIAN, STYLE_BP} from './../../../interface/deb_style'
 import {TEAM_PROPOSITION, TEAM_OPPOSITION, 
         TEAM_GOV, TEAM_OPP, 
         TEAM_OG, TEAM_OO, TEAM_CG, TEAM_CO} from './../../../interface/team';
+import {TEAM_STYLE_MAPPING} from './../../../interface/team'
 
+import {LiveVideo} from './../../interface-livedebate/livevideo';
 
 @Component({
   selector: 'app-introduction-layout',
@@ -12,11 +14,11 @@ import {TEAM_PROPOSITION, TEAM_OPPOSITION,
 })
 export class IntroductionLayoutComponent implements OnInit, OnChanges {
 
-  @Input() livevideo_obj;
+  @Input() livevideo_obj : LiveVideo;
   @Input() event_id;
+  @Input() room_users;
+  @Input() video_data;
   team_members;
-  video_data;
-  room_users
 
   STYLE_NA = STYLE_NA;
   STYLE_ASIAN = STYLE_ASIAN;
@@ -31,6 +33,9 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
   TEAM_CG = TEAM_CG;
   TEAM_CO = TEAM_CO;
 
+  users_in_team = [];
+  users_not_involved_team = [];
+
   constructor() { }
 
   ngOnInit() {}
@@ -40,7 +45,25 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
     const participants = this.livevideo_obj.participants;
     this.team_members = participants.team || {};
     console.log("team_members", this.team_members);
-    this.video_data = this.livevideo_obj.video_data;
+
+// user related calculation
+    const team_list = TEAM_STYLE_MAPPING[this.livevideo_obj.deb_style];
+    if(team_list){
+      team_list.forEach((team_name)=>{
+        const team_member_obj = this.livevideo_obj[team_name];
+        if(team_member_obj){
+          for(var key in team_member_obj){
+            this.users_in_team.push(key);
+          }
+        }
+      })
+    }
+    this.users_not_involved_team = 
+    this.room_users.filter((user_id)=>{
+      const result = this.users_in_team.indexOf(user_id)
+      return result !==-1;
+    })
+
 
   }
 

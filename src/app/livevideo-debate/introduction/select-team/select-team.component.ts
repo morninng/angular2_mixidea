@@ -31,6 +31,7 @@ export class SelectTeamComponent implements OnInit, OnChanges {
   ngOnChanges(){
     console.log(this.team_member);
     this.team_member = this.team_member || {};
+    this.video_data = this.video_data || {};
   }
 
   join_team(){

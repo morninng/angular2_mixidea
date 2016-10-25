@@ -12,7 +12,11 @@
 <span [ngSwitch]="livevideo_obj.game_status">
    <span *ngSwitchCase="STATUS_INTRO">
      intro
-     <app-introduction-layout [livevideo_obj]="livevideo_obj" [event_id]="event_id" ></app-introduction-layout>
+     <app-introduction-layout 
+          [livevideo_obj]="livevideo_obj" 
+          [event_id]="event_id"
+          [room_users]="room_users"
+          [video_data]="video_data" ></app-introduction-layout>
    </span>
    <span *ngSwitchCase="STATUS_PREP">
 

@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import {LiveDebateFirebaseService} from './../../service/live-debate-firebase.service';
 
-
-
 @Component({
   selector: 'app-motion',
   templateUrl: './motion.component.html',
