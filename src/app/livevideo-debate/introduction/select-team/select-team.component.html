@@ -1,13 +1,13 @@
-<p>
-  select-team works!
+<div class="teama_container">
+  <div class="team_name">{{team_name}}</div>
 
 
-{{team}}
-<input type="button" value="join" (click)="join_team()">
-{{event_id}}
-
-team_member {{team_member | json}}<br>
-----
+<span *ngIf="is_my_team">
+  <input type="button" value="leave team" (click)="leave_team()">
+</span>
+<span *ngIf="!is_in_team && !is_my_team">
+  <input type="button" value="join team" (click)="join_team()">
+</span>
 
 video_data {{video_data | json}}<br>
 
@@ -21,4 +21,4 @@ video_data {{video_data | json}}<br>
 
 </span>
 
-</p>
+</div>

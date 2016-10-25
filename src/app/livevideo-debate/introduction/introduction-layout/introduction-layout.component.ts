@@ -7,6 +7,9 @@ import {TEAM_STYLE_MAPPING} from './../../../interface/team'
 
 import {LiveVideo} from './../../interface-livedebate/livevideo';
 
+import { UserauthService} from './../../../core/service/userauth.service';
+
+
 @Component({
   selector: 'app-introduction-layout',
   templateUrl: './introduction-layout.component.html',
@@ -18,7 +21,6 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
   @Input() event_id;
   @Input() room_users;
   @Input() video_data;
-  team_members;
 
   STYLE_NA = STYLE_NA;
   STYLE_ASIAN = STYLE_ASIAN;
@@ -33,26 +35,28 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
   TEAM_CG = TEAM_CG;
   TEAM_CO = TEAM_CO;
 
+  team_member_obj;
   users_in_team = [];
   users_not_involved_team = [];
+  is_in_team = false;
 
-  constructor() { }
+  constructor(private user_auth : UserauthService) { }
 
   ngOnInit() {}
 
   ngOnChanges(){
     console.log("introduction layout on change has been called");
-    const participants = this.livevideo_obj.participants;
-    this.team_members = participants.team || {};
-    console.log("team_members", this.team_members);
+    const participants = this.livevideo_obj.participants || {};
+    this.team_member_obj = participants.team || {};
+    console.log("team_members", this.team_member_obj);
 
 // user related calculation
     const team_list = TEAM_STYLE_MAPPING[this.livevideo_obj.deb_style];
     if(team_list){
       team_list.forEach((team_name)=>{
-        const team_member_obj = this.livevideo_obj[team_name];
-        if(team_member_obj){
-          for(var key in team_member_obj){
+        const team_member = this.team_member_obj[team_name];
+        if(team_member){
+          for(var key in team_member){
             this.users_in_team.push(key);
           }
         }
@@ -63,6 +67,10 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
       const result = this.users_in_team.indexOf(user_id)
       return result !==-1;
     })
+
+    if(this.users_in_team.indexOf(this.user_auth.own_user.id) !=-1){
+      this.is_in_team = true;
+    }
 
 
   }

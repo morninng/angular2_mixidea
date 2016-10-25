@@ -12,10 +12,13 @@ import {SkywayService} from './../../service/skyway.service';
 })
 export class SelectTeamComponent implements OnInit, OnChanges {
 
-  @Input() team;
   @Input() event_id;
   @Input() team_member;
   @Input() video_data;
+  @Input() team_name;
+  @Input() is_in_team;
+
+  is_my_team
 
   id_videourl_mapping = {};
 
@@ -32,13 +35,28 @@ export class SelectTeamComponent implements OnInit, OnChanges {
     console.log(this.team_member);
     this.team_member = this.team_member || {};
     this.video_data = this.video_data || {};
+
+    if(this.team_member[this.user_auth.own_user.id]){
+      this.is_my_team = true;
+    }else{
+      this.is_my_team = false;
+    }
   }
 
   join_team(){
-    console.log("join", this.team);
+    console.log("join", this.team_name);
     this.livedebate_firebase.join_team(this.event_id,
-                                       this.team,
+                                       this.team_name,
                                        this.user_auth.own_user_id );
   }
+
+  leave_team(){
+    console.log("cancel", this.team_name);
+    this.livedebate_firebase.leave_team(this.event_id,
+                                       this.team_name,
+                                       this.user_auth.own_user_id );
+
+  }
+
 
 }

@@ -17,6 +17,13 @@ export class LiveDebateFirebaseService {
 
   }
 
+  leave_team(event_id,team, user_id){
+    const item_ref = this.af.database.object('/event_related/livevideo-debate/' + event_id + "/participants/team/" +  team + "/" + user_id);
+    const promise = item_ref.remove();
+    promise.then(()=>{console.log("success")})
+          .catch((err)=>{alert("fail to join please try again")}); 
+  }
+
   save_motion = function(event_id, in_motion){
 
     const event_motion_item = this.af.database.object("/event_related/event/" + event_id + "/motion/");
