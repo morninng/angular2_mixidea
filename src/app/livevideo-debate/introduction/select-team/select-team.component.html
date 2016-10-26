@@ -18,12 +18,14 @@ show_move_to_team: {{show_move_to_team}}<br>
 video_data {{video_data | json}}<br>
 
 <span *ngFor="let member of (team_member | keysInObject)">
+  
   <br>member id: {{member.key}}
-
-
+  <app-user-link [user_id]="member.key" [type]="'only_pict'" ></app-user-link>
   <span *ngIf="video_data[member.key]">
       <app-user-video [video_src]="video_data[member.key]" [user_id]="member.key"></app-user-video>
   </span>
+  <app-user-link [user_id]="member.key" [type]="'only_short_name'" ></app-user-link>
+
 
 </span>
 

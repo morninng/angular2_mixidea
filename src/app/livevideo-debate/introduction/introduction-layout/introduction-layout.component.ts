@@ -87,13 +87,7 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
       return result == -1;
     })
     console.log("users_not_involved_team", this.users_not_involved_team)
-/*
-    if(this.users_in_team.indexOf(this.user_auth.own_user.id) !=-1){
-      this.is_in_team = true;
-    }else{
-      this.is_in_team = false;
-    }
-*/
+
 
   }
 

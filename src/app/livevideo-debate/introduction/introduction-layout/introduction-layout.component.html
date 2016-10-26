@@ -52,17 +52,20 @@ is_in_team {{is_in_team | json}}<br>
 
 <br>
 
-
 video data {{video_data | json}} <br>
 users_not_involved_team {{users_not_involved_team | json}} <br>
 
-<span *ngFor="let user_id of users_not_involved_team">
+<div *ngFor="let user_id of users_not_involved_team">
   <br>
-  <span *ngIf="video_data[user_id]">
-
-  -----------------begin--------------<br>
   {{user_id}}
+  <span *ngIf="video_data[user_id]">
+  -----------------begin--------------<br>
+
     <app-user-video [video_src]="video_data[user_id]" [user_id]="user_id"></app-user-video>
+
+
   ------------------end ------------
   </span>
-</span>
+    <app-user-link [user_id]="user_id" [type]="'only_short_name'" ></app-user-link>
+    <app-user-link [user_id]="user_id" [type]="'only_pict'" ></app-user-link>
+</div>
