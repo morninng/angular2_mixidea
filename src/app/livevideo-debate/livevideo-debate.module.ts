@@ -18,6 +18,12 @@ import { LivevideoDebateRootComponent } from './livevideo-debate-root.component'
 import {SkywayService} from './service/skyway.service';
 import { UserVideoComponent } from './common/user-video/user-video.component';
 import { MotionComponent } from './common/motion/motion.component';
+import { PreparationDocumentComponent } from './common/preparation_document/preparation-document/preparation-document.component';
+import { DocIntroComponent } from './common/preparation_document/doc-intro/doc-intro.component';
+import { DocArgContainerComponent } from './common/preparation_document/doc-arg-container/doc-arg-container.component';
+import { DocArgSignpostComponent } from './common/preparation_document/doc-arg-signpost/doc-arg-signpost.component';
+import { DocArgContextComponent } from './common/preparation_document/doc-arg-context/doc-arg-context.component';
+import { PreparationLayoutComponent } from './preparation/preparation-layout/preparation-layout.component';
 
 @NgModule({
   imports: [
@@ -35,7 +41,13 @@ import { MotionComponent } from './common/motion/motion.component';
     EnvironmentCheckComponent,
     LivevideoDebateRootComponent,
     UserVideoComponent,
-    MotionComponent
+    MotionComponent,
+    PreparationDocumentComponent,
+    DocIntroComponent,
+    DocArgContainerComponent,
+    DocArgSignpostComponent,
+    DocArgContextComponent,
+    PreparationLayoutComponent
   ],
   providers: [LiveDebateFirebaseService, SkywayService]
 })
