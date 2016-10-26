@@ -74,6 +74,10 @@ export class SkywayService {
       this.video_available = true;
       this.audio_available = true;
 
+
+      const streamURL = URL.createObjectURL(video_stream);
+      this.add_stream_on_roomuser(this.user_auth.own_user.id, streamURL);
+
       if(this.sfu_room){
         this.sfu_room.replaceStream(this.local_stream)
       }
