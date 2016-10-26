@@ -1,0 +1,17 @@
+
+
+<script>
+	var users_in_team = [222,444,666,999];
+	console.log("users_in_team", users_in_team)
+	var room_users = [111,222,333,444,555];
+	console.log("room_users", room_users)
+
+	var users_not_involved_team = 
+    room_users.filter((user_id)=>{
+      const result = users_in_team.indexOf(user_id)
+      return result == -1;
+    })
+    console.log("users_not_involved_team", users_not_involved_team)
+
+</script>
+

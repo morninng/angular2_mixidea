@@ -4,12 +4,13 @@
 <app-motion [motion]="livevideo_obj.motion" [event_id]="event_id"></app-motion>
 
 
-{{livevideo_obj.deb_style}}<br>
 
-{{livevideo_obj | json}}<br>
-
-team member {{team_member_obj | json}}
-
+deb_style {{livevideo_obj.deb_style}}<br>
+room_users {{room_users | json}}<br>
+livevideo_obj {{livevideo_obj | json}}<br>
+users_in_team {{users_in_team | json}}<br>
+team member {{team_member_obj | json}}<br>
+is_in_team {{is_in_team | json}}<br>
 <span [ngSwitch]="livevideo_obj.deb_style">
 
     <span *ngSwitchCase="STYLE_NA">
@@ -52,6 +53,8 @@ team member {{team_member_obj | json}}
 
 video data
 {{video_data | json}}
+users_not_involved_team
+{{users_not_involved_team | json}}
 <span *ngFor="let user_id of users_not_involved_team">
   <br>
   <span *ngIf="video_data[user_id]">
