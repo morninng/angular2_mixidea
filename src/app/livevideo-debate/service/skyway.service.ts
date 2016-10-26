@@ -115,25 +115,24 @@ export class SkywayService {
     })
   }
 
+  switch_localstream_small(){
+
+      const constraints = { audio:true,
+                          video: {
+                            width:{ideal:80},
+                            height:{ideal: 45}
+                          }};
+    const room_join = false;
+    this.get_usermedia(constraints, room_join);
+ 
+  }
+  
 
 
   middle_process = false;
 
   join_room(type :string, event_id: string, team_name : string){
-
-/*
-    const constraints = { audio:true,
-                          video: {
-                            width:{ideal:160},
-                            height:{ideal: 90},
-                            frameRate: {ideal:2}
-                         }};
-
-    console.log("---join room is called ---");
-
-    const join_room = true;
-    this.get_usermedia(constraints, join_room, type, event_id,  team_name );
-    */
+    
     this.join_room_execute(type, event_id,  team_name );
 
   }

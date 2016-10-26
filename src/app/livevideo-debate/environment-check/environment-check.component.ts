@@ -59,6 +59,7 @@ export class EnvironmentCheckComponent implements OnInit {
     }
     console.log("enter video call");
     this.router.navigate(['/livevideo-debate/game/', this.evnet_id]);
+    this.skyway.switch_localstream_small();
   }
 
 
