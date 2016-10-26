@@ -2,11 +2,17 @@
   <div class="team_name">{{team_name}}</div>
 
 is_my_team: {{is_my_team}}<br>
-<span *ngIf="is_my_team">
+show_leave_team: {{show_leave_team}}<br>
+show_join_team: {{show_join_team}}<br>
+show_move_to_team: {{show_move_to_team}}<br>
+<span *ngIf="show_leave_team">
   <input type="button" value="leave team" (click)="leave_team()">
 </span>
-<span *ngIf="!is_in_team && !is_my_team">
+<span *ngIf="show_join_team">
   <input type="button" value="join team" (click)="join_team()">
+</span>
+<span *ngIf="show_move_to_team">
+  <input type="button" value="move team" (click)="move_team()">
 </span>
 
 video_data {{video_data | json}}<br>

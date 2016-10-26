@@ -24,6 +24,15 @@ export class LiveDebateFirebaseService {
           .catch((err)=>{alert("fail to join please try again")}); 
   }
 
+  move_team(event_id : string,remove_teams :[string] ,join_team : string, user_id : string){
+    
+    for(var i=0; i< remove_teams.length; i++){
+      this.leave_team(event_id, remove_teams[i], user_id);
+    }
+    this.join_team(event_id, join_team, user_id);
+
+  }
+
   save_motion = function(event_id, in_motion){
 
     const event_motion_item = this.af.database.object("/event_related/event/" + event_id + "/motion/");

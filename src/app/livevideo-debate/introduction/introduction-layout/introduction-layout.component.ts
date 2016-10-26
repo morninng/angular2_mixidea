@@ -39,6 +39,7 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
   users_in_team = [];
   users_not_involved_team = [];
   is_in_team = false;
+  current_own_team = [];
 
   constructor(private user_auth : UserauthService) { }
 
@@ -57,6 +58,9 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
     console.log("deb_style", this.livevideo_obj.deb_style);
     const team_list = TEAM_STYLE_MAPPING[this.livevideo_obj.deb_style];
     console.log("team_list", team_list);
+
+    this.is_in_team = false
+    this.current_own_team.length=0;
     if(team_list){
       this.users_in_team.length=0;
       for(var i=0; i<team_list.length; i++){
@@ -66,25 +70,30 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
         if(team_member){
           for(var key in team_member){
             this.users_in_team.push(key);
+            if(this.user_auth.own_user.id == key){
+              this.is_in_team = true;
+              this.current_own_team.push(team_name);
+            }
           }
         }
       }
     }
     console.log("users_in_team", this.users_in_team);
     console.log("room_users", this.room_users);
+
     this.users_not_involved_team = 
     this.room_users.filter((user_id)=>{
       const result = this.users_in_team.indexOf(user_id)
       return result == -1;
     })
     console.log("users_not_involved_team", this.users_not_involved_team)
-
+/*
     if(this.users_in_team.indexOf(this.user_auth.own_user.id) !=-1){
       this.is_in_team = true;
     }else{
       this.is_in_team = false;
     }
-
+*/
 
   }
 

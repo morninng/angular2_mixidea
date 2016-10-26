@@ -27,7 +27,7 @@ module.exports = function (grunt) {
         },
         src: './dist',
         dest: '/public_html',
-        exclusions: ['./app/.sass-cache']
+        exclusions: ['index.html']
       }
     }
 

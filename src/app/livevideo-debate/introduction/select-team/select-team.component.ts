@@ -17,8 +17,12 @@ export class SelectTeamComponent implements OnInit, OnChanges {
   @Input() video_data;
   @Input() team_name;
   @Input() is_in_team;
+  @Input() current_own_team;
 
   is_my_team
+  show_leave_team = false;
+  show_join_team = false;
+  show_move_to_team = false;
 
   id_videourl_mapping = {};
 
@@ -41,6 +45,23 @@ export class SelectTeamComponent implements OnInit, OnChanges {
     }else{
       this.is_my_team = false;
     }
+
+    if(this.is_my_team){
+      this.show_leave_team = true;
+      this.show_join_team = false;
+      this.show_move_to_team = false;
+    }else{
+      if(this.is_in_team){
+        this.show_leave_team = false;
+        this.show_join_team = false;
+        this.show_move_to_team = true;
+      }else{
+        this.show_leave_team = false;
+        this.show_join_team = true;
+        this.show_move_to_team = false;
+      }
+    }
+
   }
 
   join_team(){
@@ -55,8 +76,15 @@ export class SelectTeamComponent implements OnInit, OnChanges {
     this.livedebate_firebase.leave_team(this.event_id,
                                        this.team_name,
                                        this.user_auth.own_user_id );
-
   }
 
+  move_team(){
+    console.log("move team", this.team_name);
+    this.livedebate_firebase.move_team(this.event_id,
+                                        this.current_own_team,
+                                       this.team_name,
+                                       this.user_auth.own_user_id );
+
+  }
 
 }
