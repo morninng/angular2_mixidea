@@ -1,0 +1,17 @@
+.c-badge {
+    display: inline-block;
+    padding: 1px 4px;
+    border-radius: 2px;
+    background-color: #333;
+    color: #FFF;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 1rem;
+
+    &.is-prop {
+        background-color: $brand-color-prop;
+    }
+
+    &.is-opp {
+        background-color: $brand-color-opp;
+    }
+}

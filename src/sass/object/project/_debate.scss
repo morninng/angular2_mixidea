@@ -1,0 +1,33 @@
+.p-debate {
+    margin-bottom: 42px;
+
+    &__date {
+        margin-bottom: 7px;
+
+        time {
+            font-family: 'Merriweather', serif;
+            color: $brand-color-light-gray;
+            font-size: 1.8rem;
+        }
+    }
+
+    &__state {
+        margin-left: 7px;
+    }
+
+    &__heading {
+        margin: 0;
+        margin-bottom: 35px;
+        font-size: 3.2rem;
+        line-height: 1.4;
+        font-weight: bold;
+        font-family: 'Merriweather', serif;
+    }
+
+    &__heading-sub {
+        font-size: .7em;
+        color: $brand-color-light-gray;
+        display: block;
+        font-weight: normal;
+    }
+}

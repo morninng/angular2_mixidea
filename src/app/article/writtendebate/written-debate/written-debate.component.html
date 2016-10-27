@@ -1,15 +1,80 @@
+<div class="row">
+    <div class="col-sm-10 offset-sm-1">
+        <nav class="c-breadcrumb">
+            <ul class="c-breadcrumb__items">
+                <li class="c-breadcrumb__item"><a href="#" class="c-breadcrumb__anchor" routerLink="/" routerLinkActive="active">top</a></li>
+                <li class="c-breadcrumb__item"><a href="#" class="c-breadcrumb__anchor" routerLink="/articlelist" routerLinkActive="active">article list</a></li>
+                <li class="c-breadcrumb__item">{{ (event_item$ | async)?.title}}</li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<section class="p-debate">
+    <div class="row">
+        <div class="col-sm-10 offset-sm-1">
+            <div class="p-debate__date">
+                <time>2016.05.12 15:00 - 15:00</time>
+                <span class="c-badge p-debate__state">OPEN</span>
+            </div>
+
+            <h1 class="p-debate__heading">{{ (event_item$ | async)?.title}}<small class="p-debate__heading-sub">event name</small></h1>
+        </div>
+    </div>
+
+    <div class="p-debate-intro">
+        <div class="row">
+            <div class="col-sm-5 offset-sm-1">
+                <section class="p-debate-intro__item">
+                    <h2 class="p-debate-intro__heading is-prop">Prop</h2>
+
+                    <ul class="p-debate-group">
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><button type="button" class="p-debate-group__member-add">+</button></li>
+                    </ul>
+
+                    <p class="p-debate-intro__body is-prop">
+                        some intro text some intro text some intro text some intro text some intro text some intro text some intro text some intro text
+                    </p>
+                </section>
+            </div>
+
+            <div class="col-sm-5">
+                <section class="p-debate-intro__item">
+                    <h2 class="p-debate-intro__heading is-opp">Opp</h2>
+
+                    <ul class="p-debate-group">
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><img class="p-debate-group__member-icon" src="http://lorempixel.com/150/150"></li>
+                        <li class="p-debate-group__member"><button type="button" class="p-debate-group__member-add">+</button></li>
+                    </ul>
+
+                    <p class="p-debate-intro__body is-prop">
+                        some intro text some intro text some intro text some intro text some intro text some intro text some intro text some intro text
+                    </p>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
+
 <div class="write-debate-container">
-
-
-
   <div class="debate_container">
     <div>
       <span class="motion"> {{ ( event_item$ | async)?.title}} </span>
     </div>
     event_id {{event_id}}<br>
     own_team {{own_team}}<br>
-    
-
+  
     <app-team-member
           [event_id]="event_id" 
           [team_members]="team_members" ></app-team-member>

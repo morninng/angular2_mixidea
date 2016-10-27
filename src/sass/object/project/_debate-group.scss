@@ -1,0 +1,44 @@
+.p-debate-group {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    @include clearfix;
+
+    &__member {
+        width: 26px;
+        height: 26px;
+        display: block;
+        margin-right: 4px;
+        margin-bottom: 4px;
+        float: left;
+    }
+
+    &__member-icon {
+        border-radius: 50%;
+        width: 100%;
+        height: auto;
+    }
+
+    &__member-add {
+        width: 26px;
+        height: 26px;
+        display: block;
+        float: left;
+        border-radius: 50%;
+        border: 1px solid $brand-color;
+        background-color: #FFF;
+        transition:
+            color 0.2s ease-out,
+            background-color 0.2s ease-out;
+        color: $brand-color;
+
+        &:hover,
+        &:active,
+        &:focus,
+        &:link,
+        &:visited {
+            background-color: $brand-color;
+            color: #FFF;
+        }
+    }
+}

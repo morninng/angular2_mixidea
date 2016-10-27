@@ -1,0 +1,45 @@
+.p-argument-header {
+    margin-bottom: 28px;
+
+    &__number {
+        display: block;
+        margin-bottom: 10px;
+        font-size: 1.8rem;
+        font-family: 'Merriweather', serif;
+        font-style: italic;
+    }
+
+    &__text-wrapper {
+        font-size: 2rem;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
+
+    &__text {
+        display: inline;
+
+        font-family: 'Merriweather', serif;
+        font-size: 2rem;
+        line-height: 1.5;
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    &.is-prop {
+        .p-argument-header__text {
+            background-color: $brand-color-prop;
+            box-shadow: 0.5em 0 0 0 $brand-color-prop, -0.5em 0 0 0 $brand-color-prop;
+            color: #FFF;
+        }
+    }
+
+    &.is-opp {
+        text-align: right;
+
+        .p-argument-header__text {
+            background-color: $brand-color-opp;
+            box-shadow: 0.5em 0 0 0 $brand-color-opp, -0.5em 0 0 0 $brand-color-opp;
+            color: #FFF;
+        }
+    }
+}

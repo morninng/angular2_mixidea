@@ -1,0 +1,25 @@
+.c-breadcrumb {
+    margin-bottom: 21px;
+
+    &__items {
+        @include clearfix;
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    &__item {
+        float: left;
+    }
+}
+
+.c-breadcrumb__items > .c-breadcrumb__item:after {
+    display: inline-block;
+    content: ">";
+    margin-left: 7px;
+    margin-right: 7px;
+}
+
+.c-breadcrumb__items > .c-breadcrumb__item:last-child:after {
+    content: '';
+}

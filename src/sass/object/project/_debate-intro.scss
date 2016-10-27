@@ -1,0 +1,30 @@
+.p-debate-intro {
+    margin-bottom: 35px;
+
+    &__heading {
+        display: inline-block;
+        margin: 0;
+        margin-bottom: 14px;
+        padding-top: 5px;
+        padding-bottom : 5px;
+        padding-left: 14px;
+        padding-right: 14px;
+        font-size: 14px;
+        line-height: 1;
+        color: #FFF;
+
+        &.is-prop {
+            background-color: $brand-color-prop;
+        }
+
+        &.is-opp {
+            background-color: $brand-color-opp;
+        }
+    }
+
+    &__body {
+        padding-top: 10px;
+        padding-bottom: 0;
+        font-family: 'Merriweather', serif;
+    }
+}

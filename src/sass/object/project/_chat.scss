@@ -1,0 +1,184 @@
+.p-chat {
+    margin-bottom: 35px;
+
+    &__body {
+        position: relative;
+        margin-right: 49px;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        padding-left: 28px;
+        padding-right: 28px;
+        border-radius: 12px;
+
+        .c-like {
+            position: absolute;
+            top: -24px;
+            right: 6px;
+        }
+    }
+
+    &__body:before {
+        content: "";
+        position: absolute;
+        top: -8px;
+        left: 27px;
+        margin-left: -9px;
+        display: block;
+        width: 0px;
+        height: 0px;
+        border-style: solid;
+        border-width: 0 7px 9px 7px;
+        z-index: 0;
+    }
+
+    &__sentense {
+        font-family: 'Merriweather', serif;
+        position: relative;
+
+        &.is-active {
+            color: $brand-color;
+        }
+    }
+
+    &__sentense-comment {
+        position: absolute;
+        right: -77px;
+        display: block;
+        z-index: 0;
+        width: 30px;
+        height: 20px;
+        border: 1px solid #DDD;
+        border-radius: 3px;
+
+        text-align: center;
+        font-weight: bold;
+        transition:
+            background-color 0.2s ease-out,
+            border-color 0.2s ease-out,
+            color 0.2s ease-out;
+
+         &:hover
+         &:active,
+         &:hover {
+            background-color: $brand-color;
+            border-color: $brand-color;
+            color: #FFF;
+            text-decoration: none;
+
+            &:before {
+                border-color: transparent $brand-color transparent transparent;
+            }
+
+            &:after {
+                border-color: transparent $brand-color transparent transparent;
+            }
+         }
+
+         &:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -5px;
+            margin-top: -4px;
+            display: block;
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 3px 5px 3px 0;
+            border-color: transparent #FFF transparent transparent;
+            transition: border-color 0.2s ease-out;
+            z-index: 0;
+         }
+
+         &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: -6px;
+            margin-top: -5px;
+            display: block;
+            width: 0px;
+            height: 0px;
+            border-style: solid;
+            border-width: 4px 6px 4px 0;
+            border-color: transparent #DDD transparent transparent;
+            transition: border-color 0.2s ease-out;
+            z-index: -1;
+         }
+    }
+
+    &.is-prop {
+        .p-chat__body {
+            background-color: $brand-color-prop-light;
+        }
+
+        .p-chat__body:before {
+            border-color: transparent transparent $brand-color-prop-light transparent;
+        }
+    }
+
+    &.is-opp {
+        .p-chat__body {
+            margin-right: 0;
+            margin-left: 49px;
+
+            .c-like {
+                right: auto;
+                left: 6px;
+            }
+        }
+
+        .p-chat__body:before {
+            border-color: transparent transparent $brand-color-opp-light transparent;
+            left: auto;
+            right: 21px;
+        }
+
+        .p-chat__sentense-comment {
+            right: auto;
+            left: -77px;
+
+            &:before {
+                left: auto;
+                right: -5px;
+                border-width: 3px 0 3px 5px;
+                border-color: transparent transparent transparent #FFF;
+            }
+
+            &:after {
+                left: auto;
+                right: -6px;
+                border-width: 4px 0 4px 6px;
+                border-color: transparent transparent transparent #DDD;
+            }
+
+            &:hover
+            &:active,
+            &:hover {
+                &:before {
+                    border-color: transparent transparent transparent $brand-color;
+                }
+
+                &:after {
+                    border-color: transparent transparent transparent $brand-color;
+                }
+             }
+        }
+
+        .p-chat-debater__icon,
+        .p-chat-debater__name {
+            float: right;
+        }
+
+        .p-chat-debater__name {
+            margin-right: 7px;
+        }
+
+        > .p-chat__body {
+            background-color: $brand-color-opp-light;
+        }
+    }
+
+    @include media-breakpoint-up(sm) {
+    }
+}

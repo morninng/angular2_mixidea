@@ -1,0 +1,75 @@
+.btn {
+    display: inline-block;
+    margin: 0;
+    padding: 9px 28px 9px;
+    border: 1px solid $brand-color;
+    border-radius: 3px;
+    background-color: $brand-color;
+    color: #FFF;
+    font-size: 1.4em;
+    transition:
+        background-color .2s ease-out,
+        border-color .2s ease-out,
+        color .2s ease-out;
+
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited,
+    &:link {
+        background-color: darken($brand-color, 10);
+    }
+
+    &.is-small {
+        padding-top: 4px;
+        padding-bottom: 4px;
+    }
+
+    &:active {
+        box-shadow: inset 0px 2px 4px 0px rgba(4, 0, 0, 0.29);
+    }
+
+    &.is-inverse {
+        background-color: transparent;
+        color: $brand-color;
+    }
+
+    &.is-inverse:hover,
+    &.is-inverse:active,
+    &.is-inverse:focus,
+    &.is-inverse:visited,
+    &.is-inverse:link {
+        background-color: $brand-color;
+        color: #FFF;
+    }
+
+    &.is-prop.is-inverse {
+        border-color: $brand-color-prop;
+        background-color: transparent;
+        color: $brand-color-prop;
+    }
+
+    &.is-prop.is-inverse:hover,
+    &.is-prop.is-inverse:active,
+    &.is-prop.is-inverse:focus,
+    &.is-prop.is-inverse:visited,
+    &.is-prop.is-inverse:link {
+        background-color: $brand-color-prop;
+        color: #FFF;
+    }
+
+    &.is-opp.is-inverse {
+        border-color: $brand-color-opp;
+        background-color: transparent;
+        color: $brand-color-opp;
+    }
+
+    &.is-opp.is-inverse:hover,
+    &.is-opp.is-inverse:active,
+    &.is-opp.is-inverse:focus,
+    &.is-opp.is-inverse:visited,
+    &.is-opp.is-inverse:link {
+        background-color: $brand-color-opp;
+        color: #FFF;
+    }
+}

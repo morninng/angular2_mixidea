@@ -1,0 +1,38 @@
+.p-chat-tool-tab {
+    text-align: center;
+    vertical-align: middle;
+
+    &__items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        margin-left: 21px;
+    }
+
+    &__item {
+        display: inline-block;
+        margin-right: 14px;
+
+        &:last-child {
+            margin-right: 21px;
+        }
+    }
+
+    &__anchor {
+        color: #bfbfbf;
+        font-size: 1.5rem;
+        line-height: 32px;
+
+        &:hover,
+        &:focus,
+        &:active,
+        &.is-active {
+            color: $brand-color;
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        text-align: left;
+        display: inline-block;
+    }
+}

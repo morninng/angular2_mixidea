@@ -1,0 +1,11 @@
+.p-chat-toolbar {
+    overflow: hidden;
+    margin-top: 4px;
+    margin-bottom: 7px;
+    background-color: #FFF;
+    border-radius: 10px;
+
+    @include media-breakpoint-up(md) {
+        border-radius: 20px;
+    }
+}

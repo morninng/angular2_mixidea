@@ -1,0 +1,13 @@
+.l-footer {
+    min-height: 56px;
+
+    background-color: $brand-color-secondary;
+    color:#FFF;
+
+    &__copyright {
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        line-height: 56px;
+    }
+}

@@ -1,0 +1,48 @@
+.p-header {
+    width: 100%;
+    background-color: $brand-color;
+
+    &__inner {
+        position: relative;
+        padding-top: 7px;
+        padding-bottom: 4px;
+        max-width: 980px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    &__logo {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        height: auto;
+    }
+
+    &__logo.is-xs {
+        width: 95px;
+    }
+
+    &__logo.is-sm {
+        display: none;
+    }
+
+    @include media-breakpoint-up(sm) {
+        position: absolute;
+        top: 0;
+        height: 140px;
+
+        &__inner {
+            padding-top: 21px;
+            padding-bottom: 0;
+        }
+
+        &__logo.is-sm {
+            display: block;
+            width: 50px;
+        }
+
+        &__logo.is-xs {
+            display: none;
+        }
+    }
+}

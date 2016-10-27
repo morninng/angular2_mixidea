@@ -1,0 +1,11 @@
+.c-icon {
+    width: 49px;
+    height: 49px;
+    border-radius: 50%;
+    vertical-align: middle;
+
+    &.is-small {
+        width: 28px;
+        height: 28px;
+    }
+}
