@@ -5,8 +5,6 @@ import { AngularFire } from 'angularfire2';
 @Injectable()
 export class LiveDebateFirebaseService {
 
-
-
   constructor(private af: AngularFire) { }
 
   join_team(event_id,team, user_id){
@@ -33,7 +31,15 @@ export class LiveDebateFirebaseService {
 
   }
 
-  save_motion = function(event_id, in_motion){
+  change_game_status(event_id : string, status : string){
+    console.log(status);
+    const item_ref = this.af.database.object('/event_related/livevideo-debate/' + event_id + "/game_status/");
+    const promise = item_ref.set(status);
+    promise.then(()=>{console.log("success to change status")})
+          .catch((err)=>{alert("fail to change status")});
+  }
+
+  save_motion(event_id, in_motion){
 
     const event_motion_item = this.af.database.object("/event_related/event/" + event_id + "/motion/");
     const game_motion_item = this.af.database.object("/event_related/livevideo-debate/" + event_id + "/motion/" );
@@ -49,9 +55,55 @@ export class LiveDebateFirebaseService {
 
   }
 
+  save_firebase_data(reference, data){
+
+    console.log(status);
+    const item_ref = this.af.database.object(reference);
+    const promise = item_ref.set(data);
+    promise.then(()=>{console.log("success to save")})
+          .catch((err)=>{console.log("fail to save")});
+          
+  }
 
 
+  set_prepdoc_intro_start_edit(event_id : string, team : string, user_id : string){
+    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/" + user_id;
+    this.save_firebase_data(reference, true);
+  }
 
+  set_prepdoc_intro_finish_edit(event_id : string, team : string, user_id : string){
+
+  }
+  
+  set_prepdoc_arg_signpost_start_edit(event_id : string, team : string, arg_num:number, user_id : string){
+
+  }
+
+  set_prepdoc_arg_signpost_finish_edit(event_id : string, team : string, arg_num:number, user_id : string){
+
+  }
+
+
+  set_prepdoc_arg_context_start_edit(event_id : string, team : string, arg_num:number,  user_id : string){
+
+  }
+
+  set_prepdoc_arg_context_finish_edit(event_id : string, team : string, arg_num:number,  user_id : string){
+
+  }
+
+
+  save_prepdoc_introduction(event_id : string, team : string, context : string){
+
+  }
+  
+  save_prepdoc_arg_signpost(event_id : string, team : string, arg_num:number, context:string){
+
+  }
+
+  save_prepdoc_arg_context(event_id : string, team : string, arg_num:number, context:string){
+
+  }
 
 
 }

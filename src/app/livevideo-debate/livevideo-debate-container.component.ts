@@ -10,6 +10,7 @@ import { UserauthService} from './../core/service/userauth.service';
 
 import {SkywayService} from './service/skyway.service';
 import {LiveVideo} from './interface-livedebate/livevideo';
+import {TEAM_STYLE_MAPPING} from './../interface/team'
 
 @Component({
   selector: 'app-livevideo-debate-container',
@@ -26,16 +27,20 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
   STATUS_REFLECTION = STATUS_REFLECTION;
   
   event_id = null;
-  livevideo_obj : LiveVideo = {
-    game_status : STATUS_INTRO,
-    deb_style: STYLE_NA,
-    participants: {},
-    motion:null
-  };
   video_data={};
   room_users = [];
+  participants_team = {};
+  participants_type = {};
+  is_in_team_myself = false;
+  current_own_team = [];
+  users_in_team = [];
+  deb_style : string;
+  motion : string;
+  team_name_list = [];
 
-  combined_subscription;
+  game_status : string;
+
+  event_item_subscription;
 
   constructor(private route: ActivatedRoute,
                private router: Router,
@@ -50,19 +55,42 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
 
     const event_item = this.af.database.object('/event_related/livevideo-debate/' + this.event_id, { preserveSnapshot: true });
 
-    const combined_src = event_item.subscribe((event_snapshot)=>{
+    this.event_item_subscription = event_item.subscribe((event_snapshot)=>{
 
-      const in_livevideo_obj = event_snapshot.val();
+      const in_livevideo_obj = event_snapshot.val() || {};
 
-      const updated_livevideo_obj : LiveVideo = {
-        game_status: in_livevideo_obj.game_status || STATUS_INTRO,
-        deb_style: in_livevideo_obj.deb_style || STYLE_NA,
-        participants: in_livevideo_obj.participants || {},
-        motion: in_livevideo_obj.motion || null,
-      };
-      this.livevideo_obj = Object.assign({}, updated_livevideo_obj);
+      this.game_status = in_livevideo_obj.game_status || STATUS_INTRO
+      this.deb_style = in_livevideo_obj.deb_style || STYLE_NA;
+      this.motion = in_livevideo_obj.motion;
+      const participants = in_livevideo_obj.participants || {};
+      this.participants_team =  participants.team || {};
+      this.participants_type =  participants.type || {};
 
-      console.log("livevideo_obj updated", this.livevideo_obj);
+  // user related calculation
+      console.log("TEAM_STYLE_MAPPING", TEAM_STYLE_MAPPING);
+      this.team_name_list = TEAM_STYLE_MAPPING[this.deb_style];
+      console.log("team_name_list", this.team_name_list);
+
+      this.is_in_team_myself = false;
+      this.current_own_team=[];
+      this.users_in_team=[];
+
+      if(this.team_name_list){
+        for(var i=0; i<this.team_name_list.length; i++){
+          const team_name = this.team_name_list[i];
+          const team_member = this.participants_team[team_name];
+          console.log("team_member", team_member);
+          if(team_member){
+            for(var key in team_member){
+              this.users_in_team.push(key);
+              if(this.user_auth.own_user.id == key){
+                this.is_in_team_myself = true;
+                this.current_own_team.push(team_name);
+              }
+            }
+          }
+        }
+      }
 
       this.change_ref.markForCheck();
     })
@@ -80,9 +108,7 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-
-    this.combined_subscription.unsubscribe();
-  
+    this.event_item_subscription.unsubscribe();
   }
 
 }

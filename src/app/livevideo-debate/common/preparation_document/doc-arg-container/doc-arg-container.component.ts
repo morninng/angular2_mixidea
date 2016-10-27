@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-doc-arg-container',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doc-arg-container.component.scss']
 })
 export class DocArgContainerComponent implements OnInit {
-
+  @Input() event_id;
   constructor() { }
 
   ngOnInit() {

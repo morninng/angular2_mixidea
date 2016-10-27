@@ -13,11 +13,11 @@ import {SkywayService} from './../../service/skyway.service';
 export class SelectTeamComponent implements OnInit, OnChanges {
 
   @Input() event_id;
-  @Input() team_member;
-  @Input() video_data;
   @Input() team_name;
-  @Input() is_in_team;
+  @Input() team_member;
   @Input() current_own_team;
+  @Input() is_in_team_myself;
+  @Input() video_data;
 
   is_my_team
   show_leave_team = false;
@@ -36,6 +36,7 @@ export class SelectTeamComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(){
+    console.log(this.team_name);
     console.log(this.team_member);
     this.team_member = this.team_member || {};
     this.video_data = this.video_data || {};
@@ -51,7 +52,7 @@ export class SelectTeamComponent implements OnInit, OnChanges {
       this.show_join_team = false;
       this.show_move_to_team = false;
     }else{
-      if(this.is_in_team){
+      if(this.is_in_team_myself){
         this.show_leave_team = false;
         this.show_join_team = false;
         this.show_move_to_team = true;
@@ -61,7 +62,6 @@ export class SelectTeamComponent implements OnInit, OnChanges {
         this.show_move_to_team = false;
       }
     }
-
   }
 
   join_team(){
@@ -84,7 +84,6 @@ export class SelectTeamComponent implements OnInit, OnChanges {
                                         this.current_own_team,
                                        this.team_name,
                                        this.user_auth.own_user_id );
-
   }
 
 }

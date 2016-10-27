@@ -1,4 +1,5 @@
 
+<app-motion [motion]="motion" [event_id]="event_id"></app-motion>
 
 <p>
   livevideo-debate-container works!<br> 
@@ -9,17 +10,23 @@
 
 <span *ngIf="event_id">
 
-<span [ngSwitch]="livevideo_obj.game_status">
+<span [ngSwitch]="game_status">
    <span *ngSwitchCase="STATUS_INTRO">
      intro
      <app-introduction-layout 
-          [livevideo_obj]="livevideo_obj" 
           [event_id]="event_id"
+          [deb_style]="deb_style"
+          [participants_team]="participants_team"
+          [participants_type]="participants_type"
+          [users_in_team]="users_in_team"
+          [is_in_team_myself]="is_in_team_myself"
+          [current_own_team]="current_own_team"
           [room_users]="room_users"
           [video_data]="video_data" ></app-introduction-layout>
    </span>
    <span *ngSwitchCase="STATUS_PREP">
-
+     <app-preparation-layout
+          [event_id]="event_id"></app-preparation-layout>
    </span>
    <span *ngSwitchCase="STATUS_DEBATE">
 

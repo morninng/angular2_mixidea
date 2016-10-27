@@ -120,7 +120,8 @@ export class SkywayService {
       const constraints = { audio:true,
                           video: {
                             width:{ideal:80},
-                            height:{ideal: 45}
+                            height:{ideal: 45},
+                            frameRate: { ideal: 2}
                           }};
     const room_join = false;
     this.get_usermedia(constraints, room_join);
