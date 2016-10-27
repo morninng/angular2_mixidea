@@ -4,6 +4,7 @@ import {STYLE_NA, STYLE_ASIAN, STYLE_BP} from './../../../interface/deb_style'
 
 import {TEAM_PROPOSITION, TEAM_GOV, TEAM_OG} from './../../../interface/team';
 
+import { AngularFire } from 'angularfire2';
 
 
 @Component({
@@ -24,12 +25,15 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
   @Input() room_users;
   @Input() video_data;
   
-  prep_team : string;
+  current_prep_team : string = null;
   audience_team : string = null;
   default_team : string;
 
+  prep_doc_subscription = null;
+  prep_doc;
 
-  constructor() { }
+
+  constructor(private af: AngularFire) { }
 
   ngOnInit() {
 
@@ -44,13 +48,35 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
         this.default_team = TEAM_OG;
       break;
     }
-
   }
 
   ngOnChanges(){
 
-    this.prep_team = this.audience_team || this.current_own_team[0] || this.default_team;
+    const prep_team = this.audience_team || this.current_own_team[0] || this.default_team;
+
+    if(this.current_prep_team != prep_team){
+
+      if(this.prep_doc_subscription){
+        this.prep_doc_subscription.unsubscribe();
+      }
+      const reference = "/event_related/livevideo-debate-prepdoc/" + this.event_id + "/" + prep_team;
+      const prep_doc_item = this.af.database.object(reference, { preserveSnapshot: true });
+      this.prep_doc_subscription
+        = prep_doc_item.subscribe((snapshot)=>{
+
+          this.prep_doc = snapshot.val();
+          console.log(this.prep_doc);
+          
+
+      })
+      this.current_prep_team = prep_team;
+    }
 
   }
 
-}
+
+
+
+  }
+
+
