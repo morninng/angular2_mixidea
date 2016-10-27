@@ -1,0 +1,32 @@
+
+
+<p>
+  livevideo-debate-container works!<br> 
+  userid:  {{user_auth.own_user.id}}
+</p>
+
+{{livevideo_obj | json}}
+
+<span *ngIf="event_id">
+
+<span [ngSwitch]="livevideo_obj.game_status">
+   <span *ngSwitchCase="STATUS_INTRO">
+     intro
+     <app-introduction-layout 
+          [livevideo_obj]="livevideo_obj" 
+          [event_id]="event_id"
+          [room_users]="room_users"
+          [video_data]="video_data" ></app-introduction-layout>
+   </span>
+   <span *ngSwitchCase="STATUS_PREP">
+
+   </span>
+   <span *ngSwitchCase="STATUS_DEBATE">
+
+   </span>
+   <span *ngSwitchCase="STATUS_REFLECTION">
+
+   </span>
+</span>
+
+</span>

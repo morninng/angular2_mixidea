@@ -10,12 +10,8 @@ import { EventlistComponent } from './eventlist/eventlist/eventlist.component'
 import {SharedModule} from './../shared/shared.module';
 import { EventcreateModalComponent } from './eventcreate-modal/eventcreate-modal.component';
 
-
 import { ModalModule,DatepickerModule, TimepickerModule } from 'ng2-bootstrap/ng2-bootstrap';
-import { EachlistOnlineDebateLivevideoComponent } from './eventlist/eachlist-online-debate-livevideo/eachlist-online-debate-livevideo.component';
-import { EachlistOnlineDebateWrittenComponent } from './eventlist/eachlist-online-debate-written/eachlist-online-debate-written.component';
-import { EachlistOnlineTournamentLivevideoComponent } from './eventlist/eachlist-online-tournament-livevideo/eachlist-online-tournament-livevideo.component';
-import { EachlistOnlineTournamentWrittenComponent } from './eventlist/eachlist-online-tournament-written/eachlist-online-tournament-written.component';
+import { EachEventlistComponent } from './eventlist/each-eventlist/each-eventlist.component';
 import { EventcontextLayoutOnlinedebateLivevideoComponent } from './eventcontext-onlinedebate-livevideo/eventcontext-layout-onlinedebate-livevideo/eventcontext-layout-onlinedebate-livevideo.component';
 import { EventcontextLayoutOnlinedebateWrittenComponent } from './eventcontext-onlinedebate-written/eventcontext-layout-onlinedebate-written/eventcontext-layout-onlinedebate-written.component';
 import { EventcontextOnlinedebateWrittenComponent } from './eventcontext-onlinedebate-written/eventcontext-onlinedebate-written/eventcontext-onlinedebate-written.component';
@@ -36,7 +32,8 @@ import { ArgSignpostComponent } from './write-record-opinion/arg-signpost/arg-si
 import { SelectWriteOrRecordComponent } from './write-record-opinion/select-write-or-record/select-write-or-record.component';
 import { RecordTranscriptContainerComponent } from './write-record-opinion/record-transcript-container/record-transcript-container.component';
 import { UpdateTranscriptComponent } from './write-record-opinion/update-transcript/update-transcript.component';
-import { EventContainerComponent } from './event-container.component'
+import { EventContainerComponent } from './event-container.component';
+import { EventcontextOnlinedebateLivevideoComponent } from './eventcontext-onlinedebate-livevideo/eventcontext-onlinedebate-livevideo/eventcontext-onlinedebate-livevideo.component'
 
 
 @NgModule({
@@ -53,10 +50,7 @@ import { EventContainerComponent } from './event-container.component'
     EventlistLayoutComponent,
     EventlistComponent,
     EventcreateModalComponent,
-    EachlistOnlineDebateLivevideoComponent,
-    EachlistOnlineDebateWrittenComponent,
-    EachlistOnlineTournamentLivevideoComponent,
-    EachlistOnlineTournamentWrittenComponent,
+    EachEventlistComponent,
     EventcontextLayoutOnlinedebateLivevideoComponent,
     EventcontextLayoutOnlinedebateWrittenComponent,
     EventcontextOnlinedebateWrittenComponent,
@@ -72,6 +66,7 @@ import { EventContainerComponent } from './event-container.component'
     RecordTranscriptContainerComponent,
     UpdateTranscriptComponent,
     EventContainerComponent,
+    EventcontextOnlinedebateLivevideoComponent,
   ],
   providers: [RecordWavService,SpeechRecognitionService,EncodeToMp3Service,EventFirebaseService ]
 })

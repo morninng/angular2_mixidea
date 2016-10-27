@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
-import { ONLINE_DEBATE_LIVEVIDEO, ONLINE_DEBATE_WRITTEN, ONLINE_TOURNAMENT_LIVEVIDEO, ONLINE_TOURNAMENT_WRITTEN}
-   from './../../event'
+
 
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
@@ -12,10 +11,6 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class EventlistComponent implements OnInit, OnDestroy {
 
-  ONLINE_DEBATE_LIVEVIDEO = ONLINE_DEBATE_LIVEVIDEO;
-  ONLINE_DEBATE_WRITTEN = ONLINE_DEBATE_WRITTEN;
-  ONLINE_TOURNAMENT_LIVEVIDEO = ONLINE_TOURNAMENT_LIVEVIDEO;
-  ONLINE_TOURNAMENT_WRITTEN = ONLINE_TOURNAMENT_WRITTEN;
 
   EventList_observable : FirebaseListObservable<any[]>;
   eventlist_subscription
@@ -39,10 +34,6 @@ export class EventlistComponent implements OnInit, OnDestroy {
 
   }
 
-  event_selected(e){
-    console.log(e);
-    this.router.navigate(['/event/eventcontext/onlinedebate_written', e.id])
-  }
 
   ngOnDestroy(){
     console.log("eventlist unsubscribe")

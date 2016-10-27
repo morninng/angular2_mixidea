@@ -1,0 +1,53 @@
+
+
+$small:  "only screen and (max-width:640px)";
+$middle: "only screen and (min-width:641px) and (max-width:959px)";
+$large:  "only screen and (min-width:960px)";
+
+$own_small:  "only screen and (max-width:639px)";
+$own_large: "only screen and (min-width:640px)";
+
+
+//$pc_right_column_width: 300px;
+$pc_center_column_width: 800px;
+$pc_left_column_width: 200px;
+
+//$pc_width:$pc_right_column_width + $pc_center_column_width + $pc_left_column_width;
+
+$pc_width:  $pc_center_column_width + $pc_left_column_width;
+
+
+
+
+
+.eventcontext_container{
+    @media #{$own_large} {
+        width:$pc_width;
+        overflow-x: scroll;
+    }
+    @media #{$own_small} {
+        width:100%;
+    }
+}
+
+
+
+.eventcontext_left{
+    @media #{$own_large} {
+        width:$pc_left_column_width;
+        display:table-cell;
+    }
+    @media #{$own_small} {
+        display:none
+    }
+}
+.eventcontext_center{
+    padding-left:10px;
+    @media #{$own_large} {
+        width:$pc_center_column_width;
+        display:table-cell;
+    }
+    @media #{$own_small}{
+        width:100%;
+    }
+}

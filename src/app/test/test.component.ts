@@ -10,7 +10,7 @@ import {ModelUserService} from './../core/service/model-user.service';
 })
 export class TestComponent implements OnInit {
 
-  constructor(private user_service : ModelUserService) { }
+  constructor(private user_model : ModelUserService) { }
 
   user_id = 'By9wCZOaxNdgyE6dNzPS0qoJ7zB2';
   user;
@@ -19,7 +19,7 @@ export class TestComponent implements OnInit {
   ngOnInit() {
 
     const user_observable =
-      this.user_service.user_model_observable.subscribe(
+      this.user_model.user_model_observable.subscribe(
         (user_model)=>{
           if(user_model[this.user_id]){
             this.user = {};
@@ -36,11 +36,11 @@ export class TestComponent implements OnInit {
   }
 
   user_test(){
-    this.user_service.add_user('By9wCZOaxNdgyE6dNzPS0qoJ7zB2');
+    this.user_model.add_user('By9wCZOaxNdgyE6dNzPS0qoJ7zB2');
   }
 
   user_test2(){
-    this.user_service.add_user('IJNA2mUYEWQD5vaMf7Q1CAHYHVv1');
+    this.user_model.add_user('IJNA2mUYEWQD5vaMf7Q1CAHYHVv1');
   }
 
 }
