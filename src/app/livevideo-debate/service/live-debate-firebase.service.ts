@@ -65,14 +65,23 @@ export class LiveDebateFirebaseService {
           
   }
 
+  remove_firebase_data(reference){
 
+    console.log(status);
+    const item_ref = this.af.database.object(reference);
+    const promise = item_ref.remove();
+    promise.then(()=>{console.log("success to remove")})
+          .catch((err)=>{console.log("fail to remove")});
+          
+  }
   set_prepdoc_intro_start_edit(event_id : string, team : string, user_id : string){
     const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/" + user_id;
     this.save_firebase_data(reference, true);
   }
 
   set_prepdoc_intro_finish_edit(event_id : string, team : string, user_id : string){
-
+    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/" + user_id;
+    this.remove_firebase_data(reference);
   }
   
   set_prepdoc_arg_signpost_start_edit(event_id : string, team : string, arg_num:number, user_id : string){

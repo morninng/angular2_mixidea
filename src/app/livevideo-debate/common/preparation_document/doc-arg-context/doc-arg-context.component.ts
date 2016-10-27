@@ -6,7 +6,10 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./doc-arg-context.component.scss']
 })
 export class DocArgContextComponent implements OnInit {
+
   @Input() event_id;
+  @Input() prep_team;
+  
   constructor() { }
 
   ngOnInit() {

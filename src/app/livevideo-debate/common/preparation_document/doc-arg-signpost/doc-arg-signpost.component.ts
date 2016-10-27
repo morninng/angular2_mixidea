@@ -6,7 +6,10 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./doc-arg-signpost.component.scss']
 })
 export class DocArgSignpostComponent implements OnInit {
+
   @Input() event_id;
+  @Input() prep_team;
+  
   constructor() { }
 
   ngOnInit() {

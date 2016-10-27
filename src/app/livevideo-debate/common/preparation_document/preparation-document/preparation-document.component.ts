@@ -9,6 +9,7 @@ export class PreparationDocumentComponent implements OnInit, Input {
 
 
   @Input() event_id;
+  @Input() prep_team;
 
   constructor() { }
 

@@ -12,7 +12,7 @@ import { UserauthService} from './../../../../core/service/userauth.service';
 export class DocIntroComponent implements OnInit, OnDestroy {
 
   @Input() event_id;
-  @Input() team_name;
+  @Input() prep_team;
 
   constructor(private livedebate_firebase: LiveDebateFirebaseService,
               private user_auth : UserauthService) { }
@@ -22,12 +22,12 @@ export class DocIntroComponent implements OnInit, OnDestroy {
 
   text_focused(){
     console.log("focused");
-    this.livedebate_firebase.set_prepdoc_intro_start_edit(this.event_id, this.team_name, this.user_auth.own_user.id);
+    this.livedebate_firebase.set_prepdoc_intro_start_edit(this.event_id, this.prep_team, this.user_auth.own_user.id);
   }
 
   text_blured(){
     console.log("blured");
-    this.livedebate_firebase.set_prepdoc_intro_finish_edit(this.event_id, this.team_name, this.user_auth.own_user.id );
+    this.livedebate_firebase.set_prepdoc_intro_finish_edit(this.event_id, this.prep_team, this.user_auth.own_user.id );
 
   }
 
