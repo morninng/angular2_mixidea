@@ -1,0 +1,28 @@
+.p-sentence-comment {
+    position: relative;
+    padding-top: 35px;
+
+    &__close {
+        position: absolute;
+        top: 14px;
+        right: 7px;
+    }
+
+    &__heading {
+        padding: 0;
+        margin: 0;
+        margin-bottom: 14px;
+        color: $brand-color;
+        font-size: 1.8rem;
+        line-height: 1;
+    }
+
+    &__post {
+        margin-bottom: 21px;
+    }
+
+    &__post-textarea {
+        width: 100%;
+        margin-bottom: 7px;
+    }
+}

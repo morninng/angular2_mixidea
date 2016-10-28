@@ -1,0 +1,46 @@
+.p-vote {
+    margin-bottom: 28px;
+
+    padding-top: 28px;
+    padding-bottom: 42px;
+
+    &__heading {
+        margin: 0;
+        margin-bottom: 35px;
+        color: $brand-color;
+        font-size: 1.8rem;
+    }
+
+    &__group {
+        text-align: center;
+    }
+
+    &__percentage {
+        display: block;
+        margin: 0;
+        padding: 0;
+        margin-bottom: 7px;
+        line-height: 1;
+        font-size: 5rem;
+    }
+
+    &__group.is-opp &__percentage {
+        color: $brand-color-opp;
+    }
+
+    &__group.is-prop &__percentage {
+        color: $brand-color-prop;
+    }
+
+    &__btn-icon {
+        margin-right: 4px;
+    }
+
+    &__comment {
+        padding-top: 28px;
+
+        .c-comment:last-child {
+            margin-bottom: 0;
+        }
+    }
+}

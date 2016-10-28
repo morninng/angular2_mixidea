@@ -1,0 +1,48 @@
+// =========================================================================
+// Variables
+// ==========================================================================
+$base-font-size: 10px;
+
+$brand-color: #0288d1;
+$brand-color-secondary: #434343;
+$brand-color-alert: #ef5350;
+$brand-color-light-gray: #999999;
+$brand-color-prop: #1ba55a;
+$brand-color-prop-light: #e2f6eb;
+$brand-color-opp: #ef5350;
+$brand-color-opp-light: #ffebee;
+
+
+
+// =========================================================================
+// Font Import
+// @FIXME import error!
+// ==========================================================================
+// @import 'https://fonts.googleapis.com/css?family=Noto+Sans:400,700';
+// @import 'https://fonts.googleapis.com/css?family=Merriweather:400,700';
+
+// =========================================================================
+// Style
+// ==========================================================================
+html {
+    font-size: $base-font-size;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+    margin: 0;
+    font-size: 1.2rem;
+    background-color: #f7f7f7;
+}
+
+a {
+    color: $brand-color;
+    text-decoration: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: darken($brand-color, 10%);
+        text-decoration: underline;
+    }
+}

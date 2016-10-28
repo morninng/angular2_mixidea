@@ -1,0 +1,60 @@
+.p-menu-account {
+    display: none;
+    position: absolute;
+    top: 28px;
+    right: 14px;
+
+    &__notify {
+        position: relative;
+        display: inline-block;
+        top: 4px;
+        margin-right: 7px;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        background-color: lighten($brand-color-secondary, 10%);
+        border-radius: 50%;
+        color: #FFF;
+        text-align: center;
+        font-size: 1.5rem;
+
+        &:hover,
+        &:focus,
+        &:active {
+            background-color: lighten($brand-color-secondary, 5%);
+            color:#FFF;
+        }
+    }
+
+    &__notify-count {
+        display: inline-block;
+        padding: 1px;
+        line-height: 1.2;
+        border-radius: 3px;
+        position: absolute;
+        top: 0;
+        right: 0;
+        font-size: .7rem;
+        background-color: $brand-color-alert;
+    }
+
+    &__icon {
+        position: relative;
+        top: 4px;
+        > img {
+            width: 41px;
+            height: 41px;
+            border: 4px solid rgba(255,255,255,.2);
+        }
+
+        &:hover {
+            > img {
+                border: 4px solid rgba(255,255,255,.1);
+            }
+        }
+    }
+
+    @include media-breakpoint-up(md) {
+        display: block;
+    }
+}

@@ -1,0 +1,19 @@
+.p-chat-tool-audio {
+    line-height: 1;
+    height: 32px;
+    vertical-align: middle;
+
+    audio {
+        display: block;
+        width: 100%;
+    }
+
+    @include media-breakpoint-up(md) {
+        display: inline-block;
+
+        audio {
+            display: inline-block;
+            width: 275px;
+        }
+    }
+}

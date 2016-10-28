@@ -1,0 +1,10 @@
+.p-general-comment {
+    margin: 0;
+
+    &__heading {
+        margin: 0;
+        margin-bottom: 21px;
+        color: $brand-color;
+        font-size: 1.8rem;
+    }
+}

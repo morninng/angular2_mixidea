@@ -1,0 +1,21 @@
+.p-main {
+    margin-left: auto;
+    margin-bottom: 42px;
+    margin-right: auto;
+    padding-top: 35px;
+    padding-bottom: 49px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 2px 3.84px 0.16px rgba(83, 83, 83, 0.29);
+    max-width: 980px;
+
+    &__full-inner {
+        &.is-inverse {
+            margin-left: -15px;
+            margin-right: -15px;
+            background-color: #EEE;
+        }
+    }
+}
+

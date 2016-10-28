@@ -1,5 +1,66 @@
-/* You can add global styles to this file, and also import other style files */
+@charset "UTF-8";
 
-.my_body_class{
-    margin:0px;
-}
+// ==========================================================================
+// Foundation
+// ==========================================================================
+
+@import 'sass/foundation/lib/bootstrap/bootstrap-grid';
+@import 'sass/foundation/base';
+
+// ==========================================================================
+// Layout
+// ==========================================================================
+
+@import 'sass/layout/header';
+@import 'sass/layout/footer';
+@import 'sass/layout/main';
+@import 'sass/layout/container';
+@import 'sass/layout/sidebar';
+@import 'sass/layout/sentence-comment';
+
+// ==========================================================================
+// Object
+// ==========================================================================
+
+// -----------------------------------------------------------------
+// Component
+// -----------------------------------------------------------------
+
+@import 'sass/object/component/like';
+@import 'sass/object/component/badge';
+@import 'sass/object/component/breadcrumb';
+@import 'sass/object/component/btn';
+@import 'sass/object/component/modal';
+@import 'sass/object/component/comment';
+@import 'sass/object/component/icon';
+@import 'sass/object/component/textarea';
+
+
+// -----------------------------------------------------------------
+// Project
+// -----------------------------------------------------------------
+
+@import 'sass/object/project/header';
+@import 'sass/object/project/menu-account';
+@import 'sass/object/project/nav-sm';
+@import 'sass/object/project/main';
+@import 'sass/object/project/debate';
+@import 'sass/object/project/debate-intro';
+@import 'sass/object/project/debate-group';
+@import 'sass/object/project/argument';
+@import 'sass/object/project/argument-header';
+@import 'sass/object/project/chat';
+@import 'sass/object/project/chat-debater';
+@import 'sass/object/project/chat-toolbar';
+@import 'sass/object/project/chat-tool-tab';
+@import 'sass/object/project/chat-tool-audio';
+@import 'sass/object/project/comment';
+@import 'sass/object/project/vote';
+@import 'sass/object/project/general-comment';
+@import 'sass/object/project/general-comment-post';
+@import 'sass/object/project/sentence-comment';
+
+
+// -----------------------------------------------------------------
+// Utility
+// -----------------------------------------------------------------

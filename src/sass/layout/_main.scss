@@ -1,0 +1,7 @@
+#main {
+    margin-top: 91px;
+
+    @include media-breakpoint-up(sm) {
+        margin-top: 105px;
+    }
+}

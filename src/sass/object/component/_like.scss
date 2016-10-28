@@ -1,0 +1,9 @@
+.c-like {
+    & &__item:first-child {
+        margin-right: 4px;
+    }
+
+    &__item {
+        color: #333;
+    }
+}

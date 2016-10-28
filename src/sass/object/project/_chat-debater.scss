@@ -1,0 +1,18 @@
+.p-chat-debater {
+    margin-bottom: 14px;
+    line-height: 48px;
+    @include clearfix;
+
+    &__icon {
+        margin-right: 4px;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        vertical-align: middle;
+    }
+
+    &__name {
+        font-family: 'Merriweather', serif;
+    }
+
+}

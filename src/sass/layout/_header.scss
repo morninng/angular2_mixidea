@@ -1,0 +1,10 @@
+#header {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+
+    @include media-breakpoint-up(sm) {
+        position: absolute;
+        z-index: 0;
+    }
+}
