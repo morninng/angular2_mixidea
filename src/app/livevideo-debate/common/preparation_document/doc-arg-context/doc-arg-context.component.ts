@@ -9,6 +9,8 @@ export class DocArgContextComponent implements OnInit {
 
   @Input() event_id;
   @Input() prep_team;
+  @Input() arg_num;
+  @Input() arg_context_doc;
   
   constructor() { }
 

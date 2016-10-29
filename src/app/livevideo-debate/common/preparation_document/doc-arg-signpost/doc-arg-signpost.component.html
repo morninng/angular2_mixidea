@@ -1,8 +1,14 @@
 
 <div>
-signpost: <input type="text" placeholder="signpost should be written here">
+signpost: 
+<textarea type="text"
+    (focus)="text_focused()" 
+    (blur)="text_blured()"
+    (keyup)="text_keyup.next()"
+    [(ngModel)]="signpost_text"
+ placeholder="signpost should be written here"></textarea>
 </div>
 
-
+{{signpost_doc | json}}
 
 

@@ -59,7 +59,7 @@ export class DocIntroComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-
+    console.log("doc intro component has been destroyed");
   }
 
 }

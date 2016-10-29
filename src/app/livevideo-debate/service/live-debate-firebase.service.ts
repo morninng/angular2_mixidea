@@ -56,22 +56,28 @@ export class LiveDebateFirebaseService {
   }
 
   save_firebase_data(reference, data){
-
-    console.log(status);
+    console.log("reference", reference);
+    console.log("data", data);
     const item_ref = this.af.database.object(reference);
     const promise = item_ref.set(data);
-    promise.then(()=>{console.log("success to save")})
-          .catch((err)=>{console.log("fail to save")});
+    promise.then(()=>{
+      console.log("success to save")})
+    .catch((err)=>{
+      console.log("fail to save")
+    });
           
   }
 
   remove_firebase_data(reference){
 
-    console.log(status);
     const item_ref = this.af.database.object(reference);
     const promise = item_ref.remove();
-    promise.then(()=>{console.log("success to remove")})
-          .catch((err)=>{console.log("fail to remove")});
+    promise.then(()=>{
+      console.log("success to remove")})
+    .catch((err)=>{
+      console.log("fail to remove"
+)
+    });
           
   }
   set_prepdoc_intro_start_edit(event_id : string, team : string, user_id : string){
@@ -85,11 +91,13 @@ export class LiveDebateFirebaseService {
   }
   
   set_prepdoc_arg_signpost_start_edit(event_id : string, team : string, arg_num:number, user_id : string){
-
+    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/argument/" + String(arg_num) +"/signpost/editor/" + user_id;
+    this.save_firebase_data(reference, true);
   }
 
   set_prepdoc_arg_signpost_finish_edit(event_id : string, team : string, arg_num:number, user_id : string){
-
+    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/argument/" + String(arg_num) +"/signpost/editor/" + user_id;
+    this.remove_firebase_data(reference);
   }
 
 
@@ -108,11 +116,12 @@ export class LiveDebateFirebaseService {
   }
   
   save_prepdoc_arg_signpost(event_id : string, team : string, arg_num:number, context:string){
-
+    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/argument/" + String(arg_num) +"/signpost/text/";
+    this.save_firebase_data(reference, context);
   }
 
   save_prepdoc_arg_context(event_id : string, team : string, arg_num:number, context:string){
-    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/arg_arr/" + String(arg_num + "/context");
+    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/argument/" + String(arg_num + "/main_context");
     this.save_firebase_data(reference, context);
   }
 

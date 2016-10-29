@@ -9,6 +9,18 @@
 
 {{arg_obj | json}}
 
+
+<span *ngFor="let num of num_arr">
+
+  <app-doc-arg-container
+    [event_id]="event_id"
+    [prep_team]="prep_team"
+    [arg]="arg_obj[num]"
+    [arg_num]="num"></app-doc-arg-container>
+
+</span>
+
+<!--
 <span *ngFor="let arg of (arg_obj | keysInObject)">
 
 
@@ -17,8 +29,10 @@
     [event_id]="event_id"
     [prep_team]="prep_team"
     [arg]="arg.value"
-    [arg_num]="arg.value.num"></app-doc-arg-container>
+    [arg_num]="arg.key"></app-doc-arg-container>
 
 </span>
+-->
+
 
 <input type="button" value="add one more argument" (click)="add_new_argument()">

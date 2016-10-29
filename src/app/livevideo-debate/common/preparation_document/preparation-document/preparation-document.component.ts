@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges,OnDestroy } from '@angular/core';
 import {LiveDebateFirebaseService} from './../../../service/live-debate-firebase.service';
 
 @Component({
@@ -6,7 +6,7 @@ import {LiveDebateFirebaseService} from './../../../service/live-debate-firebase
   templateUrl: './preparation-document.component.html',
   styleUrls: ['./preparation-document.component.scss']
 })
-export class PreparationDocumentComponent implements OnInit, Input, OnChanges {
+export class PreparationDocumentComponent implements OnInit, Input, OnChanges,OnDestroy {
 
 
   @Input() event_id;
@@ -15,6 +15,7 @@ export class PreparationDocumentComponent implements OnInit, Input, OnChanges {
   @Input() arg_obj;
 
   number_of_argument : number;
+  num_arr = [];
 
   constructor(private livedebate_firebase: LiveDebateFirebaseService) { }
 
@@ -23,9 +24,11 @@ export class PreparationDocumentComponent implements OnInit, Input, OnChanges {
 
   ngOnChanges(){
     this.number_of_argument = 0;
+    this.num_arr.length=0;
+    console.log("ng on change :praparation document " );
     for(var key in this.arg_obj){
-      this.arg_obj[key]["num"]=this.number_of_argument;
-       this.number_of_argument++;
+      this.num_arr.push(this.number_of_argument);
+      this.number_of_argument++;
     }
   }
 
@@ -35,5 +38,9 @@ export class PreparationDocumentComponent implements OnInit, Input, OnChanges {
 
   }
   
+  ngOnDestroy(){
+    console.log("preparation document is destroyed ");
+
+  }
 
 }

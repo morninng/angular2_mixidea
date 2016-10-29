@@ -6,6 +6,10 @@ import {TEAM_PROPOSITION, TEAM_GOV, TEAM_OG} from './../../../interface/team';
 
 import { AngularFire } from 'angularfire2';
 
+  interface Preparation_Document {
+    intro: any,
+    argument: any
+  }
 
 @Component({
   selector: 'app-preparation-layout',
@@ -30,10 +34,6 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
   default_team : string;
 
   prep_doc_subscription = null;
-  prep_doc = {
-    intro: {},
-    arg_arr: []
-  };
   intro_doc = {};
   arg_obj = {};
 
@@ -69,16 +69,13 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
       this.prep_doc_subscription
         = prep_doc_item.subscribe((snapshot)=>{
 
-          this.prep_doc = snapshot.val() || {};
-          console.log(this.prep_doc);
-          this.intro_doc = this.prep_doc.intro || {};
-          this.arg_obj = this.prep_doc.arg_arr || {};
-          if(!this.arg_obj["0"]){
-            this.arg_obj["0"] = {};
-          }
-          if(!this.arg_obj["1"]){
-            this.arg_obj["1"] = {};
-          }
+          const prep_doc :Preparation_Document = snapshot.val() || {};
+          console.log("preparation document subscription in preparation layout:", prep_doc);
+          this.intro_doc = Object.assign({}, prep_doc.intro);
+          this.arg_obj = Object.assign({}, prep_doc.argument);
+          this.arg_obj["0"] = this.arg_obj["0"] || {};
+          this.arg_obj["1"] = this.arg_obj["1"] || {}
+
       })
       this.current_prep_team = prep_team;
     }
