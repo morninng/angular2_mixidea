@@ -1,3 +1,13 @@
 introduction 
-<textarea type="text" (focus)="text_focused()" (blur)="text_blured()" placeholder="team stance, social background should be written here">
+<textarea type="text" 
+    (focus)="text_focused()" 
+    (blur)="text_blured()"
+    (keyup)="text_keyup.next()"
+    [(ngModel)]="intro_text"
+     placeholder="team stance, social background should be written here">
 </textarea>
+
+<span *ngFor="let editor of (editors | keysInObject)">
+    <app-user-link [user_id]="editor.key" [type]="'only_pict'"></app-user-link>
+</span>
+

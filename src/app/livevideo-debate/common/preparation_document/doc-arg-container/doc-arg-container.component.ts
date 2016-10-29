@@ -9,6 +9,8 @@ export class DocArgContainerComponent implements OnInit {
 
   @Input() event_id;
   @Input() prep_team;
+  @Input() arg;
+  @Input() arg_num;
 
   constructor() { }
 

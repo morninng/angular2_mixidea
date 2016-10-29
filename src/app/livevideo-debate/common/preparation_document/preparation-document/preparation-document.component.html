@@ -4,8 +4,16 @@
 
 <app-doc-intro
   [event_id]="event_id"
-  [prep_team]="prep_team"></app-doc-intro>
+  [prep_team]="prep_team"
+  [intro_doc]="intro_doc"></app-doc-intro>
 
-<app-doc-arg-container
-  [event_id]="event_id"
-  [prep_team]="prep_team"></app-doc-arg-container>
+
+<span *ngFor="let arg of arg_arr">
+
+  <app-doc-arg-container
+    [event_id]="event_id"
+    [prep_team]="prep_team"
+    [arg]="arg"
+    [arg_num]="arg.num"></app-doc-arg-container>
+
+</span>

@@ -103,7 +103,8 @@ export class LiveDebateFirebaseService {
 
 
   save_prepdoc_introduction(event_id : string, team : string, context : string){
-
+    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/intro/context/";
+    this.save_firebase_data(reference, context);
   }
   
   save_prepdoc_arg_signpost(event_id : string, team : string, arg_num:number, context:string){

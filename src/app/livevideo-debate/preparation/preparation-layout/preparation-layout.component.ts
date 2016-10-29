@@ -30,7 +30,12 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
   default_team : string;
 
   prep_doc_subscription = null;
-  prep_doc;
+  prep_doc = {
+    intro: {},
+    arg_arr: []
+  };
+  intro_doc = {};
+  arg_arr = [];
 
 
   constructor(private af: AngularFire) { }
@@ -64,9 +69,17 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
       this.prep_doc_subscription
         = prep_doc_item.subscribe((snapshot)=>{
 
-          this.prep_doc = snapshot.val();
+          this.prep_doc = snapshot.val() || {};
           console.log(this.prep_doc);
-          
+          this.intro_doc = this.prep_doc.intro || {};
+          this.arg_arr = this.prep_doc.arg_arr || [];
+          if(!this.arg_arr[0]){
+            this.arg_arr[0] = {};
+          }
+          if(!this.arg_arr[1]){
+            this.arg_arr[1] = {};
+          }
+
 
       })
       this.current_prep_team = prep_team;
