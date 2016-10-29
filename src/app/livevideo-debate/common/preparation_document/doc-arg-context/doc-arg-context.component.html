@@ -13,4 +13,8 @@
 {{arg_context_text | json}}
 </div>
 
+<span *ngFor="let editor of (editors | keysInObject)">
+    <app-user-link [user_id]="editor.key" [type]="'only_pict'"></app-user-link>
+</span>
+
 

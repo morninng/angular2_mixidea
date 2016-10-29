@@ -1,14 +1,18 @@
 
 <div>
 signpost: 
-<textarea type="text"
+<input type="text"
     (focus)="text_focused()" 
     (blur)="text_blured()"
     (keyup)="text_keyup.next()"
     [(ngModel)]="signpost_text"
- placeholder="signpost should be written here"></textarea>
+ placeholder="signpost should be written here">
 </div>
 
 {{signpost_doc | json}}
 
+
+<span *ngFor="let editor of (editors | keysInObject)">
+    <app-user-link [user_id]="editor.key" [type]="'only_pict'"></app-user-link>
+</span>
 
