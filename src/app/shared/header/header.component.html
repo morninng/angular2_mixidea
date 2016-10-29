@@ -4,6 +4,8 @@
         <img class="p-header__logo is-xs" src="./assets/images/common/logo_small.png" alt="MIXIDEA">
 
         <div class="p-menu-account">
+
+          <span *ngIf="own_user.loggedIn">
             <a class="p-menu-account__notify" href="#">
                 <span class="p-menu-account__notify-count">99+</span>
                 <i class="fa fa-users p-menu-account__notify-icon"></i>
@@ -11,39 +13,48 @@
             <a class="p-menu-account__notify" href="#">
                 <i class="fa fa-comments p-menu-account__notify-icon"></i>
             </a>
-            <a class="p-menu-account__icon" href="#"><img src="http://lorempixel.com/150/150" alt="" class="c-icon p-header-account__icon"></a>
+            <a class="p-menu-account__icon" href="#"><img src="{{own_user.pict_src}}" alt="" class="c-icon p-header-account__icon"></a>
+          </span>
+          <span *ngIf="!own_user.loggedIn">
+            <input type="button" (click)="show_login_modal()" value="login">
+          </span>
+
         </div>
     </div>
 
     <nav class="p-nav-sm">
         <ul class="p-nav-sm__items">
             <li class="p-nav-sm__item">
-                <a href="" class="p-nav-sm__anchor is-active">
+                <a routerLink="/event/eventlist" routerLinkActive="is-active" class="p-nav-sm__anchor">
                     <i class="fa fa-users"></i>
                 </a>
             </li>
 
             <li class="p-nav-sm__item">
-                <a href="" class="p-nav-sm__anchor">
+                <a routerLink="/article/articlelist" routerLinkActive="is-active" class="p-nav-sm__anchor">
                     <i class="fa fa-users"></i>
                 </a>
             </li>
 
             <li class="p-nav-sm__item">
-                <a href="" class="p-nav-sm__anchor">
+                <a class="p-nav-sm__anchor">
                     <i class="fa fa-comments"></i>
                 </a>
             </li>
 
             <li class="p-nav-sm__item">
-                <a href="" class="p-nav-sm__anchor">
+                <a (click)="open_mobile_navigation()"  class="p-nav-sm__anchor">
                     <i class="fa fa-bars"></i>
                 </a>
             </li>
         </ul>
     </nav>
 </header>
+<div id="mobile_left_menu">
+  <app-mobile-left-menu *ngIf="mobile_menu_oepn"></app-mobile-left-menu>
 
+
+</div>
 
 <!--<header id="mixidea_header">
 <div class="header_container">
@@ -92,7 +103,7 @@
 
           </ul>
       </span>
-
+ 
       <span *ngIf="!own_user.loggedIn">
         <div class="header_right_login" >
           <button (click)="show_login_modal()" class="btn btn-success">login</button>
