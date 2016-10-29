@@ -1,4 +1,4 @@
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit,Input, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-doc-arg-container',
@@ -11,10 +11,16 @@ export class DocArgContainerComponent implements OnInit {
   @Input() prep_team;
   @Input() arg;
   @Input() arg_num;
+  argument_number : number = 0;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(){
+    this.argument_number = Number(this.arg_num) + 1;
+
   }
 
 }

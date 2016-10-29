@@ -43,9 +43,7 @@ export class DocIntroComponent implements OnInit, OnDestroy {
 
   }
 
-  test_text_keyup(){
-    console.log("keyup event");
-  }
+
 
 
 

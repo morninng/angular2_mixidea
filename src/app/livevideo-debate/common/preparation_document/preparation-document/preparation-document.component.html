@@ -7,13 +7,18 @@
   [prep_team]="prep_team"
   [intro_doc]="intro_doc"></app-doc-intro>
 
+{{arg_obj | json}}
 
-<span *ngFor="let arg of arg_arr">
+<span *ngFor="let arg of (arg_obj | keysInObject)">
 
+
+{{arg.value | json}}
   <app-doc-arg-container
     [event_id]="event_id"
     [prep_team]="prep_team"
-    [arg]="arg"
-    [arg_num]="arg.num"></app-doc-arg-container>
+    [arg]="arg.value"
+    [arg_num]="arg.value.num"></app-doc-arg-container>
 
 </span>
+
+<input type="button" value="add one more argument" (click)="add_new_argument()">
