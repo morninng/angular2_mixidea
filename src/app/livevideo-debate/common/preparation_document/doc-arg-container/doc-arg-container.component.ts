@@ -24,7 +24,7 @@ export class DocArgContainerComponent implements OnInit,OnDestroy {
     this.argument_number = Number(this.arg_num) + 1;
     const argument = this.arg|| {}
     this.signpost_doc = argument.signpost || {};
-    this.arg_context_doc = argument.arg_context || {};
+    this.arg_context_doc = argument.main_context || {};
 
   }
 

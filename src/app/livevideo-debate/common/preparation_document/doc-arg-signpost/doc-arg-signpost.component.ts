@@ -40,10 +40,8 @@ export class DocArgSignpostComponent implements OnInit, OnDestroy {
   ngOnChanges(){
     this.editors = this.signpost_doc.editor || [];
     console.log("signpost_component ng on changes  arg_num", this.arg_num);
-    this.signpost_text = this.signpost_doc.text || "";
- 
+    this.signpost_text = this.signpost_doc.text || ""; 
   }
-
 
 
   text_focused(){
@@ -54,7 +52,6 @@ export class DocArgSignpostComponent implements OnInit, OnDestroy {
   text_blured(){
     console.log("blured");
     this.livedebate_firebase.set_prepdoc_arg_signpost_finish_edit(this.event_id, this.prep_team,this.arg_num, this.user_auth.own_user.id );
-
   }
 
   ngOnDestroy(){

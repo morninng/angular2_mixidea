@@ -102,11 +102,13 @@ export class LiveDebateFirebaseService {
 
 
   set_prepdoc_arg_context_start_edit(event_id : string, team : string, arg_num:number,  user_id : string){
-
+    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/argument/" + String(arg_num) +"/main_context/editor/" + user_id;
+    this.save_firebase_data(reference, true);
   }
 
   set_prepdoc_arg_context_finish_edit(event_id : string, team : string, arg_num:number,  user_id : string){
-
+    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/argument/" + String(arg_num) +"/main_context/editor/" + user_id;
+    this.remove_firebase_data(reference);
   }
 
 
@@ -121,7 +123,7 @@ export class LiveDebateFirebaseService {
   }
 
   save_prepdoc_arg_context(event_id : string, team : string, arg_num:number, context:string){
-    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/argument/" + String(arg_num + "/main_context");
+    const reference = "/event_related/livevideo-debate-prepdoc/" + event_id + "/" + team + "/argument/" + String(arg_num) + "/main_context/text";
     this.save_firebase_data(reference, context);
   }
 
