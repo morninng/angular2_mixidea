@@ -6,7 +6,6 @@
         [type]="'chat-debater'" >
     </app-user-link>
 
-    <div class="p-chat-tool-audio" class="audio_container"></div>
 <!--
 
 <div [ngClass]="{'prop_opinion':is_opinion_prop, 'opp_opinion': is_opinion_opp}" >
@@ -21,30 +20,54 @@
 
 <app-user-link [user_id]="writer" [type]="'full_parallel'" ></app-user-link>
 -->
+    <div class="p-chat__body">
+
+        <div class="c-like">
+            <a href="" class="c-like__item"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 1</a>
+            <a href="" class="c-like__item"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 1</a>
+        </div>
+
+        
+
+        <div class="p-chat-toolbar">
+            <nav class="p-chat-tool-tab">
+                <ul class="p-chat-tool-tab__items">
+                    <li class="p-chat-tool-tab__item"><a href="#" class="p-chat-tool-tab__anchor"><i class="fa fa-pencil" aria-hidden="true"></i></a></li>
+                    <li class="p-chat-tool-tab__item"><a href="#" class="p-chat-tool-tab__anchor is-active"><i class="fa fa-microphone" aria-hidden="true"></i></a></li>
+                </ul>
+            </nav>
+            <div class="p-chat-tool-audio" class="audio_container"></div>
+        </div>
 
 
-<app-transcription [event_id] = "event_id"
-                   [argument_id]="argument_id"
-                   [opinion_id]="opinion_id"
-                   [transcription_arr]="opinion.transcript"
-                   [audio_play_time]="audio_play_time"
-                   [comment_sentence_transcript]="comment_sentence_transcript"
-                   [category]="category"
-                   [own_team]="own_team"
-                   (onPlayFromHere)="onPlayFromHere($event)" ></app-transcription>
 
-<app-written [event_id] = "event_id"
-             [argument_id]="argument_id"
-             [opinion_id]="opinion_id"
-             [content_arr]="opinion.content_arr"
-             [comment_sentence_written]="comment_sentence_written"
-             [category]="category"
-             [own_team]="own_team" ></app-written>
 
-<span *ngIf="opinion_status == 'checking'">
-    checking
-    <input type="button" (click)="publish_opinion()" value="publish">
-</span>
+        <app-transcription [event_id] = "event_id"
+                        [argument_id]="argument_id"
+                        [opinion_id]="opinion_id"
+                        [transcription_arr]="opinion.transcript"
+                        [audio_play_time]="audio_play_time"
+                        [comment_sentence_transcript]="comment_sentence_transcript"
+                        [category]="category"
+                        [own_team]="own_team"
+                        (onPlayFromHere)="onPlayFromHere($event)" ></app-transcription>
+
+        <app-written [event_id] = "event_id"
+                    [argument_id]="argument_id"
+                    [opinion_id]="opinion_id"
+                    [content_arr]="opinion.content_arr"
+                    [comment_sentence_written]="comment_sentence_written"
+                    [category]="category"
+                    [own_team]="own_team" ></app-written>
+
+        <span *ngIf="opinion_status == 'checking'">
+            checking
+            <input type="button" (click)="publish_opinion()" value="publish">
+        </span>
+
+
+    </div>
+
 
 
 </div>

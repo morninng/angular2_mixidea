@@ -1,3 +1,5 @@
+
+
 <p class="p-chat__sentense" [ngClass]="{'is-active': under_playing}">
   <a class="p-chat__sentense-comment" (click)="open_sentence_comment()">
     <span *ngIf="comment_num">
@@ -7,11 +9,10 @@
       +
     </span>
   </a>
-  {{transcript.content}}
-    <span *ngIf="sentence_num !== 0" class="play_from_here">
-        <input type="button" value="play_from_here" (click)="play_from_here()">
-    </span>
+  <span (click)="play_from_here()" >{{transcript.content}}</span>
 </p>
+
+
 
 <!--
 

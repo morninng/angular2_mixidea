@@ -1,22 +1,15 @@
-<div class="p-chat__body">
 
-  <div class="c-like">
-    <a href="" class="c-like__item"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 1</a>
-    <a href="" class="c-like__item"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 1</a>
-  </div>
+<span *ngFor="let transcript of converted_transcription_arr">
+  <app-sentence-transcription 
+          [transcript]="transcript"
+          [event_id]="event_id"
+          [argument_id]="argument_id"
+          [opinion_id]="opinion_id"
+          [comment_sentence_transcript]="comment_sentence_transcript[transcript.num]"
+          [audio_play_time]="audio_play_time"
+          (onPlayFromHere)="on_play_from_here($event)" ></app-sentence-transcription>
+</span>
 
-  <span *ngFor="let transcript of converted_transcription_arr">
-    <app-sentence-transcription 
-            [transcript]="transcript"
-            [event_id]="event_id"
-            [argument_id]="argument_id"
-            [opinion_id]="opinion_id"
-            [comment_sentence_transcript]="comment_sentence_transcript[transcript.num]"
-            [audio_play_time]="audio_play_time"
-            (onPlayFromHere)="on_play_from_here($event)" ></app-sentence-transcription>
-  </span>
-
-</div>
 
 <div *ngIf="converted_transcription_arr.length>0">
   <input type="button" (click)="update_audio_transcript()" value="update speech and transcription">
