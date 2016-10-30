@@ -28,7 +28,11 @@
     </div>
   </span>
 
-
+  <span *ngSwitchCase="'only_img'">
+    <span *ngIf="user">
+      <img class="p-debate-group__member-icon" src={{user.pict_src}}>
+    </span>
+  </span>
 
 
 </span>

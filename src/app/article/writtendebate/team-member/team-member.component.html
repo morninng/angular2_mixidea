@@ -1,27 +1,55 @@
-<div class="team_member_container">
-  <div class="each_team">
-    proposition
-
-    <span *ngFor="let member of proposition_members | keysInObject">
-      <app-user-link 
-            [user_id]="member.key" 
-            [type]="'only_pict'" >
-      </app-user-link>
-    </span>
-    <input type="button" value="join as proposition" (click)="join_as_proposition()">
-
-  </div>
-  <div class="each_team">
-    opposition
-
-    <span *ngFor="let member of opposition_members | keysInObject">
-      <app-user-link 
-            [user_id]="member.key" 
-            [type]="'only_pict'" >
-      </app-user-link>
-    </span>
-    <input type="button" value="join as opposition" (click)="join_as_opposition()">
 
 
-  </div>
+<div class="p-debate-intro">
+    <div class="row">
+        <div class="col-sm-5 offset-sm-1">
+            <section class="p-debate-intro__item">
+                <h2 class="p-debate-intro__heading is-prop">Prop</h2>
+
+                <ul class="p-debate-group">
+
+                    <span *ngFor="let member of proposition_members | keysInObject">
+                      <li class="p-debate-group__member">
+                        <app-user-link 
+                              [user_id]="member.key" 
+                              [type]="'only_img'" >
+                        </app-user-link>
+                      </li>
+                    </span>
+
+                    <li class="p-debate-group__member">
+                      <button type="button" (click)="join_as_proposition()" class="p-debate-group__member-add" >+</button>
+                    </li>
+                </ul>
+
+                <p class="p-debate-intro__body is-prop">
+                    some intro text some intro text some intro text some intro text some intro text some intro text some intro text some intro text
+                </p>
+            </section>
+        </div>
+
+        <div class="col-sm-5">
+            <section class="p-debate-intro__item">
+                <h2 class="p-debate-intro__heading is-opp">Opp</h2>
+
+                <ul class="p-debate-group">
+                  <span *ngFor="let member of opposition_members | keysInObject">
+                    <li class="p-debate-group__member">
+                      <app-user-link 
+                            [user_id]="member.key" 
+                            [type]="'only_img'" >
+                      </app-user-link>
+                    </li>
+                  </span>
+                  <li class="p-debate-group__member">
+                    <button type="button" (click)="join_as_opposition()" class="p-debate-group__member-add" >+</button>
+                  </li>
+                </ul>
+
+                <p class="p-debate-intro__body is-prop">
+                    some intro text some intro text some intro text some intro text some intro text some intro text some intro text some intro text
+                </p>
+            </section>
+        </div>
+    </div>
 </div>

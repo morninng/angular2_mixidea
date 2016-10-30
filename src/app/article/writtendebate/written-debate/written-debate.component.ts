@@ -34,7 +34,11 @@ export class WrittenDebateComponent implements OnInit {
   comment_sentence_written : any;
   comment_sentence_transcription : any;
   team_members
- 
+
+  event_state
+  event_title
+  event_start_time
+  event_duration
 
   constructor(private route: ActivatedRoute,
                private af: AngularFire, 
@@ -85,7 +89,30 @@ export class WrittenDebateComponent implements OnInit {
       this.combined_src_subscription = combined_src.subscribe();
 
 
-      this.event_item$ = this.af.database.object('/event_related/event/' + this.event_id);
+      this.event_item$ = this.af.database.object('/event_related/event/' + this.event_id,  {preserveSnapshot: true });
+      this.event_item$.subscribe(snapshot => {
+
+        const event_data = snapshot.val() || {};
+        const current_time = new Date();
+        const current_time_val = current_time.getTime();
+
+        if( event_data.date_time_start  && current_time_val < event_data.date_time_start){
+          this.event_state = "not yet started";
+        }else if ( event_data.date_time_finish && current_time_val < event_data.date_time_finish){
+          this.event_state = "on going";
+        }else if ( event_data.date_time_finish < current_time_val ){
+          this.event_state = "closed";
+        }
+
+        this.event_title = event_data.title;
+        this.event_start_time = event_data.date_time_start;
+        this.event_duration = event_data.duration;
+
+
+
+      });
+
+
     });
 
 /*
