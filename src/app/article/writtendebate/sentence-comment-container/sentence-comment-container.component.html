@@ -1,4 +1,57 @@
+sentence comment area
+<span *ngIf="is_open">
+    sentence comment opened
+    <section id="sentence-comment" class="p-sentence-comment">
+        <a href="#" class="p-sentence-comment__close"><img src="/image/article/sentence-comment-close.png" alt="close" width="25"></a>
 
+        <h2 class="p-sentence-comment__heading">Comment</h2>
+
+        <div class="p-sentence-comment__post">
+            <textarea class="c-textarea p-sentence-comment__post-textarea" #comment></textarea>
+            <button type="button" class="btn is-inverse" (click)="submit_comment(comment.value)">Post</button>
+        </div>
+
+  <span *ngFor="let each_comment_sentence of (comment_sentence | keysInObject)">
+    <app-sentence-comment-each [each_comment_sentence]="each_comment_sentence.value"></app-sentence-comment-each>
+  </span>
+
+<!--
+        <div class="c-comment is-small">
+            <div class="c-like c-comment__like">
+                <a href="" class="c-like__item"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 1</a>
+                <a href="" class="c-like__item"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 1</a>
+            </div>
+
+            <img src="" alt="" class="c-comment__icon c-icon">
+            <span class="c-comment__name">test</span>
+
+            <p class="c-comment__body">
+                some text. some text.some text.some text.some text.some text.some text.some text. some text.some text.some text.some text.some text.some text.some text. some text.some text.some text.some text.some text.some text.some text. some text.some text.some text.some text.some text.some text.
+                <br>
+                some text. some text.some text.some text.some text.some text.some text.
+            </p>
+        </div>
+
+        <div class="c-comment is-small">
+            <div class="c-like c-comment__like">
+                <a href="" class="c-like__item"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 1</a>
+                <a href="" class="c-like__item"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 1</a>
+            </div>
+
+            <img src="" alt="" class="c-comment__icon c-icon">
+            <span class="c-comment__name">test</span>
+
+            <p class="c-comment__body">
+                some text. some text.some text.some text.some text.some text.some text.some text. some text.some text.some text.some text.some text.some text.some text. some text.some text.some text.some text.some text.some text.some text. some text.some text.some text.some text.some text.some text.
+                <br>
+                some text. some text.some text.some text.some text.some text.some text.
+            </p>
+        </div>
+        -->
+    </section>
+
+</span>
+<!--
 <span *ngIf="is_open">
   sentence comment area
   <input type="text" placeholder="put a comment here" #comment>
@@ -11,3 +64,4 @@
 
 
 </span>
+-->

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit,OnDestroy, ElementRef,ChangeDetectionStrategy,ChangeDetectorRef } from '@angular/core';
 import {CommentService} from './../../service/comment.service'
 
 import { UserauthService} from './../../../core/service/userauth.service';
@@ -10,7 +10,7 @@ import { UserauthService} from './../../../core/service/userauth.service';
   host: {'(document:click)': 'onClick($event)'}
  // changeDetection: ChangeDetectionStrategy.OnPush //this component is mutable
 })
-export class SentenceCommentContainerComponent implements OnInit {
+export class SentenceCommentContainerComponent implements OnInit,OnDestroy {
 
   open_subscription
   is_open = false;
@@ -52,6 +52,10 @@ export class SentenceCommentContainerComponent implements OnInit {
     }
     console.log(text);
     this.comment_service.put_sentence_comment(text)
+  }
+
+  ngOnDestroy(){
+    console.log("sentence comment container is destroyed");
   }
 
 }

@@ -41,6 +41,13 @@
     </div>
   </span>
 
+  <span *ngSwitchCase="'sentence_commentor'">
+    <span *ngIf="user">
+      <img src={{user.pict_src}} alt="" class="c-comment__icon c-icon">
+      <span class="c-comment__name">{{user.full_name}}</span>
+    </span>
+  </span>
+
 
 
 </span>
