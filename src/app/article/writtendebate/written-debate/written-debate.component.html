@@ -29,16 +29,9 @@
           [team_members]="team_members" ></app-team-member>
 
 
-</section>
-
-<div class="write-debate-container">
-  <div class="debate_container">
-
-    event_id {{event_id}}<br>
-    own_team {{own_team}}<br>
+<div class="row">
+  <div class="col-sm-10 offset-sm-1">
   
-
-
     <span *ngFor="let argument of (written_debate_data?.arg_status | keysInObject)">
 
       <app-argument
@@ -54,12 +47,18 @@
 
     <br>
     <input type="button" value="add new argument" (click)="add_new_argument()">
+  </div>
+</div>
+
+
+
+
+
+
+</section>
 
     <app-vote></app-vote>
     <app-general-comment></app-general-comment>
-
-  </div>
   <div class="sentence_comment_container">
     <app-sentence-comment-container></app-sentence-comment-container>
   </div>
-</div>

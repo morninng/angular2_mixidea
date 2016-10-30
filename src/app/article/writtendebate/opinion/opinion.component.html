@@ -1,7 +1,13 @@
 
-<div class="opinion_container">
+<div class="p-chat" [ngClass]="{'is-prop':is_opinion_prop, 'is-opp': is_opinion_opp}" >
 
+    <app-user-link 
+        [user_id]="writer" 
+        [type]="'chat-debater'" >
+    </app-user-link>
 
+    <div class="p-chat-tool-audio" class="audio_container"></div>
+<!--
 
 <div [ngClass]="{'prop_opinion':is_opinion_prop, 'opp_opinion': is_opinion_opp}" >
 
@@ -14,6 +20,8 @@
 </div>
 
 <app-user-link [user_id]="writer" [type]="'full_parallel'" ></app-user-link>
+-->
+
 
 <app-transcription [event_id] = "event_id"
                    [argument_id]="argument_id"

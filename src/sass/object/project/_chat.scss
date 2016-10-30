@@ -119,6 +119,7 @@
 
     &.is-opp {
         .p-chat__body {
+            background-color: $brand-color-opp-light;
             margin-right: 0;
             margin-left: 49px;
 
@@ -174,9 +175,7 @@
             margin-right: 7px;
         }
 
-        > .p-chat__body {
-            background-color: $brand-color-opp-light;
-        }
+
     }
 
     @include media-breakpoint-up(sm) {

@@ -108,7 +108,7 @@ export class WrittenDebateComponent implements OnInit {
         this.event_start_time = event_data.date_time_start;
         this.event_duration = event_data.duration;
 
-
+        this.change_ref.markForCheck();
 
       });
 

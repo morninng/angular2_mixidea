@@ -18,7 +18,7 @@
       </div>
     </div>
   </span>
-
+ 
 
   <span *ngSwitchCase="'only_short_name'">
     <div class="only_short_name">
@@ -33,6 +33,14 @@
       <img class="p-debate-group__member-icon" src={{user.pict_src}}>
     </span>
   </span>
+
+  <span *ngSwitchCase="'chat-debater'">
+    <div class="p-chat-debater" *ngIf="user">
+      <img class="p-chat-debater__icon" src={{user.pict_src}}>
+      <span class="p-chat-debater__name">{{user.full_name}}</span>
+    </div>
+  </span>
+
 
 
 </span>

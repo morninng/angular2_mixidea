@@ -1,5 +1,14 @@
-<div class="argument_container">
+<section class="p-argument">
+  <div class="p-argument-header" [ngClass]="{'is-prop':is_arg_prop, 'is-opp': is_arg_opp}" >
+    <small class="p-argument-header__number">{{argument_team}} #1</small>
+    <div class="p-argument-header__text-wrapper">
+        <h2 class="p-argument-header__text">
+          {{partial_opinion[main_status.opinion_id].sign_post}}
+        </h2>
+    </div>
+  </div>
 
+<!--
   <div [ngClass]="{'prop_arg':is_arg_prop, 'opp_arg': is_arg_opp}" >
 
     <p class="sign_post">
@@ -12,8 +21,8 @@
 
      <br><br>main_status {{main_status | json}}
   </div>
-
-
+-->
+  main
   <app-opinion 
       [event_id] = "event_id"
       [argument_id]="argument_id"
@@ -31,7 +40,7 @@
       </app-opinion>
 
   <span *ngFor="let subsequent_status_arr of subsequent_status | keysInObject">
-    <br><br>
+    <br>subsequent<br>
     <app-opinion 
       [event_id] = "event_id"
       [argument_id]="argument_id"
@@ -51,4 +60,4 @@
 
   <input type="button" value="add new point in this argument"  (click)="add_new_opinion()">
 
-</div>
+</section>

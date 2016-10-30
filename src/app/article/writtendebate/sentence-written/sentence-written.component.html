@@ -1,3 +1,17 @@
+<p class="p-chat__sentense">
+  <a class="p-chat__sentense-comment" (click)="open_sentence_comment()">
+    <span *ngIf="comment_num">
+      {{comment_num}}
+    </span>
+    <span *ngIf="!comment_num">
+      +
+    </span>
+  </a>
+  {{content.content}}
+</p>
+
+
+<!--
 <div class="sentence_written">
   sentence-written num {{sentence_num}}
 
@@ -12,3 +26,4 @@
   comment_sentence_written !!
   {{comment_sentence_written | json}}
 </div>
+-->

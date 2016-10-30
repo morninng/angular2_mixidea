@@ -1,3 +1,18 @@
+<p class="p-chat__sentense">
+  <a class="p-chat__sentense-comment" [ngClass]="{'is-active': under_playing}"
+   (click)="open_sentence_comment()">
+    <span *ngIf="comment_num">
+      {{comment_num}}
+    </span>
+    <span *ngIf="!comment_num">
+      +
+    </span>
+  </a>
+  {{transcript.content}}
+</p>
+
+<!--
+
 <div class="transcript_sentence">
 
     <div class="transcript_sentence_main">
@@ -24,4 +39,4 @@
     comment: {{comment_sentence_transcript | json}}
 </div>
 
-
+-->

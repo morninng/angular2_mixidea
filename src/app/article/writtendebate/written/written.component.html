@@ -1,15 +1,22 @@
-<p>written
-</p>
+<div class="p-chat__body">
 
-<span *ngFor="let content of content_arr_with_num">
-  <app-sentence-written [content]="content"
+  <div class="c-like">
+    <a href="" class="c-like__item"><i class="fa fa-thumbs-o-up" aria-hidden="true"></i> 1</a>
+    <a href="" class="c-like__item"><i class="fa fa-thumbs-down" aria-hidden="true"></i> 1</a>
+  </div>
+
+
+  <span *ngFor="let content of content_arr_with_num">
+    <app-sentence-written [content]="content"
                         [event_id]="event_id"
                         [argument_id]="argument_id"
                         [opinion_id]="opinion_id"
                         [comment_sentence_written]="comment_sentence_written[content.num]">
-  </app-sentence-written>
-</span>
+    </app-sentence-written>
+  </span>
 
-<span *ngIf="content_arr_with_num.length > 0">
-  <input type="button" (click)="update_written_opinion()" value="update writing" >
-</span>
+  <span *ngIf="content_arr_with_num.length > 0">
+    <input type="button" (click)="update_written_opinion()" value="update writing" >
+  </span>
+
+</div>
