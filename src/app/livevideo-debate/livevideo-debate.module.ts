@@ -24,6 +24,7 @@ import { DocArgContainerComponent } from './common/preparation_document/doc-arg-
 import { DocArgSignpostComponent } from './common/preparation_document/doc-arg-signpost/doc-arg-signpost.component';
 import { DocArgContextComponent } from './common/preparation_document/doc-arg-context/doc-arg-context.component';
 import { PreparationLayoutComponent } from './preparation/preparation-layout/preparation-layout.component';
+import { DebateLayoutComponent } from './debate/debate-layout/debate-layout.component';
 
 @NgModule({
   imports: [
@@ -47,7 +48,8 @@ import { PreparationLayoutComponent } from './preparation/preparation-layout/pre
     DocArgContainerComponent,
     DocArgSignpostComponent,
     DocArgContextComponent,
-    PreparationLayoutComponent
+    PreparationLayoutComponent,
+    DebateLayoutComponent
   ],
   providers: [LiveDebateFirebaseService, SkywayService]
 })

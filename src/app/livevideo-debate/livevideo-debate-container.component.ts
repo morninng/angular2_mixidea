@@ -37,6 +37,9 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
   deb_style : string;
   motion : string;
   team_name_list = [];
+  prep_start_time = 0;
+  prep_duration = 0
+
 
   game_status : string;
 
@@ -91,6 +94,11 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
           }
         }
       }
+
+// preparation dependent prameter
+      this.prep_start_time = in_livevideo_obj.prep_start_time;
+      this.prep_duration = in_livevideo_obj.prep_duration;
+
 
       this.change_ref.markForCheck();
     })

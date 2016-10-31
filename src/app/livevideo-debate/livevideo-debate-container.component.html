@@ -34,10 +34,12 @@
           [is_in_team_myself]="is_in_team_myself"
           [current_own_team]="current_own_team"
           [room_users]="room_users"
-          [video_data]="video_data"></app-preparation-layout>
+          [video_data]="video_data"
+          [prep_start_time]="prep_start_time"
+          [prep_duration]="prep_duration"></app-preparation-layout>
    </span>
    <span *ngSwitchCase="STATUS_DEBATE">
-
+     <app-debate-layout></app-debate-layout>
    </span>
    <span *ngSwitchCase="STATUS_REFLECTION">
 

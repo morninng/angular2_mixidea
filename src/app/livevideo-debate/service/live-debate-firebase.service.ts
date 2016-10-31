@@ -127,5 +127,17 @@ export class LiveDebateFirebaseService {
     this.save_firebase_data(reference, context);
   }
 
+  set_prep_duration(event_id : string, duration: number){
+    const reference = '/event_related/livevideo-debate/' + event_id + '/prep_duration';
+    this.save_firebase_data(reference, duration);
+  }
+
+  set_prep_start_time(event_id : string){
+    const current_time = new Date();
+    const current_time_value = current_time.getTime()
+    const reference = '/event_related/livevideo-debate/' + event_id + '/prep_start_time';
+    this.save_firebase_data(reference, current_time_value);
+  }
+
 
 }

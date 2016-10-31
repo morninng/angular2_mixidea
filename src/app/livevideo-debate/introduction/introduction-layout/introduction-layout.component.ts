@@ -67,6 +67,9 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
   start_preparation(){
     
     this.livedebate_firebase.change_game_status(this.event_id, STATUS_PREP);
+
+    this.livedebate_firebase.set_prep_start_time(this.event_id);
+    this.livedebate_firebase.set_prep_duration(this.event_id, 0.1);
   }
 
 
