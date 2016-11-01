@@ -67,4 +67,13 @@ export class ControllerComponent implements OnInit,OnChanges {
     this.livedebate_firebase.remove_speech_status(this.event_id);
   }
 
+  poi(){
+    this.livedebate_firebase.set_poi_candidate(this.event_id, this.user_auth.own_user_id);
+  }
+
+  cancel_poi(){
+    this.livedebate_firebase.cancel_poi_candidate(this.event_id, this.user_auth.own_user_id);
+  }
+  
+
 }

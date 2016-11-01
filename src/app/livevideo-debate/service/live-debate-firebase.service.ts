@@ -142,6 +142,22 @@ export class LiveDebateFirebaseService {
     this.remove_firebase_data(reference);
   }
 
+  set_poi_candidate(event_id : string, own_user_id : string){
+    const reference = '/event_related/livevideo-debate/' + event_id + '/speech_status/poi_candidate/' + own_user_id;
+    this.save_firebase_data(reference, true);
+
+  }
+
+  cancel_poi_candidate(event_id : string, own_user_id : string){
+    const reference = '/event_related/livevideo-debate/' + event_id + '/speech_status/poi_candidate/' + own_user_id;
+    this.remove_firebase_data(reference);
+  }
+
+  remove_all_poi_candidates(event_id : string){
+    const reference = '/event_related/livevideo-debate/' + event_id + '/speech_status/poi_candidate/';
+    this.remove_firebase_data(reference);
+  }
+
 
   set_prep_start_time(event_id : string){
     const current_time = new Date();
