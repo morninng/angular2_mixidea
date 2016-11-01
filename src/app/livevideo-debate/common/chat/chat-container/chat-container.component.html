@@ -1,0 +1,33 @@
+<p>
+  chat-container works!
+</p>
+
+<span *ngIf="displayed_chat_status=='main'">
+  all attendance chat
+  <ul>
+    <li *ngFor="let item of main_chat_item | async">
+      {{item | json}}
+    </li>
+  </ul>
+</span>
+
+
+<span *ngIf="displayed_chat_status=='team'">
+  team chat
+  <ul>
+    <li *ngFor="let item of team_chat_item | async">
+      {{item | json}}
+    </li>
+  </ul>
+</span>
+
+
+<textarea [(ngModel)]="chat_inpput_text" ></textarea>
+<input type="button" (click)="send_chat()" value="send">
+
+<span *ngIf="is_in_team">
+  <input type="button" (click)="show_team_chat()" value="chat within team member">
+  <input type="button" (click)="show_main_chat()" value="chat with all attendance">
+
+
+</span>

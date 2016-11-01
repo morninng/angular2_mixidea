@@ -25,6 +25,8 @@ import { DocArgSignpostComponent } from './common/preparation_document/doc-arg-s
 import { DocArgContextComponent } from './common/preparation_document/doc-arg-context/doc-arg-context.component';
 import { PreparationLayoutComponent } from './preparation/preparation-layout/preparation-layout.component';
 import { DebateLayoutComponent } from './debate/debate-layout/debate-layout.component';
+import { ChatContainerComponent } from './common/chat/chat-container/chat-container.component';
+import { ChatEachMessageComponent } from './common/chat/chat-each-message/chat-each-message.component';
 
 @NgModule({
   imports: [
@@ -49,7 +51,9 @@ import { DebateLayoutComponent } from './debate/debate-layout/debate-layout.comp
     DocArgSignpostComponent,
     DocArgContextComponent,
     PreparationLayoutComponent,
-    DebateLayoutComponent
+    DebateLayoutComponent,
+    ChatContainerComponent,
+    ChatEachMessageComponent
   ],
   providers: [LiveDebateFirebaseService, SkywayService]
 })

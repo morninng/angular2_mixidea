@@ -13,10 +13,10 @@ import {STATUS_DEBATE} from './../../interface-livedebate/status'
 
 
 
-  interface Preparation_Document {
-    intro: any,
-    argument: any
-  }
+interface Preparation_Document {
+  intro: any,
+  argument: any
+}
 
 @Component({
   selector: 'app-preparation-layout',

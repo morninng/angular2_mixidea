@@ -140,4 +140,14 @@ export class LiveDebateFirebaseService {
   }
 
 
+  send_chat(event_id, chat_status, user_id ,inpput_text){
+
+    const obj = {user_id: user_id, message: inpput_text};
+    const reference = '/event_related/event_chat/' +  event_id + '/' + chat_status;
+    const chat_items = this.af.database.list(reference);
+    chat_items.push(obj);
+
+  }
+
+
 }
