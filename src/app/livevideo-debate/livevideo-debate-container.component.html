@@ -6,6 +6,7 @@
   <p>
     livevideo-debate-container works!<br> 
     userid:  {{user_auth.own_user.id}}
+    game_status {{game_status}}
   </p>
 
   {{livevideo_obj | json}}
@@ -41,7 +42,17 @@
             [prep_duration]="prep_duration"></app-preparation-layout>
     </span>
     <span *ngSwitchCase="STATUS_DEBATE">
-      <app-debate-layout></app-debate-layout>
+      <app-debate-layout
+            [event_id]="event_id"
+            [deb_style]="deb_style"
+            [participants_team]="participants_team"
+            [participants_type]="participants_type"
+            [is_in_team_myself]="is_in_team_myself"
+            [current_own_team]="current_own_team"
+            [room_users]="room_users"
+            [video_data]="video_data"
+            [speech_status]="speech_status"
+        ></app-debate-layout>
     </span>
     <span *ngSwitchCase="STATUS_REFLECTION">
 

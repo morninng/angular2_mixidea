@@ -11,6 +11,11 @@
       this.user_auth.open_login_modal();
     
 
+
+
+private user_auth : UserauthService
+
+
 ■■■■■■■■■■■■■json を　arrayのように、ngForで扱う■■■■■■■■■■■■■
 
 

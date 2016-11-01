@@ -27,6 +27,11 @@ import { PreparationLayoutComponent } from './preparation/preparation-layout/pre
 import { DebateLayoutComponent } from './debate/debate-layout/debate-layout.component';
 import { ChatContainerComponent } from './common/chat/chat-container/chat-container.component';
 import { ChatEachMessageComponent } from './common/chat/chat-each-message/chat-each-message.component';
+import { ControllerComponent } from './debate/controller/controller.component';
+import { RoleStatusComponent } from './debate/role-status/role-status.component';
+import { TeamMemberComponent } from './debate/team-member/team-member.component';
+import { SpeakerViewComponent } from './debate/speaker-view/speaker-view.component';
+import { PoiUsersComponent } from './debate/poi-users/poi-users.component';
 
 @NgModule({
   imports: [
@@ -53,7 +58,12 @@ import { ChatEachMessageComponent } from './common/chat/chat-each-message/chat-e
     PreparationLayoutComponent,
     DebateLayoutComponent,
     ChatContainerComponent,
-    ChatEachMessageComponent
+    ChatEachMessageComponent,
+    ControllerComponent,
+    RoleStatusComponent,
+    TeamMemberComponent,
+    SpeakerViewComponent,
+    PoiUsersComponent
   ],
   providers: [LiveDebateFirebaseService, SkywayService]
 })

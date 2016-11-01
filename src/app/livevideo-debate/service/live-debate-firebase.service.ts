@@ -132,6 +132,17 @@ export class LiveDebateFirebaseService {
     this.save_firebase_data(reference, duration);
   }
 
+  set_debate_speaker(event_id : string,speaker_obj : any){
+    const reference = '/event_related/livevideo-debate/' + event_id + '/speech_status/main_speaker';
+    this.save_firebase_data(reference, speaker_obj);
+  }
+
+  remove_speech_status(event_id : string){
+    const reference = '/event_related/livevideo-debate/' + event_id + '/speech_status/';
+    this.remove_firebase_data(reference);
+  }
+
+
   set_prep_start_time(event_id : string){
     const current_time = new Date();
     const current_time_value = current_time.getTime()

@@ -1,3 +1,21 @@
 <p>
   debate-layout works!
 </p>
+<br><br>
+speech_status{{speech_status | json}}
+<br><br>
+
+<app-speaker-view></app-speaker-view>
+
+
+<app-controller
+  [event_id]="event_id"
+  [deb_style]="deb_style"
+  [next_speaker_role_num]="next_speaker_role_num">
+</app-controller>
+
+<app-role-status></app-role-status>
+
+
+
+<app-team-member></app-team-member>

@@ -14,3 +14,14 @@ export const TEAM_STYLE_MAPPING={
     ASIAN: [TEAM_PROPOSITION, TEAM_OPPOSITION],
     BP: [TEAM_OG, TEAM_OO, TEAM_CG, TEAM_CO]
 }
+
+export const TEAM_SIDE_MAPPING={
+    proposition: "LEFT",
+    opposition: "RIGHT",
+    gov: "LEFT",
+    opp: "RIGHT",
+    OG: "LEFT",
+    OO: "RIGHT",
+    CG: "LEFT",
+    CO: "RIGHT"
+}
