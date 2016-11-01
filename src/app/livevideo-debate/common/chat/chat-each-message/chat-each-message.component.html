@@ -1,3 +1,18 @@
-<p>
-  chat-each-message works!
-</p>
+
+
+
+<span [ngSwitch]="chat_type">
+
+   <span *ngSwitchCase="'other'">
+     <app-user-link [user_id]="chat_item.user_id" [type]="'pure_img'"></app-user-link>
+     {{chat_item.message}}
+   </span>
+
+   <span *ngSwitchCase="'own'">
+     {{chat_item.message}}
+     <app-user-link [user_id]="chat_item.user_id" [type]="'pure_img'"></app-user-link>
+
+   </span>
+
+</span>
+

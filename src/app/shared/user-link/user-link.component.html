@@ -34,6 +34,13 @@
     </span>
   </span>
 
+  <span *ngSwitchCase="'pure_img'">
+    <span *ngIf="user">
+      <img src={{user.pict_src}}>
+    </span>
+  </span>
+
+
   <span *ngSwitchCase="'chat-debater'">
     <div class="p-chat-debater" *ngIf="user">
       <img class="p-chat-debater__icon" src={{user.pict_src}}>

@@ -6,7 +6,7 @@
   all attendance chat
   <ul>
     <li *ngFor="let item of main_chat_item | async">
-      {{item | json}}
+      <app-chat-each-message [chat_item]="item"></app-chat-each-message>
     </li>
   </ul>
 </span>
@@ -16,7 +16,7 @@
   team chat
   <ul>
     <li *ngFor="let item of team_chat_item | async">
-      {{item | json}}
+      <app-chat-each-message [chat_item]="item"></app-chat-each-message>
     </li>
   </ul>
 </span>

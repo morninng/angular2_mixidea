@@ -15,7 +15,7 @@ import {TEAM_STYLE_MAPPING} from './../interface/team'
 @Component({
   selector: 'app-livevideo-debate-container',
   templateUrl: './livevideo-debate-container.component.html',
-  styleUrls: []
+  styleUrls: ['./livevideo-debate-container.component.scss']
 })
 
 

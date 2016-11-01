@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+
+import { UserauthService} from './../../../../core/service/userauth.service';
 
 @Component({
   selector: 'app-chat-each-message',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChatEachMessageComponent implements OnInit {
 
-  constructor() { }
+  @Input() chat_item;
+  chat_type="other";
+
+  constructor(private user_auth : UserauthService) { }
 
   ngOnInit() {
   }
+
+  ngOnChanges(){
+    if(this.chat_item && this.chat_item.user_id == this.user_auth.own_user.id){
+      this.chat_type="own";
+    }
+    
+  }
+
+
 
 }
