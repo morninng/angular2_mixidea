@@ -32,7 +32,7 @@ export class DebateLayoutComponent implements OnInit {
   debate_status = DEBATE_STATUS_WAITING;
   main_speaker = null;
   poi_speaker = null;
-  poi_debaters = [];
+  poi_candidates = [];
   speech_start_time;
 
   constructor() { }
@@ -55,7 +55,10 @@ export class DebateLayoutComponent implements OnInit {
       this.speech_start_time = this.main_speaker.speech_start_time;
     }
     this.poi_speaker = this.speech_status.poi_speaker;
-    this.poi_debaters = this.speech_status.poi_debaters;
+    this.poi_candidates.length=0;
+    for(let key in this.speech_status.poi_candidates){
+      this.poi_candidates.push(key);
+    }
 
     if(this.poi_speaker){
       this.debate_status = DEBATE_STATUS_SPEECH_POI;
