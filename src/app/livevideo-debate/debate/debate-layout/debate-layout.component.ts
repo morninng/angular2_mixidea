@@ -15,6 +15,11 @@ import {NA_ROLE_SHORT_ENUM,ROLE_SIDE_MAPPING,
         ROLE_TEAM_MAPPING_Asian,
         ROLE_TEAM_MAPPING_BP } from './../../../interface/role'
 
+import {LiveDebateFirebaseService} from './../../service/live-debate-firebase.service';
+
+import {STATUS_REFLECTION} from './../../interface-livedebate/status'
+
+
 @Component({
   selector: 'app-debate-layout',
   templateUrl: './debate-layout.component.html',
@@ -57,7 +62,8 @@ export class DebateLayoutComponent implements OnInit {
   speech_start_button_value : string;
 
   constructor(private change_ref: ChangeDetectorRef,
-              private user_auth : UserauthService) { }
+              private user_auth : UserauthService,
+              private livedebate_firebase: LiveDebateFirebaseService) { }
 
   ngOnInit() {
 
@@ -152,8 +158,12 @@ export class DebateLayoutComponent implements OnInit {
 
 
     this.change_ref.markForCheck();
-
   }
   
+  goto_reflection(){
+    this.livedebate_firebase.change_game_status(this.event_id, STATUS_REFLECTION);
+    console.log("start debate");
+  }
+
 
 }
