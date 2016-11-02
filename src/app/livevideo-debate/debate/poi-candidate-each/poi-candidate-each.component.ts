@@ -23,7 +23,12 @@ export class PoiCandidateEachComponent implements OnInit, OnDestroy {
   take_poi(){
     console.log(this.poi_candidate_user_id);
     this.livedebate_firebase.remove_all_poi_candidates(this.event_id);
-    this.livedebate_firebase.take_poi(this.event_id, this.poi_candidate_user_id);
+
+    const poi_speaker_obj = {
+      user_id : this.poi_candidate_user_id
+    }
+
+    this.livedebate_firebase.take_poi(this.event_id, poi_speaker_obj);
   }
 
   ngOnDestroy(){

@@ -158,10 +158,9 @@ export class LiveDebateFirebaseService {
     this.remove_firebase_data(reference);
   }
 
-  take_poi(event_id : string, user_id:string){
+  take_poi(event_id : string, poi_speaker_obj){
     const reference = '/event_related/livevideo-debate/' + event_id + '/speech_status/poi_speaker';
-    this.save_firebase_data(reference, user_id);
-
+    this.save_firebase_data(reference, poi_speaker_obj);
   }
   remove_poi_speaker(event_id : string){
     const reference = '/event_related/livevideo-debate/' + event_id + '/speech_status/poi_speaker';

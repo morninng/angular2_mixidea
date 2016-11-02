@@ -11,7 +11,7 @@ export class PoiCandidatesComponent implements OnInit, OnDestroy, OnChanges {
 
 
   @Input() event_id;
-  @Input() poi_candidates;
+  @Input() poi_candidates_id_arr;
 
   constructor(private livedebate_firebase: LiveDebateFirebaseService) { }
 
@@ -19,8 +19,8 @@ export class PoiCandidatesComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(){
-    console.log("poi candidate on changes", this.poi_candidates)
-    this.poi_candidates = this.poi_candidates || [];
+    console.log("poi candidate on changes", this.poi_candidates_id_arr)
+    this.poi_candidates_id_arr = this.poi_candidates_id_arr || [];
 
   }
 

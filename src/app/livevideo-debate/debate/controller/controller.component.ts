@@ -1,13 +1,16 @@
 import { Component, OnInit, Input, OnChanges,ChangeDetectionStrategy } from '@angular/core';
 import {STYLE_NA, STYLE_ASIAN, STYLE_BP} from './../../../interface/deb_style'
-import {NA_ROLE_SHORT_ENUM,ROLE_SIDE_MAPPING,
-         ROLE_TEAM_MAPPING_NA,
-        ROLE_TEAM_MAPPING_Asian,
-        ROLE_TEAM_MAPPING_BP } from './../../../interface/role'
+
 
 import {TEAM_SIDE_MAPPING} from './../../../interface/team';
 import { UserauthService} from './../../../core/service/userauth.service';
 import {LiveDebateFirebaseService} from './../../service/live-debate-firebase.service';
+
+import {DEBATE_STATUS_WAITING, 
+      DEBATE_STATUS_SPEECH_MAIN_SPEAKER, 
+      DEBATE_STATUS_SPEECH_POI} from './../../interface-livedebate/status'
+
+
 
 @Component({
   selector: 'app-controller',
@@ -17,15 +20,19 @@ import {LiveDebateFirebaseService} from './../../service/live-debate-firebase.se
 })
 export class ControllerComponent implements OnInit,OnChanges {
 
-  @Input() next_speaker_role_num;
-  @Input() deb_style;
   @Input() event_id;
-  @Input() poi_speaker;
+  @Input() deb_style;
+  @Input() debate_status;
+  @Input() next_speaker_role_num;
+  @Input() next_speaker_role_name;
+  @Input() next_speaker_side;
+  @Input() next_speaker_team;
 
-  next_speaker_role_neme : string;
   speech_start_button_value : string;
-  next_speaker_side : string;
-  next_speaker_team : string;
+
+  DEBATE_STATUS_WAITING = DEBATE_STATUS_WAITING;
+  DEBATE_STATUS_SPEECH_MAIN_SPEAKER = DEBATE_STATUS_SPEECH_MAIN_SPEAKER;
+  DEBATE_STATUS_SPEECH_POI = DEBATE_STATUS_SPEECH_POI;
   
   constructor(private user_auth : UserauthService,
               private livedebate_firebase: LiveDebateFirebaseService) { }
@@ -36,18 +43,8 @@ export class ControllerComponent implements OnInit,OnChanges {
 
   ngOnChanges(){
     console.log("debate controller component on changes");
-    switch(this.deb_style){
-      case STYLE_NA:
-        this.next_speaker_role_neme = NA_ROLE_SHORT_ENUM[this.next_speaker_role_num];
-        this.next_speaker_side = ROLE_SIDE_MAPPING[this.next_speaker_role_neme];
-        this.next_speaker_team = ROLE_TEAM_MAPPING_NA[this.next_speaker_role_neme]
-      break;
-      case STYLE_ASIAN:
-      break;
-      case STYLE_BP:
-      break;
-    }
-    this.speech_start_button_value = "start speech as " + this.next_speaker_role_neme;
+
+    this.speech_start_button_value = "start speech as " + this.next_speaker_role_name;
   }
   
   speech_start(){
@@ -56,7 +53,7 @@ export class ControllerComponent implements OnInit,OnChanges {
     const speaker_obj = {
       user_id : this.user_auth.own_user_id,
       role_num: this.next_speaker_role_num,
-      role_name: this.next_speaker_role_neme,
+      role_name: this.next_speaker_role_name,
       team_side: this.next_speaker_side,
       team_name: this.next_speaker_team,
       speech_start_time: current_time_val
@@ -80,6 +77,5 @@ export class ControllerComponent implements OnInit,OnChanges {
   finish_poi(){
     this.livedebate_firebase.remove_poi_speaker(this.event_id);
   }
-  
 
 }

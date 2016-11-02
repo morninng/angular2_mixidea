@@ -4,15 +4,36 @@
 
  <app-poi-candidates
   [event_id]="event_id"
-  [poi_candidates]="poi_candidates">
+  [poi_candidates_id_arr]="poi_candidates_id_arr">
   </app-poi-candidates>
 
 
 
-  poi_speaker : {{poi_speaker}}
 
-<span *ngIf="poi_speaker">
 
-  <app-user-link [user_id]="poi_candidate_user_id" [type]="'full_parallel'"></app-user-link> 
+<span [ngSwitch]="debate_status">
+
+  <span *ngSwitchCase="DEBATE_STATUS_WAITING">
+
+    DEBATE_STATUS_WAITING
+
+  </span>
+
+  <span *ngSwitchCase="DEBATE_STATUS_SPEECH_MAIN_SPEAKER">
+
+    DEBATE_STATUS_SPEECH_MAIN_SPEAKER
+    <app-user-link [user_id]="main_speaker_id" [type]="'full_parallel'"></app-user-link> 
+
+  </span>
+
+  <span *ngSwitchCase="DEBATE_STATUS_SPEECH_POI">
+    DEBATE_STATUS_SPEECH_POI
+   <app-user-link [user_id]="poi_speaker_id" [type]="'full_parallel'"></app-user-link> 
+
+
+
+  </span>
+
+
 
 </span>
