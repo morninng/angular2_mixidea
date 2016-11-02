@@ -67,6 +67,9 @@ export class DebateLayoutComponent implements OnInit {
 
   ngOnInit() {
 
+    
+
+
   }
 
   ngOnChanges(){
