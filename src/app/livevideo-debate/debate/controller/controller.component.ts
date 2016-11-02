@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges,ChangeDetectionStrategy } from '@angular/core';
 import {STYLE_NA, STYLE_ASIAN, STYLE_BP} from './../../../interface/deb_style'
 import {NA_ROLE_SHORT_ENUM,ROLE_SIDE_MAPPING,
          ROLE_TEAM_MAPPING_NA,
@@ -12,13 +12,15 @@ import {LiveDebateFirebaseService} from './../../service/live-debate-firebase.se
 @Component({
   selector: 'app-controller',
   templateUrl: './controller.component.html',
-  styleUrls: ['./controller.component.scss']
+  styleUrls: ['./controller.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ControllerComponent implements OnInit,OnChanges {
 
   @Input() next_speaker_role_num;
   @Input() deb_style;
   @Input() event_id;
+  @Input() poi_speaker;
 
   next_speaker_role_neme : string;
   speech_start_button_value : string;
@@ -73,6 +75,10 @@ export class ControllerComponent implements OnInit,OnChanges {
 
   cancel_poi(){
     this.livedebate_firebase.cancel_poi_candidate(this.event_id, this.user_auth.own_user_id);
+  }
+
+  finish_poi(){
+    this.livedebate_firebase.remove_poi_speaker(this.event_id);
   }
   
 

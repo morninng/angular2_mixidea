@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 
 import {TEAM_SIDE_MAPPING} from './../../../interface/team'
 
@@ -12,7 +12,8 @@ import {DEBATE_STATUS_WAITING,
 @Component({
   selector: 'app-debate-layout',
   templateUrl: './debate-layout.component.html',
-  styleUrls: ['./debate-layout.component.scss']
+  styleUrls: ['./debate-layout.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DebateLayoutComponent implements OnInit {
 
@@ -35,7 +36,7 @@ export class DebateLayoutComponent implements OnInit {
   poi_candidates = [];
   speech_start_time;
 
-  constructor() { }
+  constructor(private change_ref: ChangeDetectorRef) { }
 
   ngOnInit() {
 
@@ -55,7 +56,8 @@ export class DebateLayoutComponent implements OnInit {
       this.speech_start_time = this.main_speaker.speech_start_time;
     }
     this.poi_speaker = this.speech_status.poi_speaker;
-    this.poi_candidates.length=0;
+
+    this.poi_candidates=[];
     for(let key in this.speech_status.poi_candidates){
       this.poi_candidates.push(key);
     }
@@ -67,6 +69,8 @@ export class DebateLayoutComponent implements OnInit {
     }else{
       this.debate_status = DEBATE_STATUS_WAITING;
     }
+
+    this.change_ref.markForCheck();
 
   }
   

@@ -1,4 +1,4 @@
-import { Component, OnInit,ChangeDetectorRef, OnDestroy } from '@angular/core';
+import { Component, OnInit,ChangeDetectorRef, OnDestroy,ChangeDetectionStrategy } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import {STATUS_INTRO, STATUS_PREP, STATUS_DEBATE, STATUS_REFLECTION} from './interface-livedebate/status'
@@ -15,7 +15,8 @@ import {TEAM_STYLE_MAPPING} from './../interface/team'
 @Component({
   selector: 'app-livevideo-debate-container',
   templateUrl: './livevideo-debate-container.component.html',
-  styleUrls: ['./livevideo-debate-container.component.scss']
+  styleUrls: ['./livevideo-debate-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 
@@ -71,9 +72,9 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
       this.participants_type =  participants.type || {};
 
   // user related calculation
-      console.log("TEAM_STYLE_MAPPING", TEAM_STYLE_MAPPING);
+    //  console.log("TEAM_STYLE_MAPPING", TEAM_STYLE_MAPPING);
       this.team_name_list = TEAM_STYLE_MAPPING[this.deb_style];
-      console.log("team_name_list", this.team_name_list);
+    // console.log("team_name_list", this.team_name_list);
 
       this.is_in_team_myself = false;
       this.current_own_team=[];
@@ -83,7 +84,7 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
         for(var i=0; i<this.team_name_list.length; i++){
           const team_name = this.team_name_list[i];
           const team_member = this.participants_team[team_name];
-          console.log("team_member", team_member);
+     //     console.log("team_member", team_member);
           if(team_member){
             for(var key in team_member){
               this.users_in_team.push(key);
@@ -102,7 +103,7 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
 
 // debate dependent parameter
 
-      this.speech_status = in_livevideo_obj.speech_status;
+      this.speech_status = Object.assign({}, in_livevideo_obj.speech_status) ;
 
 
 

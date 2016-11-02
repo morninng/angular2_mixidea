@@ -31,7 +31,8 @@ import { ControllerComponent } from './debate/controller/controller.component';
 import { RoleStatusComponent } from './debate/role-status/role-status.component';
 import { TeamMemberComponent } from './debate/team-member/team-member.component';
 import { SpeakerViewComponent } from './debate/speaker-view/speaker-view.component';
-import { PoiUsersComponent } from './debate/poi-users/poi-users.component';
+import { PoiCandidatesComponent } from './debate/poi-candidates/poi-candidates.component';
+import { PoiCandidateEachComponent } from './debate/poi-candidate-each/poi-candidate-each.component';
 
 @NgModule({
   imports: [
@@ -63,7 +64,8 @@ import { PoiUsersComponent } from './debate/poi-users/poi-users.component';
     RoleStatusComponent,
     TeamMemberComponent,
     SpeakerViewComponent,
-    PoiUsersComponent
+    PoiCandidatesComponent,
+    PoiCandidateEachComponent
   ],
   providers: [LiveDebateFirebaseService, SkywayService]
 })

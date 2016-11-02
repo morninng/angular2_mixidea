@@ -1,0 +1,18 @@
+<div class="poi_container">
+<p>
+  poi-candidates works!
+</p>
+
+<span *ngFor="let poi_candidate_user_id of poi_candidates">
+
+
+  <app-poi-candidate-each
+     [event_id]="event_id"
+     [poi_candidate_user_id]="poi_candidate_user_id">
+     </app-poi-candidate-each>
+
+</span>
+
+
+
+</div>

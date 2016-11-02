@@ -1,3 +1,18 @@
 <p>
-  speaker-view works!
+  speaker-view workss!
 </p>
+
+ <app-poi-candidates
+  [event_id]="event_id"
+  [poi_candidates]="poi_candidates">
+  </app-poi-candidates>
+
+
+
+  poi_speaker : {{poi_speaker}}
+
+<span *ngIf="poi_speaker">
+
+  <app-user-link [user_id]="poi_candidate_user_id" [type]="'full_parallel'"></app-user-link> 
+
+</span>

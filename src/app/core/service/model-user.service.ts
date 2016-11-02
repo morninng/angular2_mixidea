@@ -29,7 +29,7 @@ export class ModelUserService {
     if(this.userlist_obj[userid]){
       return;
     }
-    this.af.database.object('/users/user_basic/' + userid)
+    this.af.database.object('/users/user_basic/' + userid).take(1)
       .subscribe(
         (user_obj) =>{
            let user_data = {};

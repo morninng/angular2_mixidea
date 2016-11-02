@@ -10,13 +10,20 @@ main_speaker {{main_speaker | json}}
 <br><br>
 
 
-<app-speaker-view></app-speaker-view>
+<app-speaker-view
+  [event_id]="event_id"
+  [debate_status]="debate_status"
+  [main_speaker]="main_speaker"
+  [poi_speaker]="poi_speaker"
+  [poi_candidates]="poi_candidates"
+  [video_data]="video_data"></app-speaker-view>
 
 
 <app-controller
   [event_id]="event_id"
   [deb_style]="deb_style"
-  [next_speaker_role_num]="next_speaker_role_num">
+  [next_speaker_role_num]="next_speaker_role_num"
+  [poi_speaker]="poi_speaker">
 </app-controller>
 
 <app-role-status></app-role-status>

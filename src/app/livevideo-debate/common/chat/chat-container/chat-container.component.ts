@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,OnDestroy, OnChanges } from '@angular/core';
+import { Component, OnInit, Input,OnDestroy, OnChanges,ChangeDetectionStrategy } from '@angular/core';
 import { AngularFire ,FirebaseListObservable} from 'angularfire2';
 import {LiveDebateFirebaseService} from './../../../service/live-debate-firebase.service';
 
@@ -8,7 +8,8 @@ import { UserauthService} from './../../../../core/service/userauth.service';
 @Component({
   selector: 'app-chat-container',
   templateUrl: './chat-container.component.html',
-  styleUrls: ['./chat-container.component.scss']
+  styleUrls: ['./chat-container.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChatContainerComponent implements OnInit, OnDestroy, OnChanges {
 

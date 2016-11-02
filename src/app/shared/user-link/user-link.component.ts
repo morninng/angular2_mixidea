@@ -1,4 +1,4 @@
-import { Component, OnInit, Input,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Input,ChangeDetectorRef, OnDestroy } from '@angular/core';
 import {ModelUserService} from './../../core/service/model-user.service';
 
 
@@ -7,21 +7,21 @@ import {ModelUserService} from './../../core/service/model-user.service';
   templateUrl: './user-link.component.html',
   styleUrls: ['./user-link.component.scss']
 })
-export class UserLinkComponent implements OnInit {
+export class UserLinkComponent implements OnInit,OnDestroy {
 
   @Input() user_id : string;
   @Input() type : string;
   user = null;
+  user_subscription;
 
   constructor(private user_model : ModelUserService, private change_ref: ChangeDetectorRef) { }
-
 
 
   ngOnInit() {
 
     this.user_model.add_user(this.user_id);
 
-    const user_observable =
+    this.user_subscription =
       this.user_model.user_model_observable.subscribe(
         (user_model)=>{
           if(!this.user &&　user_model[this.user_id] && user_model[this.user_id].pict_src){
@@ -35,7 +35,9 @@ export class UserLinkComponent implements OnInit {
       ); 
   }
 
-
+  ngOnDestroy(){
+    this.user_subscription.unsubscribe();
+  }
 
 
 }
