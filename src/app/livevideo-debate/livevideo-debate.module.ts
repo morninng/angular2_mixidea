@@ -34,6 +34,7 @@ import { SpeakerViewComponent } from './debate/speaker-view/speaker-view.compone
 import { PoiCandidatesComponent } from './debate/poi-candidates/poi-candidates.component';
 import { PoiCandidateEachComponent } from './debate/poi-candidate-each/poi-candidate-each.component';
 import { ReflectionLayoutComponent } from './reflection/reflection-layout/reflection-layout.component';
+import { PrepTeamMemberComponent } from './preparation/prep-team-member/prep-team-member.component';
 
 @NgModule({
   imports: [
@@ -67,7 +68,9 @@ import { ReflectionLayoutComponent } from './reflection/reflection-layout/reflec
     SpeakerViewComponent,
     PoiCandidatesComponent,
     PoiCandidateEachComponent,
-    ReflectionLayoutComponent
+    ReflectionLayoutComponent,
+    TeamMemberComponent,
+    PrepTeamMemberComponent
   ],
   providers: [LiveDebateFirebaseService, SkywayService]
 })

@@ -26,7 +26,10 @@ private user_auth : UserauthService
 
 
 
-■■■■■■■■■■■■■firebaseからの取得■■■■■■■■■■■■■
+■■■■■■■■■■■■■ユーザ表示■■■■■■■■■■■■■
+
+
+<app-user-link [user_id]="each_comment_sentence.user_id" [type]="'sentence_commentor'" ></app-user-link>
 
 
 ■■■■■■■■■■■■■firebaseへのセーブ■■■■■■■■■■■■■
