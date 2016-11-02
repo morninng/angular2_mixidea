@@ -148,6 +148,7 @@ export class DebateLayoutComponent implements OnInit {
       case STYLE_BP:
       break;
     }
+    this.speech_start_button_value = "start speech as " + this.next_speaker_role_name;
 
 
     this.change_ref.markForCheck();

@@ -2,10 +2,6 @@
   speaker-view workss!
 </p>
 
- <app-poi-candidates
-  [event_id]="event_id"
-  [poi_candidates_id_arr]="poi_candidates_id_arr">
-  </app-poi-candidates>
 
 
 
@@ -15,22 +11,48 @@
 
   <span *ngSwitchCase="DEBATE_STATUS_WAITING">
 
-    DEBATE_STATUS_WAITING
-
+    DEBATE_STATUS_WAITING<br>
+    <div class="status_waiting_container">
+      <input type="button" (click)="speech_start()" value="{{speech_start_button_value}}">
+    </div>
+    
   </span>
 
   <span *ngSwitchCase="DEBATE_STATUS_SPEECH_MAIN_SPEAKER">
 
-    DEBATE_STATUS_SPEECH_MAIN_SPEAKER
-    <app-user-link [user_id]="main_speaker_id" [type]="'full_parallel'"></app-user-link> 
+    DEBATE_STATUS_SPEECH_MAIN_SPEAKER<br>
+    
+    <div class="status_speech_main_container">
+      <div class="main_speaker_container">
+        {{main_speaker_id}}
+        <app-user-link [user_id]="main_speaker_id" [type]="'full_parallel'"></app-user-link>
+      </div>
+      <div class="poi_candidate_container">
+        <app-poi-candidates
+            [event_id]="event_id"
+            [poi_candidates_id_arr]="poi_candidates_id_arr">
+            </app-poi-candidates>
+      </div>
+    </div>
+ 
 
   </span>
 
   <span *ngSwitchCase="DEBATE_STATUS_SPEECH_POI">
-    DEBATE_STATUS_SPEECH_POI
-   <app-user-link [user_id]="poi_speaker_id" [type]="'full_parallel'"></app-user-link> 
 
-
+    DEBATE_STATUS_SPEECH_POI<br>
+    <div class="status_speech_poi_container">
+      <div class="poi_speaker_container">
+        {{poi_speaker_id}}
+        <app-user-link [user_id]="poi_speaker_id" [type]="'full_parallel'">
+      </app-user-link> 
+      </div>
+      <div class="main_speaker_poi_wait_container">
+        {{main_speaker_id}}
+        <app-user-link [user_id]="main_speaker_id" [type]="'full_parallel'">
+        </app-user-link>
+      </div>
+    </div>
 
   </span>
 

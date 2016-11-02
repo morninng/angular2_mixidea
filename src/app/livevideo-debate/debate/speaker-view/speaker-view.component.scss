@@ -1,0 +1,27 @@
+
+
+
+.status_speech_main_container{
+    display:flex;
+
+    .main_speaker_container{
+        flex:1;
+    }
+
+    .poi_candidate_container{
+        width:200px;
+    }
+}
+
+
+
+.status_speech_poi_container{
+    display:flex;
+    .poi_speaker_container{
+        flex:1;
+    }
+    .main_speaker_poi_wait_container{
+        width:20%
+    }
+    
+}

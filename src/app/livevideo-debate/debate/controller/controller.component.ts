@@ -27,8 +27,7 @@ export class ControllerComponent implements OnInit,OnChanges {
   @Input() next_speaker_role_name;
   @Input() next_speaker_side;
   @Input() next_speaker_team;
-
-  speech_start_button_value : string;
+  @Input() speech_start_button_value;
 
   DEBATE_STATUS_WAITING = DEBATE_STATUS_WAITING;
   DEBATE_STATUS_SPEECH_MAIN_SPEAKER = DEBATE_STATUS_SPEECH_MAIN_SPEAKER;
@@ -44,7 +43,6 @@ export class ControllerComponent implements OnInit,OnChanges {
   ngOnChanges(){
     console.log("debate controller component on changes");
 
-    this.speech_start_button_value = "start speech as " + this.next_speaker_role_name;
   }
   
   speech_start(){
