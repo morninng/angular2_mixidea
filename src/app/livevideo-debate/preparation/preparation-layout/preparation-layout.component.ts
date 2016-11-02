@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, ChangeDetectorRef } from '@angular/core';
 
 import {STYLE_NA, STYLE_ASIAN, STYLE_BP} from './../../../interface/deb_style'
 
@@ -54,7 +54,8 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
 
 
   constructor(private af: AngularFire,
-              private livedebate_firebase: LiveDebateFirebaseService) { }
+              private livedebate_firebase: LiveDebateFirebaseService,
+              private change_ref: ChangeDetectorRef) { }
 
   ngOnInit() {
 
@@ -73,6 +74,10 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
     const source = Observable.interval(1000).map(()=>{
       const current_time = new Date();
       const current_time_val = current_time.getTime();
+
+      
+
+
       return current_time_val;
     })
     this.timer_subscripton = source.subscribe(
@@ -82,7 +87,7 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
         const prep_seconds = prep_time % 60
         const prep_minutes = (prep_time - prep_seconds) / 60;
         this.preparation_time = String(prep_minutes) + ":" + String(prep_seconds);
-
+        this.change_ref.detectChanges()
       }
     )
 

@@ -1,19 +1,31 @@
-<p>
-  preparation-layout works! {{event_id}}
-</p>
+
+<div class="prep_layout_container">
+
+  <div class="prep_team_member_container">
+    <app-prep-team-member
+      [prep_team]="current_prep_team"
+      [participants_team]="participants_team"
+      ></app-prep-team-member>
+  </div>
+
+  <div class="prep_main_container">
+
+    prep_team: {{current_prep_team}} <br>
+    {{preparation_time}}  / 20:00
+
+    <app-preparation-document
+      [event_id]="event_id"
+      [prep_team]="current_prep_team"
+      [intro_doc]="intro_doc"
+      [arg_obj]="arg_obj"></app-preparation-document>
 
 
-{{preparation_time}}
+    <br>
+    this is a temporal button, switching to the debate phase will be done by timer.<br>
+    <input type="button" (click)="start_debate()" value="start debate">
 
-this is a temporal button, switching to the debate phase will be done by timer.
-<input type="button" (click)="start_debate()" value="start debate">
-
-
-<app-preparation-document
-  [event_id]="event_id"
-  [prep_team]="current_prep_team"
-  [intro_doc]="intro_doc"
-  [arg_obj]="arg_obj"></app-preparation-document>
+  </div>
 
 
 
+</div>

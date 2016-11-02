@@ -1,0 +1,14 @@
+.prep_layout_container{
+
+    display:flex;
+    
+
+    .prep_team_member_container{
+        width:20%;
+        background-color:lightyellow;
+    }
+    .prep_main_container{
+        flex:1;
+        padding:10px;
+    }
+}
