@@ -75,9 +75,6 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
       const current_time = new Date();
       const current_time_val = current_time.getTime();
 
-      
-
-
       return current_time_val;
     })
     this.timer_subscripton = source.subscribe(
@@ -115,6 +112,11 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
           this.arg_obj = Object.assign({}, prep_doc.argument);
           this.arg_obj["0"] = this.arg_obj["0"] || {};
           this.arg_obj["1"] = this.arg_obj["1"] || {}
+
+
+
+
+
 
       })
       this.current_prep_team = prep_team;
