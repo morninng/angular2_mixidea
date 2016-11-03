@@ -23,12 +23,13 @@ export class SpeakerViewComponent implements OnInit {
   @Input() poi_speaker_id;
   @Input() poi_candidates_id_arr;
   @Input() video_data;
+  /*
   @Input() next_speaker_role_num;
   @Input() next_speaker_role_name;
   @Input() next_speaker_side;
   @Input() next_speaker_team;
   @Input() speech_start_button_value;
-
+*/
 
   main_speaker_team_side="left";
 
@@ -47,6 +48,7 @@ export class SpeakerViewComponent implements OnInit {
 
   }
 
+/*
   speech_start(){
     const current_time = new Date();
     const current_time_val = current_time.getTime();
@@ -62,7 +64,7 @@ export class SpeakerViewComponent implements OnInit {
     this.livedebate_firebase.set_debate_speaker(this.event_id, speaker_obj);
   }
 
-
+*/
 
 
 }

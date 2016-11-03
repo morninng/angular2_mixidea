@@ -60,6 +60,8 @@ export class DebateLayoutComponent implements OnInit {
   next_speaker_side : string;
   next_speaker_team : string;
   speech_start_button_value : string;
+  main_speaker_role : string
+  main_speech_start_time : number;
 
   constructor(private change_ref: ChangeDetectorRef,
               private user_auth : UserauthService,
@@ -108,12 +110,16 @@ export class DebateLayoutComponent implements OnInit {
       case DEBATE_STATUS_SPEECH_MAIN_SPEAKER:
         this.poi_speaker_id = null;
         this.main_speaker_id = this.main_speaker.user_id;
-        this.main_speaker_team_side = this.main_speaker.team_side
+        this.main_speaker_team_side = this.main_speaker.team_side;
+        this.main_speaker_role = this.main_speaker.role_name;
+        this.main_speech_start_time = this.main_speaker.speech_start_time;
       break;
       case DEBATE_STATUS_SPEECH_POI:
         this.poi_speaker_id = this.poi_speaker.user_id;
         this.main_speaker_id = this.main_speaker.user_id;
         this.main_speaker_team_side = this.main_speaker.team_side
+        this.main_speaker_role = this.main_speaker.role_name;
+        this.main_speech_start_time = this.main_speaker.speech_start_time;
       break;
     }
 
@@ -143,6 +149,12 @@ export class DebateLayoutComponent implements OnInit {
     }else{
       this.is_poi_candidate_yourself = true;
     }
+
+//completed role and next role calculation
+
+
+
+
 
 // next speaker related calculation for starting the next speech
 

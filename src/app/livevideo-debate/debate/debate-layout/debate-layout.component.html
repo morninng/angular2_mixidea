@@ -24,12 +24,7 @@
         [main_speaker_id]="main_speaker_id"
         [poi_speaker_id]="poi_speaker_id"
         [poi_candidates_id_arr]="poi_candidates_id_arr"
-        [video_data]="video_data"
-        [next_speaker_role_num]="next_speaker_role_num"
-        [next_speaker_role_name]="next_speaker_role_name"
-        [next_speaker_side]="next_speaker_side"
-        [next_speaker_team]="next_speaker_team"
-        [speech_start_button_value]="speech_start_button_value"></app-speaker-view>
+        [video_data]="video_data"></app-speaker-view>
 
       <div id="debate-video-state">
           <app-controller
@@ -40,7 +35,9 @@
             [next_speaker_role_name]="next_speaker_role_name"
             [next_speaker_side]="next_speaker_side"
             [next_speaker_team]="next_speaker_team"
-            [speech_start_button_value]="speech_start_button_value">
+            [speech_start_button_value]="speech_start_button_value"
+            [main_speaker_role]="main_speaker_role"
+            [speech_start_time]="speech_start_time">
             </app-controller>
       </div>
   </div>
