@@ -1,68 +1,60 @@
 
-<div class="debate_container">
 
-  <div class="debate_left">
-    <app-left-panel
-      [event_id]="event_id"
-      [current_own_team]="current_own_team"></app-left-panel>
+<aside id="debate_aside_document">
+  <app-left-panel
+    [event_id]="event_id"
+    [current_own_team]="current_own_team"></app-left-panel>
+
+</aside>
+
+<div id="debate_center">
+  <div id="debate-video">
+<!--
+      <br>
+      speech_status{{speech_status | json}}
+      <br>
+      poi_candidates_id_arr {{poi_candidates_id_arr | json}}
+      <br>
+      main_speaker {{main_speaker | json}}
+      <br>
+-->
+      <app-speaker-view
+        [event_id]="event_id"
+        [debate_status]="debate_status"
+        [main_speaker_id]="main_speaker_id"
+        [poi_speaker_id]="poi_speaker_id"
+        [poi_candidates_id_arr]="poi_candidates_id_arr"
+        [video_data]="video_data"
+        [next_speaker_role_num]="next_speaker_role_num"
+        [next_speaker_role_name]="next_speaker_role_name"
+        [next_speaker_side]="next_speaker_side"
+        [next_speaker_team]="next_speaker_team"
+        [speech_start_button_value]="speech_start_button_value"></app-speaker-view>
+
+      <div id="debate-video-state">
+          <app-controller
+            [event_id]="event_id"
+            [debate_status]="debate_status"
+            [deb_style]="deb_style"
+            [next_speaker_role_num]="next_speaker_role_num"
+            [next_speaker_role_name]="next_speaker_role_name"
+            [next_speaker_side]="next_speaker_side"
+            [next_speaker_team]="next_speaker_team"
+            [speech_start_button_value]="speech_start_button_value">
+            </app-controller>
+      </div>
   </div>
-  <div class="debate_main">
-
-    <p>
-      debate-layout works!
-    </p>
-    <br><br>
-    speech_status{{speech_status | json}}
-    <br><br>
-    poi_candidates_id_arr {{poi_candidates_id_arr | json}}
-    <br><br>
-    main_speaker {{main_speaker | json}}
-    <br><br>
-
-
-    <app-speaker-view
-      [event_id]="event_id"
-      [debate_status]="debate_status"
-      [main_speaker_id]="main_speaker_id"
-      [poi_speaker_id]="poi_speaker_id"
-      [poi_candidates_id_arr]="poi_candidates_id_arr"
-      [video_data]="video_data"
-      [next_speaker_role_num]="next_speaker_role_num"
-      [next_speaker_role_name]="next_speaker_role_name"
-      [next_speaker_side]="next_speaker_side"
-      [next_speaker_team]="next_speaker_team"
-      [speech_start_button_value]="speech_start_button_value"></app-speaker-view>
-
-
-    <app-controller
-      [event_id]="event_id"
-      [debate_status]="debate_status"
-      [deb_style]="deb_style"
-      [next_speaker_role_num]="next_speaker_role_num"
-      [next_speaker_role_name]="next_speaker_role_name"
-      [next_speaker_side]="next_speaker_side"
-      [next_speaker_team]="next_speaker_team"
-      [speech_start_button_value]="speech_start_button_value">
-    </app-controller>
-
+  <div id="debate-team">
     <app-role-status
       [debate_status]="debate_status"
       [deb_style]="deb_style"
       [next_speaker_role_num]="next_speaker_role_num"
       ></app-role-status>
-
-
-
     <app-team-member
       [deb_style]="deb_style"
-      [participants_team]="participants_team"
-    
-    
-    
-      ></app-team-member>
-
+      [participants_team]="participants_team">
+      </app-team-member>
     <input type="button" (click)="goto_reflection()" value="goto_reflection">
 
   </div>
-
 </div>
