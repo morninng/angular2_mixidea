@@ -16,7 +16,6 @@
   
   <div id="livevideo_debate_main">
 
-    <app-motion [motion]="motion" [event_id]="event_id"></app-motion>
 
     <span [ngSwitch]="game_status">
       <span *ngSwitchCase="STATUS_INTRO">
@@ -30,7 +29,8 @@
               [is_in_team_myself]="is_in_team_myself"
               [current_own_team]="current_own_team"
               [room_users]="room_users"
-              [video_data]="video_data" ></app-introduction-layout>
+              [video_data]="video_data"
+              [motion]="motion" ></app-introduction-layout>
       </span>
       <span *ngSwitchCase="STATUS_PREP">
         <app-preparation-layout

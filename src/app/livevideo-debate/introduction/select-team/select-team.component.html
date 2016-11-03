@@ -1,10 +1,6 @@
 <div class="teama_container">
   <div class="team_name">{{team_name}}</div>
 
-is_my_team: {{is_my_team}}<br>
-show_leave_team: {{show_leave_team}}<br>
-show_join_team: {{show_join_team}}<br>
-show_move_to_team: {{show_move_to_team}}<br>
 <span *ngIf="show_leave_team">
   <input type="button" value="leave team" (click)="leave_team()">
 </span>
@@ -15,11 +11,9 @@ show_move_to_team: {{show_move_to_team}}<br>
   <input type="button" value="move team" (click)="move_team()">
 </span>
 
-video_data {{video_data | json}}<br>
 
 <span *ngFor="let member of (team_member | keysInObject)">
   
-  <br>member id: {{member.key}}
   <app-user-link [user_id]="member.key" [type]="'only_pict'" ></app-user-link>
   <span *ngIf="video_data[member.key]">
       <app-user-video [video_src]="video_data[member.key]" [user_id]="member.key"></app-user-video>

@@ -29,6 +29,7 @@ export class IntroductionLayoutComponent implements OnInit, OnChanges {
 
   @Input() room_users;
   @Input() video_data;
+  @Input() motion;
 
   STYLE_NA = STYLE_NA;
   STYLE_ASIAN = STYLE_ASIAN;

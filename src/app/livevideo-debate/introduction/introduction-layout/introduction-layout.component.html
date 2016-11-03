@@ -1,77 +1,63 @@
-<p>
-  introduction-layout works!
-</p>
 
 
+<div id="intro_team_selection">
 
 
-deb_style {{deb_style}}<br>
-room_users {{room_users | json}}<br>
-users_in_team {{users_in_team | json}}<br>
-team member {{participants_team | json}}<br>
-is_in_team {{is_in_team | json}}<br>
+    <span [ngSwitch]="deb_style">
 
-
-<input type="button" (click)="start_preparation()" value="start preparation">
-
-<span [ngSwitch]="deb_style">
-
-    <span *ngSwitchCase="STYLE_NA">
-      <div class="team_container">
-        <div class="each_team">
-          <app-select-team 
-            [event_id]="event_id" 
-            [team_name]="TEAM_GOV"
-            [team_member]="participants_team[TEAM_GOV]" 
-            [current_own_team]="current_own_team"
-            [is_in_team_myself]="is_in_team_myself"
-            [video_data]="video_data"></app-select-team>
+      <span *ngSwitchCase="STYLE_NA">
+        <div class="team_container">
+          <div class="each_team">
+            <app-select-team 
+              [event_id]="event_id" 
+              [team_name]="TEAM_GOV"
+              [team_member]="participants_team[TEAM_GOV]" 
+              [current_own_team]="current_own_team"
+              [is_in_team_myself]="is_in_team_myself"
+              [video_data]="video_data"></app-select-team>
+          </div>
+          <div class="each_team">
+            <app-select-team 
+              [event_id]="event_id" 
+              [team_name]="TEAM_OPP"
+              [team_member]="participants_team[TEAM_OPP]" 
+              [current_own_team]="current_own_team"
+              [is_in_team_myself]="is_in_team_myself"
+              [video_data]="video_data"></app-select-team>
+          </div>
         </div>
-        <div class="each_team">
-          <app-select-team 
-            [event_id]="event_id" 
-            [team_name]="TEAM_OPP"
-            [team_member]="participants_team[TEAM_OPP]" 
-            [current_own_team]="current_own_team"
-            [is_in_team_myself]="is_in_team_myself"
-            [video_data]="video_data"></app-select-team>
-        </div>
-      </div>
+      </span>
+
+      <span *ngSwitchCase="STYLE_ASIAN">
+        <app-select-team [team_name]="TEAM_PROPOSITION" [event_id]="event_id"></app-select-team>
+        <app-select-team [team_name]="TEAM_OPPOSITION" [event_id]="event_id"></app-select-team>
+      </span>
+
+      <span *ngSwitchCase="STYLE_BP">
+        <app-select-team [team_name]="TEAM_OG" [event_id]="event_id"></app-select-team>
+        <app-select-team [team_name]="TEAM_OO" [event_id]="event_id"></app-select-team>
+        <app-select-team [team_name]="TEAM_CG" [event_id]="event_id"></app-select-team>
+        <app-select-team [team_name]="TEAM_CO" [event_id]="event_id"></app-select-team>
+      </span>
     </span>
 
-    <span *ngSwitchCase="STYLE_ASIAN">
-      <app-select-team [team_name]="TEAM_PROPOSITION" [event_id]="event_id"></app-select-team>
-      <app-select-team [team_name]="TEAM_OPPOSITION" [event_id]="event_id"></app-select-team>
-    </span>
-
-    <span *ngSwitchCase="STYLE_BP">
-      <app-select-team [team_name]="TEAM_OG" [event_id]="event_id"></app-select-team>
-      <app-select-team [team_name]="TEAM_OO" [event_id]="event_id"></app-select-team>
-      <app-select-team [team_name]="TEAM_CG" [event_id]="event_id"></app-select-team>
-      <app-select-team [team_name]="TEAM_CO" [event_id]="event_id"></app-select-team>
-    </span>
-
-</span>
-
-<br>
-
-video data {{video_data | json}} <br>
-users_not_involved_team {{users_not_involved_team | json}} <br>
-
-<div *ngFor="let user_id of users_not_involved_team">
-  <br>
-  {{user_id}}
-  <span *ngIf="video_data[user_id]">
-  -----------------begin--------------<br>
-
-    <app-user-video [video_src]="video_data[user_id]" [user_id]="user_id"></app-user-video>
+</div>
+<div id="intro_info">
 
 
-  ------------------end ------------
-  </span>
-    <app-user-link [user_id]="user_id" [type]="'only_short_name'" ></app-user-link>
-    <app-user-link [user_id]="user_id" [type]="'only_pict'" ></app-user-link>
+    <app-motion [motion]="motion" [event_id]="event_id"></app-motion>
+
+    <div *ngFor="let user_id of users_not_involved_team">
+      <br>
+      <span *ngIf="video_data[user_id]">
+        <app-user-video [video_src]="video_data[user_id]" [user_id]="user_id"></app-user-video>
+      </span>
+      <app-user-link [user_id]="user_id" [type]="'only_short_name'" ></app-user-link>
+      <app-user-link [user_id]="user_id" [type]="'only_pict'" ></app-user-link>
+    </div>
+    <input type="button" (click)="start_preparation()" value="start preparation">
 </div>
 
-
-
+    <br>
+    video data {{video_data | json}} <br>
+    users_not_involved_team {{users_not_involved_team | json}} <br>
