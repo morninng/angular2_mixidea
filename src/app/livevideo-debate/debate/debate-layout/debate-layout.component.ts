@@ -37,10 +37,13 @@ export class DebateLayoutComponent implements OnInit {
   @Input() room_users;
   @Input() video_data;
   @Input() speech_status;
+  @Input() speech_log;
 
   own_team : string;
   own_team_side = "no_side";
-  next_speaker_role_num : number = 1;
+  next_speaker_role_num : number;
+  last_completed_role_num : number;
+  completed_role_obj = {};
   debate_status = DEBATE_STATUS_WAITING;
   main_speaker = null;
   poi_speaker = null;
@@ -60,18 +63,17 @@ export class DebateLayoutComponent implements OnInit {
   next_speaker_side : string;
   next_speaker_team : string;
   speech_start_button_value : string;
-  main_speaker_role : string
+  main_speaker_role_name : string
+  main_speaker_role_num : number
   main_speech_start_time : number;
+
+  all_speech_finished = false;
 
   constructor(private change_ref: ChangeDetectorRef,
               private user_auth : UserauthService,
               private livedebate_firebase: LiveDebateFirebaseService) { }
 
   ngOnInit() {
-
-    
-
-
   }
 
   ngOnChanges(){
@@ -111,14 +113,16 @@ export class DebateLayoutComponent implements OnInit {
         this.poi_speaker_id = null;
         this.main_speaker_id = this.main_speaker.user_id;
         this.main_speaker_team_side = this.main_speaker.team_side;
-        this.main_speaker_role = this.main_speaker.role_name;
+        this.main_speaker_role_name = this.main_speaker.role_name;
+        this.main_speaker_role_num = this.main_speaker.role_num;
         this.main_speech_start_time = this.main_speaker.speech_start_time;
       break;
       case DEBATE_STATUS_SPEECH_POI:
         this.poi_speaker_id = this.poi_speaker.user_id;
         this.main_speaker_id = this.main_speaker.user_id;
         this.main_speaker_team_side = this.main_speaker.team_side
-        this.main_speaker_role = this.main_speaker.role_name;
+        this.main_speaker_role_name = this.main_speaker.role_name;
+        this.main_speaker_role_num = this.main_speaker.role_num;
         this.main_speech_start_time = this.main_speaker.speech_start_time;
       break;
     }
@@ -152,9 +156,15 @@ export class DebateLayoutComponent implements OnInit {
 
 //completed role and next role calculation
 
-
-
-
+    this.speech_log = this.speech_log || {};
+    this.last_completed_role_num = this.speech_log.last_completed_role_num || 0
+    this.next_speaker_role_num = this.last_completed_role_num + 1;
+    this.completed_role_obj = this.speech_log.completed_role_obj || {};
+    /*
+    this.completed_role_list = [];
+    for(let key in completed_role_list_obj){
+      this.completed_role_list.push(key);
+    }*/
 
 // next speaker related calculation for starting the next speech
 
@@ -169,7 +179,12 @@ export class DebateLayoutComponent implements OnInit {
       case STYLE_BP:
       break;
     }
-    this.speech_start_button_value = "start speech as " + this.next_speaker_role_name;
+    if(!this.next_speaker_role_name){
+      this.all_speech_finished = true;
+    }else{
+      this.all_speech_finished = false;
+      this.speech_start_button_value = "start speech as " + this.next_speaker_role_name;
+    }
 
 
     this.change_ref.markForCheck();

@@ -1,5 +1,34 @@
 role status
+{{team_list | json}}
 
-<span *ngFor="let role of team_list">
-  {{role.name}} {{role.side}}
-</span>
+<div class="role_status_container">
+
+  <ul class="role_status">
+    <li *ngFor="let role of team_list">
+
+      <span [ngSwitch]="debate_status">
+        <span *ngSwitchCase="DEBATE_STATUS_WAITING">
+
+          <span [ngClass]="{'completed_role':role.completed, 
+                            'left_role':role.side=='LEFT', 
+                            'right_role':role.side=='RIGHT',
+                            'next_role':role.next_speaker}">
+          {{role.name}}
+          </span>
+
+        </span>
+        <span *ngSwitchCase="DEBATE_STATUS_SPEECH_MAIN_SPEAKER">
+          <span [ngClass]="{'left_role':role.side=='LEFT',
+                            'right_role':role.side=='RIGHT',
+                            'current_main_speech_role':role.main_speaker}">
+            {{role.name}}
+
+          </span>
+        </span>
+      
+      </span>
+
+    </li>
+  </ul>
+</div>
+

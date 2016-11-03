@@ -38,11 +38,13 @@
             [next_speaker_side]="next_speaker_side"
             [next_speaker_team]="next_speaker_team"
             [speech_start_button_value]="speech_start_button_value"
-            [main_speaker_role]="main_speaker_role"
+            [main_speaker_role_name]="main_speaker_role_name"
+            [main_speaker_role_num]="main_speaker_role_num"
             [speech_start_time]="speech_start_time"
             [is_main_speaker_yourself]="is_main_speaker_yourself"
             [is_poi_speaker_yourself]="is_poi_speaker_yourself"
-            [is_poi_candidate_yourself]="is_poi_candidate_yourself">
+            [is_poi_candidate_yourself]="is_poi_candidate_yourself"
+            [all_speech_finished]="all_speech_finished">
             </app-controller>
       </div>
   </div>
@@ -51,6 +53,8 @@
       [debate_status]="debate_status"
       [deb_style]="deb_style"
       [next_speaker_role_num]="next_speaker_role_num"
+      [main_speaker_role_num]="main_speaker_role_num"
+      [completed_role_obj]="completed_role_obj"
       ></app-role-status>
     <app-team-member
       [deb_style]="deb_style"

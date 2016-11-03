@@ -8,7 +8,8 @@ import {LiveDebateFirebaseService} from './../../service/live-debate-firebase.se
 
 import {DEBATE_STATUS_WAITING, 
       DEBATE_STATUS_SPEECH_MAIN_SPEAKER, 
-      DEBATE_STATUS_SPEECH_POI} from './../../interface-livedebate/status'
+      DEBATE_STATUS_SPEECH_POI
+    ,STATUS_REFLECTION} from './../../interface-livedebate/status'
 
 import {Observable} from 'rxjs';
 
@@ -28,11 +29,13 @@ export class ControllerComponent implements OnInit,OnChanges {
   @Input() next_speaker_side;
   @Input() next_speaker_team;
   @Input() speech_start_button_value;
-  @Input() main_speaker_role;
+  @Input() main_speaker_role_name;
+  @Input() main_speaker_role_num;
   @Input() speech_start_time;
   @Input() is_main_speaker_yourself;
   @Input() is_poi_speaker_yourself;
   @Input() is_poi_candidate_yourself;
+  @Input() all_speech_finished;
 
   DEBATE_STATUS_WAITING = DEBATE_STATUS_WAITING;
   DEBATE_STATUS_SPEECH_MAIN_SPEAKER = DEBATE_STATUS_SPEECH_MAIN_SPEAKER;
@@ -64,7 +67,7 @@ export class ControllerComponent implements OnInit,OnChanges {
         this.speech_time_spent_show = String(speech_time_minutes) + ":" + String(speech_time_seconds);
       }
       
-      console.log(this.speech_time_spent_show);
+      //console.log(this.speech_time_spent_show);
       this.change_ref.markForCheck()
     })
 
@@ -91,13 +94,13 @@ export class ControllerComponent implements OnInit,OnChanges {
     }
     console.log('speaker_obj', speaker_obj);
     this.livedebate_firebase.set_debate_speaker(this.event_id, speaker_obj);
-
-
+    this.livedebate_firebase.start_speech(this.event_id, this.next_speaker_role_num, this.user_auth.own_user_id);
 
   }
 
   speech_finish(){
     this.livedebate_firebase.remove_speech_status(this.event_id);
+    this.livedebate_firebase.complete_speech(this.event_id, this.main_speaker_role_num, this.speech_time_spent);
   }
 
   poi(){
@@ -110,7 +113,11 @@ export class ControllerComponent implements OnInit,OnChanges {
 
   finish_poi(){
     this.livedebate_firebase.remove_poi_speaker(this.event_id);
-   // this.livedebate_firebase.complete_speech(this.event_id, this.main_speaker_role, this.speech_duration)
+  }
+
+  goto_reflection(){
+    this.livedebate_firebase.change_game_status(this.event_id, STATUS_REFLECTION);
+    console.log("start debate");
   }
 
 }

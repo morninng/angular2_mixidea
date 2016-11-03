@@ -11,12 +11,12 @@ export enum NA_ROLE_SHORT_ENUM{
     PMR
 }
 export const NA_ROLE_ARRAY = [
-    {name:"PM" ,side:"LEFT" },
-    {name:"LO" ,side:"RIGHT" },
-    {name:"MG" ,side:"LEFT" },
-    {name:"MO" ,side:"RIGHT" },
-    {name:"LOR" ,side:"RIGHT" },
-    {name:"PMR" ,side:"LEFT" }
+    {name:"PM" ,side:"LEFT", num:1  },
+    {name:"LO" ,side:"RIGHT", num:2 },
+    {name:"MG" ,side:"LEFT", num:3  },
+    {name:"MO" ,side:"RIGHT", num:4 },
+    {name:"LOR" ,side:"RIGHT", num:5},
+    {name:"PMR" ,side:"LEFT", num:6 }
 ]
 
 

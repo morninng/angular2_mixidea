@@ -17,7 +17,12 @@ is_poi_speaker_yourself : {{is_poi_speaker_yourself}}
 <span [ngSwitch]="debate_status">
 
   <span *ngSwitchCase="DEBATE_STATUS_WAITING">
-    <input type="button" (click)="speech_start()" value="{{speech_start_button_value}}">
+    <span *ngIf="!all_speech_finished">
+      <input type="button" (click)="speech_start()" value="{{speech_start_button_value}}">
+    </span>
+    <span *ngIf="all_speech_finished">
+      <input type="button" (click)="goto_reflection()" value="all speech is over go to reflection">
+    </span>
   </span>
 
 

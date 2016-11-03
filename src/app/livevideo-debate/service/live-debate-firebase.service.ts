@@ -167,6 +167,25 @@ export class LiveDebateFirebaseService {
     this.remove_firebase_data(reference);
   }
 
+  start_speech(event_id, role_num, user_id){
+    const reference = '/event_related/livevideo-debate/' + event_id + '/speech_log/last_started_speaker';
+    this.save_firebase_data(reference, user_id);
+    const reference2 = '/event_related/livevideo-debate/' + event_id + '/speech_log/last_started_role_num';
+    this.save_firebase_data(reference2, role_num);
+  }
+
+  complete_speech(event_id, role_num,time_spent){
+    const reference = '/event_related/livevideo-debate/' + event_id + '/speech_log/completed_role_obj/' + role_num;
+    this.save_firebase_data(reference, time_spent);
+    const reference2 = '/event_related/livevideo-debate/' + event_id + '/speech_log/last_completed_role_num';
+    this.save_firebase_data(reference2, role_num);
+  }
+
+  reflesh_speech_log(event_id){
+    const reference = '/event_related/livevideo-debate/' + event_id + '/speech_log';
+    this.remove_firebase_data(reference);
+  }
+
 
   set_prep_start_time(event_id : string){
     const current_time = new Date();

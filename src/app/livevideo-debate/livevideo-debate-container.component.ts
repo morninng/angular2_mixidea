@@ -43,7 +43,8 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
 
 
   game_status : string;
-  speech_status : string;
+  speech_status : any;
+  speech_log : any;
 
   event_item_subscription;
 
@@ -103,8 +104,8 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
 
 // debate dependent parameter
 
-      this.speech_status = Object.assign({}, in_livevideo_obj.speech_status) ;
-
+      this.speech_status = Object.assign({}, in_livevideo_obj.speech_status);
+      this.speech_log = Object.assign({}, in_livevideo_obj.speech_log);
 
 
       this.change_ref.markForCheck();

@@ -1,0 +1,32 @@
+.role_status{
+    text-align:center;
+    li {
+        display:inline;
+        margin:5px;
+        font-weight:bold; 
+    }
+}
+.completed_role{
+    background-color:gray;
+}
+
+.current_main_speech_role{
+    background-color: yellow;
+    font-size:x-large;
+}
+
+.next_role{
+    font-size:x-large;
+}
+
+.left_role{
+    color:green;
+}
+.right_role{
+    color:red;
+}
+
+.role_status_container{
+    background-color:lightgray;
+    padding:3px;
+}
