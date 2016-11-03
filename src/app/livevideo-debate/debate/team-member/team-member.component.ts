@@ -60,10 +60,6 @@ export class TeamMemberComponent implements OnInit {
       break;
 
     }
-
-
-
-
   }
   
 

@@ -10,6 +10,15 @@ export enum NA_ROLE_SHORT_ENUM{
     LOR,
     PMR
 }
+export const NA_ROLE_ARRAY = [
+    {name:"PM" ,side:"LEFT" },
+    {name:"LO" ,side:"RIGHT" },
+    {name:"MG" ,side:"LEFT" },
+    {name:"MO" ,side:"RIGHT" },
+    {name:"LOR" ,side:"RIGHT" },
+    {name:"PMR" ,side:"LEFT" }
+]
+
 
 export enum NA_ROLE_LONG_ENUM{
     PrimeMinister = 1,
@@ -42,6 +51,19 @@ export enum Asian_ROLE_SHORT_ENUM{
     PMR,
     LOR
 }
+
+export const Asian_ROLE_ARRAY = [
+    {name:"PM" ,side:"LEFT" },
+    {name:"LO" ,side:"RIGHT" },
+    {name:"DPM" ,side:"LEFT" },
+    {name:"DLO" ,side:"RIGHT" },
+    {name:"WG" ,side:"RIGHT" },
+    {name:"WO" ,side:"LEFT" },
+    {name:"PMR" ,side:"RIGHT" },
+    {name:"LOR" ,side:"LEFT" }
+]
+
+
 
 export enum Asian_ROLE_LONG_ENUM{
     PrimeMinister = 1,
@@ -76,6 +98,18 @@ export enum BP_ROLE_SHORT_ENUM{
     GW,
     OW
 }
+
+
+export const BP_ROLE_ARRAY = [
+    {name:"PM" ,side:"LEFT" },
+    {name:"LO" ,side:"RIGHT" },
+    {name:"DPM" ,side:"LEFT" },
+    {name:"DLO" ,side:"RIGHT" },
+    {name:"MG" ,side:"RIGHT" },
+    {name:"MO" ,side:"LEFT" },
+    {name:"GW" ,side:"RIGHT" },
+    {name:"OW" ,side:"LEFT" }
+]
 
 export enum BP_ROLE_LONG_ENUM{
     PrimeMinister = 1,
