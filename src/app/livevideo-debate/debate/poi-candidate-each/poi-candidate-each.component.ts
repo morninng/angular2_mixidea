@@ -11,6 +11,7 @@ export class PoiCandidateEachComponent implements OnInit, OnDestroy {
 
   @Input() event_id;
   @Input() poi_candidate_user_id;
+  @Input() is_main_speaker_yourself;
 
   constructor(private livedebate_firebase: LiveDebateFirebaseService) { }
 
@@ -21,6 +22,10 @@ export class PoiCandidateEachComponent implements OnInit, OnDestroy {
 
 
   take_poi(){
+    if(!this.is_main_speaker_yourself){
+      alert("only main speaker can take a poi");
+      return;
+    }
     console.log(this.poi_candidate_user_id);
     this.livedebate_firebase.remove_all_poi_candidates(this.event_id);
 

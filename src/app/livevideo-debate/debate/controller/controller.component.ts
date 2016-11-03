@@ -30,6 +30,9 @@ export class ControllerComponent implements OnInit,OnChanges {
   @Input() speech_start_button_value;
   @Input() main_speaker_role;
   @Input() speech_start_time;
+  @Input() is_main_speaker_yourself;
+  @Input() is_poi_speaker_yourself;
+  @Input() is_poi_candidate_yourself;
 
   DEBATE_STATUS_WAITING = DEBATE_STATUS_WAITING;
   DEBATE_STATUS_SPEECH_MAIN_SPEAKER = DEBATE_STATUS_SPEECH_MAIN_SPEAKER;

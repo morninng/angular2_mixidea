@@ -12,6 +12,7 @@ export class PoiCandidatesComponent implements OnInit, OnDestroy, OnChanges {
 
   @Input() event_id;
   @Input() poi_candidates_id_arr;
+  @Input() is_main_speaker_yourself;
 
   constructor(private livedebate_firebase: LiveDebateFirebaseService) { }
 

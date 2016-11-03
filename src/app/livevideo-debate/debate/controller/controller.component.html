@@ -8,26 +8,42 @@ next_speaker_role:  {{next_speaker_role}}<br>
 next_speaker_role_neme:  {{next_speaker_role_neme}}<br>
 debate_status:  {{debate_status}}<br>
 -->
+<!--
+is_main_speaker_yourself : {{is_main_speaker_yourself}}
+is_poi_candidate_yourself : {{is_poi_candidate_yourself}}
+is_poi_speaker_yourself : {{is_poi_speaker_yourself}}
+-->
+
 <span [ngSwitch]="debate_status">
 
   <span *ngSwitchCase="DEBATE_STATUS_WAITING">
-
-
     <input type="button" (click)="speech_start()" value="{{speech_start_button_value}}">
   </span>
 
 
   <span *ngSwitchCase="DEBATE_STATUS_SPEECH_MAIN_SPEAKER">
 
-    <input type="button" (click)="speech_finish()" value="finish speech">
-    <input type="button" (click)="poi()" value="poi">
-    <input type="button" (click)="cancel_poi()" value="cancel_poi">
+    <span *ngIf="is_main_speaker_yourself">
+      <input type="button" (click)="speech_finish()" value="finish speech">
+    </span>
+    <span *ngIf="!is_main_speaker_yourself && !is_poi_candidate_yourself">
+      <input type="button" (click)="poi()" value="poi">
+    </span>
+    <span *ngIf="is_poi_candidate_yourself">
+      <input type="button" (click)="cancel_poi()" value="cancel_poi">
+    </span>
+
     <span class="timer"> {{speech_time_spent_show}} </span>
+
   </span>
 
   <span *ngSwitchCase="DEBATE_STATUS_SPEECH_POI">
-    <input type="button" (click)="finish_poi()" value="finish poi">
+
+    <span *ngIf="is_poi_speaker_yourself || is_main_speaker_yourself">
+      <input type="button" (click)="finish_poi()" value="finish poi">
+    </span>
     <span class="timer"> {{speech_time_spent_show}} </span>
+
   </span>
 
 
