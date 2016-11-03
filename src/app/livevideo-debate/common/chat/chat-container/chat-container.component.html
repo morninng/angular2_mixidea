@@ -1,33 +1,62 @@
-<p>
-  chat-container works!
-</p>
+<div id="setting">
+    <a>video</a>
+    <a>microphone</a>
+</div>
 
-<span *ngIf="displayed_chat_status=='main'">
-  all attendance chat
-  <ul>
-    <li *ngFor="let item of main_chat_item | async">
-      <app-chat-each-message [chat_item]="item"></app-chat-each-message>
-    </li>
-  </ul>
-</span>
+<nav id="chat-tab">
+    <h2>CHAT</h2>
+    <ul class="chat-tab__items">
+        <li class="chat-tab__item">
+          <a (click)="show_main_chat()" 
+              [ngClass]="{'is-active': displayed_chat_status=='main'}"
+            class="chat-tab__anchor ">
+            All
+          </a>
+        </li>
+
+        <li class="chat-tab__item">
+          <span *ngIf="is_in_team">
+            <a (click)=" show_team_chat()"
+                [ngClass]="{'is-active': displayed_chat_status=='team'}"
+                class="chat-tab__anchor">
+                Team {{own_team}}
+            </a>
+          </span>
+        </li>
+    </ul>
+
+    <!--.is-activeをつけかえてください-->
+    <div class="chat-tab__panel is-active">
+      <span *ngIf="displayed_chat_status=='main'">
+        all attendance chat
+        <ul>
+          <li *ngFor="let item of main_chat_item | async">
+            <app-chat-each-message [chat_item]="item"></app-chat-each-message>
+          </li>
+        </ul>
+      </span>
 
 
-<span *ngIf="displayed_chat_status=='team'">
-  team chat
-  <ul>
-    <li *ngFor="let item of team_chat_item | async">
-      <app-chat-each-message [chat_item]="item"></app-chat-each-message>
-    </li>
-  </ul>
-</span>
+      <span *ngIf="displayed_chat_status=='team'">
+        team chat
+        <ul>
+          <li *ngFor="let item of team_chat_item | async">
+            <app-chat-each-message [chat_item]="item"></app-chat-each-message>
+          </li>
+        </ul>
+      </span>
+    </div>
+    <textarea [(ngModel)]="chat_inpput_text" ></textarea>
+    <input type="button" (click)="send_chat()" value="send">
+</nav>
 
 
-<textarea [(ngModel)]="chat_inpput_text" ></textarea>
-<input type="button" (click)="send_chat()" value="send">
+
+
+
+
 
 <span *ngIf="is_in_team">
   <input type="button" (click)="show_team_chat()" value="chat within team member">
   <input type="button" (click)="show_main_chat()" value="chat with all attendance">
-
-
 </span>

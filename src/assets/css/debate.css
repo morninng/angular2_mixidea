@@ -1,0 +1,187 @@
+* {
+    box-sizing: border-box;
+}
+body,
+html {
+    margin: 0;
+    padding: 0;
+    background-color: #F7F7F7;
+}
+
+#livevideo_debate_header {
+    position: relative;
+    background-color: #0288d1;
+    height: 50px;
+    box-shadow: 0px 2px 2px 0px rgba(83, 83, 83, 0.29);
+    z-index: 100;
+}
+
+#aside-chat {
+    width: 300px;
+    border-left: 1px solid #e5e5e5;
+    float: right;
+    height: calc(100vh - 100px);
+    background-color: #fff;
+}
+
+#livevideo_debate_main{
+  width: calc(100% - 300px);
+}
+
+
+#setting {
+    height: 49px;
+    width: 100%;
+    background-color: #25475a;
+    color: #FFF;
+}
+
+#setting a {
+    color: #FFF;
+}
+
+#intro_team_selection {
+  width: calc(100% - 2px);
+  height: 280px;
+  background-image: -moz-linear-gradient( 90deg, rgb(0,25,39) 0%, rgb(2,111,171) 100%);
+  background-image: -webkit-linear-gradient( 90deg, rgb(0,25,39) 0%, rgb(2,111,171) 100%);
+  background-image: -ms-linear-gradient( 90deg, rgb(0,25,39) 0%, rgb(2,111,171) 100%);
+  box-shadow: inset 0px -2px 2px 0px rgba(55, 55, 55, 0.55);
+}
+
+#livevideo_debate_footer {
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color: #333;
+}
+
+.chat-tab__items {
+    list-style: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+}
+
+.chat-tab__item {
+    width: 50%;
+    float: left;
+}
+
+.chat-tab__anchor {
+    display: block;
+    text-align: center;
+    border-bottom: 2px solid #FFF;
+    text-decoration: none;
+    color: #333;
+}
+
+.chat-tab__anchor.is-active {
+    border-color: #0288d1;
+}
+
+.chat-tab__panel {
+    display: none;
+    overflow-y: auto;
+}
+
+.chat-tab__panel.is-active {
+    display: block;
+}
+
+#intro_info {
+    height: calc(100vh - 380px);
+    overflow-y: auto;
+    padding: 7px;
+}
+
+.intro_info_panel {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0px 2px 3.84px 0.16px rgba(83, 83, 83, 0.29);
+}
+
+#prep_document {
+    width: calc(100vw - 618px);
+    height: calc(100vh - 100px);
+    padding: 7px;
+    float: left;
+}
+
+#debate_aside_document {
+    width: calc(100vw - 600px);
+    height: calc(100vh - 100px);
+    padding: 7px;
+    float: left;
+}
+
+.prep_document_panel {
+    width: 100%;
+    height: 100%;
+    padding: 14px;
+    background-color: #fff;
+    box-shadow: 0px 2px 3.84px 0.16px rgba(83, 83, 83, 0.29);
+}
+
+#prep_team_panel{
+    position: relative;
+    width: 300px;
+    height: calc(100vh - 100px);
+    float: left;
+    background-image: -moz-linear-gradient( 90deg, rgb(1,75,115) 0%, rgb(2,111,171) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(1,75,115) 0%, rgb(2,111,171) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(1,75,115) 0%, rgb(2,111,171) 100%);
+    box-shadow: inset -2px 0px 4px 0px rgba(55, 55, 55, 0.26);
+}
+
+#debate_center {
+    float: left;
+    width: calc(100% - 300px);
+    height: calc(100vh - 100px);
+}
+
+#debate-video {
+    position: relative;
+    width: 100%;
+    height: 350px;
+    background-image: -moz-linear-gradient( 90deg, rgb(0,25,39) 0%, rgb(2,111,171) 100%);
+    background-image: -webkit-linear-gradient( 90deg, rgb(0,25,39) 0%, rgb(2,111,171) 100%);
+    background-image: -ms-linear-gradient( 90deg, rgb(0,25,39) 0%, rgb(2,111,171) 100%);
+    box-shadow: inset 0px -2px 2px 0px rgba(55, 55, 55, 0.55);
+}
+
+#debate-video-state {
+    position: absolute;
+    bottom: 0;
+    height: 50px;
+    width: 100%;
+    background-color: #25475a;
+
+}
+
+#debate_aside_document {
+    width: 300px;
+    height: calc(100vh - 100px);
+    float: left;
+    background-color: #fff;
+    border-right: 1px solid #E5E5E5;
+}
+
+.move-panel {
+    position: absolute;
+    bottom: 0;
+    height: 49px;
+    width: 100%;
+    background-color: #25475a;
+    color: #FFF;
+}
+
+.move-panel a {
+    color: #FFF;
+}
+
+#livevideo_debate_container {
+    overflow: hidden;
+}
