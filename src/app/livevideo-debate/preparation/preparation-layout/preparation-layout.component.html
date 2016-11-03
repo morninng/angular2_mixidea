@@ -1,14 +1,16 @@
 
-<div class="prep_layout_container">
-
-  <div class="prep_team_member_container">
-    <app-prep-team-member
-      [prep_team]="current_prep_team"
-      [participants_team]="participants_team"
-      ></app-prep-team-member>
+<div id="prep_team_panel">
+  <app-prep-team-member
+    [prep_team]="current_prep_team"
+    [participants_team]="participants_team"
+    ></app-prep-team-member>
+  <div class="move-panel">
+      <a href="">向こうのチームへ</a>
   </div>
+</div>
+<aside id="prep_document">
+    <div class="prep_document_panel">
 
-  <div class="prep_main_container">
 
     prep_team: {{current_prep_team}} <br>
     {{preparation_time}}  / 20:00
@@ -19,13 +21,14 @@
       [intro_doc]="intro_doc"
       [arg_obj]="arg_obj"></app-preparation-document>
 
-
-    <br>
-    this is a temporal button, switching to the debate phase will be done by timer.<br>
-    <input type="button" (click)="start_debate()" value="start debate">
-
-  </div>
+      <br> <br> 
+      this is a temporal button, switching to the debate phase will be done by timer.<br>
+      <input type="button" (click)="start_debate()" value="start debate">
+    </div>
 
 
 
-</div>
+</aside>
+
+
+
