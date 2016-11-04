@@ -1,12 +1,11 @@
 <div>
 
-  <span class="user_video_container"></span>
+  <div class="video_user_container">
+    <div class="video_container"></div>
+    <div class="img_container">
+      <app-user-link [user_id]="user_id" [type]="'video_replacement'" ></app-user-link>
+    </div>
+  </div>
 
-  <span *ngIf="!show_image">
-    <app-user-link [user_id]="user_id" [type]="'only_short_name'" ></app-user-link>
-  </span>
-  <span *ngIf="show_image">
-    <app-user-link [user_id]="user_id" [type]="'full_parallel'" ></app-user-link>
-  </span>
 
 </div>

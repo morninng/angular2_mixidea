@@ -121,8 +121,8 @@ export class SkywayService {
 
       const constraints = { audio:true,
                           video: {
-                            width:{ideal:80},
-                            height:{ideal: 45},
+                            width:{ideal:100},
+                            height:{ideal: 100},
                             frameRate: { ideal: 2}
                           }};
     const room_join = false;

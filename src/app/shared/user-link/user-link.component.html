@@ -55,4 +55,12 @@
     </span>
   </span>
 
+  <span *ngSwitchCase="'video_replacement'">
+    <span *ngIf="user" class="video_replacement">
+      <img src={{user.pict_src}} ><br>
+      <span class="c-comment__name">{{user.full_name}}</span>
+    </span>
+  </span>
+
+
 </span>
