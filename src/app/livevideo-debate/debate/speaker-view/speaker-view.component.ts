@@ -24,6 +24,7 @@ export class SpeakerViewComponent implements OnInit {
   @Input() poi_candidates_id_arr;
   @Input() video_data;
   @Input() user_env;
+  @Input() room_users
   @Input() is_main_speaker_yourself;
   /*
   @Input() next_speaker_role_num;

@@ -15,7 +15,8 @@
               [current_own_team]="current_own_team"
               [is_in_team_myself]="is_in_team_myself"
               [video_data]="video_data"
-              [user_env]="user_env"></app-select-team>
+              [user_env]="user_env"
+              [room_users]="room_users"></app-select-team>
           </div>
           <div class="each_team">
             <app-select-team 
@@ -25,7 +26,8 @@
               [current_own_team]="current_own_team"
               [is_in_team_myself]="is_in_team_myself"
               [video_data]="video_data"
-              [user_env]="user_env"></app-select-team>
+              [user_env]="user_env"
+              [room_users]="room_users"></app-select-team>
           </div>
         </div>
       </span>
@@ -53,7 +55,8 @@
       <span *ngFor="let user_id of users_not_involved_team">
         <app-user-video-icon [user_id]="user_id" 
                              [video_data]="video_data"
-                             [user_env]="user_env"></app-user-video-icon>
+                             [user_env]="user_env"
+                             [room_users]="room_users"></app-user-video-icon>
       </span>
     </div>
   

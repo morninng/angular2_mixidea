@@ -9,6 +9,7 @@ export class UserVideoIconComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() video_data
   @Input() user_env
+  @Input() room_users
   @Input() user_id
   /*
   @Input() type
@@ -34,18 +35,24 @@ export class UserVideoIconComponent implements OnInit, OnChanges, OnDestroy {
   ngOnChanges() {
     this.video_data = this.video_data || {};
     let updated_video_src = this.video_data[this.user_id];
+    const user_env = this.user_env || {};
+    const video_env = user_env.video || {};
+    this.room_users = this.room_users || [];
+
     if(!updated_video_src){
       console.log("only image is shown for user ", this.user_id);
+    }else if (video_env[this.user_id] == false){
+
+      console.log("user video environment is not available", this.user_id);
+      updated_video_src = null;
+    }else if(this.room_users.indexOf(this.user_id) == -1) {
+
+      console.log("user is not in the room");
+      updated_video_src = null;
     }else{
-      const user_env = this.user_env || {};
-      const video_env = user_env.video || {};
-      if(video_env[this.user_id] == false){
-        console.log("user video environment is not available", this.user_id);
-        updated_video_src = null;
-      }else{
-        console.log("video start to be shown to ", this.user_id);
-      }
+          console.log("video start to be shown to ", this.user_id);
     }
+
 
     if(this.video_src && !updated_video_src){
       setTimeout(this.remove_video_area, 100);

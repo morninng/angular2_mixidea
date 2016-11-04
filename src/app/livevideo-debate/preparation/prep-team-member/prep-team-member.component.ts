@@ -12,6 +12,7 @@ export class PrepTeamMemberComponent implements OnInit {
   @Input() prep_team;
   @Input() video_data;
   @Input() user_env
+  @Input() room_users
 
 
   room_team_member_arr;
