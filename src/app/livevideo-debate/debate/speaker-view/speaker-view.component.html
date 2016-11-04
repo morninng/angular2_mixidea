@@ -21,8 +21,14 @@
     
     <div class="status_speech_main_container">
       <div class="main_speaker_container">
-        {{main_speaker_id}}
-        <app-user-link [user_id]="main_speaker_id" [type]="'full_parallel'"></app-user-link>
+
+        <app-user-video-icon 
+             [user_id]="main_speaker_id"
+             [video_data]="video_data"
+             [user_env]="user_env"></app-user-video-icon>
+
+
+
       </div>
       <div class="poi_candidate_container">
         <app-poi-candidates
@@ -41,14 +47,33 @@
     DEBATE_STATUS_SPEECH_POI<br>
     <div class="status_speech_poi_container">
       <div class="poi_speaker_container">
+
+        <!--
         {{poi_speaker_id}}
         <app-user-link [user_id]="poi_speaker_id" [type]="'full_parallel'">
-      </app-user-link> 
+      </app-user-link> -->
+
+        <app-user-video-icon 
+             [user_id]="poi_speaker_id"
+             [video_data]="video_data"
+             [user_env]="user_env"></app-user-video-icon>
+
+
       </div>
       <div class="main_speaker_poi_wait_container">
+        <!--
         {{main_speaker_id}}
         <app-user-link [user_id]="main_speaker_id" [type]="'full_parallel'">
         </app-user-link>
+        -->
+
+        <app-user-video-icon 
+             [user_id]="main_speaker_id"
+             [video_data]="video_data"
+             [user_env]="user_env"></app-user-video-icon>
+
+
+
       </div>
     </div>
 
