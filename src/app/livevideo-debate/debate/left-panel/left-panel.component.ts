@@ -33,6 +33,11 @@ export class LeftPanelComponent implements OnInit, OnDestroy {
               private change_ref: ChangeDetectorRef) { }
 
   ngOnInit() {
+
+  }
+
+  ngOnChanges(){
+    
     switch(this.deb_style){
       case STYLE_NA:
         this.default_team = TEAM_GOV;
@@ -44,10 +49,7 @@ export class LeftPanelComponent implements OnInit, OnDestroy {
         this.default_team = TEAM_OG;
       break;
     }
-  }
 
-  ngOnChanges(){
-    
     const prep_team = this.audience_team || this.current_own_team[0] || this.default_team;
 
     if(this.current_prep_team != prep_team){

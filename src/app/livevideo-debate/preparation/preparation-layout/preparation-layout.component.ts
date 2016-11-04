@@ -61,17 +61,6 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
 
   ngOnInit() {
 
-    switch(this.deb_style){
-      case STYLE_NA:
-        this.default_team = TEAM_GOV;
-      break;
-      case STYLE_ASIAN:
-        this.default_team = TEAM_PROPOSITION;
-      break;
-      case STYLE_BP:
-        this.default_team = TEAM_OG;
-      break;
-    }
 
     const source = Observable.interval(1000).map(()=>{
       const current_time = new Date();
@@ -100,6 +89,18 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
   }
 
   ngOnChanges(){
+
+    switch(this.deb_style){
+      case STYLE_NA:
+        this.default_team = TEAM_GOV;
+      break;
+      case STYLE_ASIAN:
+        this.default_team = TEAM_PROPOSITION;
+      break;
+      case STYLE_BP:
+        this.default_team = TEAM_OG;
+      break;
+    }
 
     const prep_team = this.audience_team || this.current_own_team[0] || this.default_team;
 
