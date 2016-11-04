@@ -205,4 +205,18 @@ export class LiveDebateFirebaseService {
   }
 
 
+  set_user_video_unavailable(event_id, user_id){
+
+    const reference = '/event_related/livevideo-debate/' + event_id + '/user_env/video/' + user_id;
+    this.save_firebase_data(reference, false);
+
+  }
+
+  set_user_audio_unavailable(event_id, user_id){
+
+    const reference = '/event_related/livevideo-debate/' + event_id + '/user_env/audio/' + user_id;
+    this.save_firebase_data(reference, false);
+
+  }
+
 }

@@ -104,7 +104,7 @@ html {
 }
 
 #prep_document {
-    width: calc(100vw - 618px);
+    width: calc(100vw - 622px);
     height: calc(100vh - 100px);
     padding: 7px;
     float: left;

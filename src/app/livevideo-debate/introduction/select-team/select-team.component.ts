@@ -18,6 +18,7 @@ export class SelectTeamComponent implements OnInit, OnChanges {
   @Input() current_own_team;
   @Input() is_in_team_myself;
   @Input() video_data;
+  @Input() user_env;
 
   is_my_team
   show_leave_team = false;

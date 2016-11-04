@@ -1,4 +1,4 @@
-import { Component, OnInit,Input, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit,Input, ChangeDetectorRef, OnDestroy } from '@angular/core';
 import {STYLE_NA, STYLE_ASIAN, STYLE_BP} from './../../../interface/deb_style'
 import {TEAM_PROPOSITION, TEAM_GOV, TEAM_OG} from './../../../interface/team';
 import { AngularFire } from 'angularfire2';
@@ -14,7 +14,7 @@ interface Preparation_Document {
   templateUrl: './left-panel.component.html',
   styleUrls: ['./left-panel.component.scss']
 })
-export class LeftPanelComponent implements OnInit {
+export class LeftPanelComponent implements OnInit, OnDestroy {
 
 
   @Input() event_id;
@@ -75,6 +75,15 @@ export class LeftPanelComponent implements OnInit {
     }
 
   }
+
+  ngOnDestroy(){
+    if(this.prep_doc_subscription){
+      this.prep_doc_subscription.unsubscribe();
+    }
+    
+    
+  }
+  
   
 
 }

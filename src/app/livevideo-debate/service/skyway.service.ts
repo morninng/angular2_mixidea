@@ -3,6 +3,7 @@ import { BehaviorSubject, Observable, Subject} from 'rxjs';
 
 import { UserauthService} from './../../core/service/userauth.service';
 import {ModelUserService} from './../../core/service/model-user.service';
+import {LiveDebateFirebaseService} from './live-debate-firebase.service';
 
 declare var navigator:any;
 declare var Peer:any;
@@ -25,7 +26,8 @@ export class SkywayService {
 
 
   constructor(private user_auth : UserauthService,
-              private user_model : ModelUserService) {
+              private user_model : ModelUserService,
+              private livedebate_firebase: LiveDebateFirebaseService) {
 
     this.local_video_stream_subject = new BehaviorSubject(null);
 
@@ -152,6 +154,9 @@ export class SkywayService {
       return;
     }
 
+    this.set_user_env(event_id);
+
+
    this.sfu_room = this.own_peer.joinRoom(room_name, {mode: 'sfu', stream: this.local_stream })
 
 
@@ -249,6 +254,16 @@ export class SkywayService {
     console.log("<<<<<<<room data>>>>>>>>");
     console.log(this.room_data);
     this.room_data_subject.next(this.room_data);
+  }
+
+  private set_user_env(event_id){
+
+    if(!this.audio_available){
+      this.livedebate_firebase.set_user_audio_unavailable(event_id, this.user_auth.own_user_id);
+    }
+    if(!this.video_available){
+     this.livedebate_firebase.set_user_video_unavailable(event_id, this.user_auth.own_user_id);
+    }
   }
 
   mute(){

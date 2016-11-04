@@ -29,6 +29,8 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
   
   event_id = null;
   video_data={};
+  user_env = {};
+  
   room_users = [];
   participants_team = {};
   participants_type = {};
@@ -40,7 +42,6 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
   team_name_list = [];
   prep_start_time = 0;
   prep_duration = 0
-
 
   game_status : string;
   speech_status : any;
@@ -107,6 +108,10 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
       this.speech_status = Object.assign({}, in_livevideo_obj.speech_status);
       this.speech_log = Object.assign({}, in_livevideo_obj.speech_log);
 
+// user environment
+      this.user_env = Object.assign({}, in_livevideo_obj.user_env);
+
+
 
       this.change_ref.markForCheck();
     })
@@ -124,7 +129,10 @@ export class LivevideoDebateContainerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(){
-    this.event_item_subscription.unsubscribe();
+    if(this.event_item_subscription ){
+      this.event_item_subscription.unsubscribe();
+    }
+    
   }
 
 }

@@ -21,7 +21,10 @@
   <app-user-link [user_id]="member.key" [type]="'only_short_name'" ></app-user-link>
 -->
 
-  <app-user-video-icon [user_id]="member.key" [video_data]="video_data"></app-user-video-icon>
+  <app-user-video-icon 
+             [user_id]="member.key"
+             [video_data]="video_data"
+             [user_env]="user_env"></app-user-video-icon>
 
 </span>
 

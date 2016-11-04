@@ -8,6 +8,7 @@ import { Component, OnInit, Input, OnChanges, ElementRef, ChangeDetectorRef,NgZo
 export class UserVideoIconComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() video_data
+  @Input() user_env
   @Input() user_id
   /*
   @Input() type
@@ -32,14 +33,24 @@ export class UserVideoIconComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges() {
     this.video_data = this.video_data || {};
-    const updated_video_src = this.video_data[this.user_id];
+    let updated_video_src = this.video_data[this.user_id];
     if(!updated_video_src){
       this.show_image = true;
       console.log("only image is shown for user ", this.user_id);
     }else{
-      this.show_image = false;
-      console.log("video start to be shown to ", this.user_id);
+
+      const user_env = this.user_env || {}
+      const video_env = user_env.video || {}
+      if(video_env[this.user_id] == false){
+        this.show_image = true;
+        console.log("user video environment is not available", this.user_id);
+        updated_video_src = null;
+      }else{
+        this.show_image = false;
+        console.log("video start to be shown to ", this.user_id);
+      }
     }
+
     if(this.video_src && !updated_video_src){
       setTimeout(this.remove_video_area, 100); 
     }
@@ -48,6 +59,10 @@ export class UserVideoIconComponent implements OnInit, OnChanges, OnDestroy {
       setTimeout(this.set_user_video, 1000);
     }
     this.video_src = updated_video_src;
+
+
+
+
   }
 
 

@@ -11,8 +11,6 @@ import {Observable} from 'rxjs';
 import {LiveDebateFirebaseService} from './../../service/live-debate-firebase.service';
 import {STATUS_DEBATE} from './../../interface-livedebate/status'
 
-
-
 interface Preparation_Document {
   intro: any,
   argument: any
@@ -35,6 +33,8 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
 
   @Input() room_users;
   @Input() video_data;
+  @Input() user_env;
+  
   @Input() preparation_start_time
 
   @Input() motion;  
@@ -97,9 +97,6 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
         this.change_ref.detectChanges()
       }
     )
-
-
-
   }
 
   ngOnChanges(){
@@ -122,27 +119,21 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
           this.arg_obj = Object.assign({}, prep_doc.argument);
           this.arg_obj["0"] = this.arg_obj["0"] || {};
           this.arg_obj["1"] = this.arg_obj["1"] || {}
-
-
-
-
-
-
       })
       this.current_prep_team = prep_team;
     }
-
   }
 
   start_debate(){
-
     this.livedebate_firebase.change_game_status(this.event_id, STATUS_DEBATE);
     console.log("start debate");
   }
 
-
   ngOnDestroy(){
     this.timer_subscripton.unsubscribe();
+    if(this.prep_doc_subscription){
+      this.prep_doc_subscription.unsubscribe();
+    }
   }
 
 
