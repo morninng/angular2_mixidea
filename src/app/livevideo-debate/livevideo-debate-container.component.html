@@ -44,7 +44,8 @@
               [room_users]="room_users"
               [video_data]="video_data"
               [prep_start_time]="prep_start_time"
-              [prep_duration]="prep_duration"></app-preparation-layout>
+              [prep_duration]="prep_duration"
+              [motion]="motion"></app-preparation-layout>
       </span>
       <span *ngSwitchCase="STATUS_DEBATE">
         <app-debate-layout
@@ -58,6 +59,7 @@
               [video_data]="video_data"
               [speech_status]="speech_status"
               [speech_log]="speech_log"
+              [motion]="motion"
           ></app-debate-layout>
       </span>
       <span *ngSwitchCase="STATUS_REFLECTION">

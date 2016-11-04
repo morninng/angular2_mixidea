@@ -36,7 +36,9 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
   @Input() room_users;
   @Input() video_data;
   @Input() preparation_start_time
-  
+
+  @Input() motion;  
+
   @Input() prep_start_time;
   @Input() prep_duration;
   preparation_time

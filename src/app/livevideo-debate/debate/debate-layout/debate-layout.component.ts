@@ -38,7 +38,8 @@ export class DebateLayoutComponent implements OnInit {
   @Input() video_data;
   @Input() speech_status;
   @Input() speech_log;
-
+  @Input() motion;
+  
   own_team : string;
   own_team_side = "no_side";
   next_speaker_role_num : number;
