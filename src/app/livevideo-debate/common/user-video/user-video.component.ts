@@ -5,7 +5,7 @@ import { Component, OnInit, Input, AfterViewInit,ElementRef, ChangeDetectorRef,N
   templateUrl: './user-video.component.html',
   styleUrls: ['./user-video.component.scss']
 })
-export class UserVideoComponent implements OnInit {
+export class UserVideoComponent implements OnInit, AfterViewInit {
 
   @Input() user_id;
   @Input() video_src;
