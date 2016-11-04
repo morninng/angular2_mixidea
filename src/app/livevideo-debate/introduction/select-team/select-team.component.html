@@ -13,13 +13,15 @@
 
 
 <span *ngFor="let member of (team_member | keysInObject)">
-  
+  <!--
   <app-user-link [user_id]="member.key" [type]="'only_pict'" ></app-user-link>
   <span *ngIf="video_data[member.key]">
       <app-user-video [video_src]="video_data[member.key]" [user_id]="member.key"></app-user-video>
   </span>
   <app-user-link [user_id]="member.key" [type]="'only_short_name'" ></app-user-link>
+-->
 
+  <app-user-video-icon [user_id]="member.key" [video_data]="video_data"></app-user-video-icon>
 
 </span>
 

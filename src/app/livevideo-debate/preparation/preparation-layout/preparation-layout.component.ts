@@ -86,6 +86,14 @@ export class PreparationLayoutComponent implements OnInit, Input, OnChanges {
         const prep_seconds = prep_time % 60
         const prep_minutes = (prep_time - prep_seconds) / 60;
         this.preparation_time = String(prep_minutes) + ":" + String(prep_seconds);
+
+        if(prep_seconds < 10){
+          this.preparation_time = String(prep_minutes) + ":0" + String(prep_seconds);
+        }else{
+          this.preparation_time = String(prep_minutes) + ":" + String(prep_seconds);
+        }
+
+
         this.change_ref.detectChanges()
       }
     )

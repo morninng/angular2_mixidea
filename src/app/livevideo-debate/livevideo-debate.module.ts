@@ -36,6 +36,7 @@ import { PoiCandidateEachComponent } from './debate/poi-candidate-each/poi-candi
 import { ReflectionLayoutComponent } from './reflection/reflection-layout/reflection-layout.component';
 import { PrepTeamMemberComponent } from './preparation/prep-team-member/prep-team-member.component';
 import { LeftPanelComponent } from './debate/left-panel/left-panel.component';
+import { UserVideoIconComponent } from './common/user-video-icon/user-video-icon.component';
 
 @NgModule({
   imports: [
@@ -72,7 +73,8 @@ import { LeftPanelComponent } from './debate/left-panel/left-panel.component';
     ReflectionLayoutComponent,
     TeamMemberComponent,
     PrepTeamMemberComponent,
-    LeftPanelComponent
+    LeftPanelComponent,
+    UserVideoIconComponent
   ],
   providers: [LiveDebateFirebaseService, SkywayService]
 })
