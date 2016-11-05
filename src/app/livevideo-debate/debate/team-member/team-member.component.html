@@ -1,49 +1,41 @@
 <div class="debate_team_container">
+  <span [ngSwitch]="deb_style">
+    <span *ngSwitchCase="STYLE_NA">
+      <div class="each_team">
+        <div>
+          <div class="each_team__heading is-gov">
+            GOV
+          </div>
+        </div>
 
+        <span *ngFor="let member_id of NA_gov_members">
+          <app-user-link [user_id]="member_id" [type]="'full_parallel'" ></app-user-link>
+        </span>
+      </div>
 
-<span [ngSwitch]="deb_style">
-
-  <span *ngSwitchCase="STYLE_NA">
-
-    <div class="each_team">
-    TEAM_GOV 
-      <span *ngFor="let member_id of NA_gov_members">
-        <app-user-link [user_id]="member_id" [type]="'full_parallel'" ></app-user-link>
-      </span>
-
-    </div>
-
-    <div class="each_team">
-    TEAM_OPP {{TEAM_OPP}}
-      {{NA_opp_members | json}}
+      <div class="each_team is-opp">
+        <div>
+          <div class="each_team__heading is-opp">
+            OPP
+          </div>
+        </div>
 
         <span *ngFor="let member_id of NA_opp_members">
-        <app-user-link [user_id]="member_id" [type]="'full_parallel'" ></app-user-link>
-      </span>
+          <app-user-link [user_id]="member_id" [type]="'full_parallel'" ></app-user-link>
+        </span>
+      </div>
+    </span>
 
+    <span *ngSwitchCase="STYLE_ASIAN">
+      TEAM_PROPOSITION
+      TEAM_OPPOSITION
+    </span>
 
-
-    </div>
-
+    <span *ngSwitchCase="STYLE_BP">
+      TEAM_OG
+      TEAM_OO
+      TEAM_CG
+      TEAM_CO
+    </span>
   </span>
-
-  <span *ngSwitchCase="STYLE_ASIAN">
-
-    TEAM_PROPOSITION
-    TEAM_OPPOSITION
-  </span>
-
-  <span *ngSwitchCase="STYLE_BP">
-
-    TEAM_OG
-    TEAM_OO
-    TEAM_CG
-    TEAM_CO
-
-  </span>
-
-</span>
-
-  
-
 </div>

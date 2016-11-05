@@ -1,10 +1,13 @@
 .user_full_parallel_container{
-    background-color:gray;
+    display: inline-block;
+    width: 70px;
+    text-align: center;
+    margin-top: 7px;
+    vertical-align: top;
 
     img {
         width:50px;
         height:50px;
-        margin: -2px;
     };
     .name {
         font-weight: bold;
@@ -21,7 +24,7 @@
 }
 
 .video_replacement{
-    display: block;
+    display: none;
     width: 150px;
     height: 150px;
     position: relative;

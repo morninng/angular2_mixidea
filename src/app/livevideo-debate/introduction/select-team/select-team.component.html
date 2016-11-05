@@ -1,14 +1,14 @@
-<div class="teama_container">
+<div class="teama_container is-{{team_name}}">
   <div class="team_name is-{{team_name}}">{{team_name}}</div>
 
 <span *ngIf="show_leave_team">
-  <input type="button" value="leave team" (click)="leave_team()">
+  <input type="button" class="is-{{team_name}}" value="leave team" (click)="leave_team()">
 </span>
 <span *ngIf="show_join_team">
-  <input type="button" value="join team" (click)="join_team()">
+  <input type="button" class="is-{{team_name}}" value="join team" (click)="join_team()">
 </span>
 <span *ngIf="show_move_to_team">
-  <input type="button" value="move team" (click)="move_team()">
+  <input type="button" class="is-{{team_name}}" value="move team" (click)="move_team()">
 </span>
 
 

@@ -1,9 +1,23 @@
 .role_status{
+    margin: 0;
+    padding: 0;
+    position: relative;
     text-align:center;
+
     li {
-        display:inline;
-        margin:5px;
-        font-weight:bold; 
+        display: inline-block;
+        margin: 5px;
+        position: relative;
+        z-index: 2;
+    }
+
+    &:before {
+        position: relative;
+        top: 17px;
+        content: "";
+        display: block;
+        border-bottom: 1px solid #999;
+        z-index: 1;
     }
 }
 .completed_role{
@@ -19,14 +33,22 @@
     font-size:x-large;
 }
 
-.left_role{
-    color:green;
-}
-.right_role{
-    color:red;
+.left_role,
+.right_role {
+    color: 333;
+    display: inline-block;
+    padding: 4px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+    background-color: #f7f7f7;
 }
 
-.role_status_container{
-    background-color:lightgray;
-    padding:3px;
+.left_role.current_main_speech_role {
+    background-color: #1ba55a;
+    color: #FFF;
+}
+
+.right_role.current_main_speech_role {
+    background-color: #1ba55a;
+    color: #FFF;
 }

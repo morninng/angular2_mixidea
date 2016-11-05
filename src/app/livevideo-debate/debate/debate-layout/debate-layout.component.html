@@ -52,22 +52,24 @@
       </div>
   </div>
 
-  <app-motion [motion]="motion" [event_id]="event_id"></app-motion>
+  <div class="debate-info">
+    <app-motion [motion]="motion" [event_id]="event_id"></app-motion>
 
+    <div id="debate-team">
+      <app-role-status
+        [debate_status]="debate_status"
+        [deb_style]="deb_style"
+        [next_speaker_role_num]="next_speaker_role_num"
+        [main_speaker_role_num]="main_speaker_role_num"
+        [completed_role_obj]="completed_role_obj"
+        ></app-role-status>
+      <app-team-member
+        [deb_style]="deb_style"
+        [participants_team]="participants_team">
+        </app-team-member>
+      <!-- <input type="button" (click)="goto_reflection()" value="goto_reflection"> -->
+  </div>
 
-  <div id="debate-team">
-    <app-role-status
-      [debate_status]="debate_status"
-      [deb_style]="deb_style"
-      [next_speaker_role_num]="next_speaker_role_num"
-      [main_speaker_role_num]="main_speaker_role_num"
-      [completed_role_obj]="completed_role_obj"
-      ></app-role-status>
-    <app-team-member
-      [deb_style]="deb_style"
-      [participants_team]="participants_team">
-      </app-team-member>
-    <input type="button" (click)="goto_reflection()" value="goto_reflection">
 
   </div>
 </div>

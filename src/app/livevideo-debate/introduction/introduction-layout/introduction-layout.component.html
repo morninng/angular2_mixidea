@@ -51,7 +51,7 @@
     <div class="intro_info__panel">
       <app-motion [motion]="motion" [event_id]="event_id"></app-motion>
 
-      <div>
+      <div style="margin-top: 7px;">
         <span *ngFor="let user_id of users_not_involved_team">
           <app-user-video-icon [user_id]="user_id" 
                                [video_data]="video_data"
