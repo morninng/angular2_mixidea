@@ -48,19 +48,22 @@
 </div>
 <div id="intro_info">
 
+    <div class="intro_info__panel">
+      <app-motion [motion]="motion" [event_id]="event_id"></app-motion>
 
-    <app-motion [motion]="motion" [event_id]="event_id"></app-motion>
+      <div>
+        <span *ngFor="let user_id of users_not_involved_team">
+          <app-user-video-icon [user_id]="user_id" 
+                               [video_data]="video_data"
+                               [user_env]="user_env"
+                               [room_users]="room_users"></app-user-video-icon>
+        </span>
+      </div>
 
-    <div>
-      <span *ngFor="let user_id of users_not_involved_team">
-        <app-user-video-icon [user_id]="user_id" 
-                             [video_data]="video_data"
-                             [user_env]="user_env"
-                             [room_users]="room_users"></app-user-video-icon>
-      </span>
+      <div class="intro_info__panel_under">
+        <button type="button" (click)="start_preparation()">Start Preparation</button>
+      </div>
     </div>
-  
-    <input type="button" (click)="start_preparation()" value="start preparation">
 </div>
 
     <br>

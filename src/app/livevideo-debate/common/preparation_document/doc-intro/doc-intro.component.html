@@ -1,13 +1,22 @@
-introduction 
-<textarea type="text" 
-    (focus)="text_focused()" 
-    (blur)="text_blured()"
-    (keyup)="text_keyup.next()"
-    [(ngModel)]="intro_text"
-     placeholder="team stance, social background should be written here">
-</textarea>
+<div class="doc-intro">
+    <div class="doc-intro__heading">
+        <div class="doc-heading">
+            introduction
+        </div>
+    </div>
 
-<span *ngFor="let editor of (editors | keysInObject)">
-    <app-user-link [user_id]="editor.key" [type]="'only_pict'"></app-user-link>
-</span>
+    <div class="doc-intro__body">
+        <textarea type="text" 
+            (focus)="text_focused()" 
+            (blur)="text_blured()"
+            (keyup)="text_keyup.next()"
+            [(ngModel)]="intro_text"
+             placeholder="team stance, social background should be written here">
+        </textarea>
 
+        <span *ngFor="let editor of (editors | keysInObject)">
+            <app-user-link [user_id]="editor.key" [type]="'only_pict'"></app-user-link>
+        </span>
+    </div>
+
+</div>

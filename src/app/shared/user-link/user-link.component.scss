@@ -1,8 +1,6 @@
 .user_full_parallel_container{
     background-color:gray;
 
-
-
     img {
         width:50px;
         height:50px;
@@ -23,8 +21,22 @@
 }
 
 .video_replacement{
+    display: block;
+    width: 150px;
+    height: 150px;
+    position: relative;
+
     img{
-        width:100px;
-        height:100px;
+        width:150px;
+        height:150px;
+    }
+
+    .c-comment__name {
+        padding: 4px;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        background-color: rgba(0,0,0,0.5);
+        color: #FFF;
     }
 }

@@ -1,16 +1,13 @@
 
 <div>
+    <textarea type="text" 
+        (focus)="text_focused()" 
+        (blur)="text_blured()"
+        (keyup)="text_keyup.next()"
+        [(ngModel)]="arg_context_text"
+        placeholder="argument context should be written here">
 
-<textarea type="text" 
-    (focus)="text_focused()" 
-    (blur)="text_blured()"
-    (keyup)="text_keyup.next()"
-    [(ngModel)]="arg_context_text"
-    placeholder="argument context should be written here">
-
-</textarea>
-
-{{arg_context_text | json}}
+    </textarea>
 </div>
 
 <span *ngFor="let editor of (editors | keysInObject)">

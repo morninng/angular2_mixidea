@@ -1,15 +1,10 @@
-.teama_container{
-    margin:5px;
-    background-color:cornflowerblue;
-    min-width:300px;
-    min-height:100px;
-}
-
-.team_name{
-    text-align:center;
-    font-weight:bold;
-    font-size:large;
-    width:100%;
-    margin:3px;
-    background-color:lightslategray;
+.team_name {
+    display: inline-block;
+    padding: 7px 14px;
+    background-color: #333;
+    color: #FFF;
+    font-weight: bold;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }

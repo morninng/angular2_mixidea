@@ -15,7 +15,6 @@ export class MotionComponent implements OnInit, OnChanges {
   current_motion;
   input_motion = "";
 
-
   constructor(private livedebate_firebase: LiveDebateFirebaseService,) { }
 
   ngOnInit() {
@@ -30,18 +29,12 @@ export class MotionComponent implements OnInit, OnChanges {
   }
 
   save_motion(){
-
     this.livedebate_firebase.save_motion(this.event_id, this.input_motion);
     this.uner_editing = false;
-
   }
-
 
   edit_start(){
     this.uner_editing = true;
 
   }
-
-
-
 }

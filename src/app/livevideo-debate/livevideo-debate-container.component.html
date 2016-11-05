@@ -1,7 +1,6 @@
 <header id="livevideo_debate_header">
-    
+    MIXIDEA
 </header>
-
 
 <div id="livevideo_debate_container">
   <aside id="aside-chat">
@@ -13,13 +12,12 @@
       </app-chat-container>
 
   </aside>
-  
+
   <div id="livevideo_debate_main">
 
 
     <span [ngSwitch]="game_status">
       <span *ngSwitchCase="STATUS_INTRO">
-        intro
         <app-introduction-layout 
               [event_id]="event_id"
               [deb_style]="deb_style"
@@ -75,6 +73,6 @@
     </span>
   </div>
   <footer id="livevideo_debate_footer">
-      
+      &copy; 2016 MIXIDEA
   </footer>
 </div>

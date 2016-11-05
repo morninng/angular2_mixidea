@@ -1,17 +1,21 @@
-<div>
+<div class="doc-arg">
+    <div class="doc-arg__heading">
+        <div class="doc-heading">
+            argument {{argument_number }}
+        </div>
+    </div>
 
-argument {{argument_number }}<br>
-<app-doc-arg-signpost
-    [event_id]="event_id"
-    [prep_team]="prep_team"
-    [arg_num]="arg_num"
-    [signpost_doc]="signpost_doc"></app-doc-arg-signpost>
+    <div class="doc-arg__body">
+        <app-doc-arg-signpost
+            [event_id]="event_id"
+            [prep_team]="prep_team"
+            [arg_num]="arg_num"
+            [signpost_doc]="signpost_doc"></app-doc-arg-signpost>
 
-<app-doc-arg-context
-    [event_id]="event_id"
-    [prep_team]="prep_team"
-    [arg_num]="arg_num"
-    [arg_context_doc]="arg_context_doc"></app-doc-arg-context>
-
-
+        <app-doc-arg-context
+            [event_id]="event_id"
+            [prep_team]="prep_team"
+            [arg_num]="arg_num"
+            [arg_context_doc]="arg_context_doc"></app-doc-arg-context>
+    </div>
 </div>

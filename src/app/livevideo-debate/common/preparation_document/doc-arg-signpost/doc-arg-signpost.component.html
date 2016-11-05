@@ -1,16 +1,13 @@
+<div class="doc-arg-signpost">
+    <div class="doc-arg-signpost__heading">signpost</div>
 
-<div>
-signpost: 
-<input type="text"
-    (focus)="text_focused()" 
-    (blur)="text_blured()"
-    (keyup)="text_keyup.next()"
-    [(ngModel)]="signpost_text"
- placeholder="signpost should be written here">
+    <input type="text"
+        (focus)="text_focused()" 
+        (blur)="text_blured()"
+        (keyup)="text_keyup.next()"
+        [(ngModel)]="signpost_text"
+     placeholder="signpost should be written here">
 </div>
-
-{{signpost_doc | json}}
-
 
 <span *ngFor="let editor of (editors | keysInObject)">
     <app-user-link [user_id]="editor.key" [type]="'only_pict'"></app-user-link>

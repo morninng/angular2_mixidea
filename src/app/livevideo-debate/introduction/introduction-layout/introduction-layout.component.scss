@@ -1,8 +1,10 @@
 .team_container{
-    display:table-row;
-    margin:5px;
+    overflow: hidden;
 }
 
 .each_team{
-    display:table-cell
+    width: 50%;
+    float: left;
+    position: relative;
+    height: 280px;
 }

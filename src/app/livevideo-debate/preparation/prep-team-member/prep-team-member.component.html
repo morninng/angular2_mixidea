@@ -1,21 +1,10 @@
-<p>
-  prep-team-member works!
-</p>
-
-
 <span *ngFor="let member_id of room_team_member_arr">
-
 <!--
 <app-user-link [user_id]="member_id" [type]="'full_parallel'" ></app-user-link>
 -->
-
-        <app-user-video-icon 
-             [user_id]="member_id"
-             [video_data]="video_data"
-             [user_env]="user_env"
-             [room_users]="room_users"></app-user-video-icon>
-
-
-
-
+    <app-user-video-icon 
+         [user_id]="member_id"
+         [video_data]="video_data"
+         [user_env]="user_env"
+         [room_users]="room_users"></app-user-video-icon>
 </span>

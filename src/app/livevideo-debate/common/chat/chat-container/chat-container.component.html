@@ -1,6 +1,7 @@
-<div id="setting">
-    <a>video</a>
-    <a>microphone</a>
+<div id="setting" class="setting">
+    <span class="setting__heading">SETTING</span>
+    <a><i class="fa fa-video-camera" aria-hidden="true"></i></a>
+    <a><i class="fa fa-microphone" aria-hidden="true"></i></a>
 </div>
 
 <nav id="chat-tab">
@@ -28,7 +29,6 @@
     <!--.is-activeをつけかえてください-->
     <div class="chat-tab__panel is-active">
       <span *ngIf="displayed_chat_status=='main'">
-        all attendance chat
         <ul>
           <li *ngFor="let item of main_chat_item | async">
             <app-chat-each-message [chat_item]="item"></app-chat-each-message>
@@ -38,7 +38,6 @@
 
 
       <span *ngIf="displayed_chat_status=='team'">
-        team chat
         <ul>
           <li *ngFor="let item of team_chat_item | async">
             <app-chat-each-message [chat_item]="item"></app-chat-each-message>
@@ -46,8 +45,10 @@
         </ul>
       </span>
     </div>
-    <textarea [(ngModel)]="chat_inpput_text" ></textarea>
-    <input type="button" (click)="send_chat()" value="send">
+    <div class="chat__send">
+      <textarea [(ngModel)]="chat_inpput_text" ></textarea>
+      <button type="button" (click)="send_chat()">send</button>
+    </div>
 </nav>
 
 

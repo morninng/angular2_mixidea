@@ -1,38 +1,16 @@
-<p>
-  preparation-document works!
-</p>
-
-<app-doc-intro
-  [event_id]="event_id"
-  [prep_team]="prep_team"
-  [intro_doc]="intro_doc"></app-doc-intro>
-
-{{arg_obj | json}}
-
-
-<span *ngFor="let num of num_arr">
-
-  <app-doc-arg-container
+<div class="document">
+  <app-doc-intro
     [event_id]="event_id"
     [prep_team]="prep_team"
-    [arg]="arg_obj[num]"
-    [arg_num]="num"></app-doc-arg-container>
+    [intro_doc]="intro_doc"></app-doc-intro>
 
-</span>
+  <div *ngFor="let num of num_arr">
+    <app-doc-arg-container
+      [event_id]="event_id"
+      [prep_team]="prep_team"
+      [arg]="arg_obj[num]"
+      [arg_num]="num"></app-doc-arg-container>
+  </div>
 
-<!--
-<span *ngFor="let arg of (arg_obj | keysInObject)">
-
-
-{{arg.value | json}}
-  <app-doc-arg-container
-    [event_id]="event_id"
-    [prep_team]="prep_team"
-    [arg]="arg.value"
-    [arg_num]="arg.key"></app-doc-arg-container>
-
-</span>
--->
-
-
-<input type="button" value="add one more argument" (click)="add_new_argument()">
+  <button class="document__add-argument" type="button" (click)="add_new_argument()">Add Argument</button>
+</div>
