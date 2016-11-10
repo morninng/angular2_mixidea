@@ -12,9 +12,6 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-ftp-deploy');
 
-
-
-
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -30,12 +27,7 @@ module.exports = function (grunt) {
         exclusions: ['index.html','assets/images']
       }
     }
-
   });
-
-
-
-
 
   grunt.registerTask('deploy',['ftp-deploy']);
 
